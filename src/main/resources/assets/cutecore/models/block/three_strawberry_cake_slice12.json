@@ -1,0 +1,22 @@
+{
+	"texture_size": [52, 52],
+	"textures": {
+		"texture": "cutecore:block/three_strawberry_cake",
+		"particle": "cutecore:block/three_strawberry_cake"
+	},
+	"elements": [
+		{
+			"name": "lower_cake",
+			"from": [5, 0, 1],
+			"to": [15, 8, 15],
+			"faces": {
+				"north": {"uv": [0.92308, 8.92308, 4, 11.38462], "texture": "#texture"},
+				"east": {"uv": [0.92308, 8.92308, 5.23077, 11.38462], "texture": "#texture"},
+				"south": {"uv": [2.15385, 8.92308, 5.23077, 11.38462], "texture": "#texture"},
+				"west": {"uv": [10.76923, 8.92308, 15.07692, 11.38462], "texture": "#texture"},
+				"up": {"uv": [7.07692, 11.69231, 10.15385, 16], "texture": "#texture"},
+				"down": {"uv": [2.15385, 11.69231, 5.23077, 16], "texture": "#texture"}
+			}
+		}
+	]
+}

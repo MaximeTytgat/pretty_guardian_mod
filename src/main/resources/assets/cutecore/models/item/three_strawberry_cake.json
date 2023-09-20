@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "cutecore:item/three_strawberry_cake_item"
+  }
+}
