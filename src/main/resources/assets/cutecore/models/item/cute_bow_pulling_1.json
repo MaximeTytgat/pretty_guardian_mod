@@ -1,0 +1,6 @@
+{
+    "parent": "cutecore:item/cute_bow",
+    "textures": {
+        "layer0": "cutecore:item/cute_bow_pulling_1"
+    }
+}

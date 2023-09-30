@@ -17,6 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -30,12 +31,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.stream.Stream;
 
-public class BaseCake extends CakeBlock  {
+public class BaseThreeCake extends Block  {
 
-    public static final IntegerProperty BITES = BlockStateProperties.BITES;
-    public static final int FULL_CAKE_SIGNAL = getOutputSignal(0);
-    protected static  VoxelShape[] SHAPE_BY_BITE = new VoxelShape[]{Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.box(3.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.box(5.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.box(7.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.box(9.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.box(11.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.box(13.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D)};
-    public BaseCake(Properties properties) {
+    public static final IntegerProperty BITES = IntegerProperty.create("bites", 0, 15);;
+    public static final int MAX_BITES = 15;
+    protected static final VoxelShape[] SHAPE_BY_BITE = new VoxelShape[]{ Stream.of( Block.box(1, 0, 1, 15, 8, 15), Block.box(2, 8, 2, 14, 15, 14), Block.box(3, 15, 3, 13, 21, 13) ).reduce(Shapes::or).get(), Stream.of( Block.box(1, 0, 1, 15, 8, 15), Block.box(2, 8, 2, 14, 15, 14), Block.box(5, 15, 3, 13, 21, 13) ).reduce(Shapes::or).get(), Stream.of( Block.box(1, 0, 1, 15, 8, 15), Block.box(2, 8, 2, 14, 15, 14), Block.box(7, 15, 3, 13, 21, 13) ).reduce(Shapes::or).get(), Stream.of( Block.box(1, 0, 1, 15, 8, 15), Block.box(2, 8, 2, 14, 15, 14), Block.box(9, 15, 3, 13, 21, 13) ).reduce(Shapes::or).get(), Stream.of( Block.box(1, 0, 1, 15, 8, 15), Block.box(2, 8, 2, 14, 15, 14), Block.box(11, 15, 3, 13, 21, 13) ).reduce(Shapes::or).get(), Stream.of( Block.box(1, 0, 1, 15, 8, 15), Block.box(2, 8, 2, 14, 15, 14), Block.box(13, 15, 3, 13, 21, 13) ).reduce(Shapes::or).get(), Stream.of( Block.box(1, 0, 1, 15, 8, 15), Block.box(4, 8, 2, 14, 15, 14) ).reduce(Shapes::or).get(), Stream.of( Block.box(1, 0, 1, 15, 8, 15),  Block.box(6, 8, 2, 14, 15, 14) ).reduce(Shapes::or).get(), Stream.of( Block.box(1, 0, 1, 15, 8, 15),  Block.box(8, 8, 2, 14, 15, 14) ).reduce(Shapes::or).get(), Stream.of( Block.box(1, 0, 1, 15, 8, 15),  Block.box(10, 8, 2, 14, 15, 14) ).reduce(Shapes::or).get(), Block.box(1, 0, 1, 15, 8, 15), Block.box(3, 0, 1, 15, 8, 15), Block.box(5, 0, 1, 15, 8, 15), Block.box(7, 0, 1, 15, 8, 15), Block.box(9, 0, 1, 15, 8, 15), Block.box(11, 0, 1, 15, 8, 15),};
+
+    public BaseThreeCake(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(BITES, 0));
     }
@@ -83,7 +85,7 @@ public class BaseCake extends CakeBlock  {
             player.getFoodData().eat(2, 0.1F);
             int i = blockState.getValue(BITES);
             accessor.gameEvent(player, GameEvent.EAT, blockPos);
-            if (i < 6) {
+            if (i < MAX_BITES) {
                 accessor.setBlock(blockPos, blockState.setValue(BITES, Integer.valueOf(i + 1)), 3);
             } else {
                 accessor.removeBlock(blockPos, false);

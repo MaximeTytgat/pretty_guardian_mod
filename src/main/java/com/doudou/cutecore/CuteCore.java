@@ -2,6 +2,9 @@ package com.doudou.cutecore;
 
 import com.doudou.cutecore.blocks.CuteCoreBlock;
 import com.doudou.cutecore.item.CuteCoreItem;
+import com.doudou.cutecore.loot.ModLootModifiers;
+import com.doudou.cutecore.util.ModItemProperties;
+import com.doudou.cutecore.worldgen.entity.ModEntityType;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -51,11 +54,48 @@ public class CuteCore
     // Creates a creative tab with the id "cutecore:example_tab" for the example item, that is placed after the combat tab
     public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> CuteCoreItem.STYLE_CAKE.get().getDefaultInstance())
+            .icon(() -> CuteCoreItem.CHOCOLATE_HEART.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(CuteCoreItem.STYLE_CAKE.get());
                 output.accept(CuteCoreBlock.THREE_STRAWBERRY_CAKE.get());
+                output.accept(CuteCoreBlock.THREE_STRAWBERRY_CHOCO_CAKE.get());
+                output.accept(CuteCoreItem.STRAWBERRY_SEEDS.get());
+                output.accept(CuteCoreItem.STRAWBERRY.get());
+                output.accept(CuteCoreItem.CHOCOLATE_HEART.get());
+                output.accept(CuteCoreBlock.PINK_SAPPHIRE_BLOCK.get());
+                output.accept(CuteCoreBlock.PINK_SAPPHIRE_ORE.get());
+                output.accept(CuteCoreBlock.DEEPSLATE_PINK_SAPPHIRE_ORE.get());
+                output.accept(CuteCoreItem.RAW_PINK_SAPPHIRE.get());
+                output.accept(CuteCoreItem.PINK_SAPPHIRE.get());
 
+                output.accept(CuteCoreItem.PINK_SAPPHIRE_SWORD.get());
+                output.accept(CuteCoreItem.PINK_SAPPHIRE_PICKAXE.get());
+                output.accept(CuteCoreItem.PINK_SAPPHIRE_AXE.get());
+                output.accept(CuteCoreItem.PINK_SAPPHIRE_SHOVEL.get());
+                output.accept(CuteCoreItem.PINK_SAPPHIRE_HOE.get());
+
+                output.accept(CuteCoreItem.PINK_SAPPHIRE_HELMET.get());
+                output.accept(CuteCoreItem.PINK_SAPPHIRE_CHESTPLATE.get());
+                output.accept(CuteCoreItem.PINK_SAPPHIRE_LEGGINGS.get());
+                output.accept(CuteCoreItem.PINK_SAPPHIRE_BOOTS.get());
+
+                output.accept(CuteCoreBlock.RUBY_BLOCK.get());
+                output.accept(CuteCoreBlock.RUBY_ORE.get());
+                output.accept(CuteCoreBlock.DEEPSLATE_RUBY_ORE.get());
+
+                output.accept(CuteCoreItem.RUBY_SWORD.get());
+                output.accept(CuteCoreItem.RUBY_PICKAXE.get());
+                output.accept(CuteCoreItem.RUBY_AXE.get());
+                output.accept(CuteCoreItem.RUBY_SHOVEL.get());
+                output.accept(CuteCoreItem.RUBY_HOE.get());
+
+                output.accept(CuteCoreItem.RUBY_HELMET.get());
+                output.accept(CuteCoreItem.RUBY_CHESTPLATE.get());
+                output.accept(CuteCoreItem.RUBY_LEGGINGS.get());
+                output.accept(CuteCoreItem.RUBY_BOOTS.get());
+
+                output.accept(CuteCoreItem.CUTE_BOW.get());
+                output.accept(CuteCoreItem.CUTE_ARROW.get());
             }).build());
 
     public CuteCore()
@@ -69,6 +109,8 @@ public class CuteCore
 
         CuteCoreItem.register(modEventBus);
         CuteCoreBlock.register(modEventBus);
+        ModLootModifiers.register(modEventBus);
+        ModEntityType.register(modEventBus);
 
         // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
@@ -76,6 +118,7 @@ public class CuteCore
         ITEMS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
+
 
 
         // Register ourselves for server and other game events we are interested in
@@ -116,16 +159,15 @@ public class CuteCore
 //        LOGGER.info("HELLO from server starting");
 //    }
 //
-//    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-//    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-//    public static class ClientModEvents
-//    {
-//        @SubscribeEvent
-//        public static void onClientSetup(FMLClientSetupEvent event)
-//        {
-//            // Some client setup code
-//            LOGGER.info("HELLO FROM CLIENT SETUP");
-//            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-//        }
-//    }
+    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
+    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents
+    {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event)
+        {
+            // Some client setup code
+            ModItemProperties.addCustomProperties();
+        }
+    }
 }
