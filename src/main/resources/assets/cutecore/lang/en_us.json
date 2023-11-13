@@ -3,5 +3,13 @@
   "item.cutecore.three_strawberry_cake": "Three Strawberry Cake",
   "item.cutecore.three_strawberry_choco_cake": "Three Strawberry Choco",
   "item.cutecore.strawberry_seeds": "Strawberry Seeds",
-  "item.cutecore.strawberry": "Strawberry"
+  "item.cutecore.strawberry": "Strawberry",
+  "block.cutecore.picnic_basket": "Picnic Basket",
+
+  "item.cutecore.sailormoon_ost_music_disc": "Sailor Moon OST Disk",
+  "item.cutecore.sailormoon_ost_music_disc.desc": "Momoiro Clover Z - Moon Pride",
+
+  "item.cutecore.sailormoon_moonpride_music_disc": "Sailor Moon OST Disk",
+  "item.cutecore.sailormoon_moonpride_music_disc.desc": "Momoiro Clover Z - Moon Pride"
+
 }

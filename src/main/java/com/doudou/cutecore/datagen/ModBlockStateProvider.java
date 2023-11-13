@@ -11,18 +11,41 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Function;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, CuteCore.MODID, exFileHelper);
+        super(output, CuteCore.MOD_ID, exFileHelper);
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
     }
+
+    private void BottomTopblockWithItem(Block block) {
+        simpleBlockWithItem(block, models().cubeBottomTop(
+                name(block),
+                blockTexture(block),
+                new ResourceLocation(CuteCore.MOD_ID, "block/" + name(block) + "_bottom"),
+                new ResourceLocation(CuteCore.MOD_ID, "block/" + name(block) + "_top")
+        ));
+    }
+
+    private void topblockWithItem(Block block) {
+        simpleBlockWithItem(block, models().cubeTop(name(block), blockTexture(block), new ResourceLocation(CuteCore.MOD_ID, "block/marshmello_block_top")));
+    }
+
+    private ResourceLocation key(Block block) {
+        return ForgeRegistries.BLOCKS.getKey(block);
+    }
+
+    private String name(Block block) {
+        return key(block).getPath();
+    }
+
     @Override
     protected void registerStatesAndModels() {
         makeStrawberryCrop((CropBlock) CuteCoreBlock.STRAWBERRY_CROP.get(), "strawberry_stage", "strawberry_stage");
@@ -34,6 +57,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(CuteCoreBlock.RUBY_BLOCK);
         blockWithItem(CuteCoreBlock.RUBY_ORE);
         blockWithItem(CuteCoreBlock.DEEPSLATE_RUBY_ORE);
+
+        blockWithItem(CuteCoreBlock.CHOCOLATE_BLOCK);
+        topblockWithItem(CuteCoreBlock.MARSHMELLO_BLOCK.get());
+        BottomTopblockWithItem(CuteCoreBlock.ROASTED_MARSHMELLO_BLOCK.get());
+
+
     }
 
 
@@ -46,7 +75,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private ConfiguredModel[] strawberryStates(BlockState state, CropBlock block, String modelName, String textureName) {
         ConfiguredModel[] models = new ConfiguredModel[1];
         models[0] = new ConfiguredModel(models().crop(modelName + state.getValue(((StrawberryCropBlock) block).getAgeProperty()),
-                new ResourceLocation(CuteCore.MODID, "block/" + textureName + state.getValue(((StrawberryCropBlock) block).getAgeProperty()))).renderType("cutout"));
+                new ResourceLocation(CuteCore.MOD_ID, "block/" + textureName + state.getValue(((StrawberryCropBlock) block).getAgeProperty()))).renderType("cutout"));
 
         return models;
     }

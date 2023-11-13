@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "open=false": { "model": "cutecore:block/picnic_basket" },
+    "open=true": { "model": "cutecore:block/picnic_basket_open"}
+  }
+}

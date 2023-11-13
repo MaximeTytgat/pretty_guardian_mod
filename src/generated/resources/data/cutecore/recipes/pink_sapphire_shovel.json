@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "cutecore:pink_sapphire"
+    },
+    "B": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " A ",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "item": "cutecore:pink_sapphire_shovel"
+  },
+  "show_notification": true
+}

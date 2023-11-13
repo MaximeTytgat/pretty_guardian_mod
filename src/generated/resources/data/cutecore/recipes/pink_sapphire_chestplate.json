@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "cutecore:pink_sapphire"
+    }
+  },
+  "pattern": [
+    "A A",
+    "AAA",
+    "AAA"
+  ],
+  "result": {
+    "item": "cutecore:pink_sapphire_chestplate"
+  },
+  "show_notification": true
+}

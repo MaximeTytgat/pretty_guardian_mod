@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "B": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "pattern": [
+    "AB",
+    "BA",
+    "AB"
+  ],
+  "result": {
+    "item": "cutecore:chocolate_heart"
+  },
+  "show_notification": true
+}

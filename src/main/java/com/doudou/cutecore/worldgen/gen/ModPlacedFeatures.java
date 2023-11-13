@@ -34,7 +34,7 @@ public class ModPlacedFeatures {
 
 
     private static ResourceKey<PlacedFeature> createKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(CuteCore.MODID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(CuteCore.MOD_ID, name));
     }
 
     private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration,

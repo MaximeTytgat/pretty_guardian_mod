@@ -1,0 +1,6 @@
+{
+    "parent": "cutecore:item/cupidon_bow",
+    "textures": {
+        "layer0": "cutecore:item/cupidon_bow_pulling_2"
+    }
+}

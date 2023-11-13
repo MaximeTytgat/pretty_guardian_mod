@@ -9,7 +9,7 @@ import net.minecraft.world.item.Items;
 public class ModItemProperties {
 
         public static void addCustomProperties() {
-            makeBow(CuteCoreItem.CUTE_BOW.get());
+            makeBow(CuteCoreItem.CUPIDON_BOW.get());
         }
 
 

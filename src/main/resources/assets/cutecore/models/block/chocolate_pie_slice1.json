@@ -1,0 +1,44 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "cutecore:block/pie_bottom",
+		"1": "cutecore:block/pie_side",
+		"2": "cutecore:block/chocolate_pie_top",
+		"3": "cutecore:block/chocolate_pie_inner",
+		"particle": "cutecore:block/pie_bottom"
+	},
+	"elements": [
+		{
+			"from": [2, 0, 2],
+			"to": [14, 4, 8],
+			"faces": {
+				"north": {"uv": [2, 12, 14, 16], "texture": "#1"},
+				"east": {"uv": [8, 12, 14, 16], "texture": "#1"},
+				"south": {"uv": [2, 12, 14, 16], "texture": "#3"},
+				"west": {"uv": [2, 12, 8, 16], "texture": "#1"},
+				"up": {"uv": [2, 2, 14, 8], "texture": "#2"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#0"}
+			}
+		},
+		{
+			"from": [2, 0, 8],
+			"to": [8, 4, 14],
+			"faces": {
+				"north": {"uv": [8, 12, 14, 16], "texture": "#1"},
+				"east": {"uv": [2, 12, 8, 16], "texture": "#3"},
+				"south": {"uv": [2, 12, 8, 16], "texture": "#1"},
+				"west": {"uv": [8, 12, 14, 16], "texture": "#1"},
+				"up": {"uv": [2, 8, 8, 14], "texture": "#2"},
+				"down": {"uv": [2, 2, 14, 14], "rotation": 90, "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "VoxelShapes",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}

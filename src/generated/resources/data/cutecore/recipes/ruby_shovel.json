@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "cutecore:ruby"
+    },
+    "B": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " A ",
+    " B ",
+    " B "
+  ],
+  "result": {
+    "item": "cutecore:ruby_shovel"
+  },
+  "show_notification": true
+}

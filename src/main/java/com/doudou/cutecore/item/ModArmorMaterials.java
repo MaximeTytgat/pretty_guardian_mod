@@ -68,7 +68,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
 
     @Override
     public String getName() {
-        return CuteCore.MODID + ":" + this.name;
+        return CuteCore.MOD_ID + ":" + this.name;
     }
 
     @Override

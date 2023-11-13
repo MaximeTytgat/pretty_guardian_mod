@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "cutecore:strawberry"
+    },
+    "B": {
+      "item": "minecraft:egg"
+    },
+    "C": {
+      "item": "minecraft:wheat"
+    },
+    "D": {
+      "item": "cutecore:chocolate_heart"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "DBD",
+    "CCC"
+  ],
+  "result": {
+    "item": "cutecore:three_strawberry_choco_cake"
+  },
+  "show_notification": true
+}

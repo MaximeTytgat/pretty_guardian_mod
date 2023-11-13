@@ -15,14 +15,15 @@ public class ModTags {
         public static final TagKey<Block> NEEDS_PINK_SAPPHIRE_TOOL = tag("needs_pink_sapphire_tool");
 
         private static TagKey<Block> tag(String name) {
-            return BlockTags.create(new ResourceLocation(CuteCore.MODID, name));
+            return BlockTags.create(new ResourceLocation(CuteCore.MOD_ID, name));
         }
     }
     public static class Items {
 
+        public static final TagKey<Item> HEART_ARROWS = tag("heart_arrows");
 
         private static TagKey<Item> tag(String name) {
-            return ItemTags.create(new ResourceLocation(CuteCore.MODID, name));
+            return ItemTags.create(new ResourceLocation(CuteCore.MOD_ID, name));
         }
     }
 }

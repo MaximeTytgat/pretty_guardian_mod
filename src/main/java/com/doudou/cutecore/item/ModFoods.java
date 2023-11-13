@@ -8,4 +8,44 @@ public class ModFoods {
             .nutrition(2).saturationMod(0.3F).build();
     public static final FoodProperties CHOCOLATE_HEART = (new FoodProperties.Builder())
             .nutrition(2).saturationMod(0.3F).build();
+    public static final FoodProperties CHOCOLATE = (new FoodProperties.Builder())
+            .nutrition(1).saturationMod(0.35F).build();
+    public static final FoodProperties MILK_CARTON = (new FoodProperties.Builder())
+            .nutrition(1).saturationMod(0.25F).build();
+    public static final FoodProperties ICE_CREAM = (new FoodProperties.Builder())
+            .nutrition(6).saturationMod(0.25F).build();
+    public static final FoodProperties POPSICLE = (new FoodProperties.Builder())
+            .nutrition(6).saturationMod(0.25F).build();
+    public static final FoodProperties POKKY_ICE_CREAM = (new FoodProperties.Builder())
+            .nutrition(10).saturationMod(0.75F).build();
+    public static final FoodProperties PUDDING = (new FoodProperties.Builder())
+            .nutrition(6).saturationMod(0.35F).build();
+    public static final FoodProperties CROISSANT = (new FoodProperties.Builder())
+            .nutrition(6).saturationMod(0.35F).build();
+    public static final FoodProperties MARSHMELLO_STRAWBERRY_BURGER = (new FoodProperties.Builder())
+            .nutrition(8).saturationMod(0.75F).build();
+    public static final FoodProperties SMORE = (new FoodProperties.Builder())
+            .nutrition(8).saturationMod(0.75F).build();
+    public static final FoodProperties DONUT = (new FoodProperties.Builder())
+            .nutrition(0).saturationMod(0F).build();
+    public static final FoodProperties MOCHI_DONUT = (new FoodProperties.Builder())
+            .nutrition(0).saturationMod(0F).build();
+    public static final FoodProperties RHUM = (new FoodProperties.Builder())
+            .nutrition(1).saturationMod(0.1F).build();
+    public static final FoodProperties CANDY_APPLE = (new FoodProperties.Builder())
+            .nutrition(4).saturationMod(0.5F).build();
+    public static final FoodProperties MARSHMELLO = (new FoodProperties.Builder())
+            .nutrition(4).saturationMod(0.5F).build();
+    public static final FoodProperties ROASTED_MARSHMELLO = (new FoodProperties.Builder())
+            .nutrition(4).saturationMod(0.5F).build();
+    public static final FoodProperties DANGO = (new FoodProperties.Builder())
+            .nutrition(4).saturationMod(0.5F).build();
+    public static final FoodProperties POCKY = (new FoodProperties.Builder())
+            .nutrition(4).saturationMod(0.5F).build();
+    public static final FoodProperties WAFFLE = (new FoodProperties.Builder())
+            .nutrition(4).saturationMod(0.5F).build();
+    public static final FoodProperties CHOCOLATE_WAFFLE = (new FoodProperties.Builder())
+            .nutrition(4).saturationMod(0.5F).build();
+    public static final FoodProperties CARAMEL = (new FoodProperties.Builder())
+            .nutrition(4).saturationMod(0.5F).build();
 }

@@ -4,15 +4,10 @@ import com.doudou.cutecore.CuteCore;
 import com.doudou.cutecore.blocks.CuteCoreBlock;
 import com.doudou.cutecore.item.CuteCoreItem;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.models.ItemModelGenerators;
-import net.minecraft.data.models.model.ModelLocationUtils;
-import net.minecraft.data.models.model.ModelTemplates;
-import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.armortrim.TrimMaterial;
 import net.minecraft.world.item.armortrim.TrimMaterials;
@@ -42,25 +37,25 @@ public class ModItemModelProvider extends ItemModelProvider {
 
 
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, CuteCore.MODID, existingFileHelper);
+        super(output, CuteCore.MOD_ID, existingFileHelper);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
-                new ResourceLocation(CuteCore.MODID, "item/" + item.getId().getPath()));
+                new ResourceLocation(CuteCore.MOD_ID, "item/" + item.getId().getPath()));
     }
 
     private ItemModelBuilder simpleItemForBlock(RegistryObject<Block> block) {
         return withExistingParent(block.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
-                new ResourceLocation(CuteCore.MODID, "item/" + block.getId().getPath()));
+                new ResourceLocation(CuteCore.MOD_ID, "item/" + block.getId().getPath()));
     }
 
     private  ItemModelBuilder handheldItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/handheld")).texture("layer0",
-                new ResourceLocation(CuteCore.MODID, "item/" + item.getId().getPath()));
+                new ResourceLocation(CuteCore.MOD_ID, "item/" + item.getId().getPath()));
     }
 
     @Override
@@ -68,11 +63,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(CuteCoreItem.STRAWBERRY_SEEDS);
         simpleItemForBlock(CuteCoreBlock.THREE_STRAWBERRY_CAKE);
         simpleItemForBlock(CuteCoreBlock.THREE_STRAWBERRY_CHOCO_CAKE);
+        simpleItemForBlock(CuteCoreBlock.CHOCOLATE_PIE);
         simpleItem(CuteCoreItem.STRAWBERRY);
+        simpleItem(CuteCoreItem.CHOCOLATE_STRAWBERRY);
         simpleItem(CuteCoreItem.CHOCOLATE_HEART);
 //        simpleItem(CuteCoreItem.RAW_PINK_SAPPHIRE);
         simpleItem(CuteCoreItem.PINK_SAPPHIRE);
-        simpleItem(CuteCoreItem.CUTE_ARROW);
+        simpleItem(CuteCoreItem.HEART_ARROW);
+        simpleItem(CuteCoreItem.CUTE_WAND);
 
         handheldItem(CuteCoreItem.PINK_SAPPHIRE_AXE);
         handheldItem(CuteCoreItem.PINK_SAPPHIRE_PICKAXE);
@@ -91,6 +89,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(CuteCoreItem.RUBY_HOE);
         handheldItem(CuteCoreItem.RUBY_SWORD);
 
+        simpleItem(CuteCoreItem.SAILORMOON_OST_MUSIC_DISC);
+        simpleItem(CuteCoreItem.SAILORMOON_MOONPRIDE_MUSIC_DISC);
+        simpleItem(CuteCoreItem.LOFI_MUSIC_DISC);
+        simpleItem(CuteCoreItem.TAVERN_MUSIC_DISC);
+        simpleItem(CuteCoreItem.JAPANESE_FLUTE_MUSIC_DISC);
+
+
 //        trimmedArmorItem(CuteCoreItem.RUBY_HELMET);
 //        trimmedArmorItem(CuteCoreItem.RUBY_CHESTPLATE);
 //        trimmedArmorItem(CuteCoreItem.RUBY_LEGGINGS);
@@ -98,7 +103,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private void trimmedArmorItem(RegistryObject<Item> itemRegistryObject) {
-        final String MOD_ID = CuteCore.MODID;
+        final String MOD_ID = CuteCore.MOD_ID;
 
         if(itemRegistryObject.get() instanceof ArmorItem armorItem) {
             trimMaterials.entrySet().forEach(entry -> {
