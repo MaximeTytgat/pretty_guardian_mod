@@ -12,7 +12,13 @@ public class ModFoods {
             .nutrition(1).saturationMod(0.35F).build();
     public static final FoodProperties MILK_CARTON = (new FoodProperties.Builder())
             .nutrition(1).saturationMod(0.25F).build();
+    public static final FoodProperties MILK = (new FoodProperties.Builder())
+            .nutrition(1).saturationMod(0.5F).build();
     public static final FoodProperties ICE_CREAM = (new FoodProperties.Builder())
+            .nutrition(6).saturationMod(0.25F).build();
+    public static final FoodProperties MOJITO = (new FoodProperties.Builder())
+            .nutrition(6).saturationMod(0.25F).build();
+    public static final FoodProperties BUBBLE_TEA = (new FoodProperties.Builder())
             .nutrition(6).saturationMod(0.25F).build();
     public static final FoodProperties POPSICLE = (new FoodProperties.Builder())
             .nutrition(6).saturationMod(0.25F).build();
@@ -22,7 +28,7 @@ public class ModFoods {
             .nutrition(6).saturationMod(0.35F).build();
     public static final FoodProperties CROISSANT = (new FoodProperties.Builder())
             .nutrition(6).saturationMod(0.35F).build();
-    public static final FoodProperties MARSHMELLO_STRAWBERRY_BURGER = (new FoodProperties.Builder())
+    public static final FoodProperties MARSHMELLOW_STRAWBERRY_BURGER = (new FoodProperties.Builder())
             .nutrition(8).saturationMod(0.75F).build();
     public static final FoodProperties SMORE = (new FoodProperties.Builder())
             .nutrition(8).saturationMod(0.75F).build();
@@ -34,9 +40,9 @@ public class ModFoods {
             .nutrition(1).saturationMod(0.1F).build();
     public static final FoodProperties CANDY_APPLE = (new FoodProperties.Builder())
             .nutrition(4).saturationMod(0.5F).build();
-    public static final FoodProperties MARSHMELLO = (new FoodProperties.Builder())
+    public static final FoodProperties MARSHMELLOW = (new FoodProperties.Builder())
             .nutrition(4).saturationMod(0.5F).build();
-    public static final FoodProperties ROASTED_MARSHMELLO = (new FoodProperties.Builder())
+    public static final FoodProperties ROASTED_MARSHMELLOW = (new FoodProperties.Builder())
             .nutrition(4).saturationMod(0.5F).build();
     public static final FoodProperties DANGO = (new FoodProperties.Builder())
             .nutrition(4).saturationMod(0.5F).build();

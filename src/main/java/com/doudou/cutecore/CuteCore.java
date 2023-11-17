@@ -58,16 +58,65 @@ public class CuteCore
     // Creates a creative tab with the id "cutecore:example_tab" for the example item, that is placed after the combat tab
     public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> CuteCoreItem.CHOCOLATE_HEART.get().getDefaultInstance())
+            .icon(() -> CuteCoreItem.CHOCOLATE.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(CuteCoreItem.STYLE_CAKE.get());
                 output.accept(CuteCoreBlock.THREE_STRAWBERRY_CAKE.get());
                 output.accept(CuteCoreBlock.THREE_STRAWBERRY_CHOCO_CAKE.get());
+                output.accept(CuteCoreBlock.CHOCOLATE_CAKE.get());
                 output.accept(CuteCoreBlock.CHOCOLATE_PIE.get());
                 output.accept(CuteCoreItem.STRAWBERRY_SEEDS.get());
                 output.accept(CuteCoreItem.STRAWBERRY.get());
                 output.accept(CuteCoreItem.CHOCOLATE_STRAWBERRY.get());
-                output.accept(CuteCoreItem.CHOCOLATE_HEART.get());
+                output.accept(CuteCoreItem.SECRET_DONUT.get());
+                output.accept(CuteCoreItem.DONUT.get());
+                output.accept(CuteCoreItem.STRAWBERRY_DONUT.get());
+                output.accept(CuteCoreItem.CHOCOLATE_DONUT.get());
+                output.accept(CuteCoreItem.SECRET_MOCHI_DONUT.get());
+                output.accept(CuteCoreItem.MOCHI_DONUT.get());
+                output.accept(CuteCoreItem.STRAWBERRY_MOCHI_DONUT.get());
+                output.accept(CuteCoreItem.CHOCOLATE_MOCHI_DONUT.get());
+                output.accept(CuteCoreItem.CARAMEL.get());
+                output.accept(CuteCoreItem.CHOCOLATE.get());
+                output.accept(CuteCoreItem.STRAWBERRY_MILK_BUCKET.get());
+                output.accept(CuteCoreItem.CHOCOLATE_MILK_BUCKET.get());
+                output.accept(CuteCoreItem.VANILLA_MILK_BUCKET.get());
+                output.accept(CuteCoreItem.STRAWBERRY_MILK_CARTON.get());
+                output.accept(CuteCoreItem.CHOCOLATE_MILK_CARTON.get());
+                output.accept(CuteCoreItem.VANILLA_MILK_CARTON.get());
+                output.accept(CuteCoreItem.PISTACHIO_ICE_CREAM.get());
+                output.accept(CuteCoreItem.VANILLA_ICE_CREAM.get());
+                output.accept(CuteCoreItem.CHOCOLATE_ICE_CREAM.get());
+                output.accept(CuteCoreItem.STRAWBERRY_ICE_CREAM.get());
+                output.accept(CuteCoreItem.POKKY_ICE_CREAM.get());
+                output.accept(CuteCoreItem.APPLE_MOJITO.get());
+                output.accept(CuteCoreItem.MINT_MOJITO.get());
+                output.accept(CuteCoreItem.STRAWBERRY_MOJITO.get());
+                output.accept(CuteCoreItem.BUBBLE_TEA.get());
+                output.accept(CuteCoreItem.WAFFLE.get());
+                output.accept(CuteCoreItem.CHOCOLATE_WAFFLE.get());
+                output.accept(CuteCoreItem.CHOCOLATE_POCKY.get());
+                output.accept(CuteCoreItem.STRAWBERRY_POCKY.get());
+                output.accept(CuteCoreItem.DANGO_CARAMEL.get());
+                output.accept(CuteCoreItem.TRICOLOR_DANGO.get());
+                output.accept(CuteCoreItem.POPSICLE.get());
+                output.accept(CuteCoreItem.VANILLA_POPSICLE.get());
+                output.accept(CuteCoreItem.CHOCOLATE_POPSICLE.get());
+                output.accept(CuteCoreItem.STRAWBERRY_POPSICLE.get());
+                output.accept(CuteCoreItem.CARAMEL_PUDDING.get());
+                output.accept(CuteCoreItem.CHOCOLATE_PUDDING.get());
+                output.accept(CuteCoreItem.STRAWBERRY_PUDDING.get());
+                output.accept(CuteCoreItem.PISTACHIO_PUDDING.get());
+                output.accept(CuteCoreItem.MARSHMALLOW.get());
+                output.accept(CuteCoreItem.MARSHMALLOW_STICK.get());
+                output.accept(CuteCoreItem.ROASTED_MARSHMALLOW_STICK.get());
+                output.accept(CuteCoreItem.SMORE.get());
+                output.accept(CuteCoreItem.MARSHMELLOW_STRAWBERRY_BURGER.get());
+                output.accept(CuteCoreItem.CANDY_APPLE.get());
+                output.accept(CuteCoreItem.CHOCOLATE_CROISSANT.get());
+                output.accept(CuteCoreItem.VANILLA_CROISSANT.get());
+                output.accept(CuteCoreItem.STRAWBERRY_CROISSANT.get());
+                output.accept(CuteCoreItem.PISTACHIO_CROISSANT.get());
+                output.accept(CuteCoreItem.RHUM_BOTTLE.get());
                 output.accept(CuteCoreBlock.PINK_SAPPHIRE_BLOCK.get());
                 output.accept(CuteCoreBlock.PINK_SAPPHIRE_ORE.get());
                 output.accept(CuteCoreBlock.DEEPSLATE_PINK_SAPPHIRE_ORE.get());

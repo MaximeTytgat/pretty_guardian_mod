@@ -13,13 +13,64 @@ import net.minecraftforge.registries.RegistryObject;
 public class CuteCoreItem {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, CuteCore.MOD_ID);
 
-    public static final RegistryObject<Item> STYLE_CAKE = ITEMS.register("style_cake", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STRAWBERRY_SEEDS = ITEMS.register("strawberry_seeds", () -> new ItemNameBlockItem(CuteCoreBlock.STRAWBERRY_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRAWBERRY = ITEMS.register("strawberry", () -> new Item(new Item.Properties().food(ModFoods.STRAWBERRY)));
     public static final RegistryObject<Item> CHOCOLATE_STRAWBERRY = ITEMS.register("chocolate_strawberry", () -> new Item(new Item.Properties().food(ModFoods.STRAWBERRY)));
-    public static final RegistryObject<Item> CHOCOLATE_HEART = ITEMS.register("chocolate_heart", () -> new Item(new Item.Properties().food(ModFoods.CHOCOLATE_HEART)));
 
-    public static final RegistryObject<Item> VANILLA_MILK_CARTON = ITEMS.register("vanilla_milk_carton", () -> new MilkBucketItem(new Item.Properties().food(ModFoods.MILK_CARTON).stacksTo(16)));
+    public static final RegistryObject<Item> SECRET_DONUT = ITEMS.register("secret_donut", () -> new Item(new Item.Properties().food(ModFoods.DONUT)));
+    public static final RegistryObject<Item> DONUT = ITEMS.register("donut", () -> new Item(new Item.Properties().food(ModFoods.DONUT)));
+    public static final RegistryObject<Item> STRAWBERRY_DONUT = ITEMS.register("strawberry_donut", () -> new Item(new Item.Properties().food(ModFoods.DONUT)));
+    public static final RegistryObject<Item> CHOCOLATE_DONUT = ITEMS.register("chocolate_donut", () -> new Item(new Item.Properties().food(ModFoods.DONUT)));
+    public static final RegistryObject<Item> SECRET_MOCHI_DONUT = ITEMS.register("secret_mochi_donut", () -> new Item(new Item.Properties().food(ModFoods.MOCHI_DONUT)));
+    public static final RegistryObject<Item> MOCHI_DONUT = ITEMS.register("mochi_donut", () -> new Item(new Item.Properties().food(ModFoods.MOCHI_DONUT)));
+    public static final RegistryObject<Item> STRAWBERRY_MOCHI_DONUT = ITEMS.register("strawberry_mochi_donut", () -> new Item(new Item.Properties().food(ModFoods.MOCHI_DONUT)));
+    public static final RegistryObject<Item> CHOCOLATE_MOCHI_DONUT = ITEMS.register("chocolate_mochi_donut", () -> new Item(new Item.Properties().food(ModFoods.MOCHI_DONUT)));
+    public static final RegistryObject<Item> CARAMEL = ITEMS.register("caramel", () -> new Item(new Item.Properties().food(ModFoods.CARAMEL)));
+    public static final RegistryObject<Item> CHOCOLATE = ITEMS.register("chocolate", () -> new Item(new Item.Properties().food(ModFoods.CHOCOLATE)));
+    public static final RegistryObject<Item> STRAWBERRY_MILK_BUCKET = ITEMS.register("strawberry_milk_bucket", () -> new MilkBucketItem(new Item.Properties().food(ModFoods.MILK).stacksTo(1)));
+    public static final RegistryObject<Item> CHOCOLATE_MILK_BUCKET = ITEMS.register("chocolate_milk_bucket", () -> new MilkBucketItem(new Item.Properties().food(ModFoods.MILK).stacksTo(1)));
+    public static final RegistryObject<Item> VANILLA_MILK_BUCKET = ITEMS.register("vanilla_milk_bucket", () -> new MilkBucketItem(new Item.Properties().food(ModFoods.MILK).stacksTo(1)));
+    public static final RegistryObject<Item> STRAWBERRY_MILK_CARTON = ITEMS.register("strawberry_milk_carton", () -> new Item(new Item.Properties().food(ModFoods.MILK_CARTON)));
+    public static final RegistryObject<Item> CHOCOLATE_MILK_CARTON = ITEMS.register("chocolate_milk_carton", () -> new Item(new Item.Properties().food(ModFoods.MILK_CARTON)));
+    public static final RegistryObject<Item> VANILLA_MILK_CARTON = ITEMS.register("vanilla_milk_carton", () -> new Item(new Item.Properties().food(ModFoods.MILK_CARTON)));
+    public static final RegistryObject<Item> PISTACHIO_ICE_CREAM = ITEMS.register("pistachio_ice_cream", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.ICE_CREAM), 32, CuteCoreItem.ICE_CREAM_CUP));
+    public static final RegistryObject<Item> VANILLA_ICE_CREAM = ITEMS.register("vanilla_ice_cream", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.ICE_CREAM), 32, CuteCoreItem.ICE_CREAM_CUP));
+    public static final RegistryObject<Item> CHOCOLATE_ICE_CREAM = ITEMS.register("chocolate_ice_cream", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.ICE_CREAM), 32, CuteCoreItem.ICE_CREAM_CUP));
+    public static final RegistryObject<Item> STRAWBERRY_ICE_CREAM = ITEMS.register("strawberry_ice_cream", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.ICE_CREAM), 32, CuteCoreItem.ICE_CREAM_CUP));
+    public static final RegistryObject<Item> POKKY_ICE_CREAM = ITEMS.register("pokky_ice_cream", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.POKKY_ICE_CREAM), 32, CuteCoreItem.ICE_CREAM_CUP));
+    public static final RegistryObject<Item> APPLE_MOJITO = ITEMS.register("apple_mojito", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.MOJITO), 32, CuteCoreItem.JUICE_GLASS));
+    public static final RegistryObject<Item> MINT_MOJITO = ITEMS.register("mint_mojito", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.MOJITO), 32, CuteCoreItem.JUICE_GLASS));
+    public static final RegistryObject<Item> STRAWBERRY_MOJITO = ITEMS.register("strawberry_mojito", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.MOJITO), 32, CuteCoreItem.JUICE_GLASS));
+    public static final RegistryObject<Item> BUBBLE_TEA = ITEMS.register("bubble_tea", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.BUBBLE_TEA), 32, CuteCoreItem.JUICE_GLASS));
+    public static final RegistryObject<Item> WAFFLE = ITEMS.register("waffle", () -> new Item(new Item.Properties().food(ModFoods.WAFFLE)));
+    public static final RegistryObject<Item> CHOCOLATE_WAFFLE = ITEMS.register("chocolate_waffle", () -> new Item(new Item.Properties().food(ModFoods.CHOCOLATE_WAFFLE)));
+    public static final RegistryObject<Item> CHOCOLATE_POCKY = ITEMS.register("chocolate_pocky", () -> new Item(new Item.Properties().food(ModFoods.POCKY)));
+    public static final RegistryObject<Item> STRAWBERRY_POCKY = ITEMS.register("strawberry_pocky", () -> new Item(new Item.Properties().food(ModFoods.POCKY)));
+    public static final RegistryObject<Item> DANGO_CARAMEL = ITEMS.register("dango_caramel", () -> new Item(new Item.Properties().food(ModFoods.DANGO)));
+    public static final RegistryObject<Item> TRICOLOR_DANGO = ITEMS.register("tricolor_dango", () -> new Item(new Item.Properties().food(ModFoods.DANGO)));
+    public static final RegistryObject<Item> POPSICLE = ITEMS.register("popsicle", () -> new Item(new Item.Properties().food(ModFoods.POPSICLE)));
+    public static final RegistryObject<Item> VANILLA_POPSICLE = ITEMS.register("vanilla_popsicle", () -> new Item(new Item.Properties().food(ModFoods.POPSICLE)));
+    public static final RegistryObject<Item> CHOCOLATE_POPSICLE = ITEMS.register("chocolate_popsicle", () -> new Item(new Item.Properties().food(ModFoods.POPSICLE)));
+    public static final RegistryObject<Item> STRAWBERRY_POPSICLE = ITEMS.register("strawberry_popsicle", () -> new Item(new Item.Properties().food(ModFoods.POPSICLE)));
+    public static final RegistryObject<Item> CARAMEL_PUDDING = ITEMS.register("caramel_pudding", () -> new Item(new Item.Properties().food(ModFoods.PUDDING)));
+    public static final RegistryObject<Item> CHOCOLATE_PUDDING = ITEMS.register("chocolate_pudding", () -> new Item(new Item.Properties().food(ModFoods.PUDDING)));
+    public static final RegistryObject<Item> STRAWBERRY_PUDDING = ITEMS.register("strawberry_pudding", () -> new Item(new Item.Properties().food(ModFoods.PUDDING)));
+    public static final RegistryObject<Item> PISTACHIO_PUDDING = ITEMS.register("pistachio_pudding", () -> new Item(new Item.Properties().food(ModFoods.PUDDING)));
+    public static final RegistryObject<Item> MARSHMALLOW = ITEMS.register("marshmallow", () -> new Item(new Item.Properties().food(ModFoods.MARSHMELLOW)));
+    public static final RegistryObject<Item> MARSHMALLOW_STICK = ITEMS.register("marshmallow_stick", () -> new Item(new Item.Properties().food(ModFoods.MARSHMELLOW)));
+    public static final RegistryObject<Item> ROASTED_MARSHMALLOW_STICK = ITEMS.register("roasted_marshmallow_stick", () -> new Item(new Item.Properties().food(ModFoods.ROASTED_MARSHMELLOW)));
+    public static final RegistryObject<Item> SMORE = ITEMS.register("smore", () -> new Item(new Item.Properties().food(ModFoods.SMORE)));
+    public static final RegistryObject<Item> MARSHMELLOW_STRAWBERRY_BURGER = ITEMS.register("marshmellow_strawberry_burger", () -> new Item(new Item.Properties().food(ModFoods.MARSHMELLOW_STRAWBERRY_BURGER)));
+    public static final RegistryObject<Item> CANDY_APPLE = ITEMS.register("candy_apple", () -> new Item(new Item.Properties().food(ModFoods.CANDY_APPLE)));
+    public static final RegistryObject<Item> CHOCOLATE_CROISSANT = ITEMS.register("chocolate_croissant", () -> new Item(new Item.Properties().food(ModFoods.CROISSANT)));
+    public static final RegistryObject<Item> VANILLA_CROISSANT = ITEMS.register("vanilla_croissant", () -> new Item(new Item.Properties().food(ModFoods.CROISSANT)));
+    public static final RegistryObject<Item> STRAWBERRY_CROISSANT = ITEMS.register("strawberry_croissant", () -> new Item(new Item.Properties().food(ModFoods.CROISSANT)));
+    public static final RegistryObject<Item> PISTACHIO_CROISSANT = ITEMS.register("pistachio_croissant", () -> new Item(new Item.Properties().food(ModFoods.CROISSANT)));
+    public static final RegistryObject<Item> RHUM_BOTTLE = ITEMS.register("rhum_bottle", () -> new Item(new Item.Properties().food(ModFoods.RHUM)));
+    public static final RegistryObject<Item> JUICE_GLASS = ITEMS.register("juice_glass", () -> new Item(new Item.Properties().food(ModFoods.RHUM)));
+    public static final RegistryObject<Item> ICE_CREAM_CUP = ITEMS.register("ice_cream_cup", () -> new Item(new Item.Properties().food(ModFoods.RHUM)));
+
+
     public static final RegistryObject<Item> PINK_SAPPHIRE = ITEMS.register("pink_sapphire", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_PINK_SAPPHIRE = ITEMS.register("raw_pink_sapphire", () -> new Item(new Item.Properties()));
 

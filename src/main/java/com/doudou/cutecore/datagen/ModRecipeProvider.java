@@ -34,7 +34,7 @@ public class ModRecipeProvider extends RecipeProvider {
 //        oreSmelting(pWriter, CAKE_SMELTABLES, RecipeCategory.MISC, CuteCoreBlock.THREE_STRAWBERRY_CAKE.get().asItem(), 0.35F, 200, "cake");
 //        oreBlasting(pWriter, CAKE_SMELTABLES, RecipeCategory.MISC, CuteCoreBlock.THREE_STRAWBERRY_CAKE.get().asItem(), 0.35F, 200, "cake");
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CuteCoreItem.CHOCOLATE_HEART.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CuteCoreItem.CHOCOLATE.get())
                 .pattern("AB")
                 .pattern("BA")
                 .pattern("AB")
@@ -61,7 +61,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('A', CuteCoreItem.STRAWBERRY.get())
                 .define('B', Items.EGG)
                 .define('C', Items.WHEAT)
-                .define('D', CuteCoreItem.CHOCOLATE_HEART.get())
+                .define('D', CuteCoreItem.CHOCOLATE.get())
                 .unlockedBy(getHasName(Items.EGG), has(Items.EGG))
                 .save(pWriter);
 

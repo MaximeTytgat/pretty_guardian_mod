@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cutecore:chocolate_heart"
+        "recipe": "cutecore:chocolate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "cutecore:chocolate_heart"
+      "cutecore:chocolate"
     ]
   },
   "sends_telemetry_event": false

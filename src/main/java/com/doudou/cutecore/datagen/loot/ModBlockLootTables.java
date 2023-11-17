@@ -39,8 +39,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(CuteCoreBlock.MARSHMELLO_BLOCK.get());
         this.dropSelf(CuteCoreBlock.ROASTED_MARSHMELLO_BLOCK.get());
         this.createLapisOreDrops(CuteCoreBlock.THREE_STRAWBERRY_CAKE.get());
+        this.createLapisOreDrops(CuteCoreBlock.CHOCOLATE_CAKE.get());
 
-
+        
         this.add(CuteCoreBlock.PINK_SAPPHIRE_ORE.get(), createOreDrop(CuteCoreBlock.PINK_SAPPHIRE_ORE.get(), CuteCoreItem.PINK_SAPPHIRE.get()));
         this.add(CuteCoreBlock.DEEPSLATE_PINK_SAPPHIRE_ORE.get(), createOreDrop(CuteCoreBlock.DEEPSLATE_PINK_SAPPHIRE_ORE.get(), CuteCoreItem.PINK_SAPPHIRE.get()));
 
