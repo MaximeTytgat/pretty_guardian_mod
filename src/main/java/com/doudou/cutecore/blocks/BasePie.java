@@ -1,11 +1,14 @@
 package com.doudou.cutecore.blocks;
 
+import com.doudou.cutecore.particle.ModParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -30,12 +33,18 @@ import org.jetbrains.annotations.NotNull;
 import java.util.stream.Stream;
 
 public class BasePie extends Block {
+    public Boolean CRITICAL;
     public static final int MAX_BITES = 3;
     public static final IntegerProperty BITES = IntegerProperty.create("bites", 0, 3);
-    protected static  VoxelShape[] SHAPE_BY_BITE = new VoxelShape[]{Block.box(2, 0, 2, 14, 4, 14), Stream.of(Block.box(2, 0, 2, 14, 4, 8), Block.box(2, 0, 8, 8, 4, 14)).reduce(Shapes::or).get(), Block.box(2, 0, 2, 14, 4, 8), Block.box(2, 0, 2, 8, 4, 8)};
+    protected static  VoxelShape[] SHAPE_BY_BITE = new VoxelShape[]{Block.box(2, 0, 2, 14, 4.5, 14), Stream.of(Block.box(2, 0, 2, 14, 4.5, 8), Block.box(2, 0, 8, 8, 4.5, 14)).reduce(Shapes::or).get(), Block.box(2, 0, 2, 14, 4.5, 8), Block.box(8, 0, 2, 14, 4.5, 8)};
+
+    public BasePie(Properties properties, boolean critical) {
+        super(properties);
+        this.CRITICAL = critical;
+    }
 
     public BasePie(Properties properties) {
-        super(properties);
+        this(properties, false);
     }
 
 
@@ -122,4 +131,18 @@ public class BasePie extends Block {
         return false;
     }
 
+    @Override
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource rand) {
+        float chance = 0.4F;
+
+        if (rand.nextFloat() > chance && this.CRITICAL && blockState.getValue(BITES) < 2) {
+            level.addParticle(ModParticles.PINK_CRIT_PARTICLES.get(),
+                    blockPos.getX() + (0.15 + (0.85 - 0.15) * rand.nextDouble()),
+                    blockPos.getY() + 0.1,
+                    blockPos.getZ() + (0.15 + (0.85 - 0.15) * rand.nextDouble()),
+                    0, 0.08d, 0);
+        }
+
+        super.animateTick(blockState, level, blockPos, rand);
+    }
 }

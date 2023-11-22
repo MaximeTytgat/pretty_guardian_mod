@@ -32,9 +32,9 @@ import java.util.stream.Stream;
 
 public class BaseCake extends CakeBlock  {
 
-    public static final IntegerProperty BITES = BlockStateProperties.BITES;
+    public static final IntegerProperty BITES = IntegerProperty.create("bites", 0, 6);
     public static final int FULL_CAKE_SIGNAL = getOutputSignal(0);
-    protected static  VoxelShape[] SHAPE_BY_BITE = new VoxelShape[]{Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.box(3.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.box(5.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.box(7.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.box(9.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.box(11.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.box(13.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D)};
+    protected static  VoxelShape[] SHAPE_BY_BITE = new VoxelShape[]{Block.box(1, 0, 1, 15, 7, 15), Block.box(3, 0, 1, 15, 7, 15), Block.box(5, 0, 1, 15, 7, 15), Block.box(7, 0, 1, 15, 7, 15), Block.box(9, 0, 1, 15, 7, 15), Block.box(11, 0, 1, 15, 7, 15), Block.box(13, 0, 1, 15, 7, 15)};
 
     public BaseCake(Properties properties) {
         super(properties);

@@ -60,10 +60,22 @@ public class CuteCore
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> CuteCoreItem.CHOCOLATE.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
+                output.accept(CuteCoreBlock.CREAM_CAKE.get());
+                output.accept(CuteCoreBlock.RHUM_CAKE.get());
+                output.accept(CuteCoreBlock.STRAWBERRY_CAKE.get());
+                output.accept(CuteCoreBlock.BERRY_STRAWBERRY_CAKE.get());
+                output.accept(CuteCoreBlock.VELVET_CAKE.get());
+                output.accept(CuteCoreBlock.CREAM_STRAWBERRY_CAKE.get());
+                output.accept(CuteCoreBlock.THREE_CHOCO_CAKE.get());
                 output.accept(CuteCoreBlock.THREE_STRAWBERRY_CAKE.get());
                 output.accept(CuteCoreBlock.THREE_STRAWBERRY_CHOCO_CAKE.get());
+                output.accept(CuteCoreBlock.THREE_VELVET_CAKE.get());
                 output.accept(CuteCoreBlock.CHOCOLATE_CAKE.get());
+                output.accept(CuteCoreBlock.APPLE_PIE.get());
                 output.accept(CuteCoreBlock.CHOCOLATE_PIE.get());
+                output.accept(CuteCoreBlock.MAGIC_PIE.get());
+                output.accept(CuteCoreBlock.LEMON_PIE.get());
+                output.accept(CuteCoreBlock.STRAWBERRY_PIE.get());
                 output.accept(CuteCoreItem.STRAWBERRY_SEEDS.get());
                 output.accept(CuteCoreItem.STRAWBERRY.get());
                 output.accept(CuteCoreItem.CHOCOLATE_STRAWBERRY.get());

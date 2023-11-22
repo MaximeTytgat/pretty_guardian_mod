@@ -20,9 +20,23 @@ import java.util.function.Supplier;
 
 public class CuteCoreBlock {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, CuteCore.MOD_ID);
+
+    public static final RegistryObject<Block> CHOCOLATE_CAKE = registryBlock("chocolate_cake", () -> new BaseCake(cakeProperties()));
+    public static final RegistryObject<Block> CREAM_CAKE = registryBlock("cream_cake", () -> new BaseCake(cakeProperties()));
+    public static final RegistryObject<Block> RHUM_CAKE = registryBlock("rhum_cake", () -> new BaseCake(cakeProperties()));
+    public static final RegistryObject<Block> STRAWBERRY_CAKE = registryBlock("strawberry_cake", () -> new BaseCake(cakeProperties()));
+    public static final RegistryObject<Block> BERRY_STRAWBERRY_CAKE = registryBlock("berry_strawberry_cake", () -> new BaseCake(cakeProperties()));
+    public static final RegistryObject<Block> VELVET_CAKE = registryBlock("velvet_cake", () -> new BaseCake(cakeProperties()));
+    public static final RegistryObject<Block> CREAM_STRAWBERRY_CAKE = registryBlock("cream_strawberry_cake", () -> new BaseCake(cakeProperties()));
     public static final RegistryObject<Block> THREE_STRAWBERRY_CAKE = registryBlock("three_strawberry_cake", () -> new BaseThreeCake(cakeProperties()));
     public static final RegistryObject<Block> THREE_STRAWBERRY_CHOCO_CAKE = registryBlock("three_strawberry_choco_cake", () -> new BaseThreeCake(cakeProperties()));
+    public static final RegistryObject<Block> THREE_CHOCO_CAKE = registryBlock("three_choco_cake", () -> new BaseThreeCake(cakeProperties()));
+    public static final RegistryObject<Block> THREE_VELVET_CAKE = registryBlock("three_velvet_cake", () -> new BaseThreeCake(cakeProperties()));
+    public static final RegistryObject<Block> APPLE_PIE = registryBlock("apple_pie", () -> new BasePie(cakeProperties()));
     public static final RegistryObject<Block> CHOCOLATE_PIE = registryBlock("chocolate_pie", () -> new BasePie(cakeProperties()));
+    public static final RegistryObject<Block> MAGIC_PIE = registryBlock("magic_pie", () -> new BasePie(cakeProperties(), true));
+    public static final RegistryObject<Block> LEMON_PIE = registryBlock("lemon_pie", () -> new BasePie(cakeProperties()));
+    public static final RegistryObject<Block> STRAWBERRY_PIE = registryBlock("strawberry_pie", () -> new BasePie(cakeProperties()));
 
     public static final RegistryObject<Block> STRAWBERRY_CROP = BLOCKS.register("strawberry_crop", () -> new StrawberryCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
     public static final RegistryObject<Block> PINK_SAPPHIRE_BLOCK = registryBlock("pink_sapphire_block", () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
@@ -35,7 +49,7 @@ public class CuteCoreBlock {
     public static final RegistryObject<Block> CHOCOLATE_BLOCK = registryBlock("chocolate_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD).sound(SoundType.STONE).strength(0.2F, 0.2F)));
     public static final RegistryObject<Block> MARSHMELLO_BLOCK = registryBlock("marshmello_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
     public static final RegistryObject<Block> ROASTED_MARSHMELLO_BLOCK = registryBlock("roasted_marshmello_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> CHOCOLATE_CAKE = registryBlock("chocolate_cake", () -> new BaseCake(BlockBehaviour.Properties.copy(Blocks.CAKE)));
+
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
         return CuteCore.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));

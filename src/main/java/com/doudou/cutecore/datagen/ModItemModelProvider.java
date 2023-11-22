@@ -61,10 +61,22 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         simpleItem(CuteCoreItem.STRAWBERRY_SEEDS);
+        simpleItemForBlock(CuteCoreBlock.CHOCOLATE_CAKE);
+        simpleItemForBlock(CuteCoreBlock.CREAM_CAKE);
+        simpleItemForBlock(CuteCoreBlock.RHUM_CAKE);
+        simpleItemForBlock(CuteCoreBlock.STRAWBERRY_CAKE);
+        simpleItemForBlock(CuteCoreBlock.BERRY_STRAWBERRY_CAKE);
+        simpleItemForBlock(CuteCoreBlock.VELVET_CAKE);
+        simpleItemForBlock(CuteCoreBlock.CREAM_STRAWBERRY_CAKE);
+        simpleItemForBlock(CuteCoreBlock.THREE_VELVET_CAKE);
+        simpleItemForBlock(CuteCoreBlock.THREE_CHOCO_CAKE);
         simpleItemForBlock(CuteCoreBlock.THREE_STRAWBERRY_CAKE);
         simpleItemForBlock(CuteCoreBlock.THREE_STRAWBERRY_CHOCO_CAKE);
-        simpleItemForBlock(CuteCoreBlock.CHOCOLATE_CAKE);
+        simpleItemForBlock(CuteCoreBlock.APPLE_PIE);
         simpleItemForBlock(CuteCoreBlock.CHOCOLATE_PIE);
+        simpleItemForBlock(CuteCoreBlock.MAGIC_PIE);
+        simpleItemForBlock(CuteCoreBlock.LEMON_PIE);
+        simpleItemForBlock(CuteCoreBlock.STRAWBERRY_PIE);
 
         simpleItem(CuteCoreItem.STRAWBERRY);
         simpleItem(CuteCoreItem.CHOCOLATE_STRAWBERRY);

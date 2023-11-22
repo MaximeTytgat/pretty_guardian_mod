@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "bites=0": {
+      "model": "cutecore:block/three_strawberry_cake"
+    },
+    "bites=1": {
+      "model": "cutecore:block/three_strawberry_cake_slice1"
+    },
+    "bites=10": {
+      "model": "cutecore:block/three_strawberry_cake_slice10"
+    },
+    "bites=11": {
+      "model": "cutecore:block/three_strawberry_cake_slice11"
+    },
+    "bites=12": {
+      "model": "cutecore:block/three_strawberry_cake_slice12"
+    },
+    "bites=13": {
+      "model": "cutecore:block/three_strawberry_cake_slice13"
+    },
+    "bites=14": {
+      "model": "cutecore:block/three_strawberry_cake_slice14"
+    },
+    "bites=15": {
+      "model": "cutecore:block/three_strawberry_cake_slice15"
+    },
+    "bites=2": {
+      "model": "cutecore:block/three_strawberry_cake_slice2"
+    },
+    "bites=3": {
+      "model": "cutecore:block/three_strawberry_cake_slice3"
+    },
+    "bites=4": {
+      "model": "cutecore:block/three_strawberry_cake_slice4"
+    },
+    "bites=5": {
+      "model": "cutecore:block/three_strawberry_cake_slice5"
+    },
+    "bites=6": {
+      "model": "cutecore:block/three_strawberry_cake_slice6"
+    },
+    "bites=7": {
+      "model": "cutecore:block/three_strawberry_cake_slice7"
+    },
+    "bites=8": {
+      "model": "cutecore:block/three_strawberry_cake_slice8"
+    },
+    "bites=9": {
+      "model": "cutecore:block/three_strawberry_cake_slice9"
+    }
+  }
+}

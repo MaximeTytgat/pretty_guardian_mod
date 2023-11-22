@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "bites=0": { "model": "cutecore:block/strawberry_pie" },
+    "bites=1": { "model": "cutecore:block/strawberry_pie_slice1"},
+    "bites=2": { "model": "cutecore:block/strawberry_pie_slice2"},
+    "bites=3": { "model": "cutecore:block/strawberry_pie_slice3"}
+  }
+}

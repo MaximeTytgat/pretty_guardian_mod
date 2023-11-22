@@ -1,0 +1,76 @@
+{
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "texture": "#texture",
+          "uv": [
+            0.92308,
+            11.69231,
+            5.23077,
+            16.0
+          ]
+        },
+        "east": {
+          "texture": "#texture",
+          "uv": [
+            0.92308,
+            8.92308,
+            5.23077,
+            11.38462
+          ]
+        },
+        "north": {
+          "texture": "#texture",
+          "uv": [
+            0.92308,
+            8.92308,
+            5.23077,
+            11.38462
+          ]
+        },
+        "south": {
+          "texture": "#texture",
+          "uv": [
+            0.92308,
+            8.92308,
+            5.23077,
+            11.38462
+          ]
+        },
+        "up": {
+          "texture": "#texture",
+          "uv": [
+            5.84615,
+            11.69231,
+            10.15385,
+            16.0
+          ]
+        },
+        "west": {
+          "texture": "#texture",
+          "uv": [
+            0.92308,
+            8.92308,
+            5.23077,
+            11.38462
+          ]
+        }
+      },
+      "from": [
+        1,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        8,
+        15
+      ]
+    }
+  ],
+  "textures": {
+    "particle": "cutecore:block/three_strawberry_cake",
+    "texture": "cutecore:block/three_strawberry_cake"
+  }
+}

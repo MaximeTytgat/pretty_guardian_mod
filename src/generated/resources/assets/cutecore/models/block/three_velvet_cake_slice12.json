@@ -1,0 +1,76 @@
+{
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "texture": "#texture",
+          "uv": [
+            2.15385,
+            11.69231,
+            5.23077,
+            16.0
+          ]
+        },
+        "east": {
+          "texture": "#texture",
+          "uv": [
+            0.92308,
+            8.92308,
+            5.23077,
+            11.38462
+          ]
+        },
+        "north": {
+          "texture": "#texture",
+          "uv": [
+            0.92308,
+            8.92308,
+            4.0,
+            11.38462
+          ]
+        },
+        "south": {
+          "texture": "#texture",
+          "uv": [
+            2.15385,
+            8.92308,
+            5.23077,
+            11.38462
+          ]
+        },
+        "up": {
+          "texture": "#texture",
+          "uv": [
+            7.07692,
+            11.69231,
+            10.15385,
+            16.0
+          ]
+        },
+        "west": {
+          "texture": "#texture",
+          "uv": [
+            10.76923,
+            2.46154,
+            15.07692,
+            4.92308
+          ]
+        }
+      },
+      "from": [
+        5,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        8,
+        15
+      ]
+    }
+  ],
+  "textures": {
+    "particle": "cutecore:block/three_velvet_cake",
+    "texture": "cutecore:block/three_velvet_cake"
+  }
+}

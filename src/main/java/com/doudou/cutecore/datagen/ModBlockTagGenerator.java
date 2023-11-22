@@ -19,6 +19,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider p_256380_) {
         this.tag(ModTags.Blocks.CAKE).add(
+                CuteCoreBlock.CHOCOLATE_CAKE.get(),
+                CuteCoreBlock.THREE_CHOCO_CAKE.get(),
                 CuteCoreBlock.THREE_STRAWBERRY_CAKE.get(),
                 CuteCoreBlock.THREE_STRAWBERRY_CHOCO_CAKE.get()
         );
