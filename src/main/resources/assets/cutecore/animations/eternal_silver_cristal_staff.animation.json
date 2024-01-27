@@ -1,0 +1,20 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"Idle": {
+			"loop": true,
+			"animation_length": 3,
+			"bones": {
+				"bone_orb": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*120)*20", "math.cos(query.anim_time*120)*100", "math.sin(query.anim_time*120)*100"]
+					},
+					"position": {
+						"vector": [0, "Math.sin(query.anim_time * 120)/10", 0]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

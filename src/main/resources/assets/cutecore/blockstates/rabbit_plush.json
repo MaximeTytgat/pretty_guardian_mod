@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "cutecore:block/rabbit_plush", "y": 0 },
+    "facing=south": { "model": "cutecore:block/rabbit_plush", "y": 180 },
+    "facing=east": { "model": "cutecore:block/rabbit_plush", "y": 90 },
+    "facing=west": { "model": "cutecore:block/rabbit_plush", "y": 270 }
+  }
+}

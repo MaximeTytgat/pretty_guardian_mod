@@ -1,0 +1,7 @@
+{
+  "parent": "cutecore:block/custom_leaves",
+  "textures": {
+    "all": "minecraft:block/oak_leaves",
+    "crop": "cutecore:block/lemon_ripe"
+  }
+}

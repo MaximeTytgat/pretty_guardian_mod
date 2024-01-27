@@ -5,6 +5,7 @@ import com.doudou.cutecore.blocks.CuteCoreBlock;
 import com.doudou.cutecore.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -29,7 +30,6 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(ModTags.Blocks.NEEDS_PINK_SAPPHIRE_TOOL).add(
                 CuteCoreBlock.PINK_SAPPHIRE_BLOCK.get()
         );
-
 
     }
 }

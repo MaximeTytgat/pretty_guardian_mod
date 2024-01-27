@@ -10,26 +10,8 @@
       "bonus_rolls": 0.0,
       "entries": [
         {
-          "type": "minecraft:alternatives",
-          "children": [
-            {
-              "type": "minecraft:item",
-              "conditions": [
-                {
-                  "block": "cutecore:strawberry_crop",
-                  "condition": "minecraft:block_state_property",
-                  "properties": {
-                    "age": "4"
-                  }
-                }
-              ],
-              "name": "cutecore:strawberry"
-            },
-            {
-              "type": "minecraft:item",
-              "name": "cutecore:strawberry_seeds"
-            }
-          ]
+          "type": "minecraft:item",
+          "name": "cutecore:strawberry_seeds"
         }
       ],
       "rolls": 1.0
@@ -54,9 +36,34 @@
               "formula": "minecraft:binomial_with_bonus_count",
               "function": "minecraft:apply_bonus",
               "parameters": {
-                "extra": 3,
+                "extra": 2,
                 "probability": 0.5714286
               }
+            }
+          ],
+          "name": "cutecore:strawberry"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "cutecore:strawberry_crop",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "age": "4"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "chance": 0.1,
+              "condition": "minecraft:random_chance"
             }
           ],
           "name": "cutecore:strawberry_seeds"

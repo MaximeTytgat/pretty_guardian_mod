@@ -3,6 +3,7 @@ package com.doudou.cutecore.worldgen.entity;
 import com.doudou.cutecore.CuteCore;
 import com.doudou.cutecore.worldgen.entity.projectile.CuteArrowEntity;
 import com.doudou.cutecore.worldgen.entity.projectile.HeartEntity;
+import com.doudou.cutecore.worldgen.entity.projectile.StarLightEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,6 +23,10 @@ public class ModEntityType {
     public static final RegistryObject<EntityType<HeartEntity>> HEART =
             ENTITY_TYPES.register("heart", () -> EntityType.Builder.of((EntityType.EntityFactory<HeartEntity>) HeartEntity::new, MobCategory.MISC)
                     .sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("heart"));
+
+    public static final RegistryObject<EntityType<StarLightEntity>> STAR_LIGHT =
+            ENTITY_TYPES.register("star_light", () -> EntityType.Builder.of((EntityType.EntityFactory<StarLightEntity>) StarLightEntity::new, MobCategory.MISC)
+                    .sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("star_light"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

@@ -3,7 +3,9 @@ package com.doudou.cutecore.client.renderer;
 import com.doudou.cutecore.CuteCore;
 import com.doudou.cutecore.client.renderer.entity.CuteArrowRenderer;
 import com.doudou.cutecore.client.renderer.entity.HeartRenderer;
+import com.doudou.cutecore.client.renderer.entity.StarLightRenderer;
 import com.doudou.cutecore.worldgen.entity.ModEntityType;
+import com.doudou.cutecore.worldgen.entity.projectile.StarLightEntity;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -15,5 +17,6 @@ public class ClientModEventSubscriber {
     public static void doSetup(EntityRenderersEvent.RegisterRenderers event) {
         EntityRenderers.register(ModEntityType.HEART_ARROW.get(), CuteArrowRenderer::new);
         EntityRenderers.register(ModEntityType.HEART.get(), HeartRenderer::new);
+        EntityRenderers.register(ModEntityType.STAR_LIGHT.get(), StarLightRenderer::new);
     }
 }

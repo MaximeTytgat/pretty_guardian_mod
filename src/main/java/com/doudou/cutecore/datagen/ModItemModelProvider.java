@@ -61,6 +61,8 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         simpleItem(CuteCoreItem.STRAWBERRY_SEEDS);
+        simpleItem(CuteCoreItem.VANILLA_SEEDS);
+        simpleItem(CuteCoreItem.MINT_SEEDS);
         simpleItemForBlock(CuteCoreBlock.CHOCOLATE_CAKE);
         simpleItemForBlock(CuteCoreBlock.CREAM_CAKE);
         simpleItemForBlock(CuteCoreBlock.RHUM_CAKE);
@@ -68,6 +70,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItemForBlock(CuteCoreBlock.BERRY_STRAWBERRY_CAKE);
         simpleItemForBlock(CuteCoreBlock.VELVET_CAKE);
         simpleItemForBlock(CuteCoreBlock.CREAM_STRAWBERRY_CAKE);
+        simpleItemForBlock(CuteCoreBlock.STRAWBERRY_CHOCO_CAKE);
         simpleItemForBlock(CuteCoreBlock.THREE_VELVET_CAKE);
         simpleItemForBlock(CuteCoreBlock.THREE_CHOCO_CAKE);
         simpleItemForBlock(CuteCoreBlock.THREE_STRAWBERRY_CAKE);
@@ -79,6 +82,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItemForBlock(CuteCoreBlock.STRAWBERRY_PIE);
 
         simpleItem(CuteCoreItem.STRAWBERRY);
+        simpleItem(CuteCoreItem.VANILLA);
+        simpleItem(CuteCoreItem.MINT);
+        simpleItem(CuteCoreItem.PISTACHIO);
+        simpleItem(CuteCoreItem.LEMON);
+
         simpleItem(CuteCoreItem.CHOCOLATE_STRAWBERRY);
         simpleItem(CuteCoreItem.SECRET_DONUT);
         simpleItem(CuteCoreItem.DONUT);
@@ -137,7 +145,15 @@ public class ModItemModelProvider extends ItemModelProvider {
 //        simpleItem(CuteCoreItem.RAW_PINK_SAPPHIRE);
         simpleItem(CuteCoreItem.PINK_SAPPHIRE);
         simpleItem(CuteCoreItem.HEART_ARROW);
-        simpleItem(CuteCoreItem.CUTE_WAND);
+
+        simpleItem(CuteCoreItem.CUTIE_MOON_ROD);
+        simpleItem(CuteCoreItem.ETERNAL_TIARE);
+        simpleItem(CuteCoreItem.MOON_KALEIDOSCOPE);
+        simpleItem(CuteCoreItem.MOON_STICK);
+        simpleItem(CuteCoreItem.MOON_STICK_PEARL);
+        simpleItem(CuteCoreItem.SPIRAL_HEART_MOON_ROD);
+        simpleItem(CuteCoreItem.PLUTONS_KEY);
+        simpleItem(CuteCoreItem.NEPTUNES_MIRROR);
 
         handheldItem(CuteCoreItem.PINK_SAPPHIRE_AXE);
         handheldItem(CuteCoreItem.PINK_SAPPHIRE_PICKAXE);
@@ -150,6 +166,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(CuteCoreItem.PINK_SAPPHIRE_LEGGINGS);
         trimmedArmorItem(CuteCoreItem.PINK_SAPPHIRE_BOOTS);
 
+        simpleItem(CuteCoreItem.RUBY);
         handheldItem(CuteCoreItem.RUBY_AXE);
         handheldItem(CuteCoreItem.RUBY_PICKAXE);
         handheldItem(CuteCoreItem.RUBY_SHOVEL);
@@ -162,11 +179,29 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(CuteCoreItem.TAVERN_MUSIC_DISC);
         simpleItem(CuteCoreItem.JAPANESE_FLUTE_MUSIC_DISC);
 
+        simpleItem(CuteCoreItem.BUTTERFLY_NET);
 
-//        trimmedArmorItem(CuteCoreItem.RUBY_HELMET);
-//        trimmedArmorItem(CuteCoreItem.RUBY_CHESTPLATE);
-//        trimmedArmorItem(CuteCoreItem.RUBY_LEGGINGS);
-//        trimmedArmorItem(CuteCoreItem.RUBY_BOOTS);
+        trimmedArmorItem(CuteCoreItem.RUBY_HELMET);
+        trimmedArmorItem(CuteCoreItem.RUBY_CHESTPLATE);
+        trimmedArmorItem(CuteCoreItem.RUBY_LEGGINGS);
+        trimmedArmorItem(CuteCoreItem.RUBY_BOOTS);
+
+        saplingItem(CuteCoreBlock.PISTACHIO_SAPLING);
+        saplingItem(CuteCoreBlock.LEMON_SAPLING);
+
+        simpleBlockItemBlockTexture(CuteCoreBlock.STRAWBERRY_CROP_FLOWER);
+
+        withExistingParent(CuteCoreItem.STRAWBERRY_COW_EGG.getId().getPath(),
+                mcLoc("item/template_spawn_egg"));
+        withExistingParent(CuteCoreItem.CELESTIAL_RABBIT_EGG.getId().getPath(),
+                mcLoc("item/template_spawn_egg"));
+    }
+
+
+    private ItemModelBuilder saplingItem(RegistryObject<Block> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation(CuteCore.MOD_ID,"block/" + item.getId().getPath()));
     }
 
     private void trimmedArmorItem(RegistryObject<Item> itemRegistryObject) {
@@ -214,5 +249,11 @@ public class ModItemModelProvider extends ItemModelProvider {
                                         "item/" + itemRegistryObject.getId().getPath()));
             });
         }
+    }
+
+    private ItemModelBuilder simpleBlockItemBlockTexture(RegistryObject<Block> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation(CuteCore.MOD_ID,"block/" + item.getId().getPath()));
     }
 }

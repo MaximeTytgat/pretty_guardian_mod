@@ -1,10 +1,12 @@
 package com.doudou.cutecore.datagen;
 
 import com.doudou.cutecore.CuteCore;
-import com.doudou.cutecore.blocks.BaseCake;
-import com.doudou.cutecore.blocks.BaseThreeCake;
+import com.doudou.cutecore.blocks.custom.crop.MintCropBlock;
+import com.doudou.cutecore.blocks.custom.food.BaseCake;
+import com.doudou.cutecore.blocks.custom.food.BaseThreeCake;
 import com.doudou.cutecore.blocks.CuteCoreBlock;
-import com.doudou.cutecore.blocks.StrawberryCropBlock;
+import com.doudou.cutecore.blocks.custom.crop.StrawberryCropBlock;
+import com.doudou.cutecore.blocks.custom.crop.VanillaCropBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -52,6 +54,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         makeStrawberryCrop((CropBlock) CuteCoreBlock.STRAWBERRY_CROP.get(), "strawberry_stage", "strawberry_stage");
+        makeMintCrop((CropBlock) CuteCoreBlock.MINT_CROP.get(), "mint_stage", "mint_stage");
 
         blockWithItem(CuteCoreBlock.PINK_SAPPHIRE_BLOCK);
         blockWithItem(CuteCoreBlock.PINK_SAPPHIRE_ORE);
@@ -72,14 +75,26 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleCake(CuteCoreBlock.BERRY_STRAWBERRY_CAKE.get());
         simpleCake(CuteCoreBlock.VELVET_CAKE.get());
         simpleCake(CuteCoreBlock.CREAM_STRAWBERRY_CAKE.get());
+        simpleCake(CuteCoreBlock.STRAWBERRY_CHOCO_CAKE.get());
 
         simpleThreeCake(CuteCoreBlock.THREE_VELVET_CAKE.get());
         simpleThreeCake(CuteCoreBlock.THREE_CHOCO_CAKE.get());
         simpleThreeCake(CuteCoreBlock.THREE_STRAWBERRY_CAKE.get());
         simpleThreeCake(CuteCoreBlock.THREE_STRAWBERRY_CHOCO_CAKE.get());
 
+        saplingBlock(CuteCoreBlock.PISTACHIO_SAPLING);
+
+        simpleBlockWithItem(CuteCoreBlock.STRAWBERRY_CROP_FLOWER.get(), models().cross(blockTexture(CuteCoreBlock.STRAWBERRY_CROP_FLOWER.get()).getPath(),
+                blockTexture(CuteCoreBlock.STRAWBERRY_CROP_FLOWER.get())).renderType("cutout"));
     }
 
+
+
+
+    private void saplingBlock(RegistryObject<Block> blockRegistryObject) {
+        simpleBlock(blockRegistryObject.get(),
+                models().cross(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(), blockTexture(blockRegistryObject.get())).renderType("cutout"));
+    }
 
     public void makeStrawberryCrop(CropBlock block, String modelName, String textureName) {
         Function<BlockState, ConfiguredModel[]> function = state -> strawberryStates(state, block, modelName, textureName);
@@ -94,6 +109,40 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         return models;
     }
+
+
+    public void makeMintCrop(CropBlock block, String modelName, String textureName) {
+        Function<BlockState, ConfiguredModel[]> function = state -> mintStates(state, block, modelName, textureName);
+
+        getVariantBuilder(block).forAllStates(function);
+    }
+
+    private ConfiguredModel[] mintStates(BlockState state, CropBlock block, String modelName, String textureName) {
+        ConfiguredModel[] models = new ConfiguredModel[1];
+        models[0] = new ConfiguredModel(models().crop(modelName + state.getValue(((MintCropBlock) block).getAgeProperty()),
+                new ResourceLocation(CuteCore.MOD_ID, "block/" + textureName + state.getValue(((MintCropBlock) block).getAgeProperty()))).renderType("cutout"));
+
+        return models;
+    }
+
+    public void makeVanillaCrop(CropBlock block, String modelName, String textureName) {
+        Function<BlockState, ConfiguredModel[]> function = state -> vanillaStates(state, block, modelName, textureName);
+
+        getVariantBuilder(block).forAllStates(function);
+    }
+
+    private ConfiguredModel[] vanillaStates(BlockState state, CropBlock block, String modelName, String textureName) {
+        ConfiguredModel[] models = new ConfiguredModel[1];
+        models[0] = new ConfiguredModel(models().singleTexture(
+                modelName + state.getValue(((VanillaCropBlock) block).getAgeProperty()),
+                new ResourceLocation(CuteCore.MOD_ID, "block/crop_cross_double"),
+                "cross",
+                new ResourceLocation(CuteCore.MOD_ID, "block/" + textureName + state.getValue(((VanillaCropBlock) block).getAgeProperty()))
+        ).renderType("cutout"));
+
+        return models;
+    }
+
 
 
 

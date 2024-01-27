@@ -2,9 +2,15 @@ package com.doudou.cutecore.item;
 
 import com.doudou.cutecore.CuteCore;
 import com.doudou.cutecore.blocks.CuteCoreBlock;
+import com.doudou.cutecore.entity.ModEntities;
 import com.doudou.cutecore.item.custom.*;
+import com.doudou.cutecore.item.custom.projectiles.HeartItem;
+import com.doudou.cutecore.item.custom.projectiles.StarLightItem;
 import com.doudou.cutecore.sound.ModSounds;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.FlowerBlock;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -15,8 +21,14 @@ public class CuteCoreItem {
 
     public static final RegistryObject<Item> STRAWBERRY_SEEDS = ITEMS.register("strawberry_seeds", () -> new ItemNameBlockItem(CuteCoreBlock.STRAWBERRY_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> STRAWBERRY = ITEMS.register("strawberry", () -> new Item(new Item.Properties().food(ModFoods.STRAWBERRY)));
-    public static final RegistryObject<Item> CHOCOLATE_STRAWBERRY = ITEMS.register("chocolate_strawberry", () -> new Item(new Item.Properties().food(ModFoods.STRAWBERRY)));
+    public static final RegistryObject<Item> MINT_SEEDS = ITEMS.register("mint_seeds", () -> new ItemNameBlockItem(CuteCoreBlock.MINT_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MINT = ITEMS.register("mint", () -> new Item(new Item.Properties().food(ModFoods.STRAWBERRY)));
+    public static final RegistryObject<Item> VANILLA_SEEDS = ITEMS.register("vanilla_seeds", () -> new ItemNameBlockItem(CuteCoreBlock.VANILLA_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> VANILLA = ITEMS.register("vanilla", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PISTACHIO = ITEMS.register("pistachio", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LEMON = ITEMS.register("lemon", () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> CHOCOLATE_STRAWBERRY = ITEMS.register("chocolate_strawberry", () -> new Item(new Item.Properties().food(ModFoods.STRAWBERRY)));
     public static final RegistryObject<Item> SECRET_DONUT = ITEMS.register("secret_donut", () -> new Item(new Item.Properties().food(ModFoods.DONUT)));
     public static final RegistryObject<Item> DONUT = ITEMS.register("donut", () -> new Item(new Item.Properties().food(ModFoods.DONUT)));
     public static final RegistryObject<Item> STRAWBERRY_DONUT = ITEMS.register("strawberry_donut", () -> new Item(new Item.Properties().food(ModFoods.DONUT)));
@@ -80,11 +92,12 @@ public class CuteCoreItem {
     public static final RegistryObject<Item> PINK_SAPPHIRE_SHOVEL = ITEMS.register("pink_sapphire_shovel", () -> new ShovelItem(ModToolTiers.PINK_SAPPHIRE, 4, 2,  new Item.Properties()));
     public static final RegistryObject<Item> PINK_SAPPHIRE_HOE = ITEMS.register("pink_sapphire_hoe", () -> new HoeItem(ModToolTiers.PINK_SAPPHIRE, 4, 2,  new Item.Properties()));
 
-    public static final RegistryObject<Item> PINK_SAPPHIRE_HELMET = ITEMS.register("pink_sapphire_helmet", () -> new PinkSapphireArmorItem(ModArmorMaterials.PINK_SAPPHIRE, ArmorItem.Type.HELMET,  new Item.Properties()));
-    public static final RegistryObject<Item> PINK_SAPPHIRE_CHESTPLATE = ITEMS.register("pink_sapphire_chestplate", () -> new PinkSapphireArmorItem(ModArmorMaterials.PINK_SAPPHIRE, ArmorItem.Type.CHESTPLATE,  new Item.Properties()));
-    public static final RegistryObject<Item> PINK_SAPPHIRE_LEGGINGS = ITEMS.register("pink_sapphire_leggings", () -> new PinkSapphireArmorItem(ModArmorMaterials.PINK_SAPPHIRE, ArmorItem.Type.LEGGINGS,  new Item.Properties()));
-    public static final RegistryObject<Item> PINK_SAPPHIRE_BOOTS = ITEMS.register("pink_sapphire_boots", () -> new PinkSapphireArmorItem(ModArmorMaterials.PINK_SAPPHIRE, ArmorItem.Type.BOOTS,  new Item.Properties()));
+    public static final RegistryObject<Item> PINK_SAPPHIRE_HELMET = ITEMS.register("pink_sapphire_helmet", () -> new ArmorItem(ModArmorMaterials.PINK_SAPPHIRE, ArmorItem.Type.HELMET,  new Item.Properties()));
+    public static final RegistryObject<Item> PINK_SAPPHIRE_CHESTPLATE = ITEMS.register("pink_sapphire_chestplate", () -> new ArmorItem(ModArmorMaterials.PINK_SAPPHIRE, ArmorItem.Type.CHESTPLATE,  new Item.Properties()));
+    public static final RegistryObject<Item> PINK_SAPPHIRE_LEGGINGS = ITEMS.register("pink_sapphire_leggings", () -> new ArmorItem(ModArmorMaterials.PINK_SAPPHIRE, ArmorItem.Type.LEGGINGS,  new Item.Properties()));
+    public static final RegistryObject<Item> PINK_SAPPHIRE_BOOTS = ITEMS.register("pink_sapphire_boots", () -> new ArmorItem(ModArmorMaterials.PINK_SAPPHIRE, ArmorItem.Type.BOOTS,  new Item.Properties()));
 
+    public static final RegistryObject<Item> RAW_RUBY = ITEMS.register("raw_ruby", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RUBY = ITEMS.register("ruby", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RUBY_SWORD = ITEMS.register("ruby_sword", () -> new SwordItem(ModToolTiers.RUBY, 4, 2,  new Item.Properties()));
     public static final RegistryObject<Item> RUBY_PICKAXE = ITEMS.register("ruby_pickaxe", () -> new PickaxeItem(ModToolTiers.RUBY, 4, 2,  new Item.Properties()));
@@ -100,8 +113,23 @@ public class CuteCoreItem {
 
     public static final RegistryObject<Item> HEART_ARROW = ITEMS.register("heart_arrow", () -> new CuteArrowItem(new Item.Properties(), 5.9F));
     public static final RegistryObject<Item> CUTE_HEART = ITEMS.register("cute_heart", () -> new HeartItem(new Item.Properties(), 5.9F));
+    public static final RegistryObject<Item> STAR_LIGHT = ITEMS.register("star_light", () -> new StarLightItem(new Item.Properties(), 5.9F));
+    public static final RegistryObject<Item> ETERNAL_SILVER_CISTAL_STAFF = ITEMS.register("eternal_silver_cristal_staff", () -> new EternalSilverCristalStaffitem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> CUPIDON_BOW = ITEMS.register("cupidon_bow", () -> new CuteBowItem(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> CUTE_WAND = ITEMS.register("cute_wand", () -> new CuteWandItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> CUTIE_MOON_ROD = ITEMS.register("cutie_moon_rod", () -> new CuteWandItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> ETERNAL_TIARE = ITEMS.register("eternal_tiare", () -> new CuteWandItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> MOON_KALEIDOSCOPE = ITEMS.register("moon_kaleidoscope", () -> new CuteWandItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> MOON_STICK = ITEMS.register("moon_stick", () -> new CuteWandItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> MOON_STICK_PEARL = ITEMS.register("moon_stick_pearl", () -> new CuteWandItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SPIRAL_HEART_MOON_ROD = ITEMS.register("spiral_heart_moon_rod", () -> new CuteWandItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> PLUTONS_KEY = ITEMS.register("plutons_key", () -> new PlutonsKey(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> NEPTUNES_MIRROR = ITEMS.register("neptunes_mirror", () -> new NeptunesMirror(new Item.Properties().stacksTo(1)));
+//    public static final RegistryObject<Item> NEPTUNES_MIRROR = ITEMS.register("neptunes_mirror", () -> new NeptunesMirror(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> STRAWBERRY_COW_EGG = ITEMS.register("strawberry_cow_egg", () -> new ForgeSpawnEggItem(ModEntities.STRAWBERRY_COW, 0xfcd6df, 0xf798be, new Item.Properties()));
+    public static final RegistryObject<Item> CELESTIAL_RABBIT_EGG = ITEMS.register("celestial_rabbit_egg", () -> new ForgeSpawnEggItem(ModEntities.CELESTIAL_RABBIT, 0xf564df, 0xf548be, new Item.Properties()));
+
+    public static final RegistryObject<Item> BUTTERFLY_NET = ITEMS.register("butterfly_net", () -> new ButterflyNet(new Item.Properties()));
+
 
     public static final RegistryObject<Item> SAILORMOON_OST_MUSIC_DISC = ITEMS.register("sailormoon_ost_music_disc", () -> new RecordItem(4, ModSounds.SAILORMOON_OST.get(), new Item.Properties().stacksTo(1), 10380));
     public static final RegistryObject<Item> SAILORMOON_MOONPRIDE_MUSIC_DISC = ITEMS.register("sailormoon_moonpride_music_disc", () -> new RecordItem(4, ModSounds.SAILORMOON_MOONPRIDE.get(), new Item.Properties().stacksTo(1), 1780));

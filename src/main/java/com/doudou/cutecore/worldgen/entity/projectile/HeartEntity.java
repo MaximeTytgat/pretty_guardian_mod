@@ -31,13 +31,17 @@ public class HeartEntity extends Projectile {
     public double yPower;
     public double zPower;
 
+    private final float baseDamage;
+
 
     public HeartEntity(EntityType<HeartEntity> entityType, Level world) {
         super(entityType, world);
+        this.baseDamage = 8.0F;
     }
 
-    public HeartEntity(EntityType<HeartEntity> entityType, LivingEntity shooter, Level world) {
+    public HeartEntity(EntityType<HeartEntity> entityType, LivingEntity shooter, Level world, float damage) {
         super(entityType, world);
+        this.baseDamage = damage;
     }
 
     protected void defineSynchedData() {
@@ -138,7 +142,9 @@ public class HeartEntity extends Projectile {
         Entity entity = entityHitResult.getEntity();
         Entity entity1 = this.getOwner();
         LivingEntity livingentity = entity1 instanceof LivingEntity ? (LivingEntity)entity1 : null;
-        entity.hurt(this.damageSources().mobProjectile(this, livingentity), 999.0F);
+
+
+        entity.hurt(this.damageSources().mobProjectile(this, livingentity), this.baseDamage);
 
         this.discard();
     }

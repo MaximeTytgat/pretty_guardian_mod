@@ -1,0 +1,9 @@
+
+{
+  "variants": {
+    "facing=north": { "model": "cutecore:block/shoji_birch_small", "y": 0 },
+    "facing=south": { "model": "cutecore:block/shoji_birch_small", "y": 180 },
+    "facing=east": { "model": "cutecore:block/shoji_birch_small", "y": 90 },
+    "facing=west": { "model": "cutecore:block/shoji_birch_small", "y": 270 }
+  }
+}

@@ -1,14 +1,25 @@
 package com.doudou.cutecore.blocks;
 
 import com.doudou.cutecore.CuteCore;
+import com.doudou.cutecore.blocks.custom.crop.CropLeavesBlock;
+import com.doudou.cutecore.blocks.custom.crop.MintCropBlock;
 import com.doudou.cutecore.blocks.custom.PicnicBasketBlock;
+import com.doudou.cutecore.blocks.custom.crop.StrawberryCropBlock;
+import com.doudou.cutecore.blocks.custom.crop.VanillaCropBlock;
+import com.doudou.cutecore.blocks.custom.food.BaseCake;
+import com.doudou.cutecore.blocks.custom.food.BasePie;
+import com.doudou.cutecore.blocks.custom.food.BaseThreeCake;
+import com.doudou.cutecore.blocks.custom.furniture.ShojiBlossom;
+import com.doudou.cutecore.blocks.custom.plush.CowPlushBlock;
+import com.doudou.cutecore.blocks.custom.plush.PlushiesBlock;
+import com.doudou.cutecore.item.CuteCoreItem;
+import com.doudou.cutecore.worldgen.tree.LemonTreeGrower;
+import com.doudou.cutecore.worldgen.tree.PistachioTreeGrower;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,6 +39,7 @@ public class CuteCoreBlock {
     public static final RegistryObject<Block> BERRY_STRAWBERRY_CAKE = registryBlock("berry_strawberry_cake", () -> new BaseCake(cakeProperties()));
     public static final RegistryObject<Block> VELVET_CAKE = registryBlock("velvet_cake", () -> new BaseCake(cakeProperties()));
     public static final RegistryObject<Block> CREAM_STRAWBERRY_CAKE = registryBlock("cream_strawberry_cake", () -> new BaseCake(cakeProperties()));
+    public static final RegistryObject<Block> STRAWBERRY_CHOCO_CAKE = registryBlock("strawberry_choco_cake", () -> new BaseCake(cakeProperties()));
     public static final RegistryObject<Block> THREE_STRAWBERRY_CAKE = registryBlock("three_strawberry_cake", () -> new BaseThreeCake(cakeProperties()));
     public static final RegistryObject<Block> THREE_STRAWBERRY_CHOCO_CAKE = registryBlock("three_strawberry_choco_cake", () -> new BaseThreeCake(cakeProperties()));
     public static final RegistryObject<Block> THREE_CHOCO_CAKE = registryBlock("three_choco_cake", () -> new BaseThreeCake(cakeProperties()));
@@ -39,6 +51,8 @@ public class CuteCoreBlock {
     public static final RegistryObject<Block> STRAWBERRY_PIE = registryBlock("strawberry_pie", () -> new BasePie(cakeProperties()));
 
     public static final RegistryObject<Block> STRAWBERRY_CROP = BLOCKS.register("strawberry_crop", () -> new StrawberryCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
+    public static final RegistryObject<Block> MINT_CROP = BLOCKS.register("mint_crop", () -> new MintCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
+    public static final RegistryObject<Block> VANILLA_CROP = BLOCKS.register("vanilla_crop", () -> new VanillaCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
     public static final RegistryObject<Block> PINK_SAPPHIRE_BLOCK = registryBlock("pink_sapphire_block", () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
     public static final RegistryObject<Block> PINK_SAPPHIRE_ORE = registryBlock("pink_sapphire_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2.0F).requiresCorrectToolForDrops(), UniformInt.of(3, 6)));
     public static final RegistryObject<Block> DEEPSLATE_PINK_SAPPHIRE_ORE = registryBlock("deepslate_pink_sapphire_ore", () -> new Block(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE)));
@@ -49,7 +63,32 @@ public class CuteCoreBlock {
     public static final RegistryObject<Block> CHOCOLATE_BLOCK = registryBlock("chocolate_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD).sound(SoundType.STONE).strength(0.2F, 0.2F)));
     public static final RegistryObject<Block> MARSHMELLO_BLOCK = registryBlock("marshmello_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
     public static final RegistryObject<Block> ROASTED_MARSHMELLO_BLOCK = registryBlock("roasted_marshmello_block", () -> new Block(BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> PISTACHIO_LEAVES_CROP = registryBlock("pistachio_leaves_crop", () -> new CropLeavesBlock(CuteCoreItem.PISTACHIO, BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
+    public static final RegistryObject<Block> PISTACHIO_SAPLING = registryBlock("pistachio_sapling", () -> new SaplingBlock(new PistachioTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
+    public static final RegistryObject<Block> LEMON_LEAVES_CROP = registryBlock("lemon_leaves_crop", () -> new CropLeavesBlock(CuteCoreItem.LEMON, BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
+    public static final RegistryObject<Block> LEMON_SAPLING = registryBlock("lemon_sapling", () -> new SaplingBlock(new LemonTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
+    public static final RegistryObject<Block> STRAWBERRY_CROP_FLOWER = registryBlock("strawberry_crop_flower", () -> new FlowerBlock(() -> MobEffects.LUCK, 5,  BlockBehaviour.Properties.copy(Blocks.ALLIUM).noOcclusion().noCollission().noLootTable()));
+    public static final RegistryObject<Block> MYMELODY_PLUSH = registryBlock("mymelody_plush", () -> new PlushiesBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
+    public static final RegistryObject<Block> KUROMI_PLUSH = registryBlock("kuromi_plush", () -> new PlushiesBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
+    public static final RegistryObject<Block> CAVALIER_PLUSH = registryBlock("cavalier_plush", () -> new PlushiesBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
+    public static final RegistryObject<Block> TEDDYBEAR_PLUSH = registryBlock("teddybear_plush", () -> new PlushiesBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
+    public static final RegistryObject<Block> RABBIT_PLUSH = registryBlock("rabbit_plush", () -> new PlushiesBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
+    public static final RegistryObject<Block> COW_PLUSH = registryBlock("cow_plush", () -> new CowPlushBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
 
+    public static final RegistryObject<Block> SHOJI_BLOSSOM = registryBlock("shoji_blossom", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> SHOJI_BLOSSOM_BOTTOM = registryBlock("shoji_blossom_bottom", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> SHOJI_BLOSSOM_SMALL = registryBlock("shoji_blossom_small", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> SHOJI_BLOSSOM_SMALL_BOTTOM = registryBlock("shoji_blossom_small_bottom", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+
+    public static final RegistryObject<Block> SHOJI_CHERRY = registryBlock("shoji_cherry", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> SHOJI_CHERRY_BOTTOM = registryBlock("shoji_cherry_bottom", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> SHOJI_CHERRY_SMALL = registryBlock("shoji_cherry_small", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> SHOJI_CHERRY_SMALL_BOTTOM = registryBlock("shoji_cherry_small_bottom", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+
+    public static final RegistryObject<Block> SHOJI_BIRCH = registryBlock("shoji_birch", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> SHOJI_BIRCH_BOTTOM = registryBlock("shoji_birch_bottom", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> SHOJI_BIRCH_SMALL = registryBlock("shoji_birch_small", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> SHOJI_BIRCH_SMALL_BOTTOM = registryBlock("shoji_birch_small_bottom", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
         return CuteCore.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));

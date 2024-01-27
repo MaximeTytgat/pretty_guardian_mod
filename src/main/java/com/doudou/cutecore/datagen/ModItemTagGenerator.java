@@ -25,11 +25,11 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                         CuteCoreItem.PINK_SAPPHIRE_HELMET.get(),
                         CuteCoreItem.PINK_SAPPHIRE_CHESTPLATE.get(),
                         CuteCoreItem.PINK_SAPPHIRE_LEGGINGS.get(),
-                        CuteCoreItem.PINK_SAPPHIRE_BOOTS.get()
-//                        CuteCoreItem.RUBY_HELMET.get(),
-//                        CuteCoreItem.RUBY_CHESTPLATE.get(),
-//                        CuteCoreItem.RUBY_LEGGINGS.get(),
-//                        CuteCoreItem.RUBY_BOOTS.get()
+                        CuteCoreItem.PINK_SAPPHIRE_BOOTS.get(),
+                        CuteCoreItem.RUBY_HELMET.get(),
+                        CuteCoreItem.RUBY_CHESTPLATE.get(),
+                        CuteCoreItem.RUBY_LEGGINGS.get(),
+                        CuteCoreItem.RUBY_BOOTS.get()
                 );
 
 //        this.tag(ItemTags.ARROWS)

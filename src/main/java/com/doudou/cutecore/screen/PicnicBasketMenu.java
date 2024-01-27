@@ -18,22 +18,20 @@ import java.util.Objects;
 
 public class PicnicBasketMenu extends AbstractContainerMenu {
     public final PicnicBasketBlockEntity blockEntity;
-    private final Level level;
     private final Container container;
 
     public PicnicBasketMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, (PicnicBasketBlockEntity) Objects.requireNonNull(inv.player.level().getBlockEntity(extraData.readBlockPos())), new SimpleContainer(4));
+        this(pContainerId, inv, (PicnicBasketBlockEntity) Objects.requireNonNull(inv.player.level().getBlockEntity(extraData.readBlockPos())));
     }
 
-    public PicnicBasketMenu(int pContainerId, Inventory inv, PicnicBasketBlockEntity entity, Container container) {
+    public PicnicBasketMenu(int pContainerId, Inventory inv, Container container) {
         super(ModMenuTypes.PICNIC_BASKET_MENU.get(), pContainerId);
-        checkContainerSize(inv, 4);
+        checkContainerSize(container, 4);
 
         this.container = container;
         container.startOpen(inv.player);
 
-        blockEntity = ((PicnicBasketBlockEntity) entity);
-        this.level = inv.player.level();
+        blockEntity = ((PicnicBasketBlockEntity) container);
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);

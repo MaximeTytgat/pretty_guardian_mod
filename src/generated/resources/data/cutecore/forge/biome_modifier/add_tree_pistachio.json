@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_forest",
+  "features": "cutecore:pistachio_placed",
+  "step": "vegetal_decoration"
+}

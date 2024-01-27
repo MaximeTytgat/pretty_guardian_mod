@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "age=0": { "model": "cutecore:block/pistachio_leaves_crop" },
+    "age=1": { "model": "cutecore:block/pistachio_leaves_crop" },
+    "age=2": { "model": "cutecore:block/pistachio_leaves_crop" },
+    "age=3": { "model": "cutecore:block/pistachio_leaves_crop_stage_1" }
+  }
+}

@@ -2,6 +2,9 @@ package com.doudou.cutecore;
 
 import com.doudou.cutecore.blocks.CuteCoreBlock;
 import com.doudou.cutecore.blocks.entity.ModBlockEntities;
+import com.doudou.cutecore.entity.ModEntities;
+import com.doudou.cutecore.entity.client.celestialrabbit.CelestialRabbitRenderer;
+import com.doudou.cutecore.entity.client.strawberryCow.StrawberryCowRenderer;
 import com.doudou.cutecore.item.CuteCoreItem;
 import com.doudou.cutecore.loot.ModLootModifiers;
 import com.doudou.cutecore.particle.ModParticles;
@@ -12,6 +15,7 @@ import com.doudou.cutecore.util.ModItemProperties;
 import com.doudou.cutecore.worldgen.entity.ModEntityType;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -70,6 +74,7 @@ public class CuteCore
                 output.accept(CuteCoreBlock.THREE_STRAWBERRY_CAKE.get());
                 output.accept(CuteCoreBlock.THREE_STRAWBERRY_CHOCO_CAKE.get());
                 output.accept(CuteCoreBlock.THREE_VELVET_CAKE.get());
+                output.accept(CuteCoreBlock.STRAWBERRY_CHOCO_CAKE.get());
                 output.accept(CuteCoreBlock.CHOCOLATE_CAKE.get());
                 output.accept(CuteCoreBlock.APPLE_PIE.get());
                 output.accept(CuteCoreBlock.CHOCOLATE_PIE.get());
@@ -78,6 +83,14 @@ public class CuteCore
                 output.accept(CuteCoreBlock.STRAWBERRY_PIE.get());
                 output.accept(CuteCoreItem.STRAWBERRY_SEEDS.get());
                 output.accept(CuteCoreItem.STRAWBERRY.get());
+                output.accept(CuteCoreItem.VANILLA_SEEDS.get());
+                output.accept(CuteCoreItem.VANILLA.get());
+                output.accept(CuteCoreItem.PISTACHIO.get());
+                output.accept(CuteCoreItem.LEMON.get());
+
+
+                output.accept(CuteCoreItem.MINT_SEEDS.get());
+                output.accept(CuteCoreItem.MINT.get());
                 output.accept(CuteCoreItem.CHOCOLATE_STRAWBERRY.get());
                 output.accept(CuteCoreItem.SECRET_DONUT.get());
                 output.accept(CuteCoreItem.DONUT.get());
@@ -129,11 +142,12 @@ public class CuteCore
                 output.accept(CuteCoreItem.STRAWBERRY_CROISSANT.get());
                 output.accept(CuteCoreItem.PISTACHIO_CROISSANT.get());
                 output.accept(CuteCoreItem.RHUM_BOTTLE.get());
+
+                output.accept(CuteCoreItem.RAW_PINK_SAPPHIRE.get());
+                output.accept(CuteCoreItem.PINK_SAPPHIRE.get());
                 output.accept(CuteCoreBlock.PINK_SAPPHIRE_BLOCK.get());
                 output.accept(CuteCoreBlock.PINK_SAPPHIRE_ORE.get());
                 output.accept(CuteCoreBlock.DEEPSLATE_PINK_SAPPHIRE_ORE.get());
-                output.accept(CuteCoreItem.RAW_PINK_SAPPHIRE.get());
-                output.accept(CuteCoreItem.PINK_SAPPHIRE.get());
 
                 output.accept(CuteCoreItem.PINK_SAPPHIRE_SWORD.get());
                 output.accept(CuteCoreItem.PINK_SAPPHIRE_PICKAXE.get());
@@ -146,6 +160,8 @@ public class CuteCore
                 output.accept(CuteCoreItem.PINK_SAPPHIRE_LEGGINGS.get());
                 output.accept(CuteCoreItem.PINK_SAPPHIRE_BOOTS.get());
 
+//                output.accept(CuteCoreItem.RAW_RUBY.get());
+                output.accept(CuteCoreItem.RUBY.get());
                 output.accept(CuteCoreBlock.RUBY_BLOCK.get());
                 output.accept(CuteCoreBlock.RUBY_ORE.get());
                 output.accept(CuteCoreBlock.DEEPSLATE_RUBY_ORE.get());
@@ -161,9 +177,20 @@ public class CuteCore
                 output.accept(CuteCoreItem.RUBY_LEGGINGS.get());
                 output.accept(CuteCoreItem.RUBY_BOOTS.get());
 
+                output.accept(CuteCoreItem.ETERNAL_SILVER_CISTAL_STAFF.get());
+
                 output.accept(CuteCoreItem.CUPIDON_BOW.get());
                 output.accept(CuteCoreItem.HEART_ARROW.get());
-                output.accept(CuteCoreItem.CUTE_WAND.get());
+
+                output.accept(CuteCoreItem.CUTIE_MOON_ROD.get());
+                output.accept(CuteCoreItem.ETERNAL_TIARE.get());
+                output.accept(CuteCoreItem.MOON_KALEIDOSCOPE.get());
+                output.accept(CuteCoreItem.MOON_STICK.get());
+                output.accept(CuteCoreItem.MOON_STICK_PEARL.get());
+                output.accept(CuteCoreItem.SPIRAL_HEART_MOON_ROD.get());
+
+                output.accept(CuteCoreItem.PLUTONS_KEY.get());
+                output.accept(CuteCoreItem.NEPTUNES_MIRROR.get());
 
                 output.accept(CuteCoreBlock.PICNIC_BASKET.get());
                 output.accept(CuteCoreItem.SAILORMOON_OST_MUSIC_DISC.get());
@@ -175,6 +202,38 @@ public class CuteCore
                 output.accept(CuteCoreBlock.CHOCOLATE_BLOCK.get());
                 output.accept(CuteCoreBlock.MARSHMELLO_BLOCK.get());
                 output.accept(CuteCoreBlock.ROASTED_MARSHMELLO_BLOCK.get());
+
+                output.accept(CuteCoreBlock.PISTACHIO_LEAVES_CROP.get());
+                output.accept(CuteCoreBlock.PISTACHIO_SAPLING.get());
+
+                output.accept(CuteCoreBlock.LEMON_LEAVES_CROP.get());
+                output.accept(CuteCoreBlock.LEMON_SAPLING.get());
+
+                output.accept(CuteCoreItem.STRAWBERRY_COW_EGG.get());
+                output.accept(CuteCoreItem.CELESTIAL_RABBIT_EGG.get());
+                output.accept(CuteCoreItem.BUTTERFLY_NET.get());
+
+                output.accept(CuteCoreBlock.MYMELODY_PLUSH.get());
+                output.accept(CuteCoreBlock.KUROMI_PLUSH.get());
+                output.accept(CuteCoreBlock.CAVALIER_PLUSH.get());
+                output.accept(CuteCoreBlock.TEDDYBEAR_PLUSH.get());
+                output.accept(CuteCoreBlock.RABBIT_PLUSH.get());
+                output.accept(CuteCoreBlock.COW_PLUSH.get());
+
+                output.accept(CuteCoreBlock.SHOJI_BLOSSOM.get());
+                output.accept(CuteCoreBlock.SHOJI_BLOSSOM_BOTTOM.get());
+                output.accept(CuteCoreBlock.SHOJI_BLOSSOM_SMALL.get());
+                output.accept(CuteCoreBlock.SHOJI_BLOSSOM_SMALL_BOTTOM.get());
+
+                output.accept(CuteCoreBlock.SHOJI_CHERRY.get());
+                output.accept(CuteCoreBlock.SHOJI_CHERRY_BOTTOM.get());
+                output.accept(CuteCoreBlock.SHOJI_CHERRY_SMALL.get());
+                output.accept(CuteCoreBlock.SHOJI_CHERRY_SMALL_BOTTOM.get());
+
+                output.accept(CuteCoreBlock.SHOJI_BIRCH.get());
+                output.accept(CuteCoreBlock.SHOJI_BIRCH_BOTTOM.get());
+                output.accept(CuteCoreBlock.SHOJI_BIRCH_SMALL.get());
+                output.accept(CuteCoreBlock.SHOJI_BIRCH_SMALL_BOTTOM.get());
             }).build());
 
     public CuteCore()
@@ -194,6 +253,7 @@ public class CuteCore
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
@@ -253,6 +313,8 @@ public class CuteCore
             ModItemProperties.addCustomProperties();
 
             MenuScreens.register(ModMenuTypes.PICNIC_BASKET_MENU.get(), PicnicBasketScreen::new);
+            EntityRenderers.register(ModEntities.STRAWBERRY_COW.get(), StrawberryCowRenderer::new);
+            EntityRenderers.register(ModEntities.CELESTIAL_RABBIT.get(), CelestialRabbitRenderer::new);
         }
     }
 }

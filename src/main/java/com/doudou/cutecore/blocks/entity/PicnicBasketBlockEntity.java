@@ -1,5 +1,6 @@
 package com.doudou.cutecore.blocks.entity;
 
+import com.doudou.cutecore.CuteCore;
 import com.doudou.cutecore.blocks.custom.PicnicBasketBlock;
 import com.doudou.cutecore.screen.PicnicBasketMenu;
 import net.minecraft.core.BlockPos;
@@ -40,13 +41,15 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
     private static final int[] SLOTS = IntStream.range(0, 4).toArray();
     private NonNullList<ItemStack> itemStacks = NonNullList.withSize(4, ItemStack.EMPTY);
     private int openCount;
-    private float progress;
-    private float progressOld;
 
     public PicnicBasketBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(ModBlockEntities.PICNIC_BASKET_BE.get(), blockPos, blockState);
     }
 
+    @Override
+    public int getContainerSize() {
+        return this.itemStacks.size();
+    }
 
     public void startOpen(Player p_59692_) {
         if (!this.remove && !p_59692_.isSpectator()) {
@@ -76,11 +79,21 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
 
     }
 
+    @Override
+    public Component getDisplayName() {
+        return Component.translatable("block.cutecore.picnic_basket");
+    }
+
+    @Override
+    protected Component getDefaultName() {
+        return Component.translatable("block.cutecore.picnic_basket");
+    }
+
+
     public void load(CompoundTag compoundTag) {
         super.load(compoundTag);
         this.loadFromTag(compoundTag);
     }
-
     protected void saveAdditional(CompoundTag compoundTag) {
         super.saveAdditional(compoundTag);
         if (!this.trySaveLootTable(compoundTag)) {
@@ -91,12 +104,10 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
 
     public void loadFromTag(CompoundTag compoundTag) {
         this.itemStacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        if (!this.tryLoadLootTable(compoundTag) && compoundTag.contains("Items", 9)) {
+        if (!this.tryLoadLootTable(compoundTag) && compoundTag.contains("Items", 2)) {
             ContainerHelper.loadAllItems(compoundTag, this.itemStacks);
         }
-
     }
-
 
     @Override
     protected NonNullList<ItemStack> getItems() {
@@ -109,40 +120,26 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
     }
 
     @Override
-    public Component getDisplayName() {
-        return Component.translatable("block.cutecore.picnic_basket");
-    }
-
-    @Override
-    protected Component getDefaultName() {
-        return Component.translatable("block.cutecore.picnic_basket");
-    }
-
-    @Override
-    protected AbstractContainerMenu createMenu(int pContainerId, Inventory inventory) {
-        return new PicnicBasketMenu(pContainerId, inventory, this, new SimpleContainer(4));
-    }
-
-    @Override
     public int[] getSlotsForFace(Direction direction) {
         return SLOTS;
     }
-
     @Override
     public boolean canPlaceItemThroughFace(int p_19235_, ItemStack itemStack, @Nullable Direction direction) {
         return !(Block.byItem(itemStack.getItem()) instanceof PicnicBasketBlock) && itemStack.getItem().canFitInsideContainerItems(); // FORGE: Make shulker boxes respect Item#canFitInsideContainerItems
     }
 
-    @Override
-    public boolean canTakeItemThroughFace(int i, ItemStack itemStack, Direction direction) {
+    public boolean canTakeItemThroughFace(int p_59682_, ItemStack p_59683_, Direction p_59684_) {
         return true;
     }
 
     @Override
-    public int getContainerSize() {
-        return this.itemStacks.size();
+    protected AbstractContainerMenu createMenu(int pContainerId, Inventory inventory) {
+        CuteCore.LOGGER.info("createMenu");
+        return new PicnicBasketMenu(pContainerId, inventory, this);
     }
 
-    public void tick(Level level, BlockPos blockPos, BlockState blockState) {
+    @Override
+    protected net.minecraftforge.items.IItemHandler createUnSidedHandler() {
+        return new net.minecraftforge.items.wrapper.SidedInvWrapper(this, Direction.UP);
     }
 }
