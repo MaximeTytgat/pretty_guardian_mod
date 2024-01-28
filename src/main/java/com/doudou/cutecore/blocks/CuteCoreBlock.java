@@ -9,6 +9,8 @@ import com.doudou.cutecore.blocks.custom.crop.VanillaCropBlock;
 import com.doudou.cutecore.blocks.custom.food.BaseCake;
 import com.doudou.cutecore.blocks.custom.food.BasePie;
 import com.doudou.cutecore.blocks.custom.food.BaseThreeCake;
+import com.doudou.cutecore.blocks.custom.furniture.JapLampBlock;
+import com.doudou.cutecore.blocks.custom.furniture.JapLanternBlock;
 import com.doudou.cutecore.blocks.custom.furniture.ShojiBlossom;
 import com.doudou.cutecore.blocks.custom.plush.CowPlushBlock;
 import com.doudou.cutecore.blocks.custom.plush.PlushiesBlock;
@@ -89,6 +91,19 @@ public class CuteCoreBlock {
     public static final RegistryObject<Block> SHOJI_BIRCH_BOTTOM = registryBlock("shoji_birch_bottom", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
     public static final RegistryObject<Block> SHOJI_BIRCH_SMALL = registryBlock("shoji_birch_small", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
     public static final RegistryObject<Block> SHOJI_BIRCH_SMALL_BOTTOM = registryBlock("shoji_birch_small_bottom", () -> new ShojiBlossom(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+
+    public static final RegistryObject<Block> LANTERN_JAPANESE = registryBlock("lantern_japanese", () -> new JapLanternBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> LANTERN_JAPANESE_SAKURA = registryBlock("lantern_japanese_sakura", () -> new JapLanternBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> LANTERN_JAPANESE_FESTIVAL = registryBlock("lantern_japanese_festival", () -> new JapLanternBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+
+    public static final RegistryObject<Block> LAMP_JAPANESE_OAK = registryBlock("lamp_japanese_oak", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_SPRUCE = registryBlock("lamp_japanese_spruce", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_MANGROVE = registryBlock("lamp_japanese_mangrove", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_CHERRY = registryBlock("lamp_japanese_cherry", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_BIRCH = registryBlock("lamp_japanese_birch", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_JUNGLE = registryBlock("lamp_japanese_jungle", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_ACACIA = registryBlock("lamp_japanese_acacia", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_DARK_OAK = registryBlock("lamp_japanese_dark_oak", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
         return CuteCore.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));

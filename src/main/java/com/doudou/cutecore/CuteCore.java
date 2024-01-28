@@ -234,6 +234,20 @@ public class CuteCore
                 output.accept(CuteCoreBlock.SHOJI_BIRCH_BOTTOM.get());
                 output.accept(CuteCoreBlock.SHOJI_BIRCH_SMALL.get());
                 output.accept(CuteCoreBlock.SHOJI_BIRCH_SMALL_BOTTOM.get());
+
+                output.accept(CuteCoreBlock.LANTERN_JAPANESE.get());
+                output.accept(CuteCoreBlock.LANTERN_JAPANESE_SAKURA.get());
+                output.accept(CuteCoreBlock.LANTERN_JAPANESE_FESTIVAL.get());
+
+                output.accept(CuteCoreBlock.LAMP_JAPANESE_OAK.get());
+                output.accept(CuteCoreBlock.LAMP_JAPANESE_BIRCH.get());
+                output.accept(CuteCoreBlock.LAMP_JAPANESE_SPRUCE.get());
+                output.accept(CuteCoreBlock.LAMP_JAPANESE_JUNGLE.get());
+                output.accept(CuteCoreBlock.LAMP_JAPANESE_ACACIA.get());
+                output.accept(CuteCoreBlock.LAMP_JAPANESE_DARK_OAK.get());
+                output.accept(CuteCoreBlock.LAMP_JAPANESE_MANGROVE.get());
+                output.accept(CuteCoreBlock.LAMP_JAPANESE_CHERRY.get());
+
             }).build());
 
     public CuteCore()
