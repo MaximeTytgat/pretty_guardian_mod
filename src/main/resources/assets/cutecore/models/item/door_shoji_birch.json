@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cutecore:item/door_shoji_birch_item"
+  }
+}

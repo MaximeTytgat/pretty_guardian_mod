@@ -248,6 +248,13 @@ public class CuteCore
                 output.accept(CuteCoreBlock.LAMP_JAPANESE_MANGROVE.get());
                 output.accept(CuteCoreBlock.LAMP_JAPANESE_CHERRY.get());
 
+                output.accept(CuteCoreBlock.DOOR_SHOJI_BLOSSOM.get());
+                output.accept(CuteCoreBlock.DOOR_SHOJI_BLOSSOM_SMALL.get());
+                output.accept(CuteCoreBlock.DOOR_SHOJI_BIRCH.get());
+                output.accept(CuteCoreBlock.DOOR_SHOJI_BIRCH_SMALL.get());
+                output.accept(CuteCoreBlock.DOOR_SHOJI_CHERRY.get());
+                output.accept(CuteCoreBlock.DOOR_SHOJI_CHERRY_SMALL.get());
+
             }).build());
 
     public CuteCore()

@@ -1,0 +1,20 @@
+{
+	"textures": {
+		"particle": "#texture"
+	},
+	"elements": [
+		{
+			"name": "door_bottom_right",
+			"from": [0, 0, 7],
+			"to": [16, 16, 9],
+			"faces": {
+				"north": {"uv": [0, 8, 8, 16], "texture": "#texture"},
+				"east": {"uv": [7.5, 8, 8.5, 16], "texture": "#texture"},
+				"south": {"uv": [8, 8, 16, 16], "texture": "#texture"},
+				"west": {"uv": [7.5, 8, 8.5, 16], "texture": "#texture"},
+				"up": {"uv": [0, 13, 8, 14], "texture": "#texture"},
+				"down": {"uv": [8, 13, 16, 14], "texture": "#texture"}
+			}
+		}
+	]
+}
