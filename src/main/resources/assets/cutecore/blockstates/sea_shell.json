@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north,variant=0": { "model": "cutecore:block/sea_shell_variant_1", "y": 0 },
+    "facing=south,variant=0": { "model": "cutecore:block/sea_shell_variant_1", "y": 180 },
+    "facing=east,variant=0": { "model": "cutecore:block/sea_shell_variant_1", "y": 90 },
+    "facing=west,variant=0": { "model": "cutecore:block/sea_shell_variant_1", "y": 270 },
+    "facing=north,variant=1": { "model": "cutecore:block/sea_shell_variant_2", "y": 0 },
+    "facing=south,variant=1": { "model": "cutecore:block/sea_shell_variant_2", "y": 180 },
+    "facing=east,variant=1": { "model": "cutecore:block/sea_shell_variant_2", "y": 90 },
+    "facing=west,variant=1": { "model": "cutecore:block/sea_shell_variant_2", "y": 270 },
+    "facing=north,variant=2": { "model": "cutecore:block/sea_shell_variant_3", "y": 0 },
+    "facing=south,variant=2": { "model": "cutecore:block/sea_shell_variant_3", "y": 180 },
+    "facing=east,variant=2": { "model": "cutecore:block/sea_shell_variant_3", "y": 90 },
+    "facing=west,variant=2": { "model": "cutecore:block/sea_shell_variant_3", "y": 270 },
+    "facing=north,variant=3": { "model": "cutecore:block/sea_shell_variant_4", "y": 0 },
+    "facing=south,variant=3": { "model": "cutecore:block/sea_shell_variant_4", "y": 180 },
+    "facing=east,variant=3": { "model": "cutecore:block/sea_shell_variant_4", "y": 90 },
+    "facing=west,variant=3": { "model": "cutecore:block/sea_shell_variant_4", "y": 270 }
+  }
+}

@@ -1,6 +1,7 @@
 package com.doudou.cutecore.blocks;
 
 import com.doudou.cutecore.CuteCore;
+import com.doudou.cutecore.blocks.custom.SeaShell;
 import com.doudou.cutecore.blocks.custom.crop.CropLeavesBlock;
 import com.doudou.cutecore.blocks.custom.crop.MintCropBlock;
 import com.doudou.cutecore.blocks.custom.PicnicBasketBlock;
@@ -114,6 +115,7 @@ public class CuteCoreBlock {
     public static final RegistryObject<Block> DOOR_SHOJI_BIRCH_SMALL = registryBlock("door_shoji_birch_small", () -> new JapDoor(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(3.0F).noOcclusion().ignitedByLava(), BlockSetType.CHERRY));
     public static final RegistryObject<Block> DOOR_SHOJI_CHERRY = registryBlock("door_shoji_cherry", () -> new JapDoor(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(3.0F).noOcclusion().ignitedByLava(), BlockSetType.CHERRY));
     public static final RegistryObject<Block> DOOR_SHOJI_CHERRY_SMALL = registryBlock("door_shoji_cherry_small", () -> new JapDoor(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(3.0F).noOcclusion().ignitedByLava(), BlockSetType.CHERRY));
+    public static final RegistryObject<Block> SEA_SHELL = registryBlock("sea_shell", () -> new SeaShell(BlockBehaviour.Properties.copy(Blocks.TUBE_CORAL_BLOCK).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
         return CuteCore.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));

@@ -17,6 +17,7 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_RUBY_ORE = registerKey("add_ruby_ore");
     public static final ResourceKey<BiomeModifier> ADD_TREE_PISTACHIO = registerKey("add_tree_pistachio");
     public static final ResourceKey<BiomeModifier> ADD_TREE_LEMON = registerKey("add_tree_lemon");
+    public static final ResourceKey<BiomeModifier> ADD_SEA_SHELL = registerKey("add_sea_shell");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -41,6 +42,12 @@ public class ModBiomeModifiers {
         context.register(ADD_TREE_LEMON, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_FOREST),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.LEMON_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION
+        ));
+
+        context.register(ADD_SEA_SHELL, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_BEACH),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SEA_SHELL_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
     }

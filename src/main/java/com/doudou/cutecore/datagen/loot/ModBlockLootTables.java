@@ -85,6 +85,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(CuteCoreBlock.DOOR_SHOJI_CHERRY.get());
         this.dropSelf(CuteCoreBlock.DOOR_SHOJI_CHERRY_SMALL.get());
 
+        this.dropSelf(CuteCoreBlock.SEA_SHELL.get());
+
 
         this.add(CuteCoreBlock.PISTACHIO_LEAVES_CROP.get(), block -> createLeavesDrops(block, CuteCoreBlock.PISTACHIO_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         this.add(CuteCoreBlock.LEMON_LEAVES_CROP.get(), block -> createLeavesDrops(block, CuteCoreBlock.LEMON_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));

@@ -195,6 +195,8 @@ public class ModItemModelProvider extends ItemModelProvider {
                 mcLoc("item/template_spawn_egg"));
         withExistingParent(CuteCoreItem.CELESTIAL_RABBIT_EGG.getId().getPath(),
                 mcLoc("item/template_spawn_egg"));
+
+        simpleItem(CuteCoreItem.FAIRY_DUST);
     }
 
 
