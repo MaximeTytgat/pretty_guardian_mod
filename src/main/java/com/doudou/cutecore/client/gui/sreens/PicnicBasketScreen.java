@@ -1,6 +1,7 @@
-package com.doudou.cutecore.screen;
+package com.doudou.cutecore.client.gui.sreens;
 
 import com.doudou.cutecore.CuteCore;
+import com.doudou.cutecore.client.gui.sreens.inventory.PicnicBasketMenu;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;

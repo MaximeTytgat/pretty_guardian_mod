@@ -1,6 +1,5 @@
-package com.doudou.cutecore.screen;
+package com.doudou.cutecore.client.gui.sreens.inventory;
 
-import com.doudou.cutecore.blocks.CuteCoreBlock;
 import com.doudou.cutecore.blocks.entity.PicnicBasketBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
@@ -9,40 +8,32 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
 public class PicnicBasketMenu extends AbstractContainerMenu {
-    public final PicnicBasketBlockEntity blockEntity;
+    private static final int CONTAINER_SIZE = 4;
     private final Container container;
 
-    public PicnicBasketMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv, (PicnicBasketBlockEntity) Objects.requireNonNull(inv.player.level().getBlockEntity(extraData.readBlockPos())));
+    public PicnicBasketMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+        this(id, inv, new SimpleContainer(CONTAINER_SIZE));
     }
 
-    public PicnicBasketMenu(int pContainerId, Inventory inv, Container container) {
+    public PicnicBasketMenu(int pContainerId, Inventory inv, Container data) {
         super(ModMenuTypes.PICNIC_BASKET_MENU.get(), pContainerId);
-        checkContainerSize(container, 4);
-
-        this.container = container;
-        container.startOpen(inv.player);
-
-        blockEntity = ((PicnicBasketBlockEntity) container);
+        checkContainerSize(data, CONTAINER_SIZE);
+        data.startOpen(inv.player);
+        this.container = data;
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 71, 9));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 89, 9));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 71, 27));
-            this.addSlot(new SlotItemHandler(iItemHandler, 3, 89, 27));
-        });
-
+        this.addSlot(new ShulkerBoxSlot(data, 0, 71, 9));
+        this.addSlot(new ShulkerBoxSlot(data, 1, 89, 9));
+        this.addSlot(new ShulkerBoxSlot(data, 2, 71, 27));
+        this.addSlot(new ShulkerBoxSlot(data, 3, 89, 27));
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -94,8 +85,8 @@ public class PicnicBasketMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public boolean stillValid(Player player) {
-        return this.container.stillValid(player);
+    public boolean stillValid(Player p_40195_) {
+        return this.container.stillValid(p_40195_);
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
@@ -112,8 +103,6 @@ public class PicnicBasketMenu extends AbstractContainerMenu {
         }
     }
 
-
-    @Override
     public void removed(Player player) {
         super.removed(player);
         this.container.stopOpen(player);

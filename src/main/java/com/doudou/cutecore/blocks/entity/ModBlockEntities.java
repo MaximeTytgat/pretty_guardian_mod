@@ -17,6 +17,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(PicnicBasketBlockEntity::new,
                             CuteCoreBlock.PICNIC_BASKET.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<GemPolishingStationBlockEntity>> GEM_POLISHING_BE =
+            BLOCK_ENTITIES.register("gem_polishing_station_be", () ->
+                    BlockEntityType.Builder.of(GemPolishingStationBlockEntity::new,
+                            CuteCoreBlock.GEM_POLISHING_STATION.get()).build(null));
+
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

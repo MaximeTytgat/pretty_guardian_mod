@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -86,6 +87,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(CuteCoreBlock.STRAWBERRY_CROP_FLOWER.get(), models().cross(blockTexture(CuteCoreBlock.STRAWBERRY_CROP_FLOWER.get()).getPath(),
                 blockTexture(CuteCoreBlock.STRAWBERRY_CROP_FLOWER.get())).renderType("cutout"));
+
+        simpleBlockWithItem(CuteCoreBlock.GEM_POLISHING_STATION.get(), new ModelFile.UncheckedModelFile(modLoc("block/gem_polishing_station")));
     }
 
 

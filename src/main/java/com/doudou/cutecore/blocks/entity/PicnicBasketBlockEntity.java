@@ -2,7 +2,7 @@ package com.doudou.cutecore.blocks.entity;
 
 import com.doudou.cutecore.CuteCore;
 import com.doudou.cutecore.blocks.custom.PicnicBasketBlock;
-import com.doudou.cutecore.screen.PicnicBasketMenu;
+import com.doudou.cutecore.client.gui.sreens.inventory.PicnicBasketMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -11,22 +11,17 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ShulkerBoxBlock;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
-import net.minecraft.world.level.block.entity.ShulkerBoxBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.IntStream;
@@ -44,11 +39,6 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
 
     public PicnicBasketBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(ModBlockEntities.PICNIC_BASKET_BE.get(), blockPos, blockState);
-    }
-
-    @Override
-    public int getContainerSize() {
-        return this.itemStacks.size();
     }
 
     public void startOpen(Player p_59692_) {
@@ -80,6 +70,11 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
     }
 
     @Override
+    public int getContainerSize() {
+        return this.itemStacks.size();
+    }
+
+    @Override
     public Component getDisplayName() {
         return Component.translatable("block.cutecore.picnic_basket");
     }
@@ -89,38 +84,42 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
         return Component.translatable("block.cutecore.picnic_basket");
     }
 
-
+    @Override
     public void load(CompoundTag compoundTag) {
         super.load(compoundTag);
         this.loadFromTag(compoundTag);
     }
+
+    @Override
     protected void saveAdditional(CompoundTag compoundTag) {
-        super.saveAdditional(compoundTag);
+        CuteCore.LOGGER.info("Try to Save LootTable");
         if (!this.trySaveLootTable(compoundTag)) {
+            CuteCore.LOGGER.info("Saving picnic basket");
             ContainerHelper.saveAllItems(compoundTag, this.itemStacks, false);
         }
 
+        super.saveAdditional(compoundTag);
     }
 
-    public void loadFromTag(CompoundTag compoundTag) {
+    public void loadFromTag(CompoundTag p_59694_) {
         this.itemStacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
-        if (!this.tryLoadLootTable(compoundTag) && compoundTag.contains("Items", 2)) {
-            ContainerHelper.loadAllItems(compoundTag, this.itemStacks);
+        if (!this.tryLoadLootTable(p_59694_) && p_59694_.contains("Items", 9)) {
+            ContainerHelper.loadAllItems(p_59694_, this.itemStacks);
         }
     }
 
     @Override
-    protected NonNullList<ItemStack> getItems() {
+    protected @NotNull NonNullList<ItemStack> getItems() {
         return this.itemStacks;
     }
 
     @Override
-    protected void setItems(NonNullList<ItemStack> itemStacks) {
+    protected void setItems(@NotNull NonNullList<ItemStack> itemStacks) {
         this.itemStacks = itemStacks;
     }
 
     @Override
-    public int[] getSlotsForFace(Direction direction) {
+    public int @NotNull [] getSlotsForFace(@NotNull Direction direction) {
         return SLOTS;
     }
     @Override
@@ -133,9 +132,8 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
     }
 
     @Override
-    protected AbstractContainerMenu createMenu(int pContainerId, Inventory inventory) {
-        CuteCore.LOGGER.info("createMenu");
-        return new PicnicBasketMenu(pContainerId, inventory, this);
+    protected AbstractContainerMenu createMenu(int id, Inventory inventory) {
+        return new PicnicBasketMenu(id, inventory, this);
     }
 
     @Override

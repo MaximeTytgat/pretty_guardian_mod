@@ -1,4 +1,4 @@
-package com.doudou.cutecore.screen;
+package com.doudou.cutecore.client.gui.sreens.inventory;
 
 import com.doudou.cutecore.CuteCore;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -16,6 +16,9 @@ public class ModMenuTypes {
 
     public static final RegistryObject<MenuType<PicnicBasketMenu>> PICNIC_BASKET_MENU =
             registerMenuType("picnic_basket_menu", PicnicBasketMenu::new);
+
+    public static final RegistryObject<MenuType<GemPolishingStationMenu>> GEM_POLISHING_MENU =
+            registerMenuType("gem_polishing_menu", GemPolishingStationMenu::new);
 
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {

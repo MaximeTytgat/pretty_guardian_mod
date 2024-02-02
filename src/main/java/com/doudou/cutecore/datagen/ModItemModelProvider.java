@@ -167,6 +167,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(CuteCoreItem.PINK_SAPPHIRE_BOOTS);
 
         simpleItem(CuteCoreItem.RUBY);
+        simpleItem(CuteCoreItem.RAW_RUBY);
         handheldItem(CuteCoreItem.RUBY_AXE);
         handheldItem(CuteCoreItem.RUBY_PICKAXE);
         handheldItem(CuteCoreItem.RUBY_SHOVEL);
@@ -197,6 +198,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                 mcLoc("item/template_spawn_egg"));
 
         simpleItem(CuteCoreItem.FAIRY_DUST);
+        simpleItem(CuteCoreItem.GIFT_BOX);
     }
 
 

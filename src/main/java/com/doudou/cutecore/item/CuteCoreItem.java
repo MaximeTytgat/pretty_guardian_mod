@@ -137,6 +137,9 @@ public class CuteCoreItem {
     public static final RegistryObject<Item> TAVERN_MUSIC_DISC = ITEMS.register("tavern_music_disc", () -> new RecordItem(4, ModSounds.TAVERN.get(), new Item.Properties().stacksTo(1), 16000));
     public static final RegistryObject<Item> JAPANESE_FLUTE_MUSIC_DISC = ITEMS.register("japanese_flute_music_disc", () -> new RecordItem(4, ModSounds.JAPANESE_FLUTE.get(), new Item.Properties().stacksTo(1), 999999999));
 
+    public static final RegistryObject<Item> FAIRY_DUST = ITEMS.register("fairy_dust", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GIFT_BOX = ITEMS.register("gift_box", () -> new GiftBoxItem(new Item.Properties()));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

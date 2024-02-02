@@ -2,14 +2,15 @@ package com.doudou.cutecore;
 
 import com.doudou.cutecore.blocks.CuteCoreBlock;
 import com.doudou.cutecore.blocks.entity.ModBlockEntities;
+import com.doudou.cutecore.client.gui.sreens.GemPolishingStationScreen;
 import com.doudou.cutecore.entity.ModEntities;
 import com.doudou.cutecore.entity.client.celestialrabbit.CelestialRabbitRenderer;
 import com.doudou.cutecore.entity.client.strawberryCow.StrawberryCowRenderer;
 import com.doudou.cutecore.item.CuteCoreItem;
 import com.doudou.cutecore.loot.ModLootModifiers;
 import com.doudou.cutecore.particle.ModParticles;
-import com.doudou.cutecore.screen.ModMenuTypes;
-import com.doudou.cutecore.screen.PicnicBasketScreen;
+import com.doudou.cutecore.client.gui.sreens.inventory.ModMenuTypes;
+import com.doudou.cutecore.client.gui.sreens.PicnicBasketScreen;
 import com.doudou.cutecore.sound.ModSounds;
 import com.doudou.cutecore.util.ModItemProperties;
 import com.doudou.cutecore.worldgen.entity.ModEntityType;
@@ -162,6 +163,7 @@ public class CuteCore
 
 //                output.accept(CuteCoreItem.RAW_RUBY.get());
                 output.accept(CuteCoreItem.RUBY.get());
+                output.accept(CuteCoreItem.RAW_RUBY.get());
                 output.accept(CuteCoreBlock.RUBY_BLOCK.get());
                 output.accept(CuteCoreBlock.RUBY_ORE.get());
                 output.accept(CuteCoreBlock.DEEPSLATE_RUBY_ORE.get());
@@ -258,6 +260,8 @@ public class CuteCore
                 output.accept(CuteCoreBlock.SEA_SHELL.get());
 
                 output.accept(CuteCoreItem.FAIRY_DUST.get());
+                output.accept(CuteCoreItem.GIFT_BOX.get());
+                output.accept(CuteCoreBlock.GEM_POLISHING_STATION.get());
             }).build());
 
     public CuteCore()
@@ -337,6 +341,7 @@ public class CuteCore
             ModItemProperties.addCustomProperties();
 
             MenuScreens.register(ModMenuTypes.PICNIC_BASKET_MENU.get(), PicnicBasketScreen::new);
+            MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), GemPolishingStationScreen::new);
             EntityRenderers.register(ModEntities.STRAWBERRY_COW.get(), StrawberryCowRenderer::new);
             EntityRenderers.register(ModEntities.CELESTIAL_RABBIT.get(), CelestialRabbitRenderer::new);
         }

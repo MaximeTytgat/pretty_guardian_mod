@@ -48,7 +48,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(CuteCoreBlock.TEDDYBEAR_PLUSH.get());
         this.dropSelf(CuteCoreBlock.RABBIT_PLUSH.get());
         this.dropSelf(CuteCoreBlock.COW_PLUSH.get());
-        this.dropSelf(CuteCoreBlock.PICNIC_BASKET.get());
 
         this.dropSelf(CuteCoreBlock.SHOJI_BLOSSOM.get());
         this.dropSelf(CuteCoreBlock.SHOJI_BLOSSOM_BOTTOM.get());
@@ -87,6 +86,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.dropSelf(CuteCoreBlock.SEA_SHELL.get());
 
+        this.dropSelf(CuteCoreBlock.GEM_POLISHING_STATION.get());
+
 
         this.add(CuteCoreBlock.PISTACHIO_LEAVES_CROP.get(), block -> createLeavesDrops(block, CuteCoreBlock.PISTACHIO_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         this.add(CuteCoreBlock.LEMON_LEAVES_CROP.get(), block -> createLeavesDrops(block, CuteCoreBlock.LEMON_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
@@ -98,8 +99,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(CuteCoreBlock.PINK_SAPPHIRE_ORE.get(), createOreDrop(CuteCoreBlock.PINK_SAPPHIRE_ORE.get(), CuteCoreItem.PINK_SAPPHIRE.get()));
         this.add(CuteCoreBlock.DEEPSLATE_PINK_SAPPHIRE_ORE.get(), createOreDrop(CuteCoreBlock.DEEPSLATE_PINK_SAPPHIRE_ORE.get(), CuteCoreItem.PINK_SAPPHIRE.get()));
 
-        this.add(CuteCoreBlock.RUBY_ORE.get(), createOreDrop(CuteCoreBlock.RUBY_ORE.get(), CuteCoreItem.RUBY.get()));
-        this.add(CuteCoreBlock.DEEPSLATE_RUBY_ORE.get(), createOreDrop(CuteCoreBlock.DEEPSLATE_RUBY_ORE.get(), CuteCoreItem.RUBY.get()));
+        this.add(CuteCoreBlock.RUBY_ORE.get(), createOreDrop(CuteCoreBlock.RUBY_ORE.get(), CuteCoreItem.RAW_RUBY.get()));
+        this.add(CuteCoreBlock.DEEPSLATE_RUBY_ORE.get(), createOreDrop(CuteCoreBlock.DEEPSLATE_RUBY_ORE.get(), CuteCoreItem.RAW_RUBY.get()));
 
         LootItemCondition.Builder lootitemcondition$builder = LootItemBlockStatePropertyCondition
                 .hasBlockStateProperties(CuteCoreBlock.STRAWBERRY_CROP.get())
@@ -126,6 +127,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.add(CuteCoreBlock.VANILLA_CROP.get(), createCropDrops(CuteCoreBlock.VANILLA_CROP.get(), CuteCoreItem.VANILLA.get(),
                 CuteCoreItem.VANILLA_SEEDS.get(), lootitemcondition$builder3));
+
+        this.add(CuteCoreBlock.PICNIC_BASKET.get(), this::createShulkerBoxDrop);
     }
 
     @Override

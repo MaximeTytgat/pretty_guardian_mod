@@ -1,5 +1,6 @@
 package com.doudou.cutecore.blocks.custom;
 
+import com.doudou.cutecore.blocks.entity.GemPolishingStationBlockEntity;
 import com.doudou.cutecore.blocks.entity.ModBlockEntities;
 import com.doudou.cutecore.blocks.entity.PicnicBasketBlockEntity;
 import net.minecraft.ChatFormatting;
@@ -18,7 +19,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.BlockItem;
@@ -29,9 +29,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.ShulkerBoxBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -55,20 +52,9 @@ public class PicnicBasketBlock extends BaseEntityBlock {
     public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
     public static final ResourceLocation CONTENTS = new ResourceLocation("contents");
 
-    private static final VoxelShape SHAPE = Stream.of(
-            Block.box(4, 0, 3, 12, 1, 13),
-            Block.box(3, 0, 2, 4, 6, 14),
-            Block.box(12, 0, 2, 13, 6, 14),
-            Block.box(4, 0, 13, 12, 6, 14),
-            Block.box(4, 0, 2, 12, 6, 3),
-            Block.box(3, 6, 1.5, 13, 7, 8),
-            Block.box(3, 6, 8, 13, 7, 14.5),
-            Block.box(12, 6, 6.9, 13.5, 7, 9.1),
-            Block.box(2.5, 6, 6.9, 4, 7, 9.1),
-            Block.box(2.9, 6, 7, 4, 10, 9),
-            Block.box(12, 6, 7, 13.1, 10, 9),
-            Block.box(4, 9, 7, 12, 10, 9)
-    ).reduce(Shapes::or).get();
+    private static final VoxelShape SHAPE_NORTH = Stream.of(Block.box(2, 1, 3, 14, 7, 13), Block.box(3, 0, 4, 13, 1, 12)).reduce(Shapes::or).get();
+    private static final VoxelShape SHAPE_EAST = Stream.of(Block.box(3, 1, 2, 13, 7, 14), Block.box(4, 0, 3, 12, 1, 13)).reduce(Shapes::or).get();
+
 
     public PicnicBasketBlock(Properties properties) {
         super(properties);
@@ -77,11 +63,14 @@ public class PicnicBasketBlock extends BaseEntityBlock {
 
     @Override
     public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        return SHAPE;
+        Direction direction = blockState.getValue(FACING);
+        return direction.getAxis() == Direction.Axis.X ? SHAPE_EAST : SHAPE_NORTH;
     }
 
-    public BlockState getStateForPlacement(BlockPlaceContext p_56198_) {
-        return this.defaultBlockState().setValue(FACING, p_56198_.getClickedFace()).setValue(OPEN, false);
+    @Nullable
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(OPEN, false);
     }
 
     @Override
@@ -91,14 +80,21 @@ public class PicnicBasketBlock extends BaseEntityBlock {
 
     @Override
     public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState1, boolean b) {
-        super.onRemove(blockState, level, blockPos, blockState1, b);
+        if (!blockState.is(blockState1.getBlock())) {
+            BlockEntity blockentity = level.getBlockEntity(blockPos);
+            if (blockentity instanceof PicnicBasketBlockEntity) {
+                level.updateNeighbourForOutputSignal(blockPos, blockState.getBlock());
+            }
+
+            super.onRemove(blockState, level, blockPos, blockState1, b);
+        }
     }
 
     public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack) {
         if (itemStack.hasCustomHoverName()) {
             BlockEntity blockentity = level.getBlockEntity(blockPos);
             if (blockentity instanceof PicnicBasketBlockEntity) {
-                ((PicnicBasketBlockEntity)blockentity).setCustomName(itemStack.getHoverName());
+                ((PicnicBasketBlockEntity) blockentity).setCustomName(itemStack.getHoverName());
             }
         }
 
@@ -135,26 +131,20 @@ public class PicnicBasketBlock extends BaseEntityBlock {
                 }
             }
         }
-
     }
 
     @Override
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player p_56230_, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        if (level.isClientSide) {
-            return InteractionResult.SUCCESS;
-        } else if (p_56230_.isSpectator()) {
-            return InteractionResult.CONSUME;
-        } else {
-            BlockEntity blockentity = level.getBlockEntity(blockPos);
-            if (blockentity instanceof PicnicBasketBlockEntity) {
-                PicnicBasketBlockEntity picnicBasketBlockEntity = (PicnicBasketBlockEntity)blockentity;
-                p_56230_.openMenu(picnicBasketBlockEntity);
-
-                return InteractionResult.CONSUME;
+    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+        if (!level.isClientSide()) {
+            BlockEntity blockEntity = level.getBlockEntity(blockPos);
+            if (blockEntity instanceof PicnicBasketBlockEntity) {
+                NetworkHooks.openScreen(((ServerPlayer) player), (PicnicBasketBlockEntity) blockEntity, blockPos);
             } else {
-                return InteractionResult.PASS;
+                throw new IllegalStateException("Our container provider is missing!");
             }
         }
+
+        return InteractionResult.sidedSuccess(level.isClientSide());
     }
 
     public void playerWillDestroy(Level p_56212_, BlockPos p_56213_, BlockState p_56214_, Player p_56215_) {
@@ -197,9 +187,10 @@ public class PicnicBasketBlock extends BaseEntityBlock {
     }
 
     public int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos blockPos) {
-        return AbstractContainerMenu.getRedstoneSignalFromContainer((Container)level.getBlockEntity(blockPos));
+        return AbstractContainerMenu.getRedstoneSignalFromContainer((Container) level.getBlockEntity(blockPos));
     }
 
+    @Override
     public ItemStack getCloneItemStack(BlockGetter blockGetter, BlockPos blockPos, BlockState blockState) {
         ItemStack itemstack = super.getCloneItemStack(blockGetter, blockPos, blockState);
         blockGetter.getBlockEntity(blockPos, ModBlockEntities.PICNIC_BASKET_BE.get()).ifPresent((p_187446_) -> {
@@ -217,13 +208,5 @@ public class PicnicBasketBlock extends BaseEntityBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder builder) {
         builder.add(OPEN, FACING);
-    }
-
-    public BlockState rotate(BlockState p_56243_, Rotation p_56244_) {
-        return p_56243_.setValue(FACING, p_56244_.rotate(p_56243_.getValue(FACING)));
-    }
-
-    public BlockState mirror(BlockState p_56240_, Mirror p_56241_) {
-        return p_56240_.rotate(p_56241_.getRotation(p_56240_.getValue(FACING)));
     }
 }
