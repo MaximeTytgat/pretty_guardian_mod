@@ -1,6 +1,7 @@
 package com.doudou.cutecore.event;
 
 import com.doudou.cutecore.CuteCore;
+import com.doudou.cutecore.entity.client.butterfly.ButterflyModel;
 import com.doudou.cutecore.entity.client.celestialrabbit.CelestialRabbitModel;
 import com.doudou.cutecore.entity.client.ModModelLayers;
 import net.minecraft.client.model.CowModel;
@@ -16,5 +17,6 @@ public class ModEventBusClientEvents {
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModModelLayers.STRAWBERRY_COW_LAYER, CowModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.CELESTIAL_RABBIT_LAYER, CelestialRabbitModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.BUTTERFLY_LAYER, ButterflyModel::createBodyLayer);
     }
 }

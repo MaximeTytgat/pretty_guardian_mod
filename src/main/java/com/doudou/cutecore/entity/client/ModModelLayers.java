@@ -10,4 +10,7 @@ public class ModModelLayers {
 
     public static final ModelLayerLocation CELESTIAL_RABBIT_LAYER = new ModelLayerLocation(
             new ResourceLocation(CuteCore.MOD_ID, "celestial_rabbit_layer"), "main");
+
+    public static final ModelLayerLocation BUTTERFLY_LAYER = new ModelLayerLocation(
+            new ResourceLocation(CuteCore.MOD_ID, "butterfly_layer"), "main");
 }

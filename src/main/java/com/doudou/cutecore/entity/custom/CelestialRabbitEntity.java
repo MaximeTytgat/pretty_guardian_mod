@@ -51,7 +51,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
 
     public CelestialRabbitEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
-        this.moveControl = new FlyingMoveControl(this, 20, true);
+        this.moveControl = new FlyingMoveControl(this, 10, true);
     }
 
     public final AnimationState idleAnimationState = new AnimationState();
@@ -145,6 +145,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 80.0D)
+                .add(Attributes.ARMOR_TOUGHNESS, 10.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.25D)
                 .add(Attributes.FOLLOW_RANGE, 25.0D)
                 .add(Attributes.ATTACK_DAMAGE, 2.0D)
@@ -187,7 +188,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
 
     @Override
     public boolean isFlying() {
-        return true;
+        return !this.onGround();
     }
 
     @Override

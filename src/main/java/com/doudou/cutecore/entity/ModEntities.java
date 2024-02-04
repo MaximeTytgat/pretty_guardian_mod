@@ -1,6 +1,7 @@
 package com.doudou.cutecore.entity;
 
 import com.doudou.cutecore.CuteCore;
+import com.doudou.cutecore.entity.custom.ButterflyEntity;
 import com.doudou.cutecore.entity.custom.CelestialRabbitEntity;
 import com.doudou.cutecore.entity.custom.StrawberryCowEntity;
 import net.minecraft.world.entity.EntityType;
@@ -20,6 +21,9 @@ public class ModEntities {
     public static final RegistryObject<EntityType<CelestialRabbitEntity>> CELESTIAL_RABBIT =
             ENTITY_TYPES.register("celestial_rabbit", () -> EntityType.Builder.of(CelestialRabbitEntity::new, MobCategory.CREATURE)
                     .sized(0.5F, 0.8F).build("celestial_rabbit"));
+    public static final RegistryObject<EntityType<ButterflyEntity>> BUTTERFLY =
+            ENTITY_TYPES.register("butterfly", () -> EntityType.Builder.of(ButterflyEntity::new, MobCategory.CREATURE)
+                    .sized(0.5F, 0.35F).build("butterfly"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

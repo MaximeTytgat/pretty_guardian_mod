@@ -4,6 +4,7 @@ import com.doudou.cutecore.blocks.CuteCoreBlock;
 import com.doudou.cutecore.blocks.entity.ModBlockEntities;
 import com.doudou.cutecore.client.gui.sreens.GemPolishingStationScreen;
 import com.doudou.cutecore.entity.ModEntities;
+import com.doudou.cutecore.entity.client.butterfly.ButterflyRenderer;
 import com.doudou.cutecore.entity.client.celestialrabbit.CelestialRabbitRenderer;
 import com.doudou.cutecore.entity.client.strawberryCow.StrawberryCowRenderer;
 import com.doudou.cutecore.item.CuteCoreItem;
@@ -262,6 +263,18 @@ public class CuteCore
                 output.accept(CuteCoreItem.FAIRY_DUST.get());
                 output.accept(CuteCoreItem.GIFT_BOX.get());
                 output.accept(CuteCoreBlock.GEM_POLISHING_STATION.get());
+
+                output.accept(CuteCoreItem.ADMIRAL_BUTTERFLY_EGG.get());
+                output.accept(CuteCoreItem.APOLLO_BUTTERFLY_EGG.get());
+                output.accept(CuteCoreItem.DUSK_BUTTERFLY_EGG.get());
+                output.accept(CuteCoreItem.LEMON_BUTTERFLY_EGG.get());
+                output.accept(CuteCoreItem.MORPHO_BUTTERFLY_EGG.get());
+                output.accept(CuteCoreItem.ORCHID_BUTTERFLY_EGG.get());
+                output.accept(CuteCoreItem.PEACOCK_BUTTERFLY_EGG.get());
+                output.accept(CuteCoreItem.PINK_BUTTERFLY_EGG.get());
+                output.accept(CuteCoreItem.SKIPPER_BUTTERFLY_EGG.get());
+                output.accept(CuteCoreItem.VIOLETTE_BUTTERFLY_EGG.get());
+
             }).build());
 
     public CuteCore()
@@ -344,6 +357,7 @@ public class CuteCore
             MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), GemPolishingStationScreen::new);
             EntityRenderers.register(ModEntities.STRAWBERRY_COW.get(), StrawberryCowRenderer::new);
             EntityRenderers.register(ModEntities.CELESTIAL_RABBIT.get(), CelestialRabbitRenderer::new);
+            EntityRenderers.register(ModEntities.BUTTERFLY.get(), ButterflyRenderer::new);
         }
     }
 }

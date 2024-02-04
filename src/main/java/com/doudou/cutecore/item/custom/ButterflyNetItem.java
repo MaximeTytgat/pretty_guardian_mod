@@ -7,14 +7,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class ButterflyNet extends Item {
+public class ButterflyNetItem extends Item {
 
-    public ButterflyNet(Properties properties) {
+    public ButterflyNetItem(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
-        return super.use(level, player, interactionHand);
     }
 }

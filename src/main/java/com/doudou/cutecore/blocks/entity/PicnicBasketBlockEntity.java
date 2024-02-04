@@ -92,9 +92,7 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
 
     @Override
     protected void saveAdditional(CompoundTag compoundTag) {
-        CuteCore.LOGGER.info("Try to Save LootTable");
         if (!this.trySaveLootTable(compoundTag)) {
-            CuteCore.LOGGER.info("Saving picnic basket");
             ContainerHelper.saveAllItems(compoundTag, this.itemStacks, false);
         }
 

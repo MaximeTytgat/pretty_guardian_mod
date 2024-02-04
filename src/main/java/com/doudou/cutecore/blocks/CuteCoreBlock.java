@@ -130,6 +130,12 @@ public class CuteCoreBlock {
         return toReturn;
     }
 
+    public static <T extends Block> RegistryObject<Block> registryBlockWithItemProperties(String name, Supplier<T> block, Item.Properties properties) {
+        RegistryObject<Block> toReturn = BLOCKS.register(name, block);
+        CuteCore.ITEMS.register(name, () -> new BlockItem(toReturn.get(), properties));
+        return toReturn;
+    }
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }

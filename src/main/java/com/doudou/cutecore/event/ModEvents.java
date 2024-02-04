@@ -28,12 +28,16 @@ public class ModEvents {
             return;
         }
 
+        if (!hasCuteWandInInventory(player)) {
+            return;
+        }
+
         // Vérifier le cooldown basé sur le temps
         Date currentTime = new Date();
         long timeSinceLastJump = currentTime.getTime() - lastJumpTime.getTime();
 
         if (event.getKey() == GLFW.GLFW_KEY_SPACE && event.getAction() == GLFW.GLFW_PRESS) {
-            if (hasCuteWandInInventory(player) && !player.onGround()) {
+            if (!player.onGround()) {
                 if (timeSinceLastJump >= COOLDOWN_MILLIS_DOUBLE_JUMP) {
                     player.jumpFromGround();
                     lastJumpTime = currentTime;

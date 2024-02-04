@@ -2,6 +2,7 @@ package com.doudou.cutecore.event;
 
 import com.doudou.cutecore.CuteCore;
 import com.doudou.cutecore.entity.ModEntities;
+import com.doudou.cutecore.entity.custom.ButterflyEntity;
 import com.doudou.cutecore.entity.custom.CelestialRabbitEntity;
 import com.doudou.cutecore.entity.custom.StrawberryCowEntity;
 import com.doudou.cutecore.particle.ModParticles;
@@ -29,6 +30,7 @@ public class ModEventBusEvents {
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.STRAWBERRY_COW.get(), StrawberryCowEntity.createAttributes().build());
         event.put(ModEntities.CELESTIAL_RABBIT.get(), CelestialRabbitEntity.createAttributes().build());
+        event.put(ModEntities.BUTTERFLY.get(), ButterflyEntity.createAttributes().build());
     }
 
 

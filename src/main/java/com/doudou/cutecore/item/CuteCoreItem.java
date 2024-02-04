@@ -3,13 +3,12 @@ package com.doudou.cutecore.item;
 import com.doudou.cutecore.CuteCore;
 import com.doudou.cutecore.blocks.CuteCoreBlock;
 import com.doudou.cutecore.entity.ModEntities;
+import com.doudou.cutecore.entity.custom.ButterflyEntity;
 import com.doudou.cutecore.item.custom.*;
 import com.doudou.cutecore.item.custom.projectiles.HeartItem;
 import com.doudou.cutecore.item.custom.projectiles.StarLightItem;
 import com.doudou.cutecore.sound.ModSounds;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -128,9 +127,6 @@ public class CuteCoreItem {
     public static final RegistryObject<Item> STRAWBERRY_COW_EGG = ITEMS.register("strawberry_cow_egg", () -> new ForgeSpawnEggItem(ModEntities.STRAWBERRY_COW, 0xfcd6df, 0xf798be, new Item.Properties()));
     public static final RegistryObject<Item> CELESTIAL_RABBIT_EGG = ITEMS.register("celestial_rabbit_egg", () -> new ForgeSpawnEggItem(ModEntities.CELESTIAL_RABBIT, 0xf564df, 0xf548be, new Item.Properties()));
 
-    public static final RegistryObject<Item> BUTTERFLY_NET = ITEMS.register("butterfly_net", () -> new ButterflyNet(new Item.Properties()));
-
-
     public static final RegistryObject<Item> SAILORMOON_OST_MUSIC_DISC = ITEMS.register("sailormoon_ost_music_disc", () -> new RecordItem(4, ModSounds.SAILORMOON_OST.get(), new Item.Properties().stacksTo(1), 10380));
     public static final RegistryObject<Item> SAILORMOON_MOONPRIDE_MUSIC_DISC = ITEMS.register("sailormoon_moonpride_music_disc", () -> new RecordItem(4, ModSounds.SAILORMOON_MOONPRIDE.get(), new Item.Properties().stacksTo(1), 1780));
     public static final RegistryObject<Item> LOFI_MUSIC_DISC = ITEMS.register("lofi_music_disc", () -> new RecordItem(4, ModSounds.LOFI.get(), new Item.Properties().stacksTo(1), 9700));
@@ -138,7 +134,21 @@ public class CuteCoreItem {
     public static final RegistryObject<Item> JAPANESE_FLUTE_MUSIC_DISC = ITEMS.register("japanese_flute_music_disc", () -> new RecordItem(4, ModSounds.JAPANESE_FLUTE.get(), new Item.Properties().stacksTo(1), 999999999));
 
     public static final RegistryObject<Item> FAIRY_DUST = ITEMS.register("fairy_dust", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> GIFT_BOX = ITEMS.register("gift_box", () -> new GiftBoxItem(new Item.Properties()));
+    public static final RegistryObject<Item> GIFT_BOX = ITEMS.register("gift_box", () -> new GiftBoxItem(new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> BUTTERFLY_NET = ITEMS.register("butterfly_net", () -> new ButterflyNetItem(new Item.Properties().stacksTo(1).durability(100)));
+    public static final RegistryObject<Item> ADMIRAL_BUTTERFLY_EGG = ITEMS.register("admiral_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.ADMIRAL, new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<Item> APOLLO_BUTTERFLY_EGG = ITEMS.register("apollo_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.APOLLO, new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<Item> DUSK_BUTTERFLY_EGG = ITEMS.register("dusk_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.DUSK, new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<Item> LEMON_BUTTERFLY_EGG = ITEMS.register("lemon_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.LEMON, new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<Item> MORPHO_BUTTERFLY_EGG = ITEMS.register("morpho_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.MORPHO, new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<Item> ORCHID_BUTTERFLY_EGG = ITEMS.register("orchid_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.ORCHID, new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<Item> PEACOCK_BUTTERFLY_EGG = ITEMS.register("peacock_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.PEACOCK, new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<Item> PINK_BUTTERFLY_EGG = ITEMS.register("pink_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.PINK, new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<Item> SKIPPER_BUTTERFLY_EGG = ITEMS.register("skipper_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.SKIPPER, new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<Item> VIOLETTE_BUTTERFLY_EGG = ITEMS.register("violette_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.VIOLETTE, new Item.Properties().stacksTo(16)));
+
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
