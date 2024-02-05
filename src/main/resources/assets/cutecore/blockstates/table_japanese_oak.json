@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "facing=north,north=false,east=false,south=false,west=false": { "model": "cutecore:block/table_japanese_oak", "y": 0 },
+    "facing=north,north=true,east=false,south=false,west=false": { "model": "cutecore:block/table_japanese_oak", "y": 0 },
+    "facing=north,north=false,east=true,south=false,west=false": { "model": "cutecore:block/table_japanese_oak", "y": 0 },
+    "facing=north,north=false,east=false,south=true,west=false": { "model": "cutecore:block/table_japanese_oak", "y": 0 },
+    "facing=north,north=false,east=false,south=false,west=true": { "model": "cutecore:block/table_japanese_oak", "y": 0 }
+  }
+}

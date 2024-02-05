@@ -84,6 +84,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(CuteCoreBlock.DOOR_SHOJI_CHERRY.get());
         this.dropSelf(CuteCoreBlock.DOOR_SHOJI_CHERRY_SMALL.get());
 
+        this.dropSelf(CuteCoreBlock.TABLE_JAPANESE_OAK.get());
+
         this.dropSelf(CuteCoreBlock.SEA_SHELL.get());
 
         this.dropSelf(CuteCoreBlock.GEM_POLISHING_STATION.get());

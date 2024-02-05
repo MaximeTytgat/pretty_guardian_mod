@@ -1,23 +1,17 @@
 package com.doudou.cutecore.blocks.custom.furniture;
 
-import com.doudou.cutecore.CuteCore;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.DoorHingeSide;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class JapDoor extends DoorBlock {
+public class JapDoorBlock extends DoorBlock {
     protected static final VoxelShape SOUTH_AABB = Block.box(0, 0, 7, 16, 16, 9);
     protected static final VoxelShape SOUTH_AABB_OPEN = Block.box(13, 0, 7, 29, 16, 9);
     protected static final VoxelShape NORTH_AABB = Block.box(0, 0, 7, 16, 16, 9);
@@ -27,7 +21,7 @@ public class JapDoor extends DoorBlock {
     protected static final VoxelShape EAST_AABB = Block.box(7, 0, 0, 9, 16, 16);
     protected static final VoxelShape EAST_AABB_OPEN = Block.box(7, 0, 13, 9, 16, 29);
 
-    public JapDoor(Properties properties, BlockSetType type) {
+    public JapDoorBlock(Properties properties, BlockSetType type) {
         super(properties, type);
     }
 

@@ -2,23 +2,18 @@ package com.doudou.cutecore.blocks.custom.furniture;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class ShojiBlossom extends Block {
+public class ShojiBlock extends Block {
 
     public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
 
@@ -28,7 +23,7 @@ public class ShojiBlossom extends Block {
     private static final VoxelShape SHAPE_WEST = Block.box(7, 0, 0, 9, 16, 16);
 
 
-    public ShojiBlossom(Properties properties) {
+    public ShojiBlock(Properties properties) {
         super(properties);
     }
 

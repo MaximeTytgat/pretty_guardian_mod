@@ -255,6 +255,8 @@ public class CuteCore
                 output.accept(CuteCoreBlock.DOOR_SHOJI_CHERRY.get());
                 output.accept(CuteCoreBlock.DOOR_SHOJI_CHERRY_SMALL.get());
 
+                output.accept(CuteCoreBlock.TABLE_JAPANESE_OAK.get());
+
                 output.accept(CuteCoreBlock.SEA_SHELL.get());
 
                 output.accept(CuteCoreItem.FAIRY_DUST.get());
