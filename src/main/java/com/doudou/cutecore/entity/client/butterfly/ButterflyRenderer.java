@@ -15,7 +15,7 @@ import net.minecraft.world.entity.animal.axolotl.Axolotl;
 import java.util.Locale;
 import java.util.Map;
 
-public class ButterflyRenderer extends MobRenderer<ButterflyEntity, ButterflyModel<ButterflyEntity>>{
+public class ButterflyRenderer extends MobRenderer<ButterflyEntity, ButterflyModel<ButterflyEntity>> {
     private static final Map<ButterflyEntity.Variant, ResourceLocation> TEXTURE_BY_TYPE = Util.make(Maps.newHashMap(), (p_242076_) -> {
         for(ButterflyEntity.Variant butterfly$variant : ButterflyEntity.Variant.values()) {
             p_242076_.put(butterfly$variant, new ResourceLocation(CuteCore.MOD_ID, String.format(Locale.ROOT, "textures/entity/butterfly/%s_butterfly.png", butterfly$variant.getName())));

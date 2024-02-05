@@ -13,7 +13,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
 public class ButterflyModel<T extends Entity> extends HierarchicalModel<T> {
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "butterfly"), "main");
 	private final ModelPart butterfly;
 	public ButterflyModel(ModelPart root) {
 		this.butterfly = root.getChild("body");

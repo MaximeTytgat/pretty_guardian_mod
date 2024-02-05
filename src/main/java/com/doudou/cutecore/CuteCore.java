@@ -6,6 +6,7 @@ import com.doudou.cutecore.client.gui.sreens.GemPolishingStationScreen;
 import com.doudou.cutecore.entity.ModEntities;
 import com.doudou.cutecore.entity.client.butterfly.ButterflyRenderer;
 import com.doudou.cutecore.entity.client.celestialrabbit.CelestialRabbitRenderer;
+import com.doudou.cutecore.entity.client.fairy.FairyRenderer;
 import com.doudou.cutecore.entity.client.strawberryCow.StrawberryCowRenderer;
 import com.doudou.cutecore.item.CuteCoreItem;
 import com.doudou.cutecore.loot.ModLootModifiers;
@@ -358,6 +359,7 @@ public class CuteCore
             EntityRenderers.register(ModEntities.STRAWBERRY_COW.get(), StrawberryCowRenderer::new);
             EntityRenderers.register(ModEntities.CELESTIAL_RABBIT.get(), CelestialRabbitRenderer::new);
             EntityRenderers.register(ModEntities.BUTTERFLY.get(), ButterflyRenderer::new);
+            EntityRenderers.register(ModEntities.FAIRY.get(), FairyRenderer::new);
         }
     }
 }

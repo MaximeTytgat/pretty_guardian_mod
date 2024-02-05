@@ -143,8 +143,8 @@ public class ButterflyEntity extends Animal implements FlyingAnimal, VariantHold
     @Override
     protected PathNavigation createNavigation(Level p_21480_) {
         FlyingPathNavigation flyingpathnavigation = new FlyingPathNavigation(this, p_21480_) {
-            public boolean isStableDestination(BlockPos p_27947_) {
-                return !this.level.getBlockState(p_27947_.below()).isAir();
+            public boolean isStableDestination(BlockPos below) {
+                return !this.level.getBlockState(below.below()).isAir();
             }
 
             public void tick() {

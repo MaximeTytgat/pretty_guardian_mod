@@ -13,4 +13,7 @@ public class ModModelLayers {
 
     public static final ModelLayerLocation BUTTERFLY_LAYER = new ModelLayerLocation(
             new ResourceLocation(CuteCore.MOD_ID, "butterfly_layer"), "main");
+
+    public static final ModelLayerLocation FAIRY_LAYER = new ModelLayerLocation(
+            new ResourceLocation(CuteCore.MOD_ID, "fairy_layer"), "main");
 }

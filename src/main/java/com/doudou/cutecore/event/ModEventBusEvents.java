@@ -31,7 +31,6 @@ public class ModEventBusEvents {
         event.put(ModEntities.STRAWBERRY_COW.get(), StrawberryCowEntity.createAttributes().build());
         event.put(ModEntities.CELESTIAL_RABBIT.get(), CelestialRabbitEntity.createAttributes().build());
         event.put(ModEntities.BUTTERFLY.get(), ButterflyEntity.createAttributes().build());
+        event.put(ModEntities.FAIRY.get(), ButterflyEntity.createAttributes().build());
     }
-
-
 }
