@@ -213,10 +213,6 @@ public class CuteCore
                 output.accept(CuteCoreBlock.LEMON_LEAVES_CROP.get());
                 output.accept(CuteCoreBlock.LEMON_SAPLING.get());
 
-                output.accept(CuteCoreItem.STRAWBERRY_COW_EGG.get());
-                output.accept(CuteCoreItem.CELESTIAL_RABBIT_EGG.get());
-                output.accept(CuteCoreItem.BUTTERFLY_NET.get());
-
                 output.accept(CuteCoreBlock.MYMELODY_PLUSH.get());
                 output.accept(CuteCoreBlock.KUROMI_PLUSH.get());
                 output.accept(CuteCoreBlock.CAVALIER_PLUSH.get());
@@ -265,6 +261,7 @@ public class CuteCore
                 output.accept(CuteCoreItem.GIFT_BOX.get());
                 output.accept(CuteCoreBlock.GEM_POLISHING_STATION.get());
 
+                output.accept(CuteCoreItem.BUTTERFLY_NET.get());
                 output.accept(CuteCoreItem.ADMIRAL_BUTTERFLY_EGG.get());
                 output.accept(CuteCoreItem.APOLLO_BUTTERFLY_EGG.get());
                 output.accept(CuteCoreItem.DUSK_BUTTERFLY_EGG.get());
@@ -275,6 +272,9 @@ public class CuteCore
                 output.accept(CuteCoreItem.PINK_BUTTERFLY_EGG.get());
                 output.accept(CuteCoreItem.SKIPPER_BUTTERFLY_EGG.get());
                 output.accept(CuteCoreItem.VIOLETTE_BUTTERFLY_EGG.get());
+                output.accept(CuteCoreItem.FAIRY_EGG.get());
+                output.accept(CuteCoreItem.STRAWBERRY_COW_EGG.get());
+                output.accept(CuteCoreItem.CELESTIAL_RABBIT_EGG.get());
 
             }).build());
 

@@ -5,6 +5,7 @@ import com.doudou.cutecore.blocks.CuteCoreBlock;
 import com.doudou.cutecore.entity.ModEntities;
 import com.doudou.cutecore.entity.custom.ButterflyEntity;
 import com.doudou.cutecore.item.custom.*;
+import com.doudou.cutecore.item.custom.food.ClassicDonut;
 import com.doudou.cutecore.item.custom.food.ReusableFoodContainerItem;
 import com.doudou.cutecore.item.custom.projectiles.CuteArrowItem;
 import com.doudou.cutecore.item.custom.projectiles.HeartItem;
@@ -32,7 +33,7 @@ public class CuteCoreItem {
 
     public static final RegistryObject<Item> CHOCOLATE_STRAWBERRY = ITEMS.register("chocolate_strawberry", () -> new Item(new Item.Properties().food(ModFoods.STRAWBERRY)));
     public static final RegistryObject<Item> SECRET_DONUT = ITEMS.register("secret_donut", () -> new Item(new Item.Properties().food(ModFoods.DONUT)));
-    public static final RegistryObject<Item> DONUT = ITEMS.register("donut", () -> new Item(new Item.Properties().food(ModFoods.DONUT)));
+    public static final RegistryObject<Item> DONUT = ITEMS.register("donut", () -> new ClassicDonut(new Item.Properties().food(ModFoods.DONUT)));
     public static final RegistryObject<Item> STRAWBERRY_DONUT = ITEMS.register("strawberry_donut", () -> new Item(new Item.Properties().food(ModFoods.DONUT)));
     public static final RegistryObject<Item> CHOCOLATE_DONUT = ITEMS.register("chocolate_donut", () -> new Item(new Item.Properties().food(ModFoods.DONUT)));
     public static final RegistryObject<Item> SECRET_MOCHI_DONUT = ITEMS.register("secret_mochi_donut", () -> new Item(new Item.Properties().food(ModFoods.MOCHI_DONUT)));
@@ -151,6 +152,7 @@ public class CuteCoreItem {
     public static final RegistryObject<Item> SKIPPER_BUTTERFLY_EGG = ITEMS.register("skipper_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.SKIPPER, new Item.Properties().stacksTo(16)));
     public static final RegistryObject<Item> VIOLETTE_BUTTERFLY_EGG = ITEMS.register("violette_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.VIOLETTE, new Item.Properties().stacksTo(16)));
 
+    public static final RegistryObject<Item> FAIRY_EGG = ITEMS.register("fairy_egg", () -> new ForgeSpawnEggItem(ModEntities.FAIRY, 0xf5d6df, 0x9798be, new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {
