@@ -55,7 +55,6 @@ public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<F
     }
 
     public static AnimationState idleAnimationState = new AnimationState();
-    private int idleAnimationTimeOut = 0;
 
     public boolean isPushable() { return false; }
     protected void doPush(Entity p_27415_) {}
