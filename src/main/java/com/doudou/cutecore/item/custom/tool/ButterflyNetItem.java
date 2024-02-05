@@ -1,4 +1,4 @@
-package com.doudou.cutecore.item.custom;
+package com.doudou.cutecore.item.custom.tool;
 
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;

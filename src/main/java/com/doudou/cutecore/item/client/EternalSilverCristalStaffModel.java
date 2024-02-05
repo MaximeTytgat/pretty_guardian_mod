@@ -1,7 +1,7 @@
 package com.doudou.cutecore.item.client;
 
 import com.doudou.cutecore.CuteCore;
-import com.doudou.cutecore.item.custom.EternalSilverCristalStaffitem;
+import com.doudou.cutecore.item.custom.tool.EternalSilverCristalStaffitem;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 

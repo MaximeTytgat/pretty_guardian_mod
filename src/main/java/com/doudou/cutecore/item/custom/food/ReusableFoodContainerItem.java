@@ -1,4 +1,4 @@
-package com.doudou.cutecore.item.custom;
+package com.doudou.cutecore.item.custom.food;
 
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;

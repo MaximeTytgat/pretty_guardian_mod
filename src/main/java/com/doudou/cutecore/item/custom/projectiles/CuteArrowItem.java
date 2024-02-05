@@ -1,4 +1,4 @@
-package com.doudou.cutecore.item.custom;
+package com.doudou.cutecore.item.custom.projectiles;
 
 
 import com.doudou.cutecore.worldgen.entity.ModEntityType;

@@ -1,7 +1,8 @@
-package com.doudou.cutecore.item.custom;
+package com.doudou.cutecore.item.custom.tool;
 
 
 import com.doudou.cutecore.item.CuteCoreItem;
+import com.doudou.cutecore.item.custom.projectiles.CuteArrowItem;
 import com.doudou.cutecore.util.ModTags;
 import com.doudou.cutecore.worldgen.entity.projectile.CuteArrowEntity;
 import net.minecraft.sounds.SoundEvents;

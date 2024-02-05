@@ -1,9 +1,8 @@
 package com.doudou.cutecore.entity.custom;
 
-import com.doudou.cutecore.CuteCore;
 import com.doudou.cutecore.entity.ModEntities;
 import com.doudou.cutecore.item.CuteCoreItem;
-import com.doudou.cutecore.item.custom.ButterflyNetItem;
+import com.doudou.cutecore.item.custom.tool.ButterflyNetItem;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -11,7 +10,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.util.*;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.DifficultyInstance;

@@ -1,4 +1,4 @@
-package com.doudou.cutecore.item.custom;
+package com.doudou.cutecore.item.custom.tool;
 
 import com.doudou.cutecore.CuteCore;
 import com.doudou.cutecore.util.ModTags;

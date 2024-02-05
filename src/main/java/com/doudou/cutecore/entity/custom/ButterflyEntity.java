@@ -2,7 +2,7 @@ package com.doudou.cutecore.entity.custom;
 
 import com.doudou.cutecore.entity.ModEntities;
 import com.doudou.cutecore.item.CuteCoreItem;
-import com.doudou.cutecore.item.custom.ButterflyNetItem;
+import com.doudou.cutecore.item.custom.tool.ButterflyNetItem;
 import com.mojang.serialization.Codec;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;

@@ -1,4 +1,4 @@
-package com.doudou.cutecore.item.custom;
+package com.doudou.cutecore.item.custom.tool;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
