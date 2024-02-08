@@ -22,6 +22,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(GemPolishingStationBlockEntity::new,
                             CuteCoreBlock.GEM_POLISHING_STATION.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<StaffMagicTableBlockEntity>> STAFF_MAGIC_TABLE_BE =
+            BLOCK_ENTITIES.register("staff_magic_table_be", () ->
+                    BlockEntityType.Builder.of(StaffMagicTableBlockEntity::new,
+                            CuteCoreBlock.STAFF_MAGIC_TABLE.get()).build(null));
+
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

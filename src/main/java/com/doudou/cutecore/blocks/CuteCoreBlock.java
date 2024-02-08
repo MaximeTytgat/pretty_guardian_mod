@@ -1,7 +1,7 @@
 package com.doudou.cutecore.blocks;
 
 import com.doudou.cutecore.CuteCore;
-import com.doudou.cutecore.blocks.custom.GemPolishingStationBlock;
+import com.doudou.cutecore.blocks.custom.table.GemPolishingStationBlock;
 import com.doudou.cutecore.blocks.custom.SeaShell;
 import com.doudou.cutecore.blocks.custom.crop.CropLeavesBlock;
 import com.doudou.cutecore.blocks.custom.crop.MintCropBlock;
@@ -14,6 +14,7 @@ import com.doudou.cutecore.blocks.custom.food.BaseThreeCake;
 import com.doudou.cutecore.blocks.custom.furniture.*;
 import com.doudou.cutecore.blocks.custom.plush.CowPlushBlock;
 import com.doudou.cutecore.blocks.custom.plush.PlushiesBlock;
+import com.doudou.cutecore.blocks.custom.table.StaffMagicTableBlock;
 import com.doudou.cutecore.item.CuteCoreItem;
 import com.doudou.cutecore.worldgen.tree.LemonTreeGrower;
 import com.doudou.cutecore.worldgen.tree.PistachioTreeGrower;
@@ -119,6 +120,7 @@ public class CuteCoreBlock {
     public static final RegistryObject<Block> SEA_SHELL = registryBlock("sea_shell", () -> new SeaShell(BlockBehaviour.Properties.copy(Blocks.TUBE_CORAL_BLOCK).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
 
     public static final RegistryObject<Block> GEM_POLISHING_STATION = registryBlock("gem_polishing_station", () -> new GemPolishingStationBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> STAFF_MAGIC_TABLE = registryBlock("staff_magic_table", () -> new StaffMagicTableBlock(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE).noOcclusion().requiresCorrectToolForDrops()));
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
         return CuteCore.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));

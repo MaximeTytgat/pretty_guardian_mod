@@ -1,4 +1,4 @@
-package com.doudou.cutecore.blocks.custom;
+package com.doudou.cutecore.blocks.custom.table;
 
 import com.doudou.cutecore.blocks.entity.GemPolishingStationBlockEntity;
 import com.doudou.cutecore.blocks.entity.ModBlockEntities;
