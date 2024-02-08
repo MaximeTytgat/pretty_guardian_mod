@@ -1,5 +1,6 @@
 package com.doudou.cutecore.blocks.entity;
 
+import com.doudou.cutecore.CuteCore;
 import com.doudou.cutecore.client.gui.sreens.inventory.GemPolishingStationMenu;
 import com.doudou.cutecore.item.CuteCoreItem;
 import net.minecraft.core.BlockPos;
@@ -28,7 +29,7 @@ import org.jetbrains.annotations.Nullable;
 public class GemPolishingStationBlockEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(2);
     private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 0;
+    private static final int OUTPUT_SLOT = 1;
 
     private LazyOptional<ItemStackHandler> lazyItemHandler = LazyOptional.empty();
 
@@ -144,12 +145,12 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements MenuP
     private boolean hasRecipe() {
         boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == CuteCoreItem.RAW_RUBY.get();
         ItemStack result = new ItemStack(CuteCoreItem.RUBY.get());
-
-
         return hasCraftingItem && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
+        CuteCore.LOGGER.info("getItem: " + this.itemHandler.getStackInSlot(OUTPUT_SLOT).getItem());
+        CuteCore.LOGGER.info("itemHandler.getStackInSlot(OUTPUT_SLOT).is(item): " + this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item));
         return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item);
     }
 
