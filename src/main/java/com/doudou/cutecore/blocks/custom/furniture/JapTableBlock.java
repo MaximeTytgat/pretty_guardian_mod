@@ -19,7 +19,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 
 public class JapTableBlock extends Block {
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty NORTH_ATTACHED = BlockStateProperties.NORTH;
     public static final BooleanProperty EAST_ATTACHED = BlockStateProperties.EAST;
     public static final BooleanProperty SOUTH_ATTACHED = BlockStateProperties.SOUTH;
@@ -34,12 +33,16 @@ public class JapTableBlock extends Block {
     public static final VoxelShape TABLE_CONNECTED_EAST = Shapes.or(TABLE_TOP, LEG_NORTH_WEST, LEG_SOUTH_WEST);
     public static final VoxelShape TABLE_CONNECTED_SOUTH = Shapes.or(TABLE_TOP, LEG_NORTH_WEST, LEG_NORTH_EAST);
     public static final VoxelShape TABLE_CONNECTED_WEST = Shapes.or(TABLE_TOP, LEG_NORTH_EAST, LEG_SOUTH_EAST);
+    public static final VoxelShape TABLE_CONNECTED_NORTH_EAST = Shapes.or(TABLE_TOP, LEG_SOUTH_WEST);
+    public static final VoxelShape TABLE_CONNECTED_NORTH_WEST = Shapes.or(TABLE_TOP, LEG_SOUTH_EAST);
+    public static final VoxelShape TABLE_CONNECTED_SOUTH_EAST = Shapes.or(TABLE_TOP, LEG_NORTH_WEST);
+    public static final VoxelShape TABLE_CONNECTED_SOUTH_WEST = Shapes.or(TABLE_TOP, LEG_NORTH_EAST);
+
 
 
     public JapTableBlock(Properties properties) {
         super(properties);
         this.defaultBlockState()
-                .setValue(FACING, Direction.NORTH)
                 .setValue(NORTH_ATTACHED, false)
                 .setValue(EAST_ATTACHED, false)
                 .setValue(SOUTH_ATTACHED, false)
@@ -48,25 +51,45 @@ public class JapTableBlock extends Block {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        switch (state.getValue(FACING)) {
-            case NORTH:
-                return state.getValue(NORTH_ATTACHED) ? TABLE_CONNECTED_NORTH : BASE_TABLE;
-            case EAST:
-                return state.getValue(EAST_ATTACHED) ? TABLE_CONNECTED_EAST : BASE_TABLE;
-            case SOUTH:
-                return state.getValue(SOUTH_ATTACHED) ? TABLE_CONNECTED_SOUTH : BASE_TABLE;
-            case WEST:
-                return state.getValue(WEST_ATTACHED) ? TABLE_CONNECTED_WEST : BASE_TABLE;
-            default:
-                return BASE_TABLE;
+        if (state.getValue(NORTH_ATTACHED) && state.getValue(EAST_ATTACHED) && state.getValue(SOUTH_ATTACHED) && state.getValue(WEST_ATTACHED)) {
+            return TABLE_TOP;
+        } else if (state.getValue(NORTH_ATTACHED) && state.getValue(EAST_ATTACHED) && state.getValue(SOUTH_ATTACHED)) {
+            return TABLE_TOP;
+        } else if (state.getValue(NORTH_ATTACHED) && state.getValue(EAST_ATTACHED) && state.getValue(WEST_ATTACHED)) {
+            return TABLE_TOP;
+        } else if (state.getValue(NORTH_ATTACHED) && state.getValue(SOUTH_ATTACHED) && state.getValue(WEST_ATTACHED)) {
+            return TABLE_TOP;
+        } else if (state.getValue(EAST_ATTACHED) && state.getValue(SOUTH_ATTACHED) && state.getValue(WEST_ATTACHED)) {
+            return TABLE_TOP;
+        } else if (state.getValue(NORTH_ATTACHED) && state.getValue(EAST_ATTACHED)) {
+            return TABLE_CONNECTED_NORTH_EAST;
+        } else if (state.getValue(NORTH_ATTACHED) && state.getValue(SOUTH_ATTACHED)) {
+            return TABLE_TOP;
+        } else if (state.getValue(NORTH_ATTACHED) && state.getValue(WEST_ATTACHED)) {
+            return TABLE_CONNECTED_NORTH_WEST;
+        } else if (state.getValue(EAST_ATTACHED) && state.getValue(SOUTH_ATTACHED)) {
+            return TABLE_CONNECTED_SOUTH_EAST;
+        } else if (state.getValue(EAST_ATTACHED) && state.getValue(WEST_ATTACHED)) {
+            return TABLE_TOP;
+        } else if (state.getValue(SOUTH_ATTACHED) && state.getValue(WEST_ATTACHED)) {
+            return TABLE_CONNECTED_SOUTH_WEST;
+        } else if (state.getValue(NORTH_ATTACHED)) {
+            return TABLE_CONNECTED_NORTH;
+        } else if (state.getValue(EAST_ATTACHED)) {
+            return TABLE_CONNECTED_EAST;
+        } else if (state.getValue(SOUTH_ATTACHED)) {
+            return TABLE_CONNECTED_SOUTH;
+        } else if (state.getValue(WEST_ATTACHED)) {
+            return TABLE_CONNECTED_WEST;
+        } else {
+            return BASE_TABLE;
         }
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        BlockState state = this.defaultBlockState()
-                .setValue(FACING, context.getHorizontalDirection().getOpposite());
+        BlockState state = this.defaultBlockState();
         return getConnections(state, context.getLevel(), context.getClickedPos());
     }
 
@@ -94,6 +117,6 @@ public class JapTableBlock extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, NORTH_ATTACHED, EAST_ATTACHED, SOUTH_ATTACHED, WEST_ATTACHED);
+        builder.add(NORTH_ATTACHED, EAST_ATTACHED, SOUTH_ATTACHED, WEST_ATTACHED);
     }
 }

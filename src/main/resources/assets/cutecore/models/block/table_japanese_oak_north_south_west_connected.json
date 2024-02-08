@@ -1,0 +1,6 @@
+{
+  "parent": "cutecore:block/base_table_japanese_north_south_west_connected",
+  "textures": {
+    "texture": "cutecore:block/japanese_table_oak"
+  }
+}

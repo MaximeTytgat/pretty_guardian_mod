@@ -1,5 +1,5 @@
 {
-  "parent": "cutecore:block/base_table_japanese",
+  "parent": "cutecore:block/base_table_japanese_north_east_connected",
   "textures": {
     "texture": "cutecore:block/japanese_table_oak"
   }
