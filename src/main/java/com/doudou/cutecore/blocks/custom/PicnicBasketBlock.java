@@ -147,25 +147,25 @@ public class PicnicBasketBlock extends BaseEntityBlock {
         return InteractionResult.sidedSuccess(level.isClientSide());
     }
 
-    public void playerWillDestroy(Level p_56212_, BlockPos p_56213_, BlockState p_56214_, Player p_56215_) {
-        BlockEntity blockentity = p_56212_.getBlockEntity(p_56213_);
+    public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
+        BlockEntity blockentity = level.getBlockEntity(blockPos);
         if (blockentity instanceof PicnicBasketBlockEntity picnicBasketBlockEntity) {
-            if (!p_56212_.isClientSide && p_56215_.isCreative() && !picnicBasketBlockEntity.isEmpty()) {
+            if (!level.isClientSide && player.isCreative() && !picnicBasketBlockEntity.isEmpty()) {
                 ItemStack itemstack = new ItemStack(this);
                 blockentity.saveToItem(itemstack);
                 if (picnicBasketBlockEntity.hasCustomName()) {
                     itemstack.setHoverName(picnicBasketBlockEntity.getCustomName());
                 }
 
-                ItemEntity itementity = new ItemEntity(p_56212_, (double)p_56213_.getX() + 0.5D, (double)p_56213_.getY() + 0.5D, (double)p_56213_.getZ() + 0.5D, itemstack);
+                ItemEntity itementity = new ItemEntity(level, (double)blockPos.getX() + 0.5D, (double)blockPos.getY() + 0.5D, (double)blockPos.getZ() + 0.5D, itemstack);
                 itementity.setDefaultPickUpDelay();
-                p_56212_.addFreshEntity(itementity);
+                level.addFreshEntity(itementity);
             } else {
-                picnicBasketBlockEntity.unpackLootTable(p_56215_);
+                picnicBasketBlockEntity.unpackLootTable(player);
             }
         }
 
-        super.playerWillDestroy(p_56212_, p_56213_, p_56214_, p_56215_);
+        super.playerWillDestroy(level, blockPos, blockState, player);
     }
 
     public List<ItemStack> getDrops(BlockState blockState, LootParams.Builder builder) {

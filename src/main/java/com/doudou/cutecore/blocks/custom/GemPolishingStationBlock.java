@@ -26,8 +26,8 @@ public class GemPolishingStationBlock extends BaseEntityBlock {
 
     private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 12, 16);
 
-    public GemPolishingStationBlock(Properties p_49224_) {
-        super(p_49224_);
+    public GemPolishingStationBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
