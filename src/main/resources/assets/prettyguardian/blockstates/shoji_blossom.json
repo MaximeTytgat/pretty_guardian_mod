@@ -1,0 +1,9 @@
+
+{
+  "variants": {
+    "facing=north": { "model": "prettyguardian:block/shoji_blossom", "y": 0 },
+    "facing=south": { "model": "prettyguardian:block/shoji_blossom", "y": 180 },
+    "facing=east": { "model": "prettyguardian:block/shoji_blossom", "y": 90 },
+    "facing=west": { "model": "prettyguardian:block/shoji_blossom", "y": 270 }
+  }
+}

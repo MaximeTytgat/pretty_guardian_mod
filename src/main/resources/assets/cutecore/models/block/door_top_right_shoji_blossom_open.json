@@ -1,6 +1,0 @@
-{
-	"parent": "cutecore:block/base_door_top_right_shoji_open",
-	"textures": {
-		"texture": "cutecore:block/door_shoji_blossom"
-	}
-}

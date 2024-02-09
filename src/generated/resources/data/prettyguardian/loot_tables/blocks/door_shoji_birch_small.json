@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "prettyguardian:door_shoji_birch_small"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "prettyguardian:blocks/door_shoji_birch_small"
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "prettyguardian:strawberry"
+    },
+    "B": {
+      "item": "minecraft:egg"
+    },
+    "C": {
+      "item": "minecraft:wheat"
+    },
+    "D": {
+      "item": "prettyguardian:chocolate"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "DBD",
+    "CCC"
+  ],
+  "result": {
+    "item": "prettyguardian:three_strawberry_choco_cake"
+  },
+  "show_notification": true
+}

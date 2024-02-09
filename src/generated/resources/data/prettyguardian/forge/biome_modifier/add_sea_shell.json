@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_beach",
+  "features": "prettyguardian:sea_shell_placed",
+  "step": "vegetal_decoration"
+}

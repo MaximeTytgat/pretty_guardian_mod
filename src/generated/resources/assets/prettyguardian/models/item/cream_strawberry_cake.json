@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "prettyguardian:item/cream_strawberry_cake"
+  }
+}

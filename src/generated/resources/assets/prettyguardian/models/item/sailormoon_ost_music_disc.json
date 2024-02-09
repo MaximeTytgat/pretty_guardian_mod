@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "prettyguardian:item/sailormoon_ost_music_disc"
+  }
+}

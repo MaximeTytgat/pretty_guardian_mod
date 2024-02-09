@@ -1,0 +1,6 @@
+{
+    "parent": "prettyguardian:item/cupidon_bow",
+    "textures": {
+        "layer0": "prettyguardian:item/cupidon_bow_pulling_2"
+    }
+}

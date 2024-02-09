@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "prettyguardian:block/strawberry_stage0"
+    },
+    "age=1": {
+      "model": "prettyguardian:block/strawberry_stage1"
+    },
+    "age=2": {
+      "model": "prettyguardian:block/strawberry_stage2"
+    },
+    "age=3": {
+      "model": "prettyguardian:block/strawberry_stage3"
+    },
+    "age=4": {
+      "model": "prettyguardian:block/strawberry_stage4"
+    }
+  }
+}

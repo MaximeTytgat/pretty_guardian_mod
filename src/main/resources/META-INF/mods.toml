@@ -15,7 +15,7 @@ license="MIT"
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
-modId="cutecore" #mandatory
+modId="prettyguardian" #mandatory
 # The version number of the mod
 version="1.0.0" #mandatory
 # A display name for the mod
@@ -25,7 +25,7 @@ displayName="Cute Core" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-#logoFile="cutecore.png" #optional
+#logoFile="prettyguardian.png" #optional
 # A text field displayed in the mod UI
 #credits="" #optional
 # A text field displayed in the mod UI
@@ -41,7 +41,7 @@ authors="Doudou, Rylow" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''${mod_description}'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.cutecore]] #optional
+[[dependencies.prettyguardian]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
     # Does this dependency have to exist - if not, ordering below must be specified
@@ -54,14 +54,14 @@ description='''${mod_description}'''
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT, or SERVER
     side="BOTH"
-[[dependencies.cutecore]] #optional
+[[dependencies.prettyguardian]] #optional
     modId="geckolib"
     mandatory=true
     versionRange="[4.2.2,)"
     ordering="NONE"
     side="BOTH"
 # Here's another dependency
-[[dependencies.cutecore]]
+[[dependencies.prettyguardian]]
     modId="minecraft"
     mandatory=true
     # This version range declares a minimum of the current minecraft version up to but not including the next major version

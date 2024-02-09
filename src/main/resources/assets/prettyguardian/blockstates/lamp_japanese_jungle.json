@@ -1,0 +1,11 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "lit=false": {
+      "model": "prettyguardian:block/lamp_japanese_jungle"
+    },
+    "lit=true": {
+      "model": "prettyguardian:block/lamp_japanese_jungle_lit"
+    }
+  }
+}

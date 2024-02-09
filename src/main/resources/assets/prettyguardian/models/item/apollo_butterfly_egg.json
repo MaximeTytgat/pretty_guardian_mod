@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "prettyguardian:item/apollo_butterfly_item"
+  }
+}

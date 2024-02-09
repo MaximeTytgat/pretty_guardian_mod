@@ -1,0 +1,7 @@
+{
+  "parent": "prettyguardian:block/custom_leaves",
+  "textures": {
+    "all": "minecraft:block/oak_leaves",
+    "crop": "prettyguardian:block/pistachio_unripe"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_top",
+  "textures": {
+    "side": "prettyguardian:block/marshmello_block",
+    "top": "prettyguardian:block/marshmello_block_top"
+  }
+}

@@ -1,0 +1,6 @@
+{
+	"parent": "prettyguardian:block/base_door_top_left_shoji",
+	"textures": {
+		"texture": "prettyguardian:block/door_shoji_birch_small"
+	}
+}

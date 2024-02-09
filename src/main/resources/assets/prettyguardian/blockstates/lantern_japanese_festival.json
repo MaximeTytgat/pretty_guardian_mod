@@ -1,0 +1,17 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "lit=false,hanging=false": {
+      "model": "prettyguardian:block/lantern_japanese_festival"
+    },
+    "lit=true,hanging=false": {
+      "model": "prettyguardian:block/lantern_japanese_festival_lit"
+    },
+    "lit=false,hanging=true": {
+      "model": "prettyguardian:block/lantern_japanese_festival_hanging"
+    },
+    "lit=true,hanging=true": {
+      "model": "prettyguardian:block/lantern_japanese_festival_hanging_lit"
+    }
+  }
+}

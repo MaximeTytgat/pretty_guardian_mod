@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "bites=0": { "model": "prettyguardian:block/magic_pie" },
+    "bites=1": { "model": "prettyguardian:block/magic_pie_slice1"},
+    "bites=2": { "model": "prettyguardian:block/magic_pie_slice2"},
+    "bites=3": { "model": "prettyguardian:block/magic_pie_slice3"}
+  }
+}

@@ -1,0 +1,9 @@
+
+{
+  "variants": {
+    "facing=north": { "model": "prettyguardian:block/shoji_birch_bottom", "y": 0 },
+    "facing=south": { "model": "prettyguardian:block/shoji_birch_bottom", "y": 180 },
+    "facing=east": { "model": "prettyguardian:block/shoji_birch_bottom", "y": 90 },
+    "facing=west": { "model": "prettyguardian:block/shoji_birch_bottom", "y": 270 }
+  }
+}

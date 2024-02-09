@@ -1,0 +1,76 @@
+{
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "texture": "#texture",
+          "uv": [
+            5.5,
+            8.5,
+            7.5,
+            15.5
+          ]
+        },
+        "east": {
+          "texture": "#texture",
+          "uv": [
+            8.5,
+            1.0,
+            15.5,
+            5.0
+          ]
+        },
+        "north": {
+          "texture": "#texture",
+          "uv": [
+            8.5,
+            1.0,
+            10.5,
+            5.0
+          ]
+        },
+        "south": {
+          "texture": "#texture",
+          "uv": [
+            13.5,
+            1.0,
+            15.5,
+            5.0
+          ]
+        },
+        "up": {
+          "texture": "#texture",
+          "uv": [
+            5.5,
+            0.5,
+            7.5,
+            7.5
+          ]
+        },
+        "west": {
+          "texture": "#texture",
+          "uv": [
+            8.5,
+            6.0,
+            15.5,
+            10.0
+          ]
+        }
+      },
+      "from": [
+        11,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        7,
+        15
+      ]
+    }
+  ],
+  "textures": {
+    "particle": "prettyguardian:block/strawberry_choco_cake",
+    "texture": "prettyguardian:block/strawberry_choco_cake"
+  }
+}

@@ -1,9 +1,0 @@
-
-{
-  "variants": {
-    "facing=north": { "model": "cutecore:block/shoji_blossom", "y": 0 },
-    "facing=south": { "model": "cutecore:block/shoji_blossom", "y": 180 },
-    "facing=east": { "model": "cutecore:block/shoji_blossom", "y": 90 },
-    "facing=west": { "model": "cutecore:block/shoji_blossom", "y": 270 }
-  }
-}

@@ -1,0 +1,11 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "lit=false": {
+      "model": "prettyguardian:block/lamp_japanese_dark_oak"
+    },
+    "lit=true": {
+      "model": "prettyguardian:block/lamp_japanese_dark_oak_lit"
+    }
+  }
+}

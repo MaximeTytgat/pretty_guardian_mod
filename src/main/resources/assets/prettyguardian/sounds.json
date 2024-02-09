@@ -1,0 +1,56 @@
+{
+  "sailormoon_ost_music_disc": {
+    "sounds": [
+      {
+        "name": "prettyguardian:sailormoon_ost_music_disc",
+        "stream": true
+      }
+    ]
+  },
+  "sailormoon_moonpride_music_disc": {
+    "sounds": [
+      {
+        "name": "prettyguardian:sailormoon_moonpride_music_disc",
+        "stream": true
+      }
+    ]
+  },
+  "tavern_music_disc": {
+    "sounds": [
+      {
+        "name": "prettyguardian:tavern_music_disc",
+        "stream": true
+      }
+    ]
+  },
+  "japanese_flute_music_disc": {
+    "sounds": [
+      {
+        "name": "prettyguardian:japanese_flute_music_disc",
+        "stream": true
+      }
+    ]
+  },
+  "lofi_music_disc": {
+    "sounds": [
+      {
+        "name": "prettyguardian:lofi_music_disc",
+        "stream": true
+      }
+    ]
+  },
+  "cute_want_shoot": {
+    "sounds": [
+      {
+        "name": "prettyguardian:cute_want_shoot"
+      }
+    ]
+  },
+  "eternal_silver_cristal_staff_shoot": {
+    "sounds": [
+      {
+        "name": "prettyguardian:eternal_silver_cristal_staff_shoot"
+      }
+    ]
+  }
+}
