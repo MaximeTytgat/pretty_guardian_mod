@@ -1,7 +1,6 @@
 package com.doudou.prettyguardian.client.gui.sreens.inventory;
 
 import com.doudou.prettyguardian.blocks.PrettyGuardianBlock;
-import com.doudou.prettyguardian.blocks.entity.GemPolishingStationBlockEntity;
 import com.doudou.prettyguardian.blocks.entity.StaffMagicTableBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -14,7 +13,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class StaffMagicTableMenu extends AbstractContainerMenu {
-    public final GemPolishingStationBlockEntity blockEntity;
+    public final StaffMagicTableBlockEntity blockEntity;
     private final Level level;
     public StaffMagicTableMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()));
@@ -22,8 +21,8 @@ public class StaffMagicTableMenu extends AbstractContainerMenu {
 
     public StaffMagicTableMenu(int pContainerId, Inventory inv, BlockEntity entity) {
         super(ModMenuTypes.STAFF_MAGIC_TABLE_MENU.get(), pContainerId);
-        checkContainerSize(inv, 2);
-        this.blockEntity = (GemPolishingStationBlockEntity) entity;
+        checkContainerSize(inv, 4);
+        this.blockEntity = (StaffMagicTableBlockEntity) entity;
         this.level = inv.player.level();
 
         addPlayerInventory(inv);
@@ -35,8 +34,6 @@ public class StaffMagicTableMenu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(iItemHandler, 2, 71, 27));
             this.addSlot(new SlotItemHandler(iItemHandler, 3, 89, 27));
         });
-
-
     }
 
 

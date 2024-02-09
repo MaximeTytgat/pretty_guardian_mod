@@ -15,8 +15,8 @@ public class StaffMagicTableScreen extends AbstractContainerScreen<StaffMagicTab
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(PrettyGuardian.MOD_ID, "textures/gui/container/picnic_basket.png");
 
-    public StaffMagicTableScreen(StaffMagicTableMenu p_97741_, Inventory p_97742_, Component p_97743_) {
-        super(p_97741_, p_97742_, p_97743_);
+    public StaffMagicTableScreen(StaffMagicTableMenu staffMagicTableMenu, Inventory inventory, Component component) {
+        super(staffMagicTableMenu, inventory, component);
     }
 
     @Override

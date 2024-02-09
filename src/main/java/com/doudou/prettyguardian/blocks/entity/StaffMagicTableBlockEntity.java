@@ -26,7 +26,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class StaffMagicTableBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(2);
+    private final ItemStackHandler itemHandler = new ItemStackHandler(4);
     private static final int INPUT_SLOT_1 = 0;
     private static final int INPUT_SLOT_2 = 1;
     private static final int INPUT_SLOT_3 = 2;
@@ -107,11 +107,16 @@ public class StaffMagicTableBlockEntity extends BlockEntity implements MenuProvi
     }
 
     private boolean hasRecipe() {
-        boolean hasKeyItem = this.itemHandler.getStackInSlot(INPUT_SLOT_1).getItem() == PrettyGuardianItem.PLUTONS_KEY.get();
-        boolean hasMirrorItem = this.itemHandler.getStackInSlot(INPUT_SLOT_1).getItem() == PrettyGuardianItem.NEPTUNES_MIRROR.get();
-        boolean hasCupidonBowItem = this.itemHandler.getStackInSlot(INPUT_SLOT_1).getItem() == PrettyGuardianItem.CUPIDON_BOW.get();
+        Item item1 = this.itemHandler.getStackInSlot(INPUT_SLOT_1).getItem();
+        Item item2 = this.itemHandler.getStackInSlot(INPUT_SLOT_2).getItem();
+        Item item3 = this.itemHandler.getStackInSlot(INPUT_SLOT_3).getItem();
+
+        boolean slot1HasArtephacte = item1 == PrettyGuardianItem.PLUTONS_KEY.get() || item1 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item1 == PrettyGuardianItem.CUPIDON_BOW.get();
+        boolean slot2HasArtephacte = item2 == PrettyGuardianItem.PLUTONS_KEY.get() || item2 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item2 == PrettyGuardianItem.CUPIDON_BOW.get();
+        boolean slot3HasArtephacte = item3 == PrettyGuardianItem.PLUTONS_KEY.get() || item3 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item3 == PrettyGuardianItem.CUPIDON_BOW.get();
+
         ItemStack result = new ItemStack(PrettyGuardianItem.ETERNAL_SILVER_CISTAL_STAFF.get());
-        return hasKeyItem && hasMirrorItem && hasCupidonBowItem && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+        return (slot1HasArtephacte && slot2HasArtephacte && slot3HasArtephacte) && (item1 != item2 && item2 != item3 && item1 != item3) && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
