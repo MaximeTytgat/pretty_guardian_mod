@@ -1,0 +1,6 @@
+{
+	"parent": "prettyguardian:block/base_screen_left_lower",
+	"textures": {
+		"texture": "prettyguardian:block/screen_japanese_cherry_log"
+	}
+}

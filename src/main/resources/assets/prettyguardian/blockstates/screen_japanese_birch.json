@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "facing=north,half=lower,part=left": { "model": "prettyguardian:block/screen_japanese_left_lower_birch", "y": 180 },
+    "facing=north,half=lower,part=right": { "model": "prettyguardian:block/screen_japanese_right_lower_birch", "y": 180 },
+    "facing=north,half=upper,part=left": { "model": "prettyguardian:block/screen_japanese_left_upper_birch", "y": 180 },
+    "facing=north,half=upper,part=right": { "model": "prettyguardian:block/screen_japanese_right_upper_birch", "y": 180 },
+
+    "facing=south,half=lower,part=left": { "model": "prettyguardian:block/screen_japanese_left_lower_birch", "y": 0 },
+    "facing=south,half=lower,part=right": { "model": "prettyguardian:block/screen_japanese_right_lower_birch", "y": 0 },
+    "facing=south,half=upper,part=left": { "model": "prettyguardian:block/screen_japanese_left_upper_birch", "y": 0 },
+    "facing=south,half=upper,part=right": { "model": "prettyguardian:block/screen_japanese_right_upper_birch", "y": 0 },
+
+    "facing=east,half=lower,part=left": { "model": "prettyguardian:block/screen_japanese_left_lower_birch", "y": 270 },
+    "facing=east,half=lower,part=right": { "model": "prettyguardian:block/screen_japanese_right_lower_birch", "y": 270 },
+    "facing=east,half=upper,part=left": { "model": "prettyguardian:block/screen_japanese_left_upper_birch", "y": 270 },
+    "facing=east,half=upper,part=right": { "model": "prettyguardian:block/screen_japanese_right_upper_birch", "y": 270 },
+
+    "facing=west,half=lower,part=left": { "model": "prettyguardian:block/screen_japanese_left_lower_birch", "y": 90 },
+    "facing=west,half=lower,part=right": { "model": "prettyguardian:block/screen_japanese_right_lower_birch", "y": 90 },
+    "facing=west,half=upper,part=left": { "model": "prettyguardian:block/screen_japanese_left_upper_birch", "y": 90 },
+    "facing=west,half=upper,part=right": { "model": "prettyguardian:block/screen_japanese_right_upper_birch", "y": 90 }
+  }
+}

@@ -210,6 +210,10 @@ public class CreativeTab {
 
                 output.accept(PrettyGuardianBlock.CHAIR_JAPANESE_OAK.get());
 
+                output.accept(PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_PLANK.get());
+                output.accept(PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_LOG.get());
+                output.accept(PrettyGuardianBlock.SCREEN_JAPANESE_BIRCH.get());
+
 
                 output.accept(PrettyGuardianBlock.SEA_SHELL.get());
 

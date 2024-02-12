@@ -123,6 +123,10 @@ public class PrettyGuardianBlock {
     public static final RegistryObject<Block> TABLE_JAPANESE_CHERRY_PLANK = registryBlock("table_japanese_cherry_plank", () -> new JapTableBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
     public static final RegistryObject<Block> TABLE_JAPANESE_CHERRY_LOG = registryBlock("table_japanese_cherry_log", () -> new JapTableBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
 
+    public static final RegistryObject<Block> SCREEN_JAPANESE_CHERRY_PLANK = registryBlock("screen_japanese_cherry_plank", () -> new JapScreenBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> SCREEN_JAPANESE_CHERRY_LOG = registryBlock("screen_japanese_cherry_log", () -> new JapScreenBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> SCREEN_JAPANESE_BIRCH = registryBlock("screen_japanese_birch", () -> new JapScreenBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+
     public static final RegistryObject<Block> SEA_SHELL = registryBlock("sea_shell", () -> new SeaShell(BlockBehaviour.Properties.copy(Blocks.TUBE_CORAL_BLOCK).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
 
     public static final RegistryObject<Block> GEM_POLISHING_STATION = registryBlock("gem_polishing_station", () -> new GemPolishingStationBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));

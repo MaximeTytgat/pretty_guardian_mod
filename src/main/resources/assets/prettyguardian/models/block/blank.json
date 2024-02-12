@@ -1,0 +1,20 @@
+{
+	"textures": {
+		"0": "prettyguardian:block/screen_japanese_cherry_plank",
+		"particle": "prettyguardian:block/screen_japanese_cherry_plank"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 7],
+			"to": [16, 16, 9],
+			"faces": {
+				"north": {"uv": [10.5, 7, 16, 16], "texture": "#0", "cullface": "down" },
+				"east": {"uv": [14, 0, 16, 16], "texture": "#0", "cullface": "west" },
+				"south": {"uv": [10.5, 7, 16, 16], "texture": "#0", "cullface": "down" },
+				"west": {"uv": [14, 0, 16, 16], "texture": "#0", "cullface": "east" },
+				"up": {"uv": [10.5, 14, 16, 16], "texture": "#0", "cullface": "down" },
+				"down": {"uv": [10.5, 14, 16, 16], "texture": "#0", "cullface": "up" }
+			}
+		}
+	]
+}

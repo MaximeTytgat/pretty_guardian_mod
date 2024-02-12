@@ -1,0 +1,6 @@
+{
+	"parent": "prettyguardian:block/base_screen_right_upper",
+	"textures": {
+		"texture": "prettyguardian:block/screen_japanese_birch"
+	}
+}
