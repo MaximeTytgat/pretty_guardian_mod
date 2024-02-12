@@ -1,8 +1,30 @@
 package com.max.prettyguardian.item.custom.tool;
 
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
+import com.max.prettyguardian.PrettyGuardian;
+import com.max.prettyguardian.item.PrettyGuardianItem;
+import com.max.prettyguardian.item.custom.projectiles.BubbleItem;
+import com.max.prettyguardian.item.custom.projectiles.HeartItem;
+import com.max.prettyguardian.sound.ModSounds;
+import com.max.prettyguardian.worldgen.entity.projectile.BubbleEntity;
+import com.max.prettyguardian.worldgen.entity.projectile.HeartEntity;
+import net.minecraft.client.model.AnimationUtils;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.HumanoidArm;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+
+import java.util.Random;
 
 public class NeptunesMirror extends Item {
 
@@ -12,5 +34,104 @@ public class NeptunesMirror extends Item {
 
     public boolean isFoil(ItemStack itemStack) {
         return true;
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+        ItemStack itemstack = player.getItemInHand(interactionHand);
+
+        player.startUsingItem(interactionHand);
+        return InteractionResultHolder.consume(itemstack);
+    }
+
+    @Override
+    public int getUseDuration(ItemStack stack) {
+        return 72000;
+    }
+
+    @Override
+    public void onUseTick(Level level, LivingEntity livingEntity, ItemStack itemStack, int i) {
+        if (livingEntity instanceof Player player) {
+            float damage = 8.0F;
+            if (player.getName().getString().equals("LittlePokky")) {
+                damage = 999.9F;
+            }
+            ItemStack itemstack = new ItemStack(PrettyGuardianItem.BUBBLE.get());
+            BubbleItem arrowitem = (BubbleItem) PrettyGuardianItem.BUBBLE.get();
+            BubbleEntity abstractBubble = arrowitem.createArrow(level, itemstack, player, damage);
+
+
+            Random rand = new Random();
+            float random = rand.nextFloat() * 0.4F - 0.2F;
+            Random rand1 = new Random();
+            boolean randBool = rand1.nextBoolean();
+            Random rand2 = new Random();
+            boolean randBool1 = rand2.nextBoolean();
+
+            Vec3 look = player.getLookAngle();
+            abstractBubble.setPos(player.getX(), player.getEyeY() - 0.5F, player.getZ());
+
+            // shoot the bubble in a random direction
+            if (random > 0.05F || random < -0.05F) {
+                if (randBool) {
+                    abstractBubble.shoot(look.x + random, look.y + 0.05F, look.z, 3.0F, 1.0F);
+                } else if (randBool1) {
+                    abstractBubble.shoot(look.x, look.y + 0.05F, look.z + random, 3.0F, 1.0F);
+                } else {
+                    abstractBubble.shoot(look.x, look.y + random < 0 ? (0.05F + random) : random, look.z, 3.0F, 1.0F);
+                }
+            } else {
+                abstractBubble.shoot(look.x, look.y + 0.05F, look.z, 3.0F, 1.0F);
+            }
+//            abstractBubble.shoot(look.x, look.y + 0.05F, look.z, 3.0F, 1.0F);
+            level.addFreshEntity(abstractBubble);
+
+        }
+
+
+        super.onUseTick(level, livingEntity, itemStack, i);
+    }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.NONE;
+    }
+
+    @Override
+    public <T extends LivingEntity> boolean poseLeftArm(ItemStack stack, HumanoidModel<T> model, T entity, HumanoidArm mainHand) {
+        if (entity.getUseItemRemainingTicks() > 0 && entity.getUseItem().getItem() == this) {
+            this.animateHands(model, entity, true);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public <T extends LivingEntity> boolean poseRightArm(ItemStack stack, HumanoidModel<T> model, T entity, HumanoidArm mainHand) {
+        if (entity.getUseItemRemainingTicks() > 0 && entity.getUseItem().getItem() == this) {
+            this.animateHands(model, entity, false);
+            return true;
+        }
+        return false;
+    }
+
+    public <T extends LivingEntity> void animateHands(HumanoidModel<T> model, T entity, boolean leftHand) {
+
+        ModelPart mainHand = leftHand ? model.leftArm : model.rightArm;
+        int dir = (leftHand ? -1 : 1);
+
+        float cr = (entity.isCrouching() ? 0.3F : 0.0F);
+
+        float headXRot = MthUtils.wrapRad(model.head.xRot);
+        float headYRot = MthUtils.wrapRad(model.head.yRot);
+
+        float pitch = Mth.clamp(headXRot, -1.6f, 0.8f) + 0.55f - cr;
+        mainHand.xRot = (float) (pitch - Math.PI / 2f) - dir * 0.3f * headYRot;
+
+        float yaw = 0.7f * dir;
+        mainHand.yRot = Mth.clamp(-yaw * Mth.cos(pitch + cr) + headYRot, -1.1f, 1.1f);//yaw;
+        mainHand.zRot = -yaw * Mth.sin(pitch + cr);
+
+        AnimationUtils.bobModelPart(mainHand, entity.tickCount, -dir);
     }
 }

@@ -11,8 +11,9 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModParticles {
     public static DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, PrettyGuardian.MOD_ID);
 
-    public static final RegistryObject<SimpleParticleType> PINK_CRIT_PARTICLES = PARTICLE_TYPES.register("pink_crit_particle", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> PINK_CRIT_PARTICLES = PARTICLE_TYPES.register("pink_crit_particles", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> STAR_LIGHT_PARTICLES = PARTICLE_TYPES.register("star_light_particles", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> BUBBLE = PARTICLE_TYPES.register("bubble_particles", () -> new SimpleParticleType(true));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

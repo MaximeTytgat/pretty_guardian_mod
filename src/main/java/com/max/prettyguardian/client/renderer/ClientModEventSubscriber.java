@@ -1,6 +1,7 @@
 package com.max.prettyguardian.client.renderer;
 
 import com.max.prettyguardian.PrettyGuardian;
+import com.max.prettyguardian.client.renderer.entity.BubbleRenderer;
 import com.max.prettyguardian.client.renderer.entity.CuteArrowRenderer;
 import com.max.prettyguardian.client.renderer.entity.HeartRenderer;
 import com.max.prettyguardian.client.renderer.entity.StarLightRenderer;
@@ -16,6 +17,7 @@ public class ClientModEventSubscriber {
     public static void doSetup(EntityRenderersEvent.RegisterRenderers event) {
         EntityRenderers.register(ModEntityType.HEART_ARROW.get(), CuteArrowRenderer::new);
         EntityRenderers.register(ModEntityType.HEART.get(), HeartRenderer::new);
+        EntityRenderers.register(ModEntityType.BUBBLE.get(), BubbleRenderer::new);
         EntityRenderers.register(ModEntityType.STAR_LIGHT.get(), StarLightRenderer::new);
     }
 }

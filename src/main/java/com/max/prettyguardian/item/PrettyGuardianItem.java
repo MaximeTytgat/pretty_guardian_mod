@@ -7,6 +7,7 @@ import com.max.prettyguardian.entity.custom.ButterflyEntity;
 import com.max.prettyguardian.item.custom.*;
 import com.max.prettyguardian.item.custom.food.ClassicDonut;
 import com.max.prettyguardian.item.custom.food.ReusableFoodContainerItem;
+import com.max.prettyguardian.item.custom.projectiles.BubbleItem;
 import com.max.prettyguardian.item.custom.projectiles.CuteArrowItem;
 import com.max.prettyguardian.item.custom.projectiles.HeartItem;
 import com.max.prettyguardian.item.custom.projectiles.StarLightItem;
@@ -116,6 +117,7 @@ public class PrettyGuardianItem {
 
     public static final RegistryObject<Item> HEART_ARROW = ITEMS.register("heart_arrow", () -> new CuteArrowItem(new Item.Properties(), 5.9F));
     public static final RegistryObject<Item> CUTE_HEART = ITEMS.register("cute_heart", () -> new HeartItem(new Item.Properties(), 5.9F));
+    public static final RegistryObject<Item> BUBBLE = ITEMS.register("bubble", () -> new BubbleItem(new Item.Properties(), 2F));
     public static final RegistryObject<Item> STAR_LIGHT = ITEMS.register("star_light", () -> new StarLightItem(new Item.Properties(), 5.9F));
     public static final RegistryObject<Item> ETERNAL_SILVER_CISTAL_STAFF = ITEMS.register("eternal_silver_cristal_staff", () -> new EternalSilverCristalStaffitem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> CUPIDON_BOW = ITEMS.register("cupidon_bow", () -> new CuteBowItem(new Item.Properties().stacksTo(1)));
