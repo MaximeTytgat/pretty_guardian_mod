@@ -1,6 +1,7 @@
 package com.max.prettyguardian.worldgen.entity;
 
 import com.max.prettyguardian.PrettyGuardian;
+import com.max.prettyguardian.event.JapChairEvent;
 import com.max.prettyguardian.worldgen.entity.projectile.CuteArrowEntity;
 import com.max.prettyguardian.worldgen.entity.projectile.HeartEntity;
 import com.max.prettyguardian.worldgen.entity.projectile.StarLightEntity;
@@ -27,6 +28,10 @@ public class ModEntityType {
     public static final RegistryObject<EntityType<StarLightEntity>> STAR_LIGHT =
             ENTITY_TYPES.register("star_light", () -> EntityType.Builder.of((EntityType.EntityFactory<StarLightEntity>) StarLightEntity::new, MobCategory.MISC)
                     .sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("star_light"));
+
+    public static final RegistryObject<EntityType<JapChairEvent.SeatJapChairEntity>> SEAT_JAP_CHAIR =
+            ENTITY_TYPES.register("seat_jap_chair", () -> EntityType.Builder.of((EntityType.EntityFactory<JapChairEvent.SeatJapChairEntity>) JapChairEvent.SeatJapChairEntity::new, MobCategory.MISC)
+                    .sized(10F, 10F).clientTrackingRange(4).updateInterval(20).build("seat_jap_chair"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

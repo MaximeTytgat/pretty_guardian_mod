@@ -1,6 +1,7 @@
 package com.max.prettyguardian.blocks.custom.furniture;
 
 import com.max.prettyguardian.blocks.PrettyGuardianBlock;
+import com.max.prettyguardian.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -111,7 +112,7 @@ public class JapTableBlock extends Block {
     }
 
     public boolean validConnection(BlockState state) {
-        return state.is(PrettyGuardianBlock.TABLE_JAPANESE_OAK.get());
+        return state.getTags().anyMatch(tag -> tag.toString().equals(ModTags.Blocks.JAP_TABLE.toString()));
     }
 
     @Override

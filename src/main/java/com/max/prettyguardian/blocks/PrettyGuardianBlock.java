@@ -118,11 +118,17 @@ public class PrettyGuardianBlock {
     public static final RegistryObject<Block> DOOR_SHOJI_CHERRY_SMALL = registryBlock("door_shoji_cherry_small", () -> new JapDoorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(3.0F).noOcclusion().ignitedByLava(), BlockSetType.CHERRY));
 
     public static final RegistryObject<Block> TABLE_JAPANESE_OAK = registryBlock("table_japanese_oak", () -> new JapTableBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> TABLE_JAPANESE_SPRUCE = registryBlock("table_japanese_spruce", () -> new JapTableBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> TABLE_JAPANESE_BIRCH = registryBlock("table_japanese_birch", () -> new JapTableBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> TABLE_JAPANESE_CHERRY_PLANK = registryBlock("table_japanese_cherry_plank", () -> new JapTableBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> TABLE_JAPANESE_CHERRY_LOG = registryBlock("table_japanese_cherry_log", () -> new JapTableBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
 
     public static final RegistryObject<Block> SEA_SHELL = registryBlock("sea_shell", () -> new SeaShell(BlockBehaviour.Properties.copy(Blocks.TUBE_CORAL_BLOCK).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
 
     public static final RegistryObject<Block> GEM_POLISHING_STATION = registryBlock("gem_polishing_station", () -> new GemPolishingStationBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> STAFF_MAGIC_TABLE = registryBlock("staff_magic_table", () -> new StaffMagicTableBlock(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE).noOcclusion().requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<Block> CHAIR_JAPANESE_OAK = registryBlock("chair_japanese_oak", () -> new JapChairBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
         return ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));

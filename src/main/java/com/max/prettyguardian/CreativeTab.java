@@ -203,6 +203,13 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.DOOR_SHOJI_CHERRY_SMALL.get());
 
                 output.accept(PrettyGuardianBlock.TABLE_JAPANESE_OAK.get());
+                output.accept(PrettyGuardianBlock.TABLE_JAPANESE_SPRUCE.get());
+                output.accept(PrettyGuardianBlock.TABLE_JAPANESE_BIRCH.get());
+                output.accept(PrettyGuardianBlock.TABLE_JAPANESE_CHERRY_PLANK.get());
+                output.accept(PrettyGuardianBlock.TABLE_JAPANESE_CHERRY_LOG.get());
+
+                output.accept(PrettyGuardianBlock.CHAIR_JAPANESE_OAK.get());
+
 
                 output.accept(PrettyGuardianBlock.SEA_SHELL.get());
 
@@ -225,7 +232,6 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.FAIRY_EGG.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY_COW_EGG.get());
                 output.accept(PrettyGuardianItem.CELESTIAL_RABBIT_EGG.get());
-
             }).build());
 
     public static void register(IEventBus eventBus) {

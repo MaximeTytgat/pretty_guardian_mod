@@ -30,5 +30,13 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 PrettyGuardianBlock.PINK_SAPPHIRE_BLOCK.get()
         );
 
+        this.tag(ModTags.Blocks.JAP_TABLE).add(
+                PrettyGuardianBlock.TABLE_JAPANESE_OAK.get(),
+                PrettyGuardianBlock.TABLE_JAPANESE_BIRCH.get(),
+                PrettyGuardianBlock.TABLE_JAPANESE_SPRUCE.get(),
+                PrettyGuardianBlock.TABLE_JAPANESE_CHERRY_LOG.get(),
+                PrettyGuardianBlock.TABLE_JAPANESE_CHERRY_PLANK.get()
+        );
+
     }
 }

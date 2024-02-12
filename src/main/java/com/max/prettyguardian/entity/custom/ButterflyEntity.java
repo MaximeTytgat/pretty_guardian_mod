@@ -184,31 +184,31 @@ public class ButterflyEntity extends Animal implements FlyingAnimal, VariantHold
                         butterflyEgg = new ItemStack(PrettyGuardianItem.ADMIRAL_BUTTERFLY_EGG.get());
                         break;
                     case APOLLO:
-                        butterflyEgg =new ItemStack(PrettyGuardianItem.APOLLO_BUTTERFLY_EGG.get());
+                        butterflyEgg = new ItemStack(PrettyGuardianItem.APOLLO_BUTTERFLY_EGG.get());
                         break;
                     case DUSK:
-                        butterflyEgg =new ItemStack(PrettyGuardianItem.DUSK_BUTTERFLY_EGG.get());
+                        butterflyEgg = new ItemStack(PrettyGuardianItem.DUSK_BUTTERFLY_EGG.get());
                         break;
                     case LEMON:
-                        butterflyEgg =new ItemStack(PrettyGuardianItem.LEMON_BUTTERFLY_EGG.get());
+                        butterflyEgg = new ItemStack(PrettyGuardianItem.LEMON_BUTTERFLY_EGG.get());
                         break;
                     case MORPHO:
-                        butterflyEgg =new ItemStack(PrettyGuardianItem.MORPHO_BUTTERFLY_EGG.get());
+                        butterflyEgg = new ItemStack(PrettyGuardianItem.MORPHO_BUTTERFLY_EGG.get());
                         break;
                     case ORCHID:
-                        butterflyEgg =new ItemStack(PrettyGuardianItem.ORCHID_BUTTERFLY_EGG.get());
+                        butterflyEgg = new ItemStack(PrettyGuardianItem.ORCHID_BUTTERFLY_EGG.get());
                         break;
                     case PEACOCK:
-                        butterflyEgg =new ItemStack(PrettyGuardianItem.PEACOCK_BUTTERFLY_EGG.get());
+                        butterflyEgg = new ItemStack(PrettyGuardianItem.PEACOCK_BUTTERFLY_EGG.get());
                         break;
                     case PINK:
-                        butterflyEgg =new ItemStack(PrettyGuardianItem.PINK_BUTTERFLY_EGG.get());
+                        butterflyEgg = new ItemStack(PrettyGuardianItem.PINK_BUTTERFLY_EGG.get());
                         break;
                     case SKIPPER:
-                        butterflyEgg =new ItemStack(PrettyGuardianItem.SKIPPER_BUTTERFLY_EGG.get());
+                        butterflyEgg = new ItemStack(PrettyGuardianItem.SKIPPER_BUTTERFLY_EGG.get());
                         break;
                     case VIOLETTE:
-                        butterflyEgg =new ItemStack(PrettyGuardianItem.VIOLETTE_BUTTERFLY_EGG.get());
+                        butterflyEgg = new ItemStack(PrettyGuardianItem.VIOLETTE_BUTTERFLY_EGG.get());
                         break;
                 }
 

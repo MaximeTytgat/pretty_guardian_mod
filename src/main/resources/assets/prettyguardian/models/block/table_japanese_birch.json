@@ -1,0 +1,6 @@
+{
+  "parent": "prettyguardian:block/base_table_japanese",
+  "textures": {
+    "texture": "prettyguardian:block/japanese_table_birch"
+  }
+}
