@@ -7,6 +7,10 @@ import com.max.prettyguardian.item.custom.projectiles.HeartItem;
 import com.max.prettyguardian.sound.ModSounds;
 import com.max.prettyguardian.worldgen.entity.projectile.BubbleEntity;
 import com.max.prettyguardian.worldgen.entity.projectile.HeartEntity;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.mehvahdjukaar.moonlight.api.item.IFirstPersonAnimationProvider;
+import net.mehvahdjukaar.moonlight.api.item.IThirdPersonAnimationProvider;
+import net.mehvahdjukaar.moonlight.api.util.math.MthUtils;
 import net.minecraft.client.model.AnimationUtils;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
@@ -26,7 +30,7 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.Random;
 
-public class NeptunesMirror extends Item {
+public class NeptunesMirror extends Item implements IThirdPersonAnimationProvider, IFirstPersonAnimationProvider {
 
     public NeptunesMirror(Properties properties) {
         super(properties.rarity(Rarity.EPIC));
@@ -90,6 +94,28 @@ public class NeptunesMirror extends Item {
 
 
         super.onUseTick(level, livingEntity, itemStack, i);
+    }
+
+    @Override
+    public void animateItemFirstPerson(LivingEntity entity, ItemStack stack, InteractionHand hand, PoseStack matrixStack, float partialTicks, float pitch, float attackAnim, float handHeight) {
+        //is using item
+        if (entity.isUsingItem() && entity.getUseItemRemainingTicks() > 0 && entity.getUsedItemHand() == hand) {
+            //bow anim
+
+            float timeLeft = stack.getUseDuration() - (entity.getUseItemRemainingTicks() - partialTicks + 1.0F);
+            float f12 = 1;//getPowerForTime(stack, timeLeft);
+
+            if (f12 > 0.1F) {
+                float f15 = Mth.sin((timeLeft - 0.1F) * 1.3F);
+                float f18 = f12 - 0.1F;
+                float f20 = f15 * f18;
+                matrixStack.translate(0, f20 * 0.004F, 0);
+            }
+
+            matrixStack.translate(0, 0, f12 * 0.04F);
+            matrixStack.scale(1.0F, 1.0F, 1.0F + f12 * 0.2F);
+            //matrixStack.mulPose(Axis.YN.rotationDegrees((float)k * 45.0F));
+        }
     }
 
     @Override
