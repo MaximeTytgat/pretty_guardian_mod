@@ -153,7 +153,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(PrettyGuardianItem.MOON_STICK_PEARL);
         simpleItem(PrettyGuardianItem.SPIRAL_HEART_MOON_ROD);
         simpleItem(PrettyGuardianItem.PLUTONS_KEY);
-        simpleItem(PrettyGuardianItem.NEPTUNES_MIRROR);
+//        simpleItem(PrettyGuardianItem.NEPTUNES_MIRROR);
 
         handheldItem(PrettyGuardianItem.PINK_SAPPHIRE_AXE);
         handheldItem(PrettyGuardianItem.PINK_SAPPHIRE_PICKAXE);

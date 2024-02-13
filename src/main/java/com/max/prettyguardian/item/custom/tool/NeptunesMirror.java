@@ -105,12 +105,12 @@ public class NeptunesMirror extends Item implements IThirdPersonAnimationProvide
             float timeLeft = stack.getUseDuration() - (entity.getUseItemRemainingTicks() - partialTicks + 1.0F);
             float f12 = 1;//getPowerForTime(stack, timeLeft);
 
-            if (f12 > 0.1F) {
-                float f15 = Mth.sin((timeLeft - 0.1F) * 1.3F);
-                float f18 = f12 - 0.1F;
-                float f20 = f15 * f18;
-                matrixStack.translate(0, f20 * 0.004F, 0);
-            }
+//            if (f12 > 0.1F) {
+//                float f15 = Mth.sin((timeLeft - 0.1F) * 1.3F);
+//                float f18 = f12 - 0.1F;
+//                float f20 = f15 * f18;
+//                matrixStack.translate(0, f20 * 0.004F, 0);
+//            }
 
             matrixStack.translate(0, 0, f12 * 0.04F);
             matrixStack.scale(1.0F, 1.0F, 1.0F + f12 * 0.2F);
@@ -118,9 +118,58 @@ public class NeptunesMirror extends Item implements IThirdPersonAnimationProvide
         }
     }
 
+//	"display": {
+//        "thirdperson_righthand": {
+//            "rotation": [0, -35, 45],
+//            "translation": [0, 3.25, 1.25],
+//            "scale": [0.55, 0.55, 0.55]
+//        },
+//        "thirdperson_lefthand": {
+//            "rotation": [0, -35, -45],
+//            "translation": [0, 3.25, 1.25],
+//            "scale": [0.55, 0.55, 0.55]
+//        },
+//        "firstperson_righthand": {
+//            "rotation": [0, -180, 0],
+//            "translation": [-7.25, 2.75, -2],
+//            "scale": [0.68, 0.68, 0.68]
+//        },
+//        "firstperson_lefthand": {
+//            "translation": [-7.25, 2.75, -2],
+//            "scale": [0.68, 0.68, 0.68]
+//        },
+//        "head": {
+//            "translation": [0, 6.5, 0]
+//        }
+//    }
+//    "display": {
+//        "thirdperson_righthand": {
+//            "rotation": [0, -90, 55],
+//            "translation": [0, 3.75, 0.5],
+//            "scale": [0.55, 0.55, 0.55]
+//        },
+//        "thirdperson_lefthand": {
+//            "rotation": [0, 90, -55],
+//            "translation": [0, 4, 0.5],
+//            "scale": [0.55, 0.55, 0.55]
+//        },
+//        "firstperson_righthand": {
+//            "rotation": [0, -90, 25],
+//            "translation": [1.13, 3.2, 1.13],
+//            "scale": [0.68, 0.68, 0.68]
+//        },
+//        "firstperson_lefthand": {
+//            "rotation": [0, 90, -25],
+//            "translation": [1.13, 3.2, 1.13],
+//            "scale": [0.68, 0.68, 0.68]
+//        },
+//        "head": {
+//            "translation": [-5.75, -2.5, -6.75]
+//        }
+//    }
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.NONE;
+        return UseAnim.CUSTOM;
     }
 
     @Override
