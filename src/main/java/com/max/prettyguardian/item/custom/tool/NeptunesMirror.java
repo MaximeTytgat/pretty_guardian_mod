@@ -73,7 +73,28 @@ public class NeptunesMirror extends Item implements IThirdPersonAnimationProvide
             boolean randBool1 = rand2.nextBoolean();
 
             Vec3 look = player.getLookAngle();
-            abstractBubble.setPos(player.getX(), player.getEyeY() - 0.5F, player.getZ());
+
+            // set the position of the bubble allways at 0.5 at the right of the player
+//            abstractBubble.setPos(player.getX() + look.x, player.getY() + 0.5, player.getZ() + look.z);
+            // at the right of the look direction
+            // Calculer les coordonnées de décalage à droite
+            // Calculer l'angle de rotation en radians
+            double angleRadians = Math.atan2(look.z, look.x);
+
+            // Convertir l'angle en degrés
+            double angleDegrees = Math.toDegrees(angleRadians);
+
+            // Ajouter un décalage de 90 degrés pour obtenir l'angle de rotation dans le référentiel Minecraft
+            angleDegrees += 90.0;
+
+            float distance = 0.3F;
+
+            // Calculer les coordonnées de décalage à droite
+            double offsetX = Math.cos(Math.toRadians(angleDegrees)) * distance;
+            double offsetZ = Math.sin(Math.toRadians(angleDegrees)) * distance;
+
+            // Positionner la bulle devant le joueur et un peu à sa droite
+            abstractBubble.setPos(player.getX() + offsetX, player.getY() + 1.2f, player.getZ() + offsetZ);
 
             // shoot the bubble in a random direction
             if (random > 0.05F || random < -0.05F) {
@@ -105,12 +126,12 @@ public class NeptunesMirror extends Item implements IThirdPersonAnimationProvide
             float timeLeft = stack.getUseDuration() - (entity.getUseItemRemainingTicks() - partialTicks + 1.0F);
             float f12 = 1;//getPowerForTime(stack, timeLeft);
 
-//            if (f12 > 0.1F) {
-//                float f15 = Mth.sin((timeLeft - 0.1F) * 1.3F);
-//                float f18 = f12 - 0.1F;
-//                float f20 = f15 * f18;
-//                matrixStack.translate(0, f20 * 0.004F, 0);
-//            }
+            if (f12 > 0.1F) {
+                float f15 = Mth.sin((timeLeft - 0.1F) * 1.3F);
+                float f18 = f12 - 0.1F;
+                float f20 = f15 * f18;
+                matrixStack.translate(0, f20 * 0.004F, 0);
+            }
 
             matrixStack.translate(0, 0, f12 * 0.04F);
             matrixStack.scale(1.0F, 1.0F, 1.0F + f12 * 0.2F);
@@ -118,58 +139,9 @@ public class NeptunesMirror extends Item implements IThirdPersonAnimationProvide
         }
     }
 
-//	"display": {
-//        "thirdperson_righthand": {
-//            "rotation": [0, -35, 45],
-//            "translation": [0, 3.25, 1.25],
-//            "scale": [0.55, 0.55, 0.55]
-//        },
-//        "thirdperson_lefthand": {
-//            "rotation": [0, -35, -45],
-//            "translation": [0, 3.25, 1.25],
-//            "scale": [0.55, 0.55, 0.55]
-//        },
-//        "firstperson_righthand": {
-//            "rotation": [0, -180, 0],
-//            "translation": [-7.25, 2.75, -2],
-//            "scale": [0.68, 0.68, 0.68]
-//        },
-//        "firstperson_lefthand": {
-//            "translation": [-7.25, 2.75, -2],
-//            "scale": [0.68, 0.68, 0.68]
-//        },
-//        "head": {
-//            "translation": [0, 6.5, 0]
-//        }
-//    }
-//    "display": {
-//        "thirdperson_righthand": {
-//            "rotation": [0, -90, 55],
-//            "translation": [0, 3.75, 0.5],
-//            "scale": [0.55, 0.55, 0.55]
-//        },
-//        "thirdperson_lefthand": {
-//            "rotation": [0, 90, -55],
-//            "translation": [0, 4, 0.5],
-//            "scale": [0.55, 0.55, 0.55]
-//        },
-//        "firstperson_righthand": {
-//            "rotation": [0, -90, 25],
-//            "translation": [1.13, 3.2, 1.13],
-//            "scale": [0.68, 0.68, 0.68]
-//        },
-//        "firstperson_lefthand": {
-//            "rotation": [0, 90, -25],
-//            "translation": [1.13, 3.2, 1.13],
-//            "scale": [0.68, 0.68, 0.68]
-//        },
-//        "head": {
-//            "translation": [-5.75, -2.5, -6.75]
-//        }
-//    }
     @Override
     public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.CUSTOM;
+        return UseAnim.NONE;
     }
 
     @Override

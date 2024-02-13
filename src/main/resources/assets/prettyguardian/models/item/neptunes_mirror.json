@@ -4,7 +4,7 @@
     "layer0": "prettyguardian:item/neptunes_mirror"
   },
   "overrides": [
-    {"predicate": {"supplementaries:using": 1}, "model": "prettyguardian:item/neptunes_mirror_using"}
+    {"predicate": {"prettyguardian:using": 1}, "model": "prettyguardian:item/neptunes_mirror_using"}
   ],
   "display": {
     "thirdperson_righthand": {

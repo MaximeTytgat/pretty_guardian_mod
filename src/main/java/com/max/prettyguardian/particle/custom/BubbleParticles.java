@@ -16,7 +16,7 @@ public class BubbleParticles extends TextureSheetParticle {
         this.xd = xd;
         this.yd = yd;
         this.zd = zd;
-        this.quadSize *= 0.85F;
+        this.quadSize *= 1.85F;
         this.lifetime = 35;
         this.setSpriteFromAge(spriteSet);
 

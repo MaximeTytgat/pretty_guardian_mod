@@ -36,7 +36,7 @@ public class BubbleRenderer extends EntityRenderer<BubbleEntity> {
 
     public void render(BubbleEntity p_114080_, float p_114081_, float p_114082_, PoseStack p_114083_, MultiBufferSource p_114084_, int p_114085_) {
         p_114083_.pushPose();
-        p_114083_.scale(0.3F, 0.3F, 0.3F);
+        p_114083_.scale(2F, 2F, 2F);
         p_114083_.mulPose(this.entityRenderDispatcher.cameraOrientation());
         p_114083_.mulPose(Axis.YP.rotationDegrees(180.0F));
         PoseStack.Pose posestack$pose = p_114083_.last();

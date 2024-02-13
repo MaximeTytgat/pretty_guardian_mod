@@ -1,6 +1,8 @@
 package com.max.prettyguardian.util;
 
+import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.item.PrettyGuardianItem;
+import net.mehvahdjukaar.moonlight.api.platform.ForgeHelper;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -9,6 +11,9 @@ public class ModItemProperties {
 
         public static void addCustomProperties() {
             makeBow(PrettyGuardianItem.CUPIDON_BOW.get());
+
+            ItemProperties.register(PrettyGuardianItem.NEPTUNES_MIRROR.get(), new ResourceLocation(PrettyGuardian.MOD_ID, "using"),
+                    (stack, world, entity, s) -> entity != null && entity.isUsingItem() && ForgeHelper.areStacksEqual(stack, entity.getUseItem(), true) ? 1.0F : 0.0F);
         }
 
 
@@ -24,4 +29,6 @@ public class ModItemProperties {
                 return p_174632_ != null && p_174632_.isUsingItem() && p_174632_.getUseItem() == p_174630_ ? 1.0F : 0.0F;
             });
         }
+
+
 }
