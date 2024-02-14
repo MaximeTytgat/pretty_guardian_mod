@@ -166,6 +166,8 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.TEDDYBEAR_PLUSH.get());
                 output.accept(PrettyGuardianBlock.RABBIT_PLUSH.get());
                 output.accept(PrettyGuardianBlock.COW_PLUSH.get());
+                output.accept(PrettyGuardianBlock.CINNAMOROLL_PLUSH.get());
+                output.accept(PrettyGuardianBlock.BABYYODA_PLUSH.get());
 
                 output.accept(PrettyGuardianBlock.SHOJI_BLOSSOM.get());
                 output.accept(PrettyGuardianBlock.SHOJI_BLOSSOM_BOTTOM.get());
