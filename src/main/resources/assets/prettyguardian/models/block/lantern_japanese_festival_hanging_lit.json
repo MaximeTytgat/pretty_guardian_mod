@@ -3,6 +3,7 @@
 		"0": "prettyguardian:block/lantern_japanese_festival",
 		"particle": "prettyguardian:block/lantern_japanese_festival"
 	},
+	"render_type": "minecraft:cutout",
 	"elements": [
 		{
 			"name": "top",

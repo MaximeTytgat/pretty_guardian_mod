@@ -188,5 +188,9 @@
   "block.prettyguardian.door_shoji_cherry_small": "Small Shoji Cherry Door",
   "block.prettyguardian.table_japanese_oak": "Japanese Oak Table",
   "block.prettyguardian.sea_shell": "Sea Shell",
-  "block.prettyguardian.gem_polishing_station": "Gem Polishing Station"
+  "block.prettyguardian.gem_polishing_station": "Gem Polishing Station",
+
+  "enchantment.prettyguardian.slow": "Slow",
+
+  "effect.prettyguardian.love": "Truly in Love"
 }

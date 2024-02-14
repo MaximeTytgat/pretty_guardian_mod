@@ -4,6 +4,8 @@ import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import com.max.prettyguardian.blocks.entity.ModBlockEntities;
 import com.max.prettyguardian.client.gui.sreens.GemPolishingStationScreen;
 import com.max.prettyguardian.client.gui.sreens.StaffMagicTableScreen;
+import com.max.prettyguardian.effect.ModEffects;
+import com.max.prettyguardian.enchantment.ModEnchantments;
 import com.max.prettyguardian.entity.ModEntities;
 import com.max.prettyguardian.entity.client.butterfly.ButterflyRenderer;
 import com.max.prettyguardian.entity.client.celestialrabbit.CelestialRabbitRenderer;
@@ -58,6 +60,8 @@ public class PrettyGuardian
         ModMenuTypes.register(modEventBus);
         ModSounds.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModEnchantments.register(modEventBus);
+        ModEffects.register(modEventBus);
         CreativeTab.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in

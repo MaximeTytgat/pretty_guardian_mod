@@ -188,5 +188,9 @@
   "block.prettyguardian.door_shoji_cherry_small": "Porte shoji en petit cerisier",
   "block.prettyguardian.table_japanese_oak": "Table japonaise en chêne",
   "block.prettyguardian.sea_shell": "Coquillage",
-  "block.prettyguardian.gem_polishing_station": "Station de polissage de gemmes"
+  "block.prettyguardian.gem_polishing_station": "Station de polissage de gemmes",
+
+  "enchantment.prettyguardian.slow": "Lenteur",
+
+  "effect.prettyguardian.love": "Plainement amoureux"
 }

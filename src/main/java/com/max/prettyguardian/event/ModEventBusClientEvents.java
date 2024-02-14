@@ -8,6 +8,7 @@ import com.max.prettyguardian.entity.client.fairy.FairyModel;
 import com.max.prettyguardian.particle.ModParticles;
 import com.max.prettyguardian.particle.custom.BubbleParticles;
 import com.max.prettyguardian.particle.custom.PinkCritParticles;
+import com.max.prettyguardian.particle.custom.PinkHeartParticles;
 import com.max.prettyguardian.particle.custom.StarLightParticles;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.CowModel;
@@ -27,6 +28,10 @@ public class ModEventBusClientEvents {
 
         Minecraft.getInstance().particleEngine.register(ModParticles.STAR_LIGHT_PARTICLES.get(),
                 StarLightParticles.Provider::new);
+
+        Minecraft.getInstance().particleEngine.register(ModParticles.PINK_HEART_PARTICLES.get(),
+                PinkHeartParticles.Provider::new);
+
 
         Minecraft.getInstance().particleEngine.register(ModParticles.BUBBLE.get(),
                 BubbleParticles.Provider::new);

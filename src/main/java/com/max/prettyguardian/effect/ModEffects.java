@@ -1,0 +1,24 @@
+package com.max.prettyguardian.effect;
+
+import com.max.prettyguardian.PrettyGuardian;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+
+public class ModEffects {
+    public static final DeferredRegister<MobEffect> EFFECTS =
+            DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, PrettyGuardian.MOD_ID);
+
+    public static RegistryObject<MobEffect> LOVE = EFFECTS.register("love",
+            () -> new LoveEffect(
+                    MobEffectCategory.HARMFUL,
+                    0
+            ));
+
+    public static void register(IEventBus eventBus) {
+        EFFECTS.register(eventBus);
+    }
+}
