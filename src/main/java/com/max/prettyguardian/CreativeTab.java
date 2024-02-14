@@ -142,6 +142,7 @@ public class CreativeTab {
 
                 output.accept(PrettyGuardianItem.PLUTONS_KEY.get());
                 output.accept(PrettyGuardianItem.NEPTUNES_MIRROR.get());
+                output.accept(PrettyGuardianItem.SPACE_SWORD.get());
 
                 output.accept(PrettyGuardianBlock.PICNIC_BASKET.get());
                 output.accept(PrettyGuardianItem.SAILORMOON_OST_MUSIC_DISC.get());

@@ -12,6 +12,12 @@ import net.minecraftforge.common.TierSortingRegistry;
 import java.util.List;
 
 public class ModToolTiers {
+    public static final Tier SPACE_SWORD = TierSortingRegistry.registerTier(
+            new ForgeTier(2, 2500, 5f, 2f, 25,
+                    ModTags.Blocks.SPACE_SWORD, () -> Ingredient.of(PrettyGuardianItem.PINK_SAPPHIRE.get())),
+            new ResourceLocation(PrettyGuardian.MOD_ID, "space_sword"), List.of(Tiers.NETHERITE), List.of()
+    );
+
     public static final Tier PINK_SAPPHIRE = TierSortingRegistry.registerTier(
             new ForgeTier(5, 1500, 5f, 4f, 25,
                     ModTags.Blocks.NEEDS_PINK_SAPPHIRE_TOOL, () -> Ingredient.of(PrettyGuardianItem.PINK_SAPPHIRE.get())),

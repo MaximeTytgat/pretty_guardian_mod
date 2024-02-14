@@ -13,6 +13,7 @@ public class ModTags {
         public static final TagKey<Block> CAKE = tag("cake");
         public static final TagKey<Block> JAP_TABLE = tag("jap_table");
 
+        public static final TagKey<Block> SPACE_SWORD = tag("space_sword");
         public static final TagKey<Block> NEEDS_PINK_SAPPHIRE_TOOL = tag("needs_pink_sapphire_tool");
 
         private static TagKey<Block> tag(String name) {

@@ -110,9 +110,9 @@ public class StaffMagicTableBlockEntity extends BlockEntity implements MenuProvi
         Item item2 = this.itemHandler.getStackInSlot(INPUT_SLOT_2).getItem();
         Item item3 = this.itemHandler.getStackInSlot(INPUT_SLOT_3).getItem();
 
-        boolean slot1HasArtephacte = item1 == PrettyGuardianItem.PLUTONS_KEY.get() || item1 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item1 == PrettyGuardianItem.CUPIDON_BOW.get();
-        boolean slot2HasArtephacte = item2 == PrettyGuardianItem.PLUTONS_KEY.get() || item2 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item2 == PrettyGuardianItem.CUPIDON_BOW.get();
-        boolean slot3HasArtephacte = item3 == PrettyGuardianItem.PLUTONS_KEY.get() || item3 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item3 == PrettyGuardianItem.CUPIDON_BOW.get();
+        boolean slot1HasArtephacte = item1 == PrettyGuardianItem.PLUTONS_KEY.get() || item1 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item1 == PrettyGuardianItem.SPACE_SWORD.get();
+        boolean slot2HasArtephacte = item2 == PrettyGuardianItem.PLUTONS_KEY.get() || item2 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item2 == PrettyGuardianItem.SPACE_SWORD.get();
+        boolean slot3HasArtephacte = item3 == PrettyGuardianItem.PLUTONS_KEY.get() || item3 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item3 == PrettyGuardianItem.SPACE_SWORD.get();
 
         ItemStack result = new ItemStack(PrettyGuardianItem.ETERNAL_SILVER_CISTAL_STAFF.get());
         return (slot1HasArtephacte && slot2HasArtephacte && slot3HasArtephacte) && (item1 != item2 && item2 != item3 && item1 != item3) && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
