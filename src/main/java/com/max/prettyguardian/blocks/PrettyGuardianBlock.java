@@ -1,6 +1,7 @@
 package com.max.prettyguardian.blocks;
 
 import com.max.prettyguardian.PrettyGuardian;
+import com.max.prettyguardian.blocks.custom.plush.RandomPlushBoxBlock;
 import com.max.prettyguardian.blocks.custom.table.GemPolishingStationBlock;
 import com.max.prettyguardian.blocks.custom.SeaShell;
 import com.max.prettyguardian.blocks.custom.crop.CropLeavesBlock;
@@ -83,7 +84,7 @@ public class PrettyGuardianBlock {
     public static final RegistryObject<Block> COW_PLUSH = registryBlock("cow_plush", () -> new CowPlushBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
     public static final RegistryObject<Block> CINNAMOROLL_PLUSH = registryBlock("cinnamoroll_plush", () -> new PlushiesBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
     public static final RegistryObject<Block> BABYYODA_PLUSH = registryBlock("babyyoda_plush", () -> new PlushiesBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
-
+    public static final RegistryObject<Block> RANDOM_PLUSH_BOX = registryBlock("random_plush_box", () -> new RandomPlushBoxBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL).noLootTable()));
     public static final RegistryObject<Block> SHOJI_BLOSSOM = registryBlock("shoji_blossom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
     public static final RegistryObject<Block> SHOJI_BLOSSOM_BOTTOM = registryBlock("shoji_blossom_bottom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
     public static final RegistryObject<Block> SHOJI_BLOSSOM_SMALL = registryBlock("shoji_blossom_small", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
