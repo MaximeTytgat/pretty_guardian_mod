@@ -23,6 +23,8 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<StaffMagicTableMenu>> STAFF_MAGIC_TABLE_MENU =
             registerMenuType("staff_magic_table_menu", StaffMagicTableMenu::new);
 
+    public static final RegistryObject<MenuType<GiftBoxMenu>> GIFT_BOX_MENU =
+            registerMenuType("gift_box_menu", GiftBoxMenu::new);
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));

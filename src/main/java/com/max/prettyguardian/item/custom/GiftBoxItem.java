@@ -1,40 +1,59 @@
 package com.max.prettyguardian.item.custom;
 
+import com.max.prettyguardian.client.gui.sreens.inventory.GiftBoxMenu;
+import com.max.prettyguardian.client.gui.sreens.inventory.PicnicBasketMenu;
+import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.*;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.network.NetworkHooks;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class GiftBoxItem extends Item  {
+    private NonNullList<ItemStack> itemStacks = NonNullList.withSize(1, ItemStack.EMPTY);
+
     public GiftBoxItem(Properties properties) {
         super(properties);
     }
 
 
-//    @Override
-//    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-//        ItemStack stack = player.getItemInHand(hand);
-//
-//        if (!world.isClientSide && player instanceof ServerPlayer serverPlayer) {
-//            String handlerName = hand == InteractionHand.MAIN_HAND ? PlayerInventoryProvider.MAIN_INVENTORY : PlayerInventoryProvider.OFFHAND_INVENTORY;
-//            int slot = hand == InteractionHand.MAIN_HAND ? player.getInventory().selected : 0;
-//            BackpackContext.Item context = new BackpackContext.Item(handlerName, slot);
-//            NetworkHooks.openScreen(serverPlayer, new SimpleMenuProvider((w, p, pl) -> new PicnicBasketMenu(w, pl.getInventory(), context), stack.getHoverName()),
-//                    context::toBuffer);
-//        }
-//        return InteractionResultHolder.success(stack);
-//    }
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+        ItemStack stack = player.getItemInHand(interactionHand);
+
+        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
+            SimpleMenuProvider simpleMenuProvider = new SimpleMenuProvider((id, inv, player1) -> new GiftBoxMenu(id, inv, new SimpleContainer(1)), stack.getHoverName());
+            NetworkHooks.openScreen(serverPlayer, simpleMenuProvider, (packetBuffer) -> {
+                packetBuffer.writeItem(stack);
+            });
+        }
 
 
-//    @Override
-//    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
-//        if (!level.isClientSide()) {
-//            BlockEntity blockEntity = level.getEntity(blockPos);
-//            if (blockEntity instanceof GemPolishingStationBlockEntity) {
-//                NetworkHooks.openScreen(((ServerPlayer) player), (GemPolishingStationBlockEntity) blockEntity, blockPos);
-//            } else {
-//                throw new IllegalStateException("Our container provider is missing!");
-//            }
-//        }
-//
-//        return InteractionResult.sidedSuccess(level.isClientSide());
-//    }
+        return InteractionResultHolder.success(stack);
+    }
 
+    @Override
+    public @Nullable ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
+        return new ICapabilityProvider() {
+            private final LazyOptional<NonNullList<ItemStack>> itemStacks = LazyOptional.of(() -> GiftBoxItem.this.itemStacks);
+
+            @Override
+            public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+                if (cap == ForgeCapabilities.ITEM_HANDLER) {
+                    return itemStacks.cast();
+                }
+                return LazyOptional.empty();
+            }
+        };
+    }
 }

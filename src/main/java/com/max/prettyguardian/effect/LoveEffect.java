@@ -1,9 +1,9 @@
 package com.max.prettyguardian.effect;
 
 import com.max.prettyguardian.particle.ModParticles;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Random;
