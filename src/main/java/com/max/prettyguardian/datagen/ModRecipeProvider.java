@@ -107,6 +107,21 @@ public class ModRecipeProvider extends RecipeProvider {
                 PrettyGuardianItem.RUBY_BOOTS.get(),
                 PrettyGuardianItem.RUBY.get()
         );
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, PrettyGuardianItem.AGARAGAR.get(), 2)
+                .requires(Items.KELP)
+                .unlockedBy(getHasName(Items.KELP), has(Items.KELP))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PrettyGuardianItem.MARSHMALLOW.get())
+                .pattern("ABA")
+                .pattern("BCB")
+                .pattern("ABA")
+                .define('A', PrettyGuardianItem.AGARAGAR.get())
+                .define('B', PrettyGuardianItem.PINK_SAPPHIRE.get())
+                .define('C', PrettyGuardianItem.PINK_SAPPHIRE.get())
+                .unlockedBy(getHasName(PrettyGuardianItem.PINK_SAPPHIRE.get()), has(PrettyGuardianItem.PINK_SAPPHIRE.get()))
+                .save(pWriter);
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> p_250654_, List<ItemLike> p_250172_, RecipeCategory p_250588_, ItemLike p_251868_, float p_250789_, int p_252144_, String p_251687_) {

@@ -37,6 +37,7 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.VANILLA.get());
                 output.accept(PrettyGuardianItem.PISTACHIO.get());
                 output.accept(PrettyGuardianItem.LEMON.get());
+                output.accept(PrettyGuardianItem.AGARAGAR.get());
 
 
                 output.accept(PrettyGuardianItem.MINT_SEEDS.get());

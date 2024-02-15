@@ -31,6 +31,7 @@ public class PrettyGuardianItem {
     public static final RegistryObject<Item> VANILLA = ITEMS.register("vanilla", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PISTACHIO = ITEMS.register("pistachio", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> LEMON = ITEMS.register("lemon", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> AGARAGAR = ITEMS.register("agaragar", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> CHOCOLATE_STRAWBERRY = ITEMS.register("chocolate_strawberry", () -> new Item(new Item.Properties().food(ModFoods.STRAWBERRY)));
     public static final RegistryObject<Item> SECRET_DONUT = ITEMS.register("secret_donut", () -> new Item(new Item.Properties().food(ModFoods.DONUT)));
