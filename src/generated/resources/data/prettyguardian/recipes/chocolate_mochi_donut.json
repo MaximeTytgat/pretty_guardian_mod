@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "prettyguardian:mochi_donut"
+    },
+    {
+      "item": "prettyguardian:chocolate"
+    }
+  ],
+  "result": {
+    "item": "prettyguardian:chocolate_mochi_donut"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "prettyguardian:vanilla"
+    },
+    "B": {
+      "item": "prettyguardian:caramel"
+    },
+    "C": {
+      "item": "prettyguardian:agaragar"
+    },
+    "D": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CCC",
+    "DDD"
+  ],
+  "result": {
+    "count": 3,
+    "item": "prettyguardian:dango_caramel"
+  },
+  "show_notification": true
+}

@@ -38,6 +38,7 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.PISTACHIO.get());
                 output.accept(PrettyGuardianItem.LEMON.get());
                 output.accept(PrettyGuardianItem.AGARAGAR.get());
+                output.accept(PrettyGuardianItem.CREAM.get());
 
 
                 output.accept(PrettyGuardianItem.MINT_SEEDS.get());
@@ -75,7 +76,7 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.DANGO_CARAMEL.get());
                 output.accept(PrettyGuardianItem.TRICOLOR_DANGO.get());
                 output.accept(PrettyGuardianItem.POPSICLE.get());
-                output.accept(PrettyGuardianItem.VANILLA_POPSICLE.get());
+                output.accept(PrettyGuardianItem.CREAM_POPSICLE.get());
                 output.accept(PrettyGuardianItem.CHOCOLATE_POPSICLE.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY_POPSICLE.get());
                 output.accept(PrettyGuardianItem.CARAMEL_PUDDING.get());

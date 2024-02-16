@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "prettyguardian:vanilla"
+    },
+    "B": {
+      "item": "prettyguardian:cream"
+    },
+    "C": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "  A",
+    " B ",
+    "C  "
+  ],
+  "result": {
+    "item": "prettyguardian:cream_popsicle"
+  },
+  "show_notification": true
+}

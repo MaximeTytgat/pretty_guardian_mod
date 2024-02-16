@@ -86,6 +86,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(PrettyGuardianItem.MINT);
         simpleItem(PrettyGuardianItem.PISTACHIO);
         simpleItem(PrettyGuardianItem.LEMON);
+        simpleItem(PrettyGuardianItem.AGARAGAR);
+        simpleItem(PrettyGuardianItem.CREAM);
 
         simpleItem(PrettyGuardianItem.CHOCOLATE_STRAWBERRY);
         simpleItem(PrettyGuardianItem.SECRET_DONUT);
@@ -120,7 +122,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(PrettyGuardianItem.DANGO_CARAMEL);
         simpleItem(PrettyGuardianItem.TRICOLOR_DANGO);
         simpleItem(PrettyGuardianItem.POPSICLE);
-        simpleItem(PrettyGuardianItem.VANILLA_POPSICLE);
+        simpleItem(PrettyGuardianItem.CREAM_POPSICLE);
         simpleItem(PrettyGuardianItem.CHOCOLATE_POPSICLE);
         simpleItem(PrettyGuardianItem.STRAWBERRY_POPSICLE);
         simpleItem(PrettyGuardianItem.CARAMEL_PUDDING);

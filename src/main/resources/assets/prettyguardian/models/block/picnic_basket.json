@@ -1,10 +1,10 @@
 {
-	"texture_size": [64, 64],
+	"credit": "Made with Blockbench",
+	"render_type": "minecraft:cutout",
 	"textures": {
 		"0": "prettyguardian:block/picnic_basket",
 		"particle": "prettyguardian:block/picnic_basket"
 	},
-	"render_type": "minecraft:cutout",
 	"elements": [
 		{
 			"from": [6.999, 12.12032, 4.61632],
@@ -444,67 +444,107 @@
 			}
 		}
 	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 225, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"translation": [0, 1.5, 0],
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"fixed": {
+			"scale": [0.7, 0.7, 0.7]
+		}
+	},
 	"groups": [
 		{
-			"name": "group",
+			"name": "picnic_basket",
 			"origin": [8, 8, 8],
 			"color": 0,
 			"nbt": "{}",
 			"children": [
 				{
-					"name": "handle",
-					"origin": [8, 11, 2.5],
-					"color": 0,
-					"nbt": "{}",
-					"children": [0, 1, 2, 3, 4, 5, 6]
-				},
-				{
-					"name": "lid",
-					"origin": [0, 0, 0],
-					"color": 0,
-					"nbt": "{}",
-					"children": [7, 8]
-				},
-				{
-					"name": "middle",
-					"origin": [0, 0, 0],
-					"color": 0,
-					"nbt": "{}",
-					"children": [9, 10, 11, 12, 13]
-				},
-				{
-					"name": "decorations",
-					"origin": [8, 5, 3],
+					"name": "group",
+					"origin": [8, 8, 8],
 					"color": 0,
 					"nbt": "{}",
 					"children": [
 						{
-							"name": "left_north",
-							"origin": [8, 5, 3],
+							"name": "handle",
+							"origin": [8, 11, 2.5],
 							"color": 0,
 							"nbt": "{}",
-							"children": [14, 15, 16, 17, 18]
+							"children": [0, 1, 2, 3, 4, 5, 6]
 						},
 						{
-							"name": "right_north",
-							"origin": [8, 5, 3],
+							"name": "lid",
+							"origin": [0, 0, 0],
 							"color": 0,
 							"nbt": "{}",
-							"children": [19, 20, 21, 22, 23]
+							"children": [7, 8]
 						},
 						{
-							"name": "left_south",
-							"origin": [8, 5, 3],
+							"name": "middle",
+							"origin": [0, 0, 0],
 							"color": 0,
 							"nbt": "{}",
-							"children": [24, 25, 26, 27, 28]
+							"children": [9, 10, 11, 12, 13]
 						},
 						{
-							"name": "right_south",
+							"name": "decorations",
 							"origin": [8, 5, 3],
 							"color": 0,
 							"nbt": "{}",
-							"children": [29, 30, 31, 32, 33]
+							"children": [
+								{
+									"name": "left_north",
+									"origin": [8, 5, 3],
+									"color": 0,
+									"nbt": "{}",
+									"children": [14, 15, 16, 17, 18]
+								},
+								{
+									"name": "right_north",
+									"origin": [8, 5, 3],
+									"color": 0,
+									"nbt": "{}",
+									"children": [19, 20, 21, 22, 23]
+								},
+								{
+									"name": "left_south",
+									"origin": [8, 5, 3],
+									"color": 0,
+									"nbt": "{}",
+									"children": [24, 25, 26, 27, 28]
+								},
+								{
+									"name": "right_south",
+									"origin": [8, 5, 3],
+									"color": 0,
+									"nbt": "{}",
+									"children": [29, 30, 31, 32, 33]
+								}
+							]
 						}
 					]
 				}

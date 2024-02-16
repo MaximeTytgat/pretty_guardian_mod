@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "group": "caramel_from_sugar",
+  "ingredient": {
+    "item": "minecraft:sugar"
+  },
+  "result": "prettyguardian:caramel"
+}

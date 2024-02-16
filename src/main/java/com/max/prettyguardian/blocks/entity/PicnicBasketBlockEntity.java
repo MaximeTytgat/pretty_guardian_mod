@@ -15,6 +15,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.BarrelBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -47,9 +48,10 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
 
             ++this.openCount;
             this.level.blockEvent(this.worldPosition, this.getBlockState().getBlock(), 1, this.openCount);
+            updateBlockState(this.getBlockState(), true);
             if (this.openCount == 1) {
                 this.level.gameEvent(p_59692_, GameEvent.CONTAINER_OPEN, this.worldPosition);
-                this.level.playSound((Player)null, this.worldPosition, SoundEvents.SHULKER_BOX_OPEN, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
+                this.level.playSound((Player)null, this.worldPosition, SoundEvents.BARREL_OPEN, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
             }
         }
 
@@ -58,13 +60,17 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
     public void stopOpen(Player p_59688_) {
         if (!this.remove && !p_59688_.isSpectator()) {
             --this.openCount;
+            updateBlockState(this.getBlockState(), false);
             this.level.blockEvent(this.worldPosition, this.getBlockState().getBlock(), 1, this.openCount);
             if (this.openCount <= 0) {
                 this.level.gameEvent(p_59688_, GameEvent.CONTAINER_CLOSE, this.worldPosition);
-                this.level.playSound((Player)null, this.worldPosition, SoundEvents.SHULKER_BOX_CLOSE, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
+                this.level.playSound((Player)null, this.worldPosition, SoundEvents.BARREL_CLOSE, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
             }
         }
+    }
 
+    void updateBlockState(BlockState blockState, boolean open) {
+        this.level.setBlock(this.getBlockPos(), blockState.setValue(BarrelBlock.OPEN, open), 3);
     }
 
     @Override

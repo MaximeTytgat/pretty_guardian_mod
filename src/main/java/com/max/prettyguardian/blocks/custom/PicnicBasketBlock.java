@@ -142,6 +142,8 @@ public class PicnicBasketBlock extends BaseEntityBlock {
             }
         }
 
+//        blockState.setValue(OPEN, true);
+
         return InteractionResult.sidedSuccess(level.isClientSide());
     }
 

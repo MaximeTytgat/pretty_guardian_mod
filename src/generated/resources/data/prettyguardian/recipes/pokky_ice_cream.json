@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "prettyguardian:waffle"
+    },
+    "B": {
+      "item": "prettyguardian:cream"
+    },
+    "C": {
+      "item": "prettyguardian:chocolate_pocky"
+    },
+    "D": {
+      "item": "prettyguardian:chocolate"
+    },
+    "E": {
+      "item": "prettyguardian:vanilla_ice_cream"
+    },
+    "F": {
+      "item": "prettyguardian:strawberry"
+    },
+    "G": {
+      "item": "minecraft:snowball"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DEF",
+    "GGG"
+  ],
+  "result": {
+    "item": "prettyguardian:pokky_ice_cream"
+  },
+  "show_notification": true
+}

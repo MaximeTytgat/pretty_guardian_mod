@@ -29,7 +29,6 @@ public class JapChairEvent {
     @SubscribeEvent
     public static void onIteractWithBlock(PlayerInteractEvent.RightClickBlock event) {
         if (event.getSide().isClient()) {
-            PrettyGuardian.LOGGER.info("onIteractWithBlock");
             Player player = event.getEntity();
 
             if (player == null || player.isSpectator() || player.getVehicle() != null) {
@@ -40,7 +39,6 @@ public class JapChairEvent {
             BlockPos pos = event.getPos();
             BlockState blockState = level.getBlockState(pos);
 
-            PrettyGuardian.LOGGER.info("Pos: " + pos);
 
             if (blockState.getBlock() instanceof JapChairBlock) {
                 SeatJapChairEntity seatJapChairEntity = new SeatJapChairEntity(ModEntityType.SEAT_JAP_CHAIR.get(), level, pos);

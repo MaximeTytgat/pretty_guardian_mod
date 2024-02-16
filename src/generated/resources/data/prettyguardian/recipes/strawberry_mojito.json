@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "prettyguardian:mint"
+    },
+    "B": {
+      "item": "prettyguardian:lemon"
+    },
+    "C": {
+      "item": "prettyguardian:strawberry"
+    },
+    "D": {
+      "item": "minecraft:sugar"
+    },
+    "E": {
+      "item": "minecraft:water_bucket"
+    },
+    "F": {
+      "item": "prettyguardian:juice_glass"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DED",
+    "FFF"
+  ],
+  "result": {
+    "item": "prettyguardian:strawberry_mojito"
+  },
+  "show_notification": true
+}
