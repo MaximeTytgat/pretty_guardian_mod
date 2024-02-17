@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:wheat"
+    },
+    "B": {
+      "item": "prettyguardian:chocolate"
+    },
+    "C": {
+      "item": "prettyguardian:marshmallow"
+    }
+  },
+  "pattern": [
+    "AA",
+    "BC",
+    "AA"
+  ],
+  "result": {
+    "count": 4,
+    "item": "prettyguardian:smore"
+  },
+  "show_notification": true
+}

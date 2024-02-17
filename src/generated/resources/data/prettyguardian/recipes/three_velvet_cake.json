@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "prettyguardian:velvet_cake"
+    }
+  },
+  "pattern": [
+    "A",
+    "A",
+    "A"
+  ],
+  "result": {
+    "item": "prettyguardian:three_velvet_cake"
+  },
+  "show_notification": true
+}

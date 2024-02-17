@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "prettyguardian:three_velvet_cake"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_velvet_cake": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:velvet_cake"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_velvet_cake",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "prettyguardian:three_velvet_cake"
+    ]
+  },
+  "sends_telemetry_event": false
+}

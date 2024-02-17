@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:sugar"
+    },
+    "B": {
+      "item": "prettyguardian:chocolate"
+    },
+    "C": {
+      "item": "minecraft:egg"
+    },
+    "D": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DDD"
+  ],
+  "result": {
+    "item": "prettyguardian:chocolate_pie"
+  },
+  "show_notification": true
+}

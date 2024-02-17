@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "prettyguardian:strawberry"
+    },
+    "B": {
+      "item": "prettyguardian:cream"
+    },
+    "C": {
+      "item": "minecraft:bread"
+    }
+  },
+  "pattern": [
+    "ABA",
+    " C "
+  ],
+  "result": {
+    "count": 2,
+    "item": "prettyguardian:marshmellow_strawberry_burger"
+  },
+  "show_notification": true
+}

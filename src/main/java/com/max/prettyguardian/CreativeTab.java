@@ -15,35 +15,18 @@ public class CreativeTab {
             .icon(() -> PrettyGuardianItem.CHOCOLATE.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(PrettyGuardianBlock.CREAM_CAKE.get());
-                output.accept(PrettyGuardianBlock.RHUM_CAKE.get());
                 output.accept(PrettyGuardianBlock.STRAWBERRY_CAKE.get());
                 output.accept(PrettyGuardianBlock.BERRY_STRAWBERRY_CAKE.get());
-                output.accept(PrettyGuardianBlock.VELVET_CAKE.get());
+                output.accept(PrettyGuardianBlock.RHUM_CAKE.get());
                 output.accept(PrettyGuardianBlock.CREAM_STRAWBERRY_CAKE.get());
-                output.accept(PrettyGuardianBlock.THREE_CHOCO_CAKE.get());
                 output.accept(PrettyGuardianBlock.THREE_STRAWBERRY_CAKE.get());
-                output.accept(PrettyGuardianBlock.THREE_STRAWBERRY_CHOCO_CAKE.get());
-                output.accept(PrettyGuardianBlock.THREE_VELVET_CAKE.get());
-                output.accept(PrettyGuardianBlock.STRAWBERRY_CHOCO_CAKE.get());
                 output.accept(PrettyGuardianBlock.CHOCOLATE_CAKE.get());
-                output.accept(PrettyGuardianBlock.APPLE_PIE.get());
-                output.accept(PrettyGuardianBlock.CHOCOLATE_PIE.get());
-                output.accept(PrettyGuardianBlock.MAGIC_PIE.get());
-                output.accept(PrettyGuardianBlock.LEMON_PIE.get());
-                output.accept(PrettyGuardianBlock.STRAWBERRY_PIE.get());
-                output.accept(PrettyGuardianItem.STRAWBERRY_SEEDS.get());
-                output.accept(PrettyGuardianItem.STRAWBERRY.get());
-                output.accept(PrettyGuardianItem.VANILLA_SEEDS.get());
-                output.accept(PrettyGuardianItem.VANILLA.get());
-                output.accept(PrettyGuardianItem.PISTACHIO.get());
-                output.accept(PrettyGuardianItem.LEMON.get());
-                output.accept(PrettyGuardianItem.AGARAGAR.get());
-                output.accept(PrettyGuardianItem.CREAM.get());
+                output.accept(PrettyGuardianBlock.THREE_CHOCO_CAKE.get());
+                output.accept(PrettyGuardianBlock.STRAWBERRY_CHOCO_CAKE.get());
+                output.accept(PrettyGuardianBlock.THREE_STRAWBERRY_CHOCO_CAKE.get());
+                output.accept(PrettyGuardianBlock.VELVET_CAKE.get());
+                output.accept(PrettyGuardianBlock.THREE_VELVET_CAKE.get());
 
-
-                output.accept(PrettyGuardianItem.MINT_SEEDS.get());
-                output.accept(PrettyGuardianItem.MINT.get());
-                output.accept(PrettyGuardianItem.CHOCOLATE_STRAWBERRY.get());
                 output.accept(PrettyGuardianItem.SECRET_DONUT.get());
                 output.accept(PrettyGuardianItem.DONUT.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY_DONUT.get());
@@ -52,43 +35,65 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.MOCHI_DONUT.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY_MOCHI_DONUT.get());
                 output.accept(PrettyGuardianItem.CHOCOLATE_MOCHI_DONUT.get());
-                output.accept(PrettyGuardianItem.CARAMEL.get());
-                output.accept(PrettyGuardianItem.CHOCOLATE.get());
+
+
+                output.accept(PrettyGuardianBlock.APPLE_PIE.get());
+                output.accept(PrettyGuardianBlock.CHOCOLATE_PIE.get());
+                output.accept(PrettyGuardianBlock.MAGIC_PIE.get());
+                output.accept(PrettyGuardianBlock.LEMON_PIE.get());
+                output.accept(PrettyGuardianBlock.STRAWBERRY_PIE.get());
+
+                output.accept(PrettyGuardianItem.STRAWBERRY_SEEDS.get());
+                output.accept(PrettyGuardianItem.STRAWBERRY.get());
+                output.accept(PrettyGuardianItem.CHOCOLATE_STRAWBERRY.get());
+                output.accept(PrettyGuardianItem.VANILLA_SEEDS.get());
+                output.accept(PrettyGuardianItem.VANILLA.get());
+                output.accept(PrettyGuardianItem.MINT_SEEDS.get());
+                output.accept(PrettyGuardianItem.MINT.get());
+
+                output.accept(PrettyGuardianItem.WAFFLE.get());
+                output.accept(PrettyGuardianItem.CHOCOLATE_WAFFLE.get());
+                output.accept(PrettyGuardianItem.SMORE.get());
+                output.accept(PrettyGuardianItem.MARSHMELLOW_STRAWBERRY_BURGER.get());
+
                 output.accept(PrettyGuardianItem.STRAWBERRY_MILK_BUCKET.get());
                 output.accept(PrettyGuardianItem.CHOCOLATE_MILK_BUCKET.get());
                 output.accept(PrettyGuardianItem.VANILLA_MILK_BUCKET.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY_MILK_CARTON.get());
                 output.accept(PrettyGuardianItem.CHOCOLATE_MILK_CARTON.get());
                 output.accept(PrettyGuardianItem.VANILLA_MILK_CARTON.get());
+
                 output.accept(PrettyGuardianItem.PISTACHIO_ICE_CREAM.get());
                 output.accept(PrettyGuardianItem.VANILLA_ICE_CREAM.get());
                 output.accept(PrettyGuardianItem.CHOCOLATE_ICE_CREAM.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY_ICE_CREAM.get());
                 output.accept(PrettyGuardianItem.POKKY_ICE_CREAM.get());
+
                 output.accept(PrettyGuardianItem.APPLE_MOJITO.get());
                 output.accept(PrettyGuardianItem.MINT_MOJITO.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY_MOJITO.get());
                 output.accept(PrettyGuardianItem.BUBBLE_TEA.get());
-                output.accept(PrettyGuardianItem.WAFFLE.get());
-                output.accept(PrettyGuardianItem.CHOCOLATE_WAFFLE.get());
-                output.accept(PrettyGuardianItem.CHOCOLATE_POCKY.get());
-                output.accept(PrettyGuardianItem.STRAWBERRY_POCKY.get());
-                output.accept(PrettyGuardianItem.DANGO_CARAMEL.get());
-                output.accept(PrettyGuardianItem.TRICOLOR_DANGO.get());
+
                 output.accept(PrettyGuardianItem.POPSICLE.get());
                 output.accept(PrettyGuardianItem.CREAM_POPSICLE.get());
                 output.accept(PrettyGuardianItem.CHOCOLATE_POPSICLE.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY_POPSICLE.get());
+                output.accept(PrettyGuardianItem.CHOCOLATE_POCKY.get());
+                output.accept(PrettyGuardianItem.STRAWBERRY_POCKY.get());
+                output.accept(PrettyGuardianItem.DANGO_CARAMEL.get());
+                output.accept(PrettyGuardianItem.TRICOLOR_DANGO.get());
+
                 output.accept(PrettyGuardianItem.CARAMEL_PUDDING.get());
                 output.accept(PrettyGuardianItem.CHOCOLATE_PUDDING.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY_PUDDING.get());
                 output.accept(PrettyGuardianItem.PISTACHIO_PUDDING.get());
+
                 output.accept(PrettyGuardianItem.MARSHMALLOW.get());
                 output.accept(PrettyGuardianItem.MARSHMALLOW_STICK.get());
                 output.accept(PrettyGuardianItem.ROASTED_MARSHMALLOW_STICK.get());
-                output.accept(PrettyGuardianItem.SMORE.get());
-                output.accept(PrettyGuardianItem.MARSHMELLOW_STRAWBERRY_BURGER.get());
+
                 output.accept(PrettyGuardianItem.CANDY_APPLE.get());
+
                 output.accept(PrettyGuardianItem.CHOCOLATE_CROISSANT.get());
                 output.accept(PrettyGuardianItem.VANILLA_CROISSANT.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY_CROISSANT.get());

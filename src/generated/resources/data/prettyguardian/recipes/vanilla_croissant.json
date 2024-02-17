@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:sugar"
+    },
+    "B": {
+      "item": "prettyguardian:vanilla"
+    },
+    "C": {
+      "item": "minecraft:wheat"
+    },
+    "D": {
+      "item": "prettyguardian:cream"
+    },
+    "E": {
+      "item": "minecraft:egg"
+    }
+  },
+  "pattern": [
+    " AB",
+    "CDE",
+    "CC "
+  ],
+  "result": {
+    "count": 3,
+    "item": "prettyguardian:vanilla_croissant"
+  },
+  "show_notification": true
+}

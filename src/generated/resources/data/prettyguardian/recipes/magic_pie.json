@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:sugar"
+    },
+    "B": {
+      "item": "prettyguardian:fairy_dust"
+    },
+    "C": {
+      "item": "minecraft:sweet_berries"
+    },
+    "D": {
+      "item": "prettyguardian:strawberry"
+    },
+    "F": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CDC",
+    "FFF"
+  ],
+  "result": {
+    "item": "prettyguardian:magic_pie"
+  },
+  "show_notification": true
+}

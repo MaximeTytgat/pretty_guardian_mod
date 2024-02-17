@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "prettyguardian:vanilla_croissant"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_vanilla": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:vanilla"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_vanilla",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "prettyguardian:vanilla_croissant"
+    ]
+  },
+  "sends_telemetry_event": false
+}
