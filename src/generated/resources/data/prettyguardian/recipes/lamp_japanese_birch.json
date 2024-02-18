@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:paper"
+    },
+    "B": {
+      "item": "minecraft:stick"
+    },
+    "C": {
+      "item": "minecraft:torch"
+    },
+    "D": {
+      "item": "minecraft:birch_log"
+    }
+  },
+  "pattern": [
+    "A A",
+    "BCB",
+    "D D"
+  ],
+  "result": {
+    "item": "prettyguardian:lamp_japanese_birch"
+  },
+  "show_notification": true
+}

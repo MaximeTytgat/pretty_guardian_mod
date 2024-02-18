@@ -12,6 +12,7 @@ import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -401,6 +402,63 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(PrettyGuardianItem.FAIRY_DUST.get()), has(PrettyGuardianItem.FAIRY_DUST.get()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PrettyGuardianItem.BUTTERFLY_NET.get(), 1)
+                .pattern(" AA")
+                .pattern("BAA")
+                .define('A', Items.STRING)
+                .define('B', Items.STICK)
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .unlockedBy(getHasName(Items.STRING), has(Items.STRING))
+                .save(pWriter);
+
+
+        simpleScreen(pWriter, PrettyGuardianBlock.SCREEN_JAPANESE_BIRCH.get(), Blocks.BIRCH_PLANKS);
+        simpleScreen(pWriter, PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_LOG.get(), Blocks.CHERRY_LOG);
+        simpleScreen(pWriter, PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_PLANK.get(), Blocks.CHERRY_PLANKS);
+
+        simpleLamp(pWriter, PrettyGuardianBlock.LAMP_JAPANESE_BIRCH.get(), Blocks.BIRCH_LOG);
+        simpleLamp(pWriter, PrettyGuardianBlock.LAMP_JAPANESE_CHERRY.get(), Blocks.CHERRY_LOG);
+        simpleLamp(pWriter, PrettyGuardianBlock.LAMP_JAPANESE_JUNGLE.get(), Blocks.JUNGLE_LOG);
+        simpleLamp(pWriter, PrettyGuardianBlock.LAMP_JAPANESE_OAK.get(), Blocks.OAK_LOG);
+        simpleLamp(pWriter, PrettyGuardianBlock.LAMP_JAPANESE_SPRUCE.get(), Blocks.SPRUCE_LOG);
+        simpleLamp(pWriter, PrettyGuardianBlock.LAMP_JAPANESE_ACACIA.get(), Blocks.ACACIA_LOG);
+        simpleLamp(pWriter, PrettyGuardianBlock.LAMP_JAPANESE_DARK_OAK.get(), Blocks.DARK_OAK_LOG);
+        simpleLamp(pWriter, PrettyGuardianBlock.LAMP_JAPANESE_MANGROVE.get(), Blocks.MANGROVE_LOG);
+
+        simpleLantern(pWriter, PrettyGuardianBlock.LANTERN_JAPANESE.get(), Items.PAPER);
+        simpleLantern(pWriter, PrettyGuardianBlock.LANTERN_JAPANESE_SAKURA.get(), Items.PINK_DYE);
+        simpleLantern(pWriter, PrettyGuardianBlock.LANTERN_JAPANESE_FESTIVAL.get(), Items.RED_DYE);
+
+        simpleDoor(pWriter, PrettyGuardianBlock.DOOR_SHOJI_BIRCH.get(), Blocks.BIRCH_PLANKS);
+        simpleDoor2(pWriter, PrettyGuardianBlock.DOOR_SHOJI_BIRCH_SMALL.get(), Blocks.BIRCH_PLANKS);
+        simpleDoor(pWriter, PrettyGuardianBlock.DOOR_SHOJI_BLOSSOM.get(), Blocks.CHERRY_PLANKS);
+        simpleDoor2(pWriter, PrettyGuardianBlock.DOOR_SHOJI_BLOSSOM_SMALL.get(), Blocks.CHERRY_PLANKS);
+        simpleDoor(pWriter, PrettyGuardianBlock.DOOR_SHOJI_CHERRY.get(), Blocks.CHERRY_LOG);
+        simpleDoor2(pWriter, PrettyGuardianBlock.DOOR_SHOJI_CHERRY_SMALL.get(), Blocks.CHERRY_LOG);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PrettyGuardianBlock.PICNIC_BASKET.get(), 1)
+                .pattern(" A ")
+                .pattern("ABA")
+                .pattern("AAA")
+                .define('A', Blocks.BAMBOO)
+                .define('B', Items.PINK_WOOL)
+                .unlockedBy(getHasName(Blocks.OAK_PLANKS), has(Blocks.OAK_PLANKS))
+                .unlockedBy(getHasName(Items.CHEST), has(Items.CHEST))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PrettyGuardianBlock.RANDOM_PLUSH_BOX.get(), 1)
+                .pattern("ABA")
+                .pattern("CDC")
+                .pattern("ABA")
+                .define('A', Items.STICK)
+                .define('B', Items.PINK_WOOL)
+                .define('C', Items.WHITE_WOOL)
+                .define('D', Items.STRING)
+                .unlockedBy(getHasName(Items.STICK), has(Items.STICK))
+                .unlockedBy(getHasName(Items.PINK_WOOL), has(Items.PINK_WOOL))
+                .unlockedBy(getHasName(Items.WHITE_WOOL), has(Items.WHITE_WOOL))
+                .unlockedBy(getHasName(Items.STRING), has(Items.STRING))
+                .save(pWriter);
 
 
     }
@@ -421,6 +479,65 @@ public class ModRecipeProvider extends RecipeProvider {
                     .unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(finishedRecipeConsumer);
         }
+    }
+
+    protected static void simpleDoor(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike door, ItemLike wood) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, door, 3)
+                .pattern("BA")
+                .pattern("AB")
+                .pattern("BA")
+                .define('A', Items.PAPER)
+                .define('B', wood)
+                .unlockedBy(getHasName(wood), has(wood))
+                .save(finishedRecipeConsumer);
+    }
+
+    protected static void simpleDoor2(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike door, ItemLike wood) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, door, 3)
+                .pattern("AB")
+                .pattern("BA")
+                .pattern("AB")
+                .define('A', Items.PAPER)
+                .define('B', wood)
+                .unlockedBy(getHasName(wood), has(wood))
+                .save(finishedRecipeConsumer);
+    }
+
+    protected static void simpleLantern(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike lantern, ItemLike ingredient) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, lantern, 1)
+                .pattern("ABA")
+                .pattern("ACA")
+                .pattern("ABA")
+                .define('A', Items.PAPER)
+                .define('B', ingredient)
+                .define('C', Items.TORCH)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(finishedRecipeConsumer);
+    }
+
+    protected static void simpleLamp(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike lamp, ItemLike wood) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, lamp, 1)
+                .pattern("A A")
+                .pattern("BCB")
+                .pattern("D D")
+                .define('A', Items.PAPER)
+                .define('B', Items.STICK)
+                .define('C', Items.TORCH)
+                .define('D', wood)
+                .unlockedBy(getHasName(wood), has(wood))
+                .save(finishedRecipeConsumer);
+    }
+
+    protected static void simpleScreen(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike screen, ItemLike wood) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, screen, 1)
+                .pattern("ABA")
+                .pattern("ABA")
+                .pattern("AAA")
+                .define('A', wood)
+                .define('B', Items.PAPER)
+                .unlockedBy(getHasName(wood), has(wood))
+                .unlockedBy(getHasName(Items.PAPER), has(Items.PAPER))
+                .save(finishedRecipeConsumer);
     }
 
     protected static void simplePie(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike result, ItemLike ingredient) {

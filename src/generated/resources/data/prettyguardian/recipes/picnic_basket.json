@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:bamboo"
+    },
+    "B": {
+      "item": "minecraft:pink_wool"
+    }
+  },
+  "pattern": [
+    " A ",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "item": "prettyguardian:picnic_basket"
+  },
+  "show_notification": true
+}
