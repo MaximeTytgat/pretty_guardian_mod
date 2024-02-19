@@ -3,7 +3,9 @@ package com.max.prettyguardian.blocks.custom;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -30,6 +32,14 @@ public class SeaShell extends Block {
     @Override
     public @NotNull VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         return SHAPE_BY_VARIANT[blockState.getValue(VARIANT)];
+    }
+
+    @Override
+    public boolean canSurvive(BlockState blockState, LevelReader level, BlockPos blockPos) {
+        BlockPos blockpos = blockPos.below();
+        BlockState blockstate = level.getBlockState(blockpos);
+
+        return  blockstate.is(Blocks.SAND) || blockstate.is(Blocks.RED_SAND);
     }
 
     @Nullable

@@ -11,7 +11,7 @@
               "Name": "prettyguardian:sea_shell",
               "Properties": {
                 "facing": "north",
-                "variant": "1"
+                "variant": "0"
               }
             }
           }
@@ -27,7 +27,7 @@
         }
       ]
     },
-    "tries": 32,
+    "tries": 96,
     "xz_spread": 7,
     "y_spread": 3
   }
