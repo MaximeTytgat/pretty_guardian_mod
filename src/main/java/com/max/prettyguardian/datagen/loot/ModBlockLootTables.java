@@ -97,7 +97,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(PrettyGuardianBlock.SEA_SHELL.get());
 
         this.dropSelf(PrettyGuardianBlock.GEM_POLISHING_STATION.get());
-        this.dropSelf(PrettyGuardianBlock.STAFF_MAGIC_TABLE.get());
+        this.dropSelf(PrettyGuardianBlock.MOON_ALTAR.get());
 
 
         this.add(PrettyGuardianBlock.PISTACHIO_LEAVES_CROP.get(), block -> createLeavesDrops(block, PrettyGuardianBlock.PISTACHIO_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));

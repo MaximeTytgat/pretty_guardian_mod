@@ -1,4 +1,4 @@
-package com.max.prettyguardian.event;
+package com.max.prettyguardian.event.custom;
 
 import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.blocks.custom.furniture.JapChairBlock;

@@ -24,6 +24,11 @@ public class SpaceSwordItem extends SwordItem {
     }
 
     @Override
+    public boolean isFoil(ItemStack itemStack) {
+        return true;
+    }
+
+    @Override
     public boolean isEnchantable(ItemStack itemStack) {
         return false;
     }

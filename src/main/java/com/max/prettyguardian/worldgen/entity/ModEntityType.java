@@ -1,7 +1,7 @@
 package com.max.prettyguardian.worldgen.entity;
 
 import com.max.prettyguardian.PrettyGuardian;
-import com.max.prettyguardian.event.JapChairEvent;
+import com.max.prettyguardian.event.custom.JapChairEvent;
 import com.max.prettyguardian.worldgen.entity.projectile.BubbleEntity;
 import com.max.prettyguardian.worldgen.entity.projectile.CuteArrowEntity;
 import com.max.prettyguardian.worldgen.entity.projectile.HeartEntity;

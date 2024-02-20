@@ -1,4 +1,4 @@
-package com.max.prettyguardian.event;
+package com.max.prettyguardian.event.custom;
 
 import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.item.PrettyGuardianItem;
@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.function.Predicate;
 
 @Mod.EventBusSubscriber(modid = PrettyGuardian.MOD_ID, value = Dist.CLIENT)
-public class ModEvents {
+public class DoubleJumpEvent {
 
     private static final long COOLDOWN_MILLIS_DOUBLE_JUMP = 1300;
     private static Date lastJumpTime = new Date();

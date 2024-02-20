@@ -1,4 +1,4 @@
-package com.max.prettyguardian.client.renderer.entity;
+package com.max.prettyguardian.client.renderer.entity.projectiles;
 
 
 import com.max.prettyguardian.PrettyGuardian;

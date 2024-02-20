@@ -231,7 +231,7 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.FAIRY_DUST.get());
                 output.accept(PrettyGuardianItem.GIFT_BOX.get());
                 output.accept(PrettyGuardianBlock.GEM_POLISHING_STATION.get());
-                output.accept(PrettyGuardianBlock.STAFF_MAGIC_TABLE.get());
+                output.accept(PrettyGuardianBlock.MOON_ALTAR.get());
 
                 output.accept(PrettyGuardianItem.BUTTERFLY_NET.get());
                 output.accept(PrettyGuardianItem.ADMIRAL_BUTTERFLY_EGG.get());

@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "prettyguardian:staff_magic_table"
+          "name": "prettyguardian:moon_altar"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "prettyguardian:blocks/staff_magic_table"
+  "random_sequence": "prettyguardian:blocks/moon_altar"
 }

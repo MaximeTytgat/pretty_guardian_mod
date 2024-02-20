@@ -2,7 +2,7 @@ package com.max.prettyguardian.client.gui.sreens;
 
 
 import com.max.prettyguardian.PrettyGuardian;
-import com.max.prettyguardian.client.gui.sreens.inventory.StaffMagicTableMenu;
+import com.max.prettyguardian.client.gui.sreens.inventory.MoonAltarMenu;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -11,11 +11,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class StaffMagicTableScreen extends AbstractContainerScreen<StaffMagicTableMenu> {
+public class StaffMagicTableScreen extends AbstractContainerScreen<MoonAltarMenu> {
 
     private static final ResourceLocation TEXTURE = new ResourceLocation(PrettyGuardian.MOD_ID, "textures/gui/container/picnic_basket.png");
 
-    public StaffMagicTableScreen(StaffMagicTableMenu staffMagicTableMenu, Inventory inventory, Component component) {
+    public StaffMagicTableScreen(MoonAltarMenu staffMagicTableMenu, Inventory inventory, Component component) {
         super(staffMagicTableMenu, inventory, component);
     }
 

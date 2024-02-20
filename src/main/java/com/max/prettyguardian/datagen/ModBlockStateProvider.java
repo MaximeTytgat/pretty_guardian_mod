@@ -89,7 +89,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 blockTexture(PrettyGuardianBlock.STRAWBERRY_CROP_FLOWER.get())).renderType("cutout"));
 
         simpleBlockWithItem(PrettyGuardianBlock.GEM_POLISHING_STATION.get(), new ModelFile.UncheckedModelFile(modLoc("block/gem_polishing_station")));
-        simpleBlockWithItem(PrettyGuardianBlock.STAFF_MAGIC_TABLE.get(), new ModelFile.UncheckedModelFile(modLoc("block/staff_magic_table")));
     }
 
 

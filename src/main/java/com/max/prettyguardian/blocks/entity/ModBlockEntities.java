@@ -22,10 +22,10 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(GemPolishingStationBlockEntity::new,
                             PrettyGuardianBlock.GEM_POLISHING_STATION.get()).build(null));
 
-    public static final RegistryObject<BlockEntityType<StaffMagicTableBlockEntity>> STAFF_MAGIC_TABLE_BE =
-            BLOCK_ENTITIES.register("staff_magic_table_be", () ->
-                    BlockEntityType.Builder.of(StaffMagicTableBlockEntity::new,
-                            PrettyGuardianBlock.STAFF_MAGIC_TABLE.get()).build(null));
+    public static final RegistryObject<BlockEntityType<MoonAltarBlockEntity>> MOON_ALTAR_BE =
+            BLOCK_ENTITIES.register("moon_altar_be", () ->
+                    BlockEntityType.Builder.of(MoonAltarBlockEntity::new,
+                            PrettyGuardianBlock.MOON_ALTAR.get()).build(null));
 
 
     public static void register(IEventBus eventBus) {

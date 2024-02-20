@@ -20,8 +20,8 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<GemPolishingStationMenu>> GEM_POLISHING_MENU =
             registerMenuType("gem_polishing_menu", GemPolishingStationMenu::new);
 
-    public static final RegistryObject<MenuType<StaffMagicTableMenu>> STAFF_MAGIC_TABLE_MENU =
-            registerMenuType("staff_magic_table_menu", StaffMagicTableMenu::new);
+    public static final RegistryObject<MenuType<MoonAltarMenu>> STAFF_MAGIC_TABLE_MENU =
+            registerMenuType("staff_magic_table_menu", MoonAltarMenu::new);
 
     public static final RegistryObject<MenuType<GiftBoxMenu>> GIFT_BOX_MENU =
             registerMenuType("gift_box_menu", GiftBoxMenu::new);

@@ -1,6 +1,8 @@
 package com.max.prettyguardian.event;
 
 import com.max.prettyguardian.PrettyGuardian;
+import com.max.prettyguardian.blocks.entity.ModBlockEntities;
+import com.max.prettyguardian.blocks.entity.renderer.MoonAltarBlockEntityRenderer;
 import com.max.prettyguardian.entity.client.butterfly.ButterflyModel;
 import com.max.prettyguardian.entity.client.celestialrabbit.CelestialRabbitModel;
 import com.max.prettyguardian.entity.client.ModModelLayers;
@@ -32,7 +34,6 @@ public class ModEventBusClientEvents {
         Minecraft.getInstance().particleEngine.register(ModParticles.PINK_HEART_PARTICLES.get(),
                 PinkHeartParticles.Provider::new);
 
-
         Minecraft.getInstance().particleEngine.register(ModParticles.BUBBLE.get(),
                 BubbleParticles.Provider::new);
     }
@@ -43,5 +44,10 @@ public class ModEventBusClientEvents {
         event.registerLayerDefinition(ModModelLayers.CELESTIAL_RABBIT_LAYER, CelestialRabbitModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.BUTTERFLY_LAYER, ButterflyModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.FAIRY_LAYER, FairyModel::createBodyLayer);
+    }
+
+    @SubscribeEvent
+    public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(ModBlockEntities.MOON_ALTAR_BE.get(), MoonAltarBlockEntityRenderer::new);
     }
 }

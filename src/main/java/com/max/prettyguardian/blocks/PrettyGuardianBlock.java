@@ -15,7 +15,7 @@ import com.max.prettyguardian.blocks.custom.food.BaseThreeCake;
 import com.max.prettyguardian.blocks.custom.furniture.*;
 import com.max.prettyguardian.blocks.custom.plush.CowPlushBlock;
 import com.max.prettyguardian.blocks.custom.plush.PlushiesBlock;
-import com.max.prettyguardian.blocks.custom.table.StaffMagicTableBlock;
+import com.max.prettyguardian.blocks.custom.table.MoonAltarBlock;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.worldgen.tree.LemonTreeGrower;
 import com.max.prettyguardian.worldgen.tree.PistachioTreeGrower;
@@ -133,7 +133,7 @@ public class PrettyGuardianBlock {
     public static final RegistryObject<Block> SEA_SHELL = registryBlock("sea_shell", () -> new SeaShell(BlockBehaviour.Properties.copy(Blocks.TUBE_CORAL_BLOCK).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
 
     public static final RegistryObject<Block> GEM_POLISHING_STATION = registryBlock("gem_polishing_station", () -> new GemPolishingStationBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> STAFF_MAGIC_TABLE = registryBlock("staff_magic_table", () -> new StaffMagicTableBlock(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE).noOcclusion().requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> MOON_ALTAR = registryBlock("moon_altar", () -> new MoonAltarBlock(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE).noOcclusion().requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> CHAIR_JAPANESE_OAK = registryBlock("chair_japanese_oak", () -> new JapChairBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
 

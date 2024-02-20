@@ -1,11 +1,15 @@
 package com.max.prettyguardian.blocks.entity;
 
-import com.max.prettyguardian.client.gui.sreens.inventory.StaffMagicTableMenu;
+import com.max.prettyguardian.blocks.custom.table.MoonAltarBlock;
+import com.max.prettyguardian.client.gui.sreens.inventory.MoonAltarMenu;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -17,6 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -24,17 +29,26 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class StaffMagicTableBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(4);
+public class MoonAltarBlockEntity extends BlockEntity implements MenuProvider {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(4) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+            if (!level.isClientSide()) {
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
+        }
+    };
     private static final int INPUT_SLOT_1 = 0;
     private static final int INPUT_SLOT_2 = 1;
     private static final int INPUT_SLOT_3 = 2;
     private static final int OUTPUT_SLOT = 3;
     private LazyOptional<ItemStackHandler> lazyItemHandler = LazyOptional.empty();
 
-    public StaffMagicTableBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(ModBlockEntities.STAFF_MAGIC_TABLE_BE.get(), blockPos, blockState);
+    public MoonAltarBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(ModBlockEntities.MOON_ALTAR_BE.get(), blockPos, blockState);
     }
+
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
@@ -66,13 +80,13 @@ public class StaffMagicTableBlockEntity extends BlockEntity implements MenuProvi
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("block.prettyguardian.staff_magic_table");
+        return Component.translatable("block.prettyguardian.moon_altar");
     }
 
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-        return new StaffMagicTableMenu(id, inventory, this);
+        return new MoonAltarMenu(id, inventory, this);
     }
 
     @Override
@@ -124,5 +138,24 @@ public class StaffMagicTableBlockEntity extends BlockEntity implements MenuProvi
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
         return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
+    }
+
+    public ItemStack getRenderStack(int slot) {
+        return itemHandler.getStackInSlot(slot);
+    }
+
+    public Direction getFacingProperty() {
+        return this.getBlockState().getValue(MoonAltarBlock.FACING);
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
     }
 }

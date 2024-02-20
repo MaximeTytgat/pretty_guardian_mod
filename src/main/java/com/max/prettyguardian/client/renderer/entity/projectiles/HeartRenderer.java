@@ -1,8 +1,8 @@
-package com.max.prettyguardian.client.renderer.entity;
+package com.max.prettyguardian.client.renderer.entity.projectiles;
 
 
 import com.max.prettyguardian.PrettyGuardian;
-import com.max.prettyguardian.worldgen.entity.projectile.BubbleEntity;
+import com.max.prettyguardian.worldgen.entity.projectile.HeartEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
@@ -17,26 +17,26 @@ import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 
-public class BubbleRenderer extends EntityRenderer<BubbleEntity> {
-    private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(PrettyGuardian.MOD_ID, "textures/entity/projectiles/bubble.png");
+public class HeartRenderer extends EntityRenderer<HeartEntity> {
+    private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(PrettyGuardian.MOD_ID, "textures/entity/projectiles/heart.png");
     private static final RenderType RENDER_TYPE = RenderType.entityCutoutNoCull(TEXTURE_LOCATION);
 
-    public BubbleRenderer(EntityRendererProvider.Context p_173962_) {
+    public HeartRenderer(EntityRendererProvider.Context p_173962_) {
         super(p_173962_);
     }
 
     @Override
-    public ResourceLocation getTextureLocation(BubbleEntity p_114482_) {
+    public ResourceLocation getTextureLocation(HeartEntity p_114482_) {
         return TEXTURE_LOCATION;
     }
 
-    protected int getBlockLightLevel(BubbleEntity p_114087_, BlockPos p_114088_) {
+    protected int getBlockLightLevel(HeartEntity p_114087_, BlockPos p_114088_) {
         return 15;
     }
 
-    public void render(BubbleEntity p_114080_, float p_114081_, float p_114082_, PoseStack p_114083_, MultiBufferSource p_114084_, int p_114085_) {
+    public void render(HeartEntity p_114080_, float p_114081_, float p_114082_, PoseStack p_114083_, MultiBufferSource p_114084_, int p_114085_) {
         p_114083_.pushPose();
-        p_114083_.scale(2F, 2F, 2F);
+        p_114083_.scale(2.0F, 2.0F, 2.0F);
         p_114083_.mulPose(this.entityRenderDispatcher.cameraOrientation());
         p_114083_.mulPose(Axis.YP.rotationDegrees(180.0F));
         PoseStack.Pose posestack$pose = p_114083_.last();
