@@ -27,6 +27,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(MoonAltarBlockEntity::new,
                             PrettyGuardianBlock.MOON_ALTAR.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<SilverCrystalBlockEntity>> SILVER_CRYSTAL_BE =
+            BLOCK_ENTITIES.register("silver_crystal_be", () ->
+                    BlockEntityType.Builder.of(SilverCrystalBlockEntity::new,
+                            PrettyGuardianBlock.SILVER_CRYSTAL.get()).build(null));
+
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

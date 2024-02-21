@@ -1,5 +1,6 @@
 package com.max.prettyguardian.blocks.entity;
 
+import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import com.max.prettyguardian.blocks.custom.table.MoonAltarBlock;
 import com.max.prettyguardian.client.gui.sreens.inventory.MoonAltarMenu;
 import com.max.prettyguardian.item.PrettyGuardianItem;
@@ -111,7 +112,7 @@ public class MoonAltarBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private void craftItem() {
-        ItemStack result = new ItemStack(PrettyGuardianItem.ETERNAL_SILVER_CISTAL_STAFF.get());
+        ItemStack result = new ItemStack(PrettyGuardianBlock.SILVER_CRYSTAL.get());
         this.itemHandler.extractItem(INPUT_SLOT_1, 1, false);
         this.itemHandler.extractItem(INPUT_SLOT_2, 1, false);
         this.itemHandler.extractItem(INPUT_SLOT_3, 1, false);
@@ -128,7 +129,7 @@ public class MoonAltarBlockEntity extends BlockEntity implements MenuProvider {
         boolean slot2HasArtephacte = item2 == PrettyGuardianItem.PLUTONS_KEY.get() || item2 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item2 == PrettyGuardianItem.SPACE_SWORD.get();
         boolean slot3HasArtephacte = item3 == PrettyGuardianItem.PLUTONS_KEY.get() || item3 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item3 == PrettyGuardianItem.SPACE_SWORD.get();
 
-        ItemStack result = new ItemStack(PrettyGuardianItem.ETERNAL_SILVER_CISTAL_STAFF.get());
+        ItemStack result = new ItemStack(PrettyGuardianBlock.SILVER_CRYSTAL.get());
         return (slot1HasArtephacte && slot2HasArtephacte && slot3HasArtephacte) && (item1 != item2 && item2 != item3 && item1 != item3) && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
     }
 

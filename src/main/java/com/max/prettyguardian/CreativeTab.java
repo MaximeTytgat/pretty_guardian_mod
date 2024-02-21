@@ -247,6 +247,8 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.FAIRY_EGG.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY_COW_EGG.get());
                 output.accept(PrettyGuardianItem.CELESTIAL_RABBIT_EGG.get());
+
+                output.accept(PrettyGuardianBlock.SILVER_CRYSTAL.get());
             }).build());
 
     public static void register(IEventBus eventBus) {
