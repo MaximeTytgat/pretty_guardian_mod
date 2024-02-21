@@ -37,8 +37,12 @@ public class MoonAltarBlockEntityRenderer implements BlockEntityRenderer<MoonAlt
             poseStack.scale(0.3f, 0.3f, 0.3f);
         } else if (moonAltarBlockEntity.getFacingProperty() == Direction.EAST) {
             poseStack.mulPose(Axis.YP.rotationDegrees(90));
+            poseStack.translate(-0.7f, 1.1f, 0.38f);
+            poseStack.scale(0.3f, 0.3f, 0.3f);
         } else if (moonAltarBlockEntity.getFacingProperty() == Direction.WEST) {
             poseStack.mulPose(Axis.YP.rotationDegrees(270));
+            poseStack.translate(0.3f, 1.1f, -0.62f);
+            poseStack.scale(0.3f, 0.3f, 0.3f);
         } else {
             poseStack.translate(0.3f, 1.1f, 0.38f);
             poseStack.scale(0.3f, 0.3f, 0.3f);
@@ -55,8 +59,12 @@ public class MoonAltarBlockEntityRenderer implements BlockEntityRenderer<MoonAlt
             poseStack.scale(0.3f, 0.3f, 0.3f);
         } else if (moonAltarBlockEntity.getFacingProperty() == Direction.EAST) {
             poseStack.mulPose(Axis.YP.rotationDegrees(90));
+            poseStack.translate(-0.35f, 1.1f, 0.38f);
+            poseStack.scale(0.3f, 0.3f, 0.3f);
         } else if (moonAltarBlockEntity.getFacingProperty() == Direction.WEST) {
             poseStack.mulPose(Axis.YP.rotationDegrees(270));
+            poseStack.translate(0.65f, 1.1f, -0.62f);
+            poseStack.scale(0.3f, 0.3f, 0.3f);
         } else {
             poseStack.translate(0.65f, 1.1f, 0.38f);
             poseStack.scale(0.3f, 0.3f, 0.3f);
@@ -73,8 +81,12 @@ public class MoonAltarBlockEntityRenderer implements BlockEntityRenderer<MoonAlt
             poseStack.scale(0.3f, 0.3f, 0.3f);
         } else if (moonAltarBlockEntity.getFacingProperty() == Direction.EAST) {
             poseStack.mulPose(Axis.YP.rotationDegrees(90));
+            poseStack.translate(-0.52f, 1.1f, 0.7f);
+            poseStack.scale(0.3f, 0.3f, 0.3f);
         } else if (moonAltarBlockEntity.getFacingProperty() == Direction.WEST) {
             poseStack.mulPose(Axis.YP.rotationDegrees(270));
+            poseStack.translate(0.48f, 1.1f, -0.3f);
+            poseStack.scale(0.3f, 0.3f, 0.3f);
         } else {
             poseStack.translate(0.48f, 1.1f, 0.7f);
             poseStack.scale(0.3f, 0.3f, 0.3f);
