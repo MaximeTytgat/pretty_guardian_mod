@@ -14,6 +14,8 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -23,6 +25,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
@@ -75,10 +78,12 @@ public class ModConfiguredFeatures {
                 new TwoLayersFeatureSize(1, 0, 2)).build());
 
         register(context, SEA_SHELL_KEY, Feature.RANDOM_PATCH,
-                FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockConfiguration(BlockStateProvider.simple(PrettyGuardianBlock.SEA_SHELL.get())))
+                seaShell(PrettyGuardianBlock.SEA_SHELL.get(), List.of(Blocks.SAND, Blocks.RED_SAND))
         );
+    }
 
+    private static RandomPatchConfiguration seaShell(Block block, List<Block> whitelist) {
+        return FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new RandomizedIntStateProvider(BlockStateProvider.simple(block), SeaShell.VARIANT, UniformInt.of(0, 3))), whitelist, 32);
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
