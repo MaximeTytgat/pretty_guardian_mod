@@ -4,6 +4,7 @@ import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import com.max.prettyguardian.blocks.custom.SeaShell;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -17,6 +18,7 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.PinkPetalsBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -77,13 +79,20 @@ public class ModConfiguredFeatures {
                 new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(2), 3),
                 new TwoLayersFeatureSize(1, 0, 2)).build());
 
-        register(context, SEA_SHELL_KEY, Feature.RANDOM_PATCH,
-                seaShell(PrettyGuardianBlock.SEA_SHELL.get(), List.of(Blocks.SAND, Blocks.RED_SAND))
-        );
+
+        register(context, SEA_SHELL_KEY, Feature.RANDOM_PATCH, seaShell(PrettyGuardianBlock.SEA_SHELL.get(), List.of(Blocks.SAND, Blocks.RED_SAND)));
+
     }
 
     private static RandomPatchConfiguration seaShell(Block block, List<Block> whitelist) {
-        return FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new RandomizedIntStateProvider(BlockStateProvider.simple(block), SeaShell.VARIANT, UniformInt.of(0, 3))), whitelist, 32);
+        SimpleWeightedRandomList.Builder<BlockState> builder = SimpleWeightedRandomList.builder();
+        for(int i = 0; i <= 3; ++i) {
+            for(Direction direction : Direction.Plane.HORIZONTAL) {
+                builder.add(block.defaultBlockState().setValue(SeaShell.VARIANT, Integer.valueOf(i)).setValue(PinkPetalsBlock.FACING, direction), 1);
+            }
+        }
+
+        return FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(builder)), whitelist, 16);
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {

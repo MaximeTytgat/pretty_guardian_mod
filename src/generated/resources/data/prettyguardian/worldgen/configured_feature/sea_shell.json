@@ -6,14 +6,169 @@
         "type": "minecraft:simple_block",
         "config": {
           "to_place": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "prettyguardian:sea_shell",
-              "Properties": {
-                "facing": "north",
-                "variant": "0"
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "north",
+                    "variant": "0"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "east",
+                    "variant": "0"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "south",
+                    "variant": "0"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "west",
+                    "variant": "0"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "north",
+                    "variant": "1"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "east",
+                    "variant": "1"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "south",
+                    "variant": "1"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "west",
+                    "variant": "1"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "north",
+                    "variant": "2"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "east",
+                    "variant": "2"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "south",
+                    "variant": "2"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "west",
+                    "variant": "2"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "north",
+                    "variant": "3"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "east",
+                    "variant": "3"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "south",
+                    "variant": "3"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "prettyguardian:sea_shell",
+                  "Properties": {
+                    "facing": "west",
+                    "variant": "3"
+                  }
+                },
+                "weight": 1
               }
-            }
+            ]
           }
         }
       },
@@ -21,13 +176,30 @@
         {
           "type": "minecraft:block_predicate_filter",
           "predicate": {
-            "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:air"
+            "type": "minecraft:all_of",
+            "predicates": [
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": "minecraft:air"
+              },
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": [
+                  "minecraft:sand",
+                  "minecraft:red_sand"
+                ],
+                "offset": [
+                  0,
+                  -1,
+                  0
+                ]
+              }
+            ]
           }
         }
       ]
     },
-    "tries": 96,
+    "tries": 16,
     "xz_spread": 7,
     "y_spread": 3
   }

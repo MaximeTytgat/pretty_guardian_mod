@@ -46,7 +46,7 @@ public class ModPlacedFeatures {
                         PrettyGuardianBlock.LEMON_SAPLING.get()));
 
         register(context, SEA_SHELL_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.SEA_SHELL_KEY),
-                    List.of(new PlacementModifier[]{RarityFilter.onAverageOnceEvery(20), PlacementUtils.HEIGHTMAP_WORLD_SURFACE , BiomeFilter.biome()}));
+                    List.of(new PlacementModifier[]{RarityFilter.onAverageOnceEvery(3), PlacementUtils.HEIGHTMAP_WORLD_SURFACE , BiomeFilter.biome()}));
 
     }
 
