@@ -12,6 +12,7 @@ import com.max.prettyguardian.entity.client.butterfly.ButterflyRenderer;
 import com.max.prettyguardian.entity.client.celestialrabbit.CelestialRabbitRenderer;
 import com.max.prettyguardian.entity.client.fairy.FairyRenderer;
 import com.max.prettyguardian.entity.client.strawberryCow.StrawberryCowRenderer;
+import com.max.prettyguardian.event.custom.JapChairEvent;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.loot.ModLootModifiers;
 import com.max.prettyguardian.particle.ModParticles;
@@ -111,6 +112,7 @@ public class PrettyGuardian
             EntityRenderers.register(ModEntities.CELESTIAL_RABBIT.get(), CelestialRabbitRenderer::new);
             EntityRenderers.register(ModEntities.BUTTERFLY.get(), ButterflyRenderer::new);
             EntityRenderers.register(ModEntities.FAIRY.get(), FairyRenderer::new);
+            EntityRenderers.register(ModEntityType.SEAT_JAP_CHAIR.get(), JapChairEvent.SeatJapChairRenderer::new);
         }
     }
 }

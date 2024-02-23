@@ -35,7 +35,7 @@ public class ModEntityType {
 
     public static final RegistryObject<EntityType<JapChairEvent.SeatJapChairEntity>> SEAT_JAP_CHAIR =
             ENTITY_TYPES.register("seat_jap_chair", () -> EntityType.Builder.of((EntityType.EntityFactory<JapChairEvent.SeatJapChairEntity>) JapChairEvent.SeatJapChairEntity::new, MobCategory.MISC)
-                    .sized(10F, 10F).clientTrackingRange(4).updateInterval(20).build("seat_jap_chair"));
+                    .sized(0F, 0F).clientTrackingRange(4).updateInterval(20).build("seat_jap_chair"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

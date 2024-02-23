@@ -5,8 +5,11 @@ import com.max.prettyguardian.blocks.custom.furniture.JapChairBlock;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.item.custom.food.ClassicDonut;
 import com.max.prettyguardian.worldgen.entity.ModEntityType;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -28,7 +31,7 @@ import java.util.List;
 public class JapChairEvent {
     @SubscribeEvent
     public static void onIteractWithBlock(PlayerInteractEvent.RightClickBlock event) {
-        if (event.getSide().isClient()) {
+        if (!event.getSide().isClient()) {
             Player player = event.getEntity();
 
             if (player == null || player.isSpectator() || player.getVehicle() != null) {
@@ -37,12 +40,14 @@ public class JapChairEvent {
 
             Level level = event.getLevel();
             BlockPos pos = event.getPos();
+
             BlockState blockState = level.getBlockState(pos);
 
 
             if (blockState.getBlock() instanceof JapChairBlock) {
-                SeatJapChairEntity seatJapChairEntity = new SeatJapChairEntity(ModEntityType.SEAT_JAP_CHAIR.get(), level, pos);
+                SeatJapChairEntity seatJapChairEntity = new SeatJapChairEntity(level, pos);
                 level.addFreshEntity(seatJapChairEntity);
+
                 player.startRiding(seatJapChairEntity);
             }
         }
@@ -54,8 +59,8 @@ public class JapChairEvent {
             super(entityType, level);
         }
 
-        public SeatJapChairEntity(EntityType<?> entityType, Level level, BlockPos pos) {
-            super(entityType, level);
+        public SeatJapChairEntity(Level level, BlockPos pos) {
+            this(ModEntityType.SEAT_JAP_CHAIR.get(), level);
             setPos(pos.getX() + 0.5D, pos.getY() + 0.2D, pos.getZ() + 0.5D);
         }
 
@@ -98,6 +103,18 @@ public class JapChairEvent {
         @Override
         protected void addAdditionalSaveData(CompoundTag compoundTag) {
 
+        }
+    }
+
+    public static class SeatJapChairRenderer extends EntityRenderer<SeatJapChairEntity> {
+
+        public SeatJapChairRenderer(EntityRendererProvider.Context context) {
+            super(context);
+        }
+
+        @Override
+        public ResourceLocation getTextureLocation(SeatJapChairEntity entity) {
+            return null; // Return the resource location of your texture if you have one
         }
     }
 }
