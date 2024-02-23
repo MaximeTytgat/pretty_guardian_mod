@@ -93,6 +93,11 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(PrettyGuardianBlock.SCREEN_JAPANESE_BIRCH.get());
 
         this.dropSelf(PrettyGuardianBlock.CHAIR_JAPANESE_OAK.get());
+        this.dropSelf(PrettyGuardianBlock.CHAIR_JAPANESE_BIRCH.get());
+        this.dropSelf(PrettyGuardianBlock.CHAIR_JAPANESE_SPRUCE.get());
+        this.dropSelf(PrettyGuardianBlock.CHAIR_JAPANESE_CHERRY_LOG.get());
+        this.dropSelf(PrettyGuardianBlock.CHAIR_JAPANESE_CHERRY_PLANK.get());
+
         this.dropSelf(PrettyGuardianBlock.SILVER_CRYSTAL.get());
 
         this.dropSelf(PrettyGuardianBlock.SEA_SHELL.get());

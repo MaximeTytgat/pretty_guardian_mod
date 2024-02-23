@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "prettyguardian:block/chair_japanese_cherry_plank", "y": 0 },
+    "facing=south": { "model": "prettyguardian:block/chair_japanese_cherry_plank", "y": 180 },
+    "facing=east": { "model": "prettyguardian:block/chair_japanese_cherry_plank", "y": 90 },
+    "facing=west": { "model": "prettyguardian:block/chair_japanese_cherry_plank", "y": 270 }
+  }
+}

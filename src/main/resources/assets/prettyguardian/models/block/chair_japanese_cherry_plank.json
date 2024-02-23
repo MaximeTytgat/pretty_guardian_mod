@@ -1,6 +1,6 @@
 {
   "parent": "prettyguardian:block/base_chair_japanese",
   "textures": {
-    "texture": "prettyguardian:block/chair_japanese_oak"
+    "texture": "prettyguardian:block/chair_japanese_cherry_plank"
   }
 }

@@ -220,6 +220,10 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.TABLE_JAPANESE_CHERRY_LOG.get());
 
                 output.accept(PrettyGuardianBlock.CHAIR_JAPANESE_OAK.get());
+                output.accept(PrettyGuardianBlock.CHAIR_JAPANESE_SPRUCE.get());
+                output.accept(PrettyGuardianBlock.CHAIR_JAPANESE_BIRCH.get());
+                output.accept(PrettyGuardianBlock.CHAIR_JAPANESE_CHERRY_PLANK.get());
+                output.accept(PrettyGuardianBlock.CHAIR_JAPANESE_CHERRY_LOG.get());
 
                 output.accept(PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_PLANK.get());
                 output.accept(PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_LOG.get());

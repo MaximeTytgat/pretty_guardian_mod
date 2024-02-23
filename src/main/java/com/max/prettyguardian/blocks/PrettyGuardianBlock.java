@@ -137,7 +137,10 @@ public class PrettyGuardianBlock {
     public static final RegistryObject<Block> MOON_ALTAR = registryBlock("moon_altar", () -> new MoonAltarBlock(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE).noOcclusion().requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> CHAIR_JAPANESE_OAK = registryBlock("chair_japanese_oak", () -> new JapChairBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
-
+    public static final RegistryObject<Block> CHAIR_JAPANESE_SPRUCE = registryBlock("chair_japanese_spruce", () -> new JapChairBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> CHAIR_JAPANESE_BIRCH = registryBlock("chair_japanese_birch", () -> new JapChairBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> CHAIR_JAPANESE_CHERRY_PLANK = registryBlock("chair_japanese_cherry_plank", () -> new JapChairBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> CHAIR_JAPANESE_CHERRY_LOG = registryBlock("chair_japanese_cherry_log", () -> new JapChairBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
     public static final RegistryObject<Block> SILVER_CRYSTAL = registryBlock("silver_crystal", () -> new SilverCrystalBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_BLOCK).requiresCorrectToolForDrops().strength(5.0F, 6.0F).lightLevel((blockState) -> 8)));
 
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
