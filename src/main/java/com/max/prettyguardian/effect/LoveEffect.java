@@ -33,7 +33,7 @@ public class LoveEffect extends MobEffect {
             double offsetX = Math.cos(Math.toRadians(angleDegrees)) * distance;
             double offsetZ = Math.sin(Math.toRadians(angleDegrees)) * distance;
 
-            livingEntity.level().addParticle(ModParticles.PINK_HEART_PARTICLES.get(), livingEntity.getX() + offsetX, livingEntity.getY() + 2 + f, livingEntity.getZ() + offsetZ, 0.0D, 0.0D, 0.0D);
+            livingEntity.level().addParticle(ModParticles.LOVE_PARTICLES.get(), livingEntity.getX() + offsetX, livingEntity.getY() + 2 + f, livingEntity.getZ() + offsetZ, 0.0D, 0.0D, 0.0D);
         }
         super.applyEffectTick(livingEntity, pAmplifier);
     }

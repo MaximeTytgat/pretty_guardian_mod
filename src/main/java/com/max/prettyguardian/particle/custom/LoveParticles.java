@@ -6,10 +6,10 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class PinkHeartParticles extends TextureSheetParticle {
+public class LoveParticles extends TextureSheetParticle {
 
-    protected PinkHeartParticles(ClientLevel level, double xCoord, double yCoord, double zCoord,
-                                 SpriteSet spriteSet, double xd, double yd, double zd) {
+    protected LoveParticles(ClientLevel level, double xCoord, double yCoord, double zCoord,
+                            SpriteSet spriteSet, double xd, double yd, double zd) {
         super(level, xCoord, yCoord, zCoord, xd, yd, zd);
 
         this.friction = 0.8F;
@@ -51,7 +51,7 @@ public class PinkHeartParticles extends TextureSheetParticle {
         public Particle createParticle(SimpleParticleType particleType, ClientLevel level,
                                        double x, double y, double z,
                                        double dx, double dy, double dz) {
-            return new PinkHeartParticles(level, x, y, z, this.sprites, dx, dy, dz);
+            return new LoveParticles(level, x, y, z, this.sprites, dx, dy, dz);
         }
     }
 }

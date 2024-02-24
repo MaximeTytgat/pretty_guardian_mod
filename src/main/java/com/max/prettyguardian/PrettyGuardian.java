@@ -20,6 +20,7 @@ import com.max.prettyguardian.client.gui.sreens.inventory.ModMenuTypes;
 import com.max.prettyguardian.client.gui.sreens.PicnicBasketScreen;
 import com.max.prettyguardian.sound.ModSounds;
 import com.max.prettyguardian.util.ModItemProperties;
+import com.max.prettyguardian.world.entity.ai.poi.ModPoiTypes;
 import com.max.prettyguardian.worldgen.entity.ModEntityType;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -65,6 +66,7 @@ public class PrettyGuardian
         ModEnchantments.register(modEventBus);
         ModEffects.register(modEventBus);
         CreativeTab.register(modEventBus);
+        ModPoiTypes.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

@@ -1,15 +1,20 @@
 package com.max.prettyguardian.entity.custom;
 
+import com.max.prettyguardian.blocks.custom.table.MoonAltarBlock;
 import com.max.prettyguardian.entity.ModEntities;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.item.custom.tool.ButterflyNetItem;
+import com.max.prettyguardian.util.ModTags;
+import com.max.prettyguardian.world.entity.ai.poi.ModPoiTypes;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.PoiTypeTags;
 import net.minecraft.util.*;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.DifficultyInstance;
@@ -22,7 +27,10 @@ import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.ai.village.poi.PoiManager;
+import net.minecraft.world.entity.ai.village.poi.PoiRecord;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.Bee;
 import net.minecraft.world.entity.animal.FlyingAnimal;
 import net.minecraft.world.entity.monster.Strider;
 import net.minecraft.world.entity.player.Player;
@@ -30,15 +38,22 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BeehiveBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.function.IntFunction;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<FairyEntity.Variant> {
     private static final EntityDataAccessor<Integer> DATA_VARIANT = SynchedEntityData.defineId(FairyEntity.class, EntityDataSerializers.INT);
@@ -66,7 +81,8 @@ public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<F
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(5, new FairyEntity.RandomFloatAroundGoal(this));
+        this.goalSelector.addGoal(1, new FlyAroundStructureGoal(this, 1.0));
+        this.goalSelector.addGoal(5, new FairyEntity.RandomFloatAroundGoal(this)); // Priorité arbitraire
         this.goalSelector.addGoal(7, new FairyEntity.GhastLookGoal(this));
 
         // ???
@@ -78,7 +94,7 @@ public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<F
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 2.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.25D)
-                .add(Attributes.FLYING_SPEED, 1D)
+                .add(Attributes.FLYING_SPEED, 0.7D)
                 .add(Attributes.FOLLOW_RANGE, 10.0D);
     }
 
@@ -398,6 +414,72 @@ public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<F
 
         }
     }
+
+    public class FlyAroundStructureGoal extends Goal {
+        private final FairyEntity fairy;
+        private final double speed;
+        private Path path;
+
+        public FlyAroundStructureGoal(FairyEntity fairy, double speed) {
+            this.fairy = fairy;
+            this.speed = speed;
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE));
+        }
+
+        @Override
+        public boolean canUse() {
+            return true; // Toujours utiliser ce goal
+        }
+
+        @Override
+        public void start() {
+            super.start();
+            this.findNewTarget();
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return this.fairy.isAlive() && !this.fairy.getNavigation().isDone();
+        }
+
+        @Override
+        public void tick() {
+            if (this.path != null && !this.path.isDone()) {
+                FlyingPathNavigation flyingNavigation = (FlyingPathNavigation) this.fairy.getNavigation();
+                flyingNavigation.moveTo(this.path, this.speed);
+            }
+        }
+
+        private void findNewTarget() {
+            List<BlockPos> templePositions = findMoonTempleWithSpace();
+            if (!templePositions.isEmpty()) {
+                BlockPos structurePos = templePositions.get(0); // Prendre la première position trouvée
+                BlockPos target = getTargetAroundStructure(structurePos);
+
+                this.path = this.fairy.getNavigation().createPath(target, 1); // Tolerance de 1
+            }
+        }
+
+        private List<BlockPos> findMoonTempleWithSpace() {
+            BlockPos fairyPos = this.fairy.blockPosition();
+            PoiManager poimanager = ((ServerLevel) this.fairy.level()).getPoiManager();
+            Stream<PoiRecord> stream = poimanager.getInRange(
+                    (p_218130_) -> p_218130_.is(ModTags.PoiTypeTags.MOON_TEMPLE), fairyPos, 20, PoiManager.Occupancy.ANY);
+            return stream.map(PoiRecord::getPos)
+                    .sorted(Comparator.comparingDouble((blockPos) -> blockPos.distSqr(fairyPos)))
+                    .collect(Collectors.toList());
+        }
+
+        private BlockPos getTargetAroundStructure(BlockPos structurePos) {
+            double distance = 10; // Distance maximale autour de la structure
+            double angle = this.fairy.level().random.nextDouble() * 2 * Math.PI; // Angle aléatoire
+            double x = structurePos.getX() + distance * Math.cos(angle);
+            double z = structurePos.getZ() + distance * Math.sin(angle);
+            double y = this.fairy.level().getHeight() + 10; // Altitude maximale
+            return new BlockPos((int) x, (int) y, (int) z);
+        }
+    }
+
 
     public static enum Variant implements StringRepresentable {
         BLUE(0, "blue"),

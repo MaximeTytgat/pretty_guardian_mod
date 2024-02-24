@@ -1,10 +1,12 @@
 package com.max.prettyguardian.util;
 
 import com.max.prettyguardian.PrettyGuardian;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
@@ -26,6 +28,19 @@ public class ModTags {
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(PrettyGuardian.MOD_ID, name));
+        }
+    }
+
+    public static class PoiTypeTags {
+
+        public static final TagKey<PoiType> MOON_TEMPLE = tag("moon_temple");
+
+        private static TagKey<PoiType> tag(String name) {
+            return create(name);
+        }
+
+        private static TagKey<PoiType> create(String p_215881_) {
+            return TagKey.create(Registries.POINT_OF_INTEREST_TYPE, new ResourceLocation(p_215881_));
         }
     }
 }

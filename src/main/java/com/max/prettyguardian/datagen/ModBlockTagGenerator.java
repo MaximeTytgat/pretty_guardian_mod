@@ -37,6 +37,5 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 PrettyGuardianBlock.TABLE_JAPANESE_CHERRY_LOG.get(),
                 PrettyGuardianBlock.TABLE_JAPANESE_CHERRY_PLANK.get()
         );
-
     }
 }
