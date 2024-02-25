@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "prettyguardian:block/random_plush_box", "y": 180 },
+    "facing=south": { "model": "prettyguardian:block/random_plush_box", "y": 0 },
+    "facing=east": { "model": "prettyguardian:block/random_plush_box", "y": 270 },
+    "facing=west": { "model": "prettyguardian:block/random_plush_box", "y": 90 }
+  }
+}
