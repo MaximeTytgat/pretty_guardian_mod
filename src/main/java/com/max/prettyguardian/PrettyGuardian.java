@@ -18,6 +18,7 @@ import com.max.prettyguardian.loot.ModLootModifiers;
 import com.max.prettyguardian.particle.ModParticles;
 import com.max.prettyguardian.client.gui.sreens.inventory.ModMenuTypes;
 import com.max.prettyguardian.client.gui.sreens.PicnicBasketScreen;
+import com.max.prettyguardian.potion.ModPotions;
 import com.max.prettyguardian.sound.ModSounds;
 import com.max.prettyguardian.util.ModItemProperties;
 import com.max.prettyguardian.world.entity.ai.poi.ModPoiTypes;
@@ -67,6 +68,7 @@ public class PrettyGuardian
         ModEffects.register(modEventBus);
         CreativeTab.register(modEventBus);
         ModPoiTypes.register(modEventBus);
+        ModPotions.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

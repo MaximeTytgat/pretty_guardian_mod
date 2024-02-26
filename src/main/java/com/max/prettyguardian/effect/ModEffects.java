@@ -15,7 +15,7 @@ public class ModEffects {
     public static RegistryObject<MobEffect> LOVE = EFFECTS.register("love",
             () -> new LoveEffect(
                     MobEffectCategory.HARMFUL,
-                    0
+                    50293172
             ));
 
     public static void register(IEventBus eventBus) {
