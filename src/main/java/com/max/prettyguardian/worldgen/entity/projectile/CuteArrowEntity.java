@@ -1,10 +1,12 @@
 package com.max.prettyguardian.worldgen.entity.projectile;
 
 
+import com.max.prettyguardian.effect.ModEffects;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -45,6 +47,11 @@ public class CuteArrowEntity extends AbstractArrow {
     protected void onHitEntity(EntityHitResult entityHitResult) {
         this.hited = true;
         super.onHitEntity(entityHitResult);
+
+        if (entityHitResult.getEntity() instanceof LivingEntity) {
+            LivingEntity livingEntity = (LivingEntity) entityHitResult.getEntity();
+            livingEntity.addEffect(new MobEffectInstance(ModEffects.LOVE.get(), 100, 1));
+        }
         // this, x, y, z, explosionStrength, setsFires, breakMode
     }
 

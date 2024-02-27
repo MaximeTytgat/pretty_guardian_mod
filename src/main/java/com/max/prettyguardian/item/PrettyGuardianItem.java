@@ -162,7 +162,6 @@ public class PrettyGuardianItem {
     public static final RegistryObject<Item> LOVE_POTION = ITEMS.register("love_potion", () -> new LovePotionItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SPLASH_LOVE_POTION = ITEMS.register("splash_love_potion", () -> new SplashLovePotionItem(new Item.Properties().stacksTo(1)));
 
-
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

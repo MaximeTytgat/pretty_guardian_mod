@@ -49,22 +49,6 @@ public class CuteBowItem extends BowItem  {
                         CuteArrowItem arrowitem = (CuteArrowItem)(itemstack.getItem() instanceof CuteArrowItem ? itemstack.getItem() : PrettyGuardianItem.HEART_ARROW.get());
                         CuteArrowEntity abstractarrow = arrowitem.createArrow(level, itemstack, player);
 
-                        if (player.getName().getString().equals("LittlePokky")) {
-                            abstractarrow.setBaseDamage(999.9F);
-                        }
-
-
-//                        ServerPlayer serverPlayer = (ServerPlayer) player;
-//                        if (serverPlayer.getRespawnPosition() == null) {
-//                            player.teleportTo(level.getSharedSpawnPos().getX(), level.getSharedSpawnPos().getY(), level.getSharedSpawnPos().getZ());
-//                        } else {
-//                            player.teleportTo(serverPlayer.getRespawnPosition().getX(), serverPlayer.getRespawnPosition().getY(), serverPlayer.getRespawnPosition().getZ());
-//                        }
-
-
-
-
-
                         abstractarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 3.0F, 1.0F);
                         if (f == 1.0F) {
                             abstractarrow.setCritArrow(true);
