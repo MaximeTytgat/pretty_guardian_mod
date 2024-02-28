@@ -12,7 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModPotions {
     public static DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, PrettyGuardian.MOD_ID);
 
-    public static final RegistryObject<Potion> LOVE_POTION = POTIONS.register("love_potion.json", () -> new Potion(new MobEffectInstance(ModEffects.LOVE.get(), 600, 0)));
+    public static final RegistryObject<Potion> LOVE_POTION = POTIONS.register("love_potion", () -> new Potion(new MobEffectInstance(ModEffects.LOVE.get(), 600, 0)));
 
     public static void register(IEventBus eventBus) {
         POTIONS.register(eventBus);

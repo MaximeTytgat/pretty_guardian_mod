@@ -31,26 +31,26 @@ public class MoonAltarMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 71, 9) {
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 56, -9) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(PrettyGuardianItem.PLUTONS_KEY.get());
                 }
             });
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 89, 9) {
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 104, -9) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(PrettyGuardianItem.SPACE_SWORD.get());
                 }
             });
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 71, 27) {
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 80, 7) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(PrettyGuardianItem.NEPTUNES_MIRROR.get());
                 }
 
             });
-            this.addSlot(new SlotItemHandler(iItemHandler, 3, 89, 27) {
+            this.addSlot(new SlotItemHandler(iItemHandler, 3, 80, 55) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     return false;
@@ -136,14 +136,14 @@ public class MoonAltarMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 84 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 104 + i * 18));
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 162));
         }
     }
 }

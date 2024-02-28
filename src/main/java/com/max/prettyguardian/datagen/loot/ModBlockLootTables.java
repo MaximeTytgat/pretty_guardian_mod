@@ -46,6 +46,11 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(PrettyGuardianBlock.COW_PLUSH.get());
         this.dropSelf(PrettyGuardianBlock.CINNAMOROLL_PLUSH.get());
         this.dropSelf(PrettyGuardianBlock.BABYYODA_PLUSH.get());
+        this.dropSelf(PrettyGuardianBlock.CAPPUCCINO_PLUSH.get());
+        this.dropSelf(PrettyGuardianBlock.CHIFFON_PLUSH.get());
+        this.dropSelf(PrettyGuardianBlock.EXPRESSO_PLUSH.get());
+        this.dropSelf(PrettyGuardianBlock.MOCHA_PLUSH.get());
+        this.dropSelf(PrettyGuardianBlock.PRINCESS_PORON_PLUSH.get());
 
         this.dropSelf(PrettyGuardianBlock.SHOJI_BLOSSOM.get());
         this.dropSelf(PrettyGuardianBlock.SHOJI_BLOSSOM_BOTTOM.get());

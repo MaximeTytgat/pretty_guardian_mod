@@ -11,11 +11,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class StaffMagicTableScreen extends AbstractContainerScreen<MoonAltarMenu> {
+public class MoonAltarScreen extends AbstractContainerScreen<MoonAltarMenu> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(PrettyGuardian.MOD_ID, "textures/gui/container/picnic_basket.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(PrettyGuardian.MOD_ID, "textures/gui/container/moon_altar.png");
 
-    public StaffMagicTableScreen(MoonAltarMenu staffMagicTableMenu, Inventory inventory, Component component) {
+    public MoonAltarScreen(MoonAltarMenu staffMagicTableMenu, Inventory inventory, Component component) {
         super(staffMagicTableMenu, inventory, component);
     }
 
@@ -28,6 +28,8 @@ public class StaffMagicTableScreen extends AbstractContainerScreen<MoonAltarMenu
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
+        imageWidth = 198;
+        imageHeight = 228;
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);

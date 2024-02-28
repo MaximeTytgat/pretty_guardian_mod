@@ -25,10 +25,10 @@ public class PicnicBasketMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.addSlot(new ShulkerBoxSlot(data, 0, 71, 9));
-        this.addSlot(new ShulkerBoxSlot(data, 1, 89, 9));
-        this.addSlot(new ShulkerBoxSlot(data, 2, 71, 27));
-        this.addSlot(new ShulkerBoxSlot(data, 3, 89, 27));
+        this.addSlot(new ShulkerBoxSlot(data, 0, 71, 55));
+        this.addSlot(new ShulkerBoxSlot(data, 1, 89, 55));
+        this.addSlot(new ShulkerBoxSlot(data, 2, 71, 73));
+        this.addSlot(new ShulkerBoxSlot(data, 3, 89, 73));
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -87,14 +87,14 @@ public class PicnicBasketMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 51 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 103 + i * 18));
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 109));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 161));
         }
     }
 

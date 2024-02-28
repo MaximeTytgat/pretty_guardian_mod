@@ -13,8 +13,8 @@ import net.minecraft.world.entity.player.Inventory;
 public class PicnicBasketScreen extends AbstractContainerScreen<PicnicBasketMenu> {
     private static final ResourceLocation TEXTURE = new ResourceLocation(PrettyGuardian.MOD_ID, "textures/gui/container/picnic_basket.png");
 
-    public PicnicBasketScreen(PicnicBasketMenu p_97741_, Inventory p_97742_, Component p_97743_) {
-        super(p_97741_, p_97742_, p_97743_);
+    public PicnicBasketScreen(PicnicBasketMenu picnicBasketMenu, Inventory inventory, Component component) {
+        super(picnicBasketMenu, inventory, component);
     }
 
     @Override
@@ -26,6 +26,8 @@ public class PicnicBasketScreen extends AbstractContainerScreen<PicnicBasketMenu
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
+        imageWidth = 198;
+        imageHeight = 226;
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);

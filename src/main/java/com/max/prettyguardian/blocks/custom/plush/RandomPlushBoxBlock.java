@@ -58,7 +58,12 @@ public class RandomPlushBoxBlock extends Block {
                 PrettyGuardianBlock.RABBIT_PLUSH.get(),
                 PrettyGuardianBlock.COW_PLUSH.get(),
                 PrettyGuardianBlock.CINNAMOROLL_PLUSH.get(),
-                PrettyGuardianBlock.BABYYODA_PLUSH.get()
+                PrettyGuardianBlock.BABYYODA_PLUSH.get(),
+                PrettyGuardianBlock.CAPPUCCINO_PLUSH.get(),
+                PrettyGuardianBlock.CHIFFON_PLUSH.get(),
+                PrettyGuardianBlock.EXPRESSO_PLUSH.get(),
+                PrettyGuardianBlock.MOCHA_PLUSH.get(),
+                PrettyGuardianBlock.PRINCESS_PORON_PLUSH.get(),
         };
 
         Random random = new Random();

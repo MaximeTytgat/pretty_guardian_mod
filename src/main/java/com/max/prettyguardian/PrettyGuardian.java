@@ -4,7 +4,7 @@ import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import com.max.prettyguardian.blocks.entity.ModBlockEntities;
 import com.max.prettyguardian.client.gui.sreens.GemPolishingStationScreen;
 import com.max.prettyguardian.client.gui.sreens.GiftBoxScreen;
-import com.max.prettyguardian.client.gui.sreens.StaffMagicTableScreen;
+import com.max.prettyguardian.client.gui.sreens.MoonAltarScreen;
 import com.max.prettyguardian.effect.ModEffects;
 import com.max.prettyguardian.enchantment.ModEnchantments;
 import com.max.prettyguardian.entity.ModEntities;
@@ -110,13 +110,12 @@ public class PrettyGuardian
 
             MenuScreens.register(ModMenuTypes.PICNIC_BASKET_MENU.get(), PicnicBasketScreen::new);
             MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), GemPolishingStationScreen::new);
-            MenuScreens.register(ModMenuTypes.STAFF_MAGIC_TABLE_MENU.get(), StaffMagicTableScreen::new);
+            MenuScreens.register(ModMenuTypes.STAFF_MAGIC_TABLE_MENU.get(), MoonAltarScreen::new);
             MenuScreens.register(ModMenuTypes.GIFT_BOX_MENU.get(), GiftBoxScreen::new);
             EntityRenderers.register(ModEntities.STRAWBERRY_COW.get(), StrawberryCowRenderer::new);
             EntityRenderers.register(ModEntities.CELESTIAL_RABBIT.get(), CelestialRabbitRenderer::new);
             EntityRenderers.register(ModEntities.BUTTERFLY.get(), ButterflyRenderer::new);
             EntityRenderers.register(ModEntities.FAIRY.get(), FairyRenderer::new);
-            EntityRenderers.register(ModEntityType.SEAT_JAP_CHAIR.get(), JapChairEvent.SeatJapChairRenderer::new);
-        }
+            EntityRenderers.register(ModEntityType.SEAT_JAP_CHAIR.get(), JapChairEvent.SeatJapChairRenderer::new);        }
     }
 }

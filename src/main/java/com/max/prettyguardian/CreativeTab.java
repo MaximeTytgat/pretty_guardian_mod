@@ -176,6 +176,11 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.COW_PLUSH.get());
                 output.accept(PrettyGuardianBlock.CINNAMOROLL_PLUSH.get());
                 output.accept(PrettyGuardianBlock.BABYYODA_PLUSH.get());
+                output.accept(PrettyGuardianBlock.CAPPUCCINO_PLUSH.get());
+                output.accept(PrettyGuardianBlock.CHIFFON_PLUSH.get());
+                output.accept(PrettyGuardianBlock.EXPRESSO_PLUSH.get());
+                output.accept(PrettyGuardianBlock.MOCHA_PLUSH.get());
+                output.accept(PrettyGuardianBlock.PRINCESS_PORON_PLUSH.get());
                 output.accept(PrettyGuardianBlock.RANDOM_PLUSH_BOX.get());
 
                 output.accept(PrettyGuardianBlock.SHOJI_BLOSSOM.get());
@@ -253,9 +258,6 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.CELESTIAL_RABBIT_EGG.get());
 
                 output.accept(PrettyGuardianBlock.SILVER_CRYSTAL.get());
-
-                output.accept(PrettyGuardianItem.LOVE_POTION.get());
-                output.accept(PrettyGuardianItem.SPLASH_LOVE_POTION.get());
             }).build());
 
     public static void register(IEventBus eventBus) {

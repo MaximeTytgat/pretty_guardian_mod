@@ -14,7 +14,7 @@ public class ModEffects {
 
     public static RegistryObject<MobEffect> LOVE = EFFECTS.register("love",
             () -> new LoveEffect(
-                    MobEffectCategory.HARMFUL,
+                    MobEffectCategory.NEUTRAL,
                     50293172
             ));
 
