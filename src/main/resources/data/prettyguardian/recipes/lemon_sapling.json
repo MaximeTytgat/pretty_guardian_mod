@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "saplings"
+    },
+    {
+      "item": "prettyguardian:lemon"
+    },
+    {
+      "item": "prettyguardian:lemon"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "prettyguardian:lemon_sapling"
+  }
+}

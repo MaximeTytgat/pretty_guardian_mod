@@ -18,6 +18,7 @@ import com.max.prettyguardian.blocks.custom.plush.CowPlushBlock;
 import com.max.prettyguardian.blocks.custom.plush.PlushiesBlock;
 import com.max.prettyguardian.blocks.custom.table.MoonAltarBlock;
 import com.max.prettyguardian.item.PrettyGuardianItem;
+import com.max.prettyguardian.worldgen.tree.BobaTreeGrower;
 import com.max.prettyguardian.worldgen.tree.LemonTreeGrower;
 import com.max.prettyguardian.worldgen.tree.PistachioTreeGrower;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -76,6 +77,8 @@ public class PrettyGuardianBlock {
     public static final RegistryObject<Block> PISTACHIO_SAPLING = registryBlock("pistachio_sapling", () -> new SaplingBlock(new PistachioTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
     public static final RegistryObject<Block> LEMON_LEAVES_CROP = registryBlock("lemon_leaves_crop", () -> new CropLeavesBlock(PrettyGuardianItem.LEMON, BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
     public static final RegistryObject<Block> LEMON_SAPLING = registryBlock("lemon_sapling", () -> new SaplingBlock(new LemonTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
+    public static final RegistryObject<Block> BOBA_LEAVES_CROP = registryBlock("boba_leaves_crop", () -> new CropLeavesBlock(PrettyGuardianItem.RAW_BOBA, BlockBehaviour.Properties.copy(Blocks.OAK_LEAVES)));
+    public static final RegistryObject<Block> BOBA_SAPLING = registryBlock("boba_sapling", () -> new SaplingBlock(new BobaTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
     public static final RegistryObject<Block> STRAWBERRY_CROP_FLOWER = registryBlock("strawberry_crop_flower", () -> new FlowerBlock(() -> MobEffects.LUCK, 5,  BlockBehaviour.Properties.copy(Blocks.ALLIUM).noOcclusion().noCollission().noLootTable()));
     public static final RegistryObject<Block> MYMELODY_PLUSH = registryBlock("mymelody_plush", () -> new PlushiesBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
     public static final RegistryObject<Block> KUROMI_PLUSH = registryBlock("kuromi_plush", () -> new PlushiesBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));

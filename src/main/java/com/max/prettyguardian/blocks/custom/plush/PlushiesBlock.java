@@ -17,7 +17,7 @@ public class PlushiesBlock extends Block {
 
     public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
 
-    private static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 15, 13);
+    private static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 14, 13);
 
     public PlushiesBlock(Properties properties) {
         super(properties);

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "group": "roasted_marshmallow_stick",
+  "ingredient": {
+    "item": "prettyguardian:raw_boba"
+  },
+  "result": "prettyguardian:boba"
+}

@@ -42,6 +42,10 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.MAGIC_PIE.get());
                 output.accept(PrettyGuardianBlock.LEMON_PIE.get());
                 output.accept(PrettyGuardianBlock.STRAWBERRY_PIE.get());
+                output.accept(PrettyGuardianItem.RAW_BOBA.get());
+                output.accept(PrettyGuardianItem.BOBA.get());
+                output.accept(PrettyGuardianItem.LEMON.get());
+                output.accept(PrettyGuardianItem.PISTACHIO.get());
 
                 output.accept(PrettyGuardianItem.STRAWBERRY_SEEDS.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY.get());
@@ -167,6 +171,9 @@ public class CreativeTab {
 
                 output.accept(PrettyGuardianBlock.LEMON_LEAVES_CROP.get());
                 output.accept(PrettyGuardianBlock.LEMON_SAPLING.get());
+
+                output.accept(PrettyGuardianBlock.BOBA_LEAVES_CROP.get());
+                output.accept(PrettyGuardianBlock.BOBA_SAPLING.get());
 
                 output.accept(PrettyGuardianBlock.MYMELODY_PLUSH.get());
                 output.accept(PrettyGuardianBlock.KUROMI_PLUSH.get());

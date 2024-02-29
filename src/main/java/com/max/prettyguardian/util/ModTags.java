@@ -8,6 +8,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
 public class ModTags {
@@ -17,6 +18,7 @@ public class ModTags {
 
         public static final TagKey<Block> SPACE_SWORD = tag("space_sword");
         public static final TagKey<Block> NEEDS_PINK_SAPPHIRE_TOOL = tag("needs_pink_sapphire_tool");
+        public static final TagKey<Block> SAPLING = tag("sapling");
 
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(PrettyGuardian.MOD_ID, name));

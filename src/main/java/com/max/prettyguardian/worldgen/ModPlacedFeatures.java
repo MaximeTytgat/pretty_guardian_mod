@@ -23,6 +23,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> RUBY_ORE_PLACED_KEY = registerKey("ruby_ore_placed");
     public static final ResourceKey<PlacedFeature> PISTACHIO_PLACED_KEY = registerKey("pistachio_placed");
     public static final ResourceKey<PlacedFeature> LEMON_PLACED_KEY = registerKey("lemon_placed");
+    public static final ResourceKey<PlacedFeature> BOBA_PLACED_KEY = registerKey("boba_placed");
     public static final ResourceKey<PlacedFeature> SEA_SHELL_PLACED_KEY = registerKey("sea_shell_placed");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
@@ -44,6 +45,10 @@ public class ModPlacedFeatures {
         register(context, LEMON_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LEMON_KEY),
                 VegetationPlacements.treePlacement(RarityFilter.onAverageOnceEvery(20),
                         PrettyGuardianBlock.LEMON_SAPLING.get()));
+
+        register(context, BOBA_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.BOBA_KEY),
+                VegetationPlacements.treePlacement(RarityFilter.onAverageOnceEvery(20),
+                        PrettyGuardianBlock.BOBA_SAPLING.get()));
 
         register(context, SEA_SHELL_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.SEA_SHELL_KEY),
                     List.of(new PlacementModifier[]{RarityFilter.onAverageOnceEvery(3), PlacementUtils.HEIGHTMAP_WORLD_SURFACE , BiomeFilter.biome()}));

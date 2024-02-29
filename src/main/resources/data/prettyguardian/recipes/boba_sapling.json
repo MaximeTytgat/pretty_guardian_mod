@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "saplings"
+    },
+    {
+      "item": "prettyguardian:boba"
+    },
+    {
+      "item": "prettyguardian:boba"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "prettyguardian:boba_sapling"
+  }
+}

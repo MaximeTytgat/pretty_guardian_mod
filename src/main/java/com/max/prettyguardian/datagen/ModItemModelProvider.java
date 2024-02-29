@@ -86,6 +86,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(PrettyGuardianItem.MINT);
         simpleItem(PrettyGuardianItem.PISTACHIO);
         simpleItem(PrettyGuardianItem.LEMON);
+        simpleItem(PrettyGuardianItem.BOBA);
+        simpleItem(PrettyGuardianItem.RAW_BOBA);
         simpleItem(PrettyGuardianItem.AGARAGAR);
         simpleItem(PrettyGuardianItem.CREAM);
 
@@ -193,6 +195,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         saplingItem(PrettyGuardianBlock.PISTACHIO_SAPLING);
         saplingItem(PrettyGuardianBlock.LEMON_SAPLING);
+        saplingItem(PrettyGuardianBlock.BOBA_SAPLING);
 
         simpleBlockItemBlockTexture(PrettyGuardianBlock.STRAWBERRY_CROP_FLOWER);
 

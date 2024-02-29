@@ -43,6 +43,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OVERWORLD_RUBY_ORE_KEY = registerKey("ruby_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PISTACHIO_KEY = registerKey("pistachio");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LEMON_KEY = registerKey("lemon");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BOBA_KEY = registerKey("boba");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SEA_SHELL_KEY = registerKey("sea_shell");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
@@ -76,6 +77,15 @@ public class ModConfiguredFeatures {
                 new WeightedStateProvider(weightedBlockStateBuilder()
                         .add(Blocks.OAK_LEAVES.defaultBlockState(), 5)
                         .add(PrettyGuardianBlock.LEMON_LEAVES_CROP.get().defaultBlockState(), 1)),
+                new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(2), 3),
+                new TwoLayersFeatureSize(1, 0, 2)).build());
+
+        register(context, BOBA_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.OAK_LOG.defaultBlockState()),
+                new StraightTrunkPlacer(4, 2, 0),
+                new WeightedStateProvider(weightedBlockStateBuilder()
+                        .add(Blocks.OAK_LEAVES.defaultBlockState(), 5)
+                        .add(PrettyGuardianBlock.BOBA_LEAVES_CROP.get().defaultBlockState(), 1)),
                 new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(2), 3),
                 new TwoLayersFeatureSize(1, 0, 2)).build());
 

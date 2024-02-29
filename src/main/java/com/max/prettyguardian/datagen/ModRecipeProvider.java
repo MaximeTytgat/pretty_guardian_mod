@@ -3,6 +3,7 @@ package com.max.prettyguardian.datagen;
 import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import com.max.prettyguardian.item.PrettyGuardianItem;
+import com.max.prettyguardian.util.ModTags;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -13,6 +14,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -460,7 +462,15 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.STRING), has(Items.STRING))
                 .save(pWriter);
 
+//        simpleFruitSapling(pWriter, PrettyGuardianBlock.BOBA_SAPLING.get(), PrettyGuardianItem.BOBA.get());
+//        simpleFruitSapling(pWriter, PrettyGuardianBlock.LEMON_SAPLING.get(), PrettyGuardianItem.LEMON.get());
+//        simpleFruitSapling(pWriter, PrettyGuardianBlock.PISTACHIO_SAPLING.get(), PrettyGuardianItem.PISTACHIO.get());
 
+        SimpleCookingRecipeBuilder.generic(
+                        Ingredient.of(PrettyGuardianItem.RAW_BOBA.get()), RecipeCategory.FOOD, PrettyGuardianItem.BOBA.get(), 0.35F, 200, RecipeSerializer.SMELTING_RECIPE)
+                .group("roasted_marshmallow_stick")
+                .unlockedBy(getHasName(PrettyGuardianItem.RAW_BOBA.get()), has(PrettyGuardianItem.RAW_BOBA.get()))
+                .save(pWriter);
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> p_250654_, List<ItemLike> p_250172_, RecipeCategory p_250588_, ItemLike p_251868_, float p_250789_, int p_252144_, String p_251687_) {

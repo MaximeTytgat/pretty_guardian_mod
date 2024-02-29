@@ -38,6 +38,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(PrettyGuardianBlock.ROASTED_MARSHMELLO_BLOCK.get());
         this.dropSelf(PrettyGuardianBlock.PISTACHIO_SAPLING.get());
         this.dropSelf(PrettyGuardianBlock.LEMON_SAPLING.get());
+        this.dropSelf(PrettyGuardianBlock.BOBA_SAPLING.get());
         this.dropSelf(PrettyGuardianBlock.MYMELODY_PLUSH.get());
         this.dropSelf(PrettyGuardianBlock.KUROMI_PLUSH.get());
         this.dropSelf(PrettyGuardianBlock.CAVALIER_PLUSH.get());
@@ -113,6 +114,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.add(PrettyGuardianBlock.PISTACHIO_LEAVES_CROP.get(), block -> createLeavesDrops(block, PrettyGuardianBlock.PISTACHIO_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         this.add(PrettyGuardianBlock.LEMON_LEAVES_CROP.get(), block -> createLeavesDrops(block, PrettyGuardianBlock.LEMON_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        this.add(PrettyGuardianBlock.BOBA_LEAVES_CROP.get(), block -> createLeavesDrops(block, PrettyGuardianBlock.BOBA_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
 
 
         this.createLapisOreDrops(PrettyGuardianBlock.THREE_STRAWBERRY_CAKE.get());

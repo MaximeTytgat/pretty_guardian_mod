@@ -1,13 +1,16 @@
 package com.max.prettyguardian.datagen;
 
 import com.max.prettyguardian.PrettyGuardian;
+import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 

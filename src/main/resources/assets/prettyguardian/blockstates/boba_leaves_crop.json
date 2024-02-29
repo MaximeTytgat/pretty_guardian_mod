@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "age=0": { "model": "prettyguardian:block/boba_leaves_crop" },
+    "age=1": { "model": "prettyguardian:block/boba_leaves_crop" },
+    "age=2": { "model": "prettyguardian:block/boba_leaves_crop" },
+    "age=3": { "model": "prettyguardian:block/boba_leaves_crop_stage_1" }
+  }
+}

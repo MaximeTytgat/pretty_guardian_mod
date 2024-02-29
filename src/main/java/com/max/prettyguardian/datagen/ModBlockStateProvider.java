@@ -84,6 +84,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleThreeCake(PrettyGuardianBlock.THREE_STRAWBERRY_CHOCO_CAKE.get());
 
         saplingBlock(PrettyGuardianBlock.PISTACHIO_SAPLING);
+        saplingBlock(PrettyGuardianBlock.LEMON_SAPLING);
+        saplingBlock(PrettyGuardianBlock.BOBA_SAPLING);
 
         simpleBlockWithItem(PrettyGuardianBlock.STRAWBERRY_CROP_FLOWER.get(), models().cross(blockTexture(PrettyGuardianBlock.STRAWBERRY_CROP_FLOWER.get()).getPath(),
                 blockTexture(PrettyGuardianBlock.STRAWBERRY_CROP_FLOWER.get())).renderType("cutout"));

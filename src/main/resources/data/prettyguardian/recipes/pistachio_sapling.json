@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "saplings"
+    },
+    {
+      "item": "prettyguardian:pistachio"
+    },
+    {
+      "item": "prettyguardian:pistachio"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "prettyguardian:pistachio_sapling"
+  }
+}
