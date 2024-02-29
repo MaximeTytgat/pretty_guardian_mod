@@ -66,12 +66,26 @@ public class RandomPlushBoxBlock extends Block {
                 PrettyGuardianBlock.PRINCESS_PORON_PLUSH.get(),
         };
 
-        Random random = new Random();
-        int randomIndex = random.nextInt(plushBlocks.length);
-        Block randomPlushBlock = plushBlocks[randomIndex];
-        SimpleContainer inventory = new SimpleContainer(1);
-        inventory.setItem(0, new ItemStack(randomPlushBlock.asItem()));
-        Containers.dropContents(level, blockPos, inventory);
+        Block[] onePercentBlocks = {
+                PrettyGuardianBlock.PLUSH_BEAR_HUGE.get(),
+        };
+
+        if (level.random.nextInt(100) == 0) {
+            Random random = new Random();
+            int randomIndex = random.nextInt(onePercentBlocks.length);
+            Block randomPlushBlock = onePercentBlocks[randomIndex];
+            SimpleContainer inventory = new SimpleContainer(1);
+            inventory.setItem(0, new ItemStack(randomPlushBlock.asItem()));
+            Containers.dropContents(level, blockPos, inventory);
+            return;
+        } else {
+            Random random = new Random();
+            int randomIndex = random.nextInt(plushBlocks.length);
+            Block randomPlushBlock = plushBlocks[randomIndex];
+            SimpleContainer inventory = new SimpleContainer(1);
+            inventory.setItem(0, new ItemStack(randomPlushBlock.asItem()));
+            Containers.dropContents(level, blockPos, inventory);
+        }
 
         super.onRemove(blockState, level, blockPos, blockState1, p_60519_);
     }

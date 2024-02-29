@@ -194,6 +194,7 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.EXPRESSO_PLUSH.get());
                 output.accept(PrettyGuardianBlock.MOCHA_PLUSH.get());
                 output.accept(PrettyGuardianBlock.PRINCESS_PORON_PLUSH.get());
+                output.accept(PrettyGuardianBlock.PLUSH_BEAR_HUGE.get());
                 output.accept(PrettyGuardianBlock.RANDOM_PLUSH_BOX.get());
 
                 output.accept(PrettyGuardianBlock.SHOJI_BLOSSOM.get());
