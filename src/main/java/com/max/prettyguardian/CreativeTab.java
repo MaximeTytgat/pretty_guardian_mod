@@ -46,6 +46,12 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.BOBA.get());
                 output.accept(PrettyGuardianItem.LEMON.get());
                 output.accept(PrettyGuardianItem.PISTACHIO.get());
+                output.accept(PrettyGuardianItem.AGARAGAR.get());
+                output.accept(PrettyGuardianItem.CREAM.get());
+                output.accept(PrettyGuardianItem.RAW_SQUID.get());
+                output.accept(PrettyGuardianItem.SQUID_STICK.get());
+                output.accept(PrettyGuardianItem.SQUID_COOKED.get());
+
 
                 output.accept(PrettyGuardianItem.STRAWBERRY_SEEDS.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY.get());

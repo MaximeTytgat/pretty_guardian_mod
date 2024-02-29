@@ -471,6 +471,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .group("roasted_marshmallow_stick")
                 .unlockedBy(getHasName(PrettyGuardianItem.RAW_BOBA.get()), has(PrettyGuardianItem.RAW_BOBA.get()))
                 .save(pWriter);
+
+        doubleSimpleShapeless(pWriter, RecipeCategory.FOOD, PrettyGuardianItem.SQUID_STICK.get(), 1, PrettyGuardianItem.BOBA.get(), Items.STICK);
+
+        SimpleCookingRecipeBuilder.generic(
+                        Ingredient.of(PrettyGuardianItem.SQUID_STICK.get()), RecipeCategory.FOOD, PrettyGuardianItem.SQUID_COOKED.get(), 0.35F, 200, RecipeSerializer.SMELTING_RECIPE)
+                .group("roasted_marshmallow_stick")
+                .unlockedBy(getHasName(PrettyGuardianItem.SQUID_STICK.get()), has(PrettyGuardianItem.SQUID_STICK.get()))
+                .unlockedBy(getHasName(PrettyGuardianItem.RAW_SQUID.get()), has(PrettyGuardianItem.RAW_SQUID.get()))
+                .save(pWriter);
+
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> p_250654_, List<ItemLike> p_250172_, RecipeCategory p_250588_, ItemLike p_251868_, float p_250789_, int p_252144_, String p_251687_) {

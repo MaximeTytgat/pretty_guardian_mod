@@ -90,6 +90,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(PrettyGuardianItem.RAW_BOBA);
         simpleItem(PrettyGuardianItem.AGARAGAR);
         simpleItem(PrettyGuardianItem.CREAM);
+        simpleItem(PrettyGuardianItem.RAW_SQUID);
+        simpleItem(PrettyGuardianItem.SQUID_STICK);
+        simpleItem(PrettyGuardianItem.SQUID_COOKED);
 
         simpleItem(PrettyGuardianItem.CHOCOLATE_STRAWBERRY);
         simpleItem(PrettyGuardianItem.SECRET_DONUT);

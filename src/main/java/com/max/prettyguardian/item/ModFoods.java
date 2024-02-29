@@ -1,5 +1,7 @@
 package com.max.prettyguardian.item;
 
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
 public class ModFoods {
@@ -54,4 +56,11 @@ public class ModFoods {
             .nutrition(4).saturationMod(0.5F).build();
     public static final FoodProperties CARAMEL = (new FoodProperties.Builder())
             .nutrition(4).saturationMod(0.5F).build();
+    public static final FoodProperties SQUID = (new FoodProperties.Builder())
+            .nutrition(2).saturationMod(0.3F)
+            .effect(new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.3F).meat().build();
+
+    public static final FoodProperties SQUID_COOKED = (new FoodProperties.Builder())
+            .nutrition(6).saturationMod(0.75F).meat().build();
+
 }
