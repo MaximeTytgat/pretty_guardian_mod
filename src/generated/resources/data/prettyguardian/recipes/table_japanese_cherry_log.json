@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "minecraft:cherry_wood"
+    },
+    "B": {
+      "item": "minecraft:cherry_log"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "B B",
+    "B B"
+  ],
+  "result": {
+    "item": "prettyguardian:table_japanese_cherry_log"
+  },
+  "show_notification": true
+}

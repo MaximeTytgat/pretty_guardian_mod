@@ -88,7 +88,9 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.APPLE_MOJITO.get());
                 output.accept(PrettyGuardianItem.MINT_MOJITO.get());
                 output.accept(PrettyGuardianItem.STRAWBERRY_MOJITO.get());
-                output.accept(PrettyGuardianItem.BUBBLE_TEA.get());
+                output.accept(PrettyGuardianItem.BUBBLETEA_MELON.get());
+                output.accept(PrettyGuardianItem.BUBBLETEA_STRAWBERRY.get());
+                output.accept(PrettyGuardianItem.BUBBLETEA_CARAMEL.get());
 
                 output.accept(PrettyGuardianItem.POPSICLE.get());
                 output.accept(PrettyGuardianItem.CREAM_POPSICLE.get());
@@ -116,6 +118,9 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.STRAWBERRY_CROISSANT.get());
                 output.accept(PrettyGuardianItem.PISTACHIO_CROISSANT.get());
                 output.accept(PrettyGuardianItem.RHUM_BOTTLE.get());
+
+                output.accept(PrettyGuardianItem.JUICE_GLASS.get());
+                output.accept(PrettyGuardianItem.ICE_CREAM_CUP.get());
 
                 output.accept(PrettyGuardianItem.RAW_PINK_SAPPHIRE.get());
                 output.accept(PrettyGuardianItem.PINK_SAPPHIRE.get());

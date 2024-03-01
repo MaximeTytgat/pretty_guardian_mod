@@ -3,31 +3,25 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "prettyguardian:mint"
+      "item": "prettyguardian:boba"
     },
     "B": {
-      "item": "prettyguardian:lemon"
+      "item": "minecraft:water_bucket"
     },
     "C": {
       "item": "prettyguardian:strawberry"
     },
     "D": {
-      "item": "minecraft:sugar"
-    },
-    "E": {
-      "item": "minecraft:water_bucket"
-    },
-    "F": {
       "item": "prettyguardian:juice_glass"
     }
   },
   "pattern": [
-    "ABC",
-    "DED",
-    " F "
+    "ABA",
+    "CCC",
+    " D "
   ],
   "result": {
-    "item": "prettyguardian:strawberry_mojito"
+    "item": "prettyguardian:bubbletea_strawberry"
   },
   "show_notification": true
 }

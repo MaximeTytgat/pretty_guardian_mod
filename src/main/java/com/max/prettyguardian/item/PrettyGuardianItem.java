@@ -64,7 +64,10 @@ public class PrettyGuardianItem {
     public static final RegistryObject<Item> APPLE_MOJITO = ITEMS.register("apple_mojito", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.MOJITO), 32, PrettyGuardianItem.JUICE_GLASS));
     public static final RegistryObject<Item> MINT_MOJITO = ITEMS.register("mint_mojito", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.MOJITO), 32, PrettyGuardianItem.JUICE_GLASS));
     public static final RegistryObject<Item> STRAWBERRY_MOJITO = ITEMS.register("strawberry_mojito", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.MOJITO), 32, PrettyGuardianItem.JUICE_GLASS));
-    public static final RegistryObject<Item> BUBBLE_TEA = ITEMS.register("bubble_tea", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.BUBBLE_TEA), 32, PrettyGuardianItem.JUICE_GLASS));
+    public static final RegistryObject<Item> BUBBLETEA_MELON = ITEMS.register("bubbletea_melon", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.BUBBLE_TEA), 32, PrettyGuardianItem.JUICE_GLASS));
+    public static final RegistryObject<Item> BUBBLETEA_STRAWBERRY = ITEMS.register("bubbletea_strawberry", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.BUBBLE_TEA), 32, PrettyGuardianItem.JUICE_GLASS));
+    public static final RegistryObject<Item> BUBBLETEA_CARAMEL = ITEMS.register("bubbletea_caramel", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.BUBBLE_TEA), 32, PrettyGuardianItem.JUICE_GLASS));
+
     public static final RegistryObject<Item> WAFFLE = ITEMS.register("waffle", () -> new Item(new Item.Properties().food(ModFoods.WAFFLE)));
     public static final RegistryObject<Item> FISH_WAFFLE = ITEMS.register("fish_waffle", () -> new Item(new Item.Properties().food(ModFoods.WAFFLE)));
     public static final RegistryObject<Item> CHOCOLATE_WAFFLE = ITEMS.register("chocolate_waffle", () -> new Item(new Item.Properties().food(ModFoods.CHOCOLATE_WAFFLE)));

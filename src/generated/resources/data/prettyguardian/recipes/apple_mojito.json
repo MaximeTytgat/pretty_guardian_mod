@@ -24,7 +24,7 @@
   "pattern": [
     "ABC",
     "DED",
-    "FFF"
+    " F "
   ],
   "result": {
     "item": "prettyguardian:apple_mojito"

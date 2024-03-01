@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_oak_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:oak_slab"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_stripped_oak_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:stripped_oak_log"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "prettyguardian:table_japanese_oak"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_stripped_oak_log",
+      "has_oak_slab",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "prettyguardian:table_japanese_oak"
+    ]
+  },
+  "sends_telemetry_event": false
+}

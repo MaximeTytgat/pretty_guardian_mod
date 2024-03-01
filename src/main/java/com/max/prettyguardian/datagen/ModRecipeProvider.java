@@ -198,6 +198,10 @@ public class ModRecipeProvider extends RecipeProvider {
         mojinRecipes(pWriter, PrettyGuardianItem.STRAWBERRY_MOJITO.get(), PrettyGuardianItem.STRAWBERRY.get());
         mojinRecipes(pWriter, PrettyGuardianItem.MINT_MOJITO.get(), PrettyGuardianItem.MINT.get());
 
+        simpleBubbleTea(pWriter, PrettyGuardianItem.BUBBLETEA_MELON.get(), Items.MELON_SLICE);
+        simpleBubbleTea(pWriter, PrettyGuardianItem.BUBBLETEA_CARAMEL.get(), PrettyGuardianItem.CARAMEL.get());
+        simpleBubbleTea(pWriter, PrettyGuardianItem.BUBBLETEA_STRAWBERRY.get(), PrettyGuardianItem.STRAWBERRY.get());
+
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PrettyGuardianItem.RHUM_BOTTLE.get())
                 .pattern(" A ")
                 .pattern("ABA")
@@ -479,7 +483,7 @@ public class ModRecipeProvider extends RecipeProvider {
         simpleDoor(pWriter, PrettyGuardianBlock.DOOR_SHOJI_CHERRY.get(), Blocks.CHERRY_LOG);
         simpleDoor2(pWriter, PrettyGuardianBlock.DOOR_SHOJI_CHERRY_SMALL.get(), Blocks.CHERRY_LOG);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PrettyGuardianBlock.PICNIC_BASKET.get(), 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PrettyGuardianBlock.PICNIC_BASKET.get(), 1)
                 .pattern(" A ")
                 .pattern("ABA")
                 .pattern("AAA")
@@ -489,7 +493,13 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.CHEST), has(Items.CHEST))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PrettyGuardianBlock.RANDOM_PLUSH_BOX.get(), 1)
+        simpleTable(pWriter, PrettyGuardianBlock.TABLE_JAPANESE_BIRCH.get(), Blocks.STRIPPED_BIRCH_LOG, Blocks.BIRCH_SLAB);
+        simpleTable(pWriter, PrettyGuardianBlock.TABLE_JAPANESE_CHERRY_PLANK.get(), Blocks.STRIPPED_CHERRY_LOG, Blocks.CHERRY_SLAB);
+        simpleTable(pWriter, PrettyGuardianBlock.TABLE_JAPANESE_CHERRY_LOG.get(), Blocks.CHERRY_LOG, Blocks.CHERRY_WOOD);
+        simpleTable(pWriter, PrettyGuardianBlock.TABLE_JAPANESE_OAK.get(), Blocks.STRIPPED_OAK_LOG, Blocks.OAK_SLAB);
+        simpleTable(pWriter, PrettyGuardianBlock.TABLE_JAPANESE_SPRUCE.get(), Blocks.STRIPPED_SPRUCE_LOG, Blocks.SPRUCE_SLAB);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PrettyGuardianBlock.RANDOM_PLUSH_BOX.get(), 1)
                 .pattern("ABA")
                 .pattern("CDC")
                 .pattern("ABA")
@@ -540,6 +550,18 @@ public class ModRecipeProvider extends RecipeProvider {
                     .unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(finishedRecipeConsumer);
         }
+    }
+
+    protected static void simpleTable(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike table, ItemLike log, ItemLike slab) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, table, 1)
+                .pattern("AAA")
+                .pattern("B B")
+                .pattern("B B")
+                .define('A', slab)
+                .define('B', log)
+                .unlockedBy(getHasName(log), has(log))
+                .unlockedBy(getHasName(slab), has(slab))
+                .save(finishedRecipeConsumer);
     }
 
     protected static void simpleDoor(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike door, ItemLike wood) {
@@ -692,7 +714,7 @@ public class ModRecipeProvider extends RecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, mojin)
                 .pattern("ABC")
                 .pattern("DED")
-                .pattern("FFF")
+                .pattern(" F ")
                 .define('A', PrettyGuardianItem.MINT.get())
                 .define('B', PrettyGuardianItem.LEMON.get())
                 .define('C', flavor)
@@ -700,6 +722,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('E', Items.WATER_BUCKET)
                 .define('F', PrettyGuardianItem.JUICE_GLASS.get())
                 .unlockedBy(getHasName(PrettyGuardianItem.JUICE_GLASS.get()), has(PrettyGuardianItem.JUICE_GLASS.get()))
+                .save(finishedRecipeConsumer);
+    }
+
+    protected static void simpleBubbleTea(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike bubbleTea, ItemLike flavor) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, bubbleTea)
+                .pattern("ABA")
+                .pattern("CCC")
+                .pattern(" D ")
+                .define('A', PrettyGuardianItem.BOBA.get())
+                .define('B', Items.WATER_BUCKET)
+                .define('C', flavor)
+                .define('D', PrettyGuardianItem.JUICE_GLASS.get())
+                .unlockedBy(getHasName(PrettyGuardianItem.JUICE_GLASS.get()), has(PrettyGuardianItem.JUICE_GLASS.get()))
+                .unlockedBy(getHasName(PrettyGuardianItem.BOBA.get()), has(PrettyGuardianItem.BOBA.get()))
                 .save(finishedRecipeConsumer);
     }
 

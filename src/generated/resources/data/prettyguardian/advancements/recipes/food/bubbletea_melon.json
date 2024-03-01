@@ -1,0 +1,48 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_boba": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:boba"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_juice_glass": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:juice_glass"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "prettyguardian:bubbletea_melon"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_juice_glass",
+      "has_boba",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "prettyguardian:bubbletea_melon"
+    ]
+  },
+  "sends_telemetry_event": false
+}

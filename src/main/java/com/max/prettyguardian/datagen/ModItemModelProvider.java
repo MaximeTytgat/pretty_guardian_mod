@@ -119,7 +119,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(PrettyGuardianItem.APPLE_MOJITO);
         simpleItem(PrettyGuardianItem.MINT_MOJITO);
         simpleItem(PrettyGuardianItem.STRAWBERRY_MOJITO);
-        simpleItem(PrettyGuardianItem.BUBBLE_TEA);
+        simpleItem(PrettyGuardianItem.BUBBLETEA_MELON);
+        simpleItem(PrettyGuardianItem.BUBBLETEA_STRAWBERRY);
+        simpleItem(PrettyGuardianItem.BUBBLETEA_CARAMEL);
         simpleItem(PrettyGuardianItem.WAFFLE);
         simpleItem(PrettyGuardianItem.FISH_WAFFLE);
         simpleItem(PrettyGuardianItem.CHOCOLATE_WAFFLE);

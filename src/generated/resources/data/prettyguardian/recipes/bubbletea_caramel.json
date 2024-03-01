@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "prettyguardian:boba"
+    },
+    "B": {
+      "item": "minecraft:water_bucket"
+    },
+    "C": {
+      "item": "prettyguardian:caramel"
+    },
+    "D": {
+      "item": "prettyguardian:juice_glass"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CCC",
+    " D "
+  ],
+  "result": {
+    "item": "prettyguardian:bubbletea_caramel"
+  },
+  "show_notification": true
+}

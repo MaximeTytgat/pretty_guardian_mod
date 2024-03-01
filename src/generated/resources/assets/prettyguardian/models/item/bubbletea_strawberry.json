@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "prettyguardian:item/bubble_tea"
+    "layer0": "prettyguardian:item/bubbletea_strawberry"
   }
 }
