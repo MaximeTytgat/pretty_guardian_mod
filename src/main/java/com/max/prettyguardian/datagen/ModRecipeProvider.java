@@ -539,6 +539,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(PrettyGuardianItem.RAW_SQUID.get()), has(PrettyGuardianItem.RAW_SQUID.get()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PrettyGuardianItem.GIFT_BOX.get(), 1)
+                .pattern("ABA")
+                .pattern("ACA")
+                .pattern("AAA")
+                .define('A', Items.PAPER)
+                .define('B', Items.STRING)
+                .define('C', Items.PINK_DYE)
+                .unlockedBy(getHasName(Items.PAPER), has(Items.PAPER))
+                .unlockedBy(getHasName(Items.STRING), has(Items.STRING))
+                .unlockedBy(getHasName(Items.PINK_DYE), has(Items.PINK_DYE))
+                .save(pWriter);
+
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> p_250654_, List<ItemLike> p_250172_, RecipeCategory p_250588_, ItemLike p_251868_, float p_250789_, int p_252144_, String p_251687_) {

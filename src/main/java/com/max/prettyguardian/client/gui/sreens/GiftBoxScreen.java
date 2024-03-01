@@ -40,10 +40,8 @@ public class GiftBoxScreen extends AbstractContainerScreen<GiftBoxMenu> {
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
-        int transparentPinkColor = new Color(255, 105, 180, 128).getRGB();
-        guiGraphics.fillGradient(0, 0, this.width, this.height, transparentPinkColor, transparentPinkColor);
-
-//        super.render(guiGraphics, mouseX, mouseY, delta);
-//        renderTooltip(guiGraphics, mouseX, mouseY);
+        renderBackground(guiGraphics);
+        super.render(guiGraphics, mouseX, mouseY, delta);
+        renderTooltip(guiGraphics, mouseX, mouseY);
     }
 }

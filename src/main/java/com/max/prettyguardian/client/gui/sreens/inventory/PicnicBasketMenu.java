@@ -80,8 +80,8 @@ public class PicnicBasketMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public boolean stillValid(Player p_40195_) {
-        return this.container.stillValid(p_40195_);
+    public boolean stillValid(Player player) {
+        return this.container.stillValid(player);
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
