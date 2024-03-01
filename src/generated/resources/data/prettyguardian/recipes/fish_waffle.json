@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:sugar"
+    },
+    "B": {
+      "item": "minecraft:sweet_berries"
+    },
+    "C": {
+      "item": "minecraft:egg"
+    },
+    "D": {
+      "item": "minecraft:milk_bucket"
+    },
+    "E": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CDC",
+    "EEE"
+  ],
+  "result": {
+    "count": 3,
+    "item": "prettyguardian:fish_waffle"
+  },
+  "show_notification": true
+}

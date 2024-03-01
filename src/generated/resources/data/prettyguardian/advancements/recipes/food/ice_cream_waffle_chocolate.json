@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "prettyguardian:ice_cream_waffle_chocolate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_waffle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:waffle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_waffle",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "prettyguardian:ice_cream_waffle_chocolate"
+    ]
+  },
+  "sends_telemetry_event": false
+}

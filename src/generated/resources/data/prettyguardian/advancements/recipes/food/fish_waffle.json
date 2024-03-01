@@ -1,12 +1,36 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_chocolate_pocky": {
+    "has_egg": {
       "conditions": {
         "items": [
           {
             "items": [
-              "prettyguardian:chocolate_pocky"
+              "minecraft:egg"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_milk_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:milk_bucket"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sugar": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:sugar"
             ]
           }
         ]
@@ -15,28 +39,16 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "prettyguardian:pokky_ice_cream"
+        "recipe": "prettyguardian:fish_waffle"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_vanilla_ice_cream": {
+    "has_wheat": {
       "conditions": {
         "items": [
           {
             "items": [
-              "prettyguardian:vanilla_ice_cream"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
-    "has_waffle": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "prettyguardian:waffle"
+              "minecraft:wheat"
             ]
           }
         ]
@@ -46,15 +58,16 @@
   },
   "requirements": [
     [
-      "has_vanilla_ice_cream",
-      "has_chocolate_pocky",
-      "has_waffle",
+      "has_wheat",
+      "has_sugar",
+      "has_milk_bucket",
+      "has_egg",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "prettyguardian:pokky_ice_cream"
+      "prettyguardian:fish_waffle"
     ]
   },
   "sends_telemetry_event": false

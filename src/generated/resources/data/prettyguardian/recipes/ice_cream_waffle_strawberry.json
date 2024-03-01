@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:milk_bucket"
+    },
+    "B": {
+      "item": "minecraft:snowball"
+    },
+    "C": {
+      "item": "minecraft:egg"
+    },
+    "D": {
+      "item": "minecraft:sugar"
+    },
+    "E": {
+      "item": "prettyguardian:waffle"
+    },
+    "F": {
+      "item": "prettyguardian:strawberry"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "DEF"
+  ],
+  "result": {
+    "count": 3,
+    "item": "prettyguardian:ice_cream_waffle_strawberry"
+  },
+  "show_notification": true
+}

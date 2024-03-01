@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:kelp"
+    },
+    "B": {
+      "item": "minecraft:egg"
+    },
+    "C": {
+      "item": "prettyguardian:squid_cooked"
+    },
+    "D": {
+      "item": "minecraft:wheat_seeds"
+    },
+    "E": {
+      "item": "prettyguardian:agaragar"
+    }
+  },
+  "pattern": [
+    " A ",
+    "BCB",
+    "DED"
+  ],
+  "result": {
+    "count": 3,
+    "item": "prettyguardian:takoyaki"
+  },
+  "show_notification": true
+}
