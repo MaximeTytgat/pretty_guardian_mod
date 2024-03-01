@@ -2,12 +2,16 @@ package com.max.prettyguardian.datagen.loot;
 
 import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import com.max.prettyguardian.blocks.custom.crop.StrawberryCropBlock;
+import com.max.prettyguardian.blocks.custom.furniture.JapHugeLanternBlock;
+import com.max.prettyguardian.blocks.custom.furniture.JapScreenBlock;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -16,6 +20,7 @@ import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -54,6 +59,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(PrettyGuardianBlock.PRINCESS_PORON_PLUSH.get());
         this.dropSelf(PrettyGuardianBlock.PLUSH_BEAR_HUGE.get());
 
+        this.add(PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_PLANK.get(), this::createSreenLootTable);
+        this.add(PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_LOG.get(), this::createSreenLootTable);
+        this.add(PrettyGuardianBlock.SCREEN_JAPANESE_BIRCH.get(), this::createSreenLootTable);
+
         this.dropSelf(PrettyGuardianBlock.SHOJI_BLOSSOM.get());
         this.dropSelf(PrettyGuardianBlock.SHOJI_BLOSSOM_BOTTOM.get());
         this.dropSelf(PrettyGuardianBlock.SHOJI_BLOSSOM_SMALL.get());
@@ -72,6 +81,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(PrettyGuardianBlock.LANTERN_JAPANESE.get());
         this.dropSelf(PrettyGuardianBlock.LANTERN_JAPANESE_SAKURA.get());
         this.dropSelf(PrettyGuardianBlock.LANTERN_JAPANESE_FESTIVAL.get());
+
+        this.add(PrettyGuardianBlock.LANTERN_HUGE_JAPANESE.get(), this::createHugeLanternLootTable);
+        this.add(PrettyGuardianBlock.LANTERN_SAKURA_HUGE_JAPANESE.get(), this::createHugeLanternLootTable);
+        this.add(PrettyGuardianBlock.LANTERN_FESTIVAL_HUGE_JAPANESE.get(), this::createHugeLanternLootTable);
 
         this.dropSelf(PrettyGuardianBlock.LAMP_JAPANESE_OAK.get());
         this.dropSelf(PrettyGuardianBlock.LAMP_JAPANESE_BIRCH.get());
@@ -95,9 +108,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(PrettyGuardianBlock.TABLE_JAPANESE_CHERRY_LOG.get());
         this.dropSelf(PrettyGuardianBlock.TABLE_JAPANESE_CHERRY_PLANK.get());
 
-        this.dropSelf(PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_PLANK.get());
-        this.dropSelf(PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_LOG.get());
-        this.dropSelf(PrettyGuardianBlock.SCREEN_JAPANESE_BIRCH.get());
 
         this.dropSelf(PrettyGuardianBlock.CHAIR_JAPANESE_OAK.get());
         this.dropSelf(PrettyGuardianBlock.CHAIR_JAPANESE_BIRCH.get());
@@ -154,6 +164,27 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 PrettyGuardianItem.VANILLA_SEEDS.get(), lootitemcondition$builder3));
 
         this.add(PrettyGuardianBlock.PICNIC_BASKET.get(), this::createShulkerBoxDrop);
+    }
+
+    protected LootTable.Builder createSreenLootTable(Block block) {
+        return LootTable.lootTable().withPool(
+                (LootPool.Builder)this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                                .add(LootItem.lootTableItem(block)
+                                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                                                .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                        .hasProperty(DoorBlock.HALF, DoubleBlockHalf.LOWER)
+                                                        .hasProperty(JapScreenBlock.PART, JapScreenBlock.ParaventPart.LEFT))))));
+
+    }
+
+    protected LootTable.Builder createHugeLanternLootTable(Block block) {
+        return LootTable.lootTable().withPool(
+                (LootPool.Builder)this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(block)
+                                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                .hasProperty(JapHugeLanternBlock.HALF, JapHugeLanternBlock.TripleBlockHalf.MIDDLE))))));
+
     }
 
     @Override

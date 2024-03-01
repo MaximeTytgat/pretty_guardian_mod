@@ -107,7 +107,7 @@ public class BasePie extends Block {
     }
 
     public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
-        return levelReader.getBlockState(blockPos.below()).isSolid();
+        return !levelReader.getBlockState(blockPos.below()).isAir();
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

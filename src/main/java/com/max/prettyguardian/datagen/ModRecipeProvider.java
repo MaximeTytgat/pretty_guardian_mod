@@ -430,6 +430,9 @@ public class ModRecipeProvider extends RecipeProvider {
         simpleLantern(pWriter, PrettyGuardianBlock.LANTERN_JAPANESE.get(), Items.PAPER);
         simpleLantern(pWriter, PrettyGuardianBlock.LANTERN_JAPANESE_SAKURA.get(), Items.PINK_DYE);
         simpleLantern(pWriter, PrettyGuardianBlock.LANTERN_JAPANESE_FESTIVAL.get(), Items.RED_DYE);
+        simpleThreeCake(pWriter, PrettyGuardianBlock.LANTERN_HUGE_JAPANESE.get(), PrettyGuardianBlock.LANTERN_JAPANESE.get());
+        simpleThreeCake(pWriter, PrettyGuardianBlock.LANTERN_SAKURA_HUGE_JAPANESE.get(), PrettyGuardianBlock.LANTERN_JAPANESE_SAKURA.get());
+        simpleThreeCake(pWriter, PrettyGuardianBlock.LANTERN_FESTIVAL_HUGE_JAPANESE.get(), PrettyGuardianBlock.LANTERN_JAPANESE_FESTIVAL.get());
 
         simpleDoor(pWriter, PrettyGuardianBlock.DOOR_SHOJI_BIRCH.get(), Blocks.BIRCH_PLANKS);
         simpleDoor2(pWriter, PrettyGuardianBlock.DOOR_SHOJI_BIRCH_SMALL.get(), Blocks.BIRCH_PLANKS);

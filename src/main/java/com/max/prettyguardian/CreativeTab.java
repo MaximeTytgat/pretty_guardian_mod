@@ -216,6 +216,10 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.LANTERN_JAPANESE_SAKURA.get());
                 output.accept(PrettyGuardianBlock.LANTERN_JAPANESE_FESTIVAL.get());
 
+                output.accept(PrettyGuardianBlock.LANTERN_HUGE_JAPANESE.get());
+                output.accept(PrettyGuardianBlock.LANTERN_SAKURA_HUGE_JAPANESE.get());
+                output.accept(PrettyGuardianBlock.LANTERN_FESTIVAL_HUGE_JAPANESE.get());
+
                 output.accept(PrettyGuardianBlock.LAMP_JAPANESE_OAK.get());
                 output.accept(PrettyGuardianBlock.LAMP_JAPANESE_BIRCH.get());
                 output.accept(PrettyGuardianBlock.LAMP_JAPANESE_SPRUCE.get());

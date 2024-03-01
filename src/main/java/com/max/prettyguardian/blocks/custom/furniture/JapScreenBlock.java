@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -104,6 +105,28 @@ public class JapScreenBlock extends Block {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(PART, HALF, FACING);
+    }
+
+    @Override
+    public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
+        // prevent creative drops
+        if (player.isCreative()) {
+            DoubleBlockHalf half = blockState.getValue(HALF);
+            BlockPos blockToDestroy = switch (half) {
+                case LOWER -> blockPos;
+                case UPPER -> blockPos.below();
+            };
+
+            ParaventPart part = blockState.getValue(PART);
+            blockToDestroy = switch (part) {
+                case LEFT -> blockToDestroy;
+                case RIGHT -> blockToDestroy.relative(blockState.getValue(FACING).getCounterClockWise());
+            };
+
+            level.destroyBlock(blockToDestroy, false);
+        }
+
+        super.playerWillDestroy(level, blockPos, blockState, player);
     }
 
     public enum ParaventPart implements StringRepresentable {

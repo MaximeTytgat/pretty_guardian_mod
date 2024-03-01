@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lantern_japanese": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:lantern_japanese"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "prettyguardian:lantern_huge_japanese"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_lantern_japanese",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "prettyguardian:lantern_huge_japanese"
+    ]
+  },
+  "sends_telemetry_event": false
+}

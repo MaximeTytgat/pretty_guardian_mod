@@ -114,6 +114,9 @@ public class PrettyGuardianBlock {
     public static final RegistryObject<Block> LANTERN_JAPANESE = registryBlock("lantern_japanese", () -> new JapLanternBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
     public static final RegistryObject<Block> LANTERN_JAPANESE_SAKURA = registryBlock("lantern_japanese_sakura", () -> new JapLanternBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
     public static final RegistryObject<Block> LANTERN_JAPANESE_FESTIVAL = registryBlock("lantern_japanese_festival", () -> new JapLanternBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> LANTERN_HUGE_JAPANESE = registryBlock("lantern_huge_japanese", () -> new JapHugeLanternBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> LANTERN_SAKURA_HUGE_JAPANESE = registryBlock("lantern_sakura_huge_japanese", () -> new JapHugeLanternBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> LANTERN_FESTIVAL_HUGE_JAPANESE = registryBlock("lantern_festival_huge_japanese", () -> new JapHugeLanternBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
 
     public static final RegistryObject<Block> LAMP_JAPANESE_OAK = registryBlock("lamp_japanese_oak", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
     public static final RegistryObject<Block> LAMP_JAPANESE_SPRUCE = registryBlock("lamp_japanese_spruce", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));

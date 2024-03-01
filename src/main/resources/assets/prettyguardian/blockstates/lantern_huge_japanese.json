@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "lit=false,half=upper": {
+      "model": "prettyguardian:block/lantern_huge_japanese_upper"
+    },
+    "lit=true,half=upper": {
+      "model": "prettyguardian:block/lantern_huge_japanese_upper_lit"
+    },
+    "lit=false,half=middle": {
+      "model": "prettyguardian:block/lantern_huge_japanese_middle"
+    },
+    "lit=true,half=middle": {
+      "model": "prettyguardian:block/lantern_huge_japanese_middle_lit"
+    },
+    "lit=false,half=lower": {
+      "model": "prettyguardian:block/lantern_huge_japanese_lower"
+    },
+    "lit=true,half=lower": {
+      "model": "prettyguardian:block/lantern_huge_japanese_lower_lit"
+    }
+  }
+}

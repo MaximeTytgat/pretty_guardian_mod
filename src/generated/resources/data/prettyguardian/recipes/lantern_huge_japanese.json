@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "prettyguardian:lantern_japanese"
+    }
+  },
+  "pattern": [
+    "A",
+    "A",
+    "A"
+  ],
+  "result": {
+    "item": "prettyguardian:lantern_huge_japanese"
+  },
+  "show_notification": true
+}

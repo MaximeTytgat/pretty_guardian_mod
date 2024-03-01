@@ -3,6 +3,7 @@
 		"0": "prettyguardian:block/lantern_japanese",
 		"particle": "prettyguardian:block/lantern_japanese"
 	},
+	"render_type": "minecraft:cutout",
 	"elements": [
 		{
 			"name": "top",

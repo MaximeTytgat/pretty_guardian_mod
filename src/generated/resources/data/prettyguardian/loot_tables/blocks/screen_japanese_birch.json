@@ -11,6 +11,16 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "prettyguardian:screen_japanese_birch",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "half": "lower",
+                "part": "left"
+              }
+            }
+          ],
           "name": "prettyguardian:screen_japanese_birch"
         }
       ],

@@ -3,6 +3,7 @@
 		"0": "prettyguardian:block/lantern_japanese_sakura",
 		"particle": "prettyguardian:block/lantern_japanese_sakura"
 	},
+	"render_type": "minecraft:cutout",
 	"elements": [
 		{
 			"name": "top",

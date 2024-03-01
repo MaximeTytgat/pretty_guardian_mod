@@ -1,0 +1,6 @@
+{
+	"parent": "prettyguardian:block/base_lantern_huge_japanese_lower",
+	"textures": {
+		"texture": "prettyguardian:block/lantern_huge_japanese_lit"
+	}
+}
