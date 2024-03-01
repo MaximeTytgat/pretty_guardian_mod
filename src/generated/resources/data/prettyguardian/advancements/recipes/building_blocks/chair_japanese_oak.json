@@ -1,12 +1,24 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cream_strawberry_cake": {
+    "has_oak_slab": {
       "conditions": {
         "items": [
           {
             "items": [
-              "prettyguardian:cream_strawberry_cake"
+              "minecraft:oak_slab"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_stripped_oak_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:stripped_oak_log"
             ]
           }
         ]
@@ -15,20 +27,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "prettyguardian:three_strawberry_cake"
+        "recipe": "prettyguardian:chair_japanese_oak"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_cream_strawberry_cake",
+      "has_stripped_oak_log",
+      "has_oak_slab",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "prettyguardian:three_strawberry_cake"
+      "prettyguardian:chair_japanese_oak"
     ]
   },
   "sends_telemetry_event": false

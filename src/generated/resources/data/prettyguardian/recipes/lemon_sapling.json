@@ -3,17 +3,16 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "saplings"
-    },
-    {
       "item": "prettyguardian:lemon"
     },
     {
       "item": "prettyguardian:lemon"
+    },
+    {
+      "tag": "minecraft:saplings"
     }
   ],
   "result": {
-    "count": 1,
     "item": "prettyguardian:lemon_sapling"
   }
 }

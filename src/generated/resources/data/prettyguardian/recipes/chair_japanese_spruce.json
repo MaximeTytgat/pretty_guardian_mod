@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
+      "item": "minecraft:spruce_slab"
+    },
+    "B": {
+      "tag": "minecraft:wool"
+    },
+    "C": {
+      "item": "minecraft:stripped_spruce_log"
+    }
+  },
+  "pattern": [
+    "A  ",
+    "ABA",
+    "C C"
+  ],
+  "result": {
+    "item": "prettyguardian:chair_japanese_spruce"
+  },
+  "show_notification": true
+}

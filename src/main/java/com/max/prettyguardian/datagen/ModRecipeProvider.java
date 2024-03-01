@@ -7,6 +7,7 @@ import com.max.prettyguardian.util.ModTags;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
@@ -383,7 +384,7 @@ public class ModRecipeProvider extends RecipeProvider {
         simpleCake(pWriter, PrettyGuardianBlock.STRAWBERRY_CHOCO_CAKE.get(), PrettyGuardianItem.STRAWBERRY.get(), PrettyGuardianItem.CHOCOLATE.get());
 
         simpleThreeCake(pWriter, PrettyGuardianBlock.THREE_VELVET_CAKE.get(), PrettyGuardianBlock.VELVET_CAKE.get());
-        simpleThreeCake(pWriter, PrettyGuardianBlock.THREE_STRAWBERRY_CAKE.get(), PrettyGuardianBlock.STRAWBERRY_CAKE.get());
+        simpleThreeCake(pWriter, PrettyGuardianBlock.THREE_STRAWBERRY_CAKE.get(), PrettyGuardianBlock.CREAM_STRAWBERRY_CAKE.get());
         simpleThreeCake(pWriter, PrettyGuardianBlock.THREE_CHOCO_CAKE.get(), PrettyGuardianBlock.CHOCOLATE_CAKE.get());
         simpleThreeCake(pWriter, PrettyGuardianBlock.THREE_STRAWBERRY_CHOCO_CAKE.get(), PrettyGuardianBlock.STRAWBERRY_CHOCO_CAKE.get());
 
@@ -499,6 +500,16 @@ public class ModRecipeProvider extends RecipeProvider {
         simpleTable(pWriter, PrettyGuardianBlock.TABLE_JAPANESE_OAK.get(), Blocks.STRIPPED_OAK_LOG, Blocks.OAK_SLAB);
         simpleTable(pWriter, PrettyGuardianBlock.TABLE_JAPANESE_SPRUCE.get(), Blocks.STRIPPED_SPRUCE_LOG, Blocks.SPRUCE_SLAB);
 
+        simpleChair(pWriter, PrettyGuardianBlock.CHAIR_JAPANESE_BIRCH.get(), Blocks.STRIPPED_BIRCH_LOG, Blocks.BIRCH_SLAB);
+        simpleChair(pWriter, PrettyGuardianBlock.CHAIR_JAPANESE_CHERRY_PLANK.get(), Blocks.STRIPPED_CHERRY_LOG, Blocks.CHERRY_SLAB);
+        simpleChair(pWriter, PrettyGuardianBlock.CHAIR_JAPANESE_CHERRY_LOG.get(), Blocks.CHERRY_LOG, Blocks.CHERRY_WOOD);
+        simpleChair(pWriter, PrettyGuardianBlock.CHAIR_JAPANESE_OAK.get(), Blocks.STRIPPED_OAK_LOG, Blocks.OAK_SLAB);
+        simpleChair(pWriter, PrettyGuardianBlock.CHAIR_JAPANESE_SPRUCE.get(), Blocks.STRIPPED_SPRUCE_LOG, Blocks.SPRUCE_SLAB);
+
+        simpleFruitSapling(pWriter, PrettyGuardianBlock.BOBA_SAPLING.get(), PrettyGuardianItem.BOBA.get());
+        simpleFruitSapling(pWriter, PrettyGuardianBlock.LEMON_SAPLING.get(), PrettyGuardianItem.LEMON.get());
+        simpleFruitSapling(pWriter, PrettyGuardianBlock.PISTACHIO_SAPLING.get(), PrettyGuardianItem.PISTACHIO.get());
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PrettyGuardianBlock.RANDOM_PLUSH_BOX.get(), 1)
                 .pattern("ABA")
                 .pattern("CDC")
@@ -512,10 +523,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.WHITE_WOOL), has(Items.WHITE_WOOL))
                 .unlockedBy(getHasName(Items.STRING), has(Items.STRING))
                 .save(pWriter);
-
-//        simpleFruitSapling(pWriter, PrettyGuardianBlock.BOBA_SAPLING.get(), PrettyGuardianItem.BOBA.get());
-//        simpleFruitSapling(pWriter, PrettyGuardianBlock.LEMON_SAPLING.get(), PrettyGuardianItem.LEMON.get());
-//        simpleFruitSapling(pWriter, PrettyGuardianBlock.PISTACHIO_SAPLING.get(), PrettyGuardianItem.PISTACHIO.get());
 
         SimpleCookingRecipeBuilder.generic(
                         Ingredient.of(PrettyGuardianItem.RAW_BOBA.get()), RecipeCategory.FOOD, PrettyGuardianItem.BOBA.get(), 0.35F, 200, RecipeSerializer.SMELTING_RECIPE)
@@ -561,6 +568,28 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('B', log)
                 .unlockedBy(getHasName(log), has(log))
                 .unlockedBy(getHasName(slab), has(slab))
+                .save(finishedRecipeConsumer);
+    }
+
+    protected static void simpleChair(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike chair, ItemLike log, ItemLike slab) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, chair, 1)
+                .pattern("A  ")
+                .pattern("ABA")
+                .pattern("C C")
+                .define('A', slab)
+                .define('B', ItemTags.WOOL)
+                .define('C', log)
+                .unlockedBy(getHasName(log), has(log))
+                .unlockedBy(getHasName(slab), has(slab))
+                .save(finishedRecipeConsumer);
+    }
+
+    protected static void simpleFruitSapling(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike sapling, ItemLike fruit) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, sapling, 1)
+                .requires(fruit)
+                .requires(fruit)
+                .requires(ItemTags.SAPLINGS)
+                .unlockedBy(getHasName(fruit), has(fruit))
                 .save(finishedRecipeConsumer);
     }
 

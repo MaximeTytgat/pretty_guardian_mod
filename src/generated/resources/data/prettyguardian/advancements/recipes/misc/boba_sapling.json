@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cream_strawberry_cake": {
+    "has_boba": {
       "conditions": {
         "items": [
           {
             "items": [
-              "prettyguardian:cream_strawberry_cake"
+              "prettyguardian:boba"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "prettyguardian:three_strawberry_cake"
+        "recipe": "prettyguardian:boba_sapling"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_cream_strawberry_cake",
+      "has_boba",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "prettyguardian:three_strawberry_cake"
+      "prettyguardian:boba_sapling"
     ]
   },
   "sends_telemetry_event": false
