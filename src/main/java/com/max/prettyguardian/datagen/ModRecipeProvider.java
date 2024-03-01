@@ -289,12 +289,12 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('A', Items.KELP)
                 .define('B', Items.EGG)
                 .define('C', PrettyGuardianItem.SQUID_COOKED.get())
-                .define('D', Blocks.WHEAT)
+                .define('D', Items.WHEAT)
                 .define('E', PrettyGuardianItem.AGARAGAR.get())
                 .unlockedBy(getHasName(Items.KELP), has(Items.KELP))
                 .unlockedBy(getHasName(Items.EGG), has(Items.EGG))
                 .unlockedBy(getHasName(PrettyGuardianItem.SQUID_COOKED.get()), has(PrettyGuardianItem.SQUID_COOKED.get()))
-                .unlockedBy(getHasName(Blocks.WHEAT), has(Blocks.WHEAT))
+                .unlockedBy(getHasName(Items.WHEAT), has(Items.WHEAT))
                 .unlockedBy(getHasName(PrettyGuardianItem.AGARAGAR.get()), has(PrettyGuardianItem.AGARAGAR.get()))
                 .save(pWriter);
 

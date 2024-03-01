@@ -55,12 +55,12 @@
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_wheat_seeds": {
+    "has_wheat": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:wheat_seeds"
+              "minecraft:wheat"
             ]
           }
         ]
@@ -73,7 +73,7 @@
       "has_kelp",
       "has_egg",
       "has_squid_cooked",
-      "has_wheat_seeds",
+      "has_wheat",
       "has_agaragar",
       "has_the_recipe"
     ]
