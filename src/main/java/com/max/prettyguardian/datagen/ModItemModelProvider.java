@@ -121,9 +121,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(PrettyGuardianItem.STRAWBERRY_MOJITO);
         simpleItem(PrettyGuardianItem.BUBBLE_TEA);
         simpleItem(PrettyGuardianItem.WAFFLE);
+        simpleItem(PrettyGuardianItem.FISH_WAFFLE);
         simpleItem(PrettyGuardianItem.CHOCOLATE_WAFFLE);
+        simpleItem(PrettyGuardianItem.ICE_CREAM_WAFFLE_VANILLA);
+        simpleItem(PrettyGuardianItem.ICE_CREAM_WAFFLE_CHOCOLATE);
+        simpleItem(PrettyGuardianItem.ICE_CREAM_WAFFLE_STRAWBERRY);
+        simpleItem(PrettyGuardianItem.ICE_CREAM_WAFFLE_PISTACHIO);
         simpleItem(PrettyGuardianItem.CHOCOLATE_POCKY);
         simpleItem(PrettyGuardianItem.STRAWBERRY_POCKY);
+        simpleItem(PrettyGuardianItem.TAKOYAKI);
         simpleItem(PrettyGuardianItem.DANGO_CARAMEL);
         simpleItem(PrettyGuardianItem.TRICOLOR_DANGO);
         simpleItem(PrettyGuardianItem.POPSICLE);

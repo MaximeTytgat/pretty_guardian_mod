@@ -66,9 +66,15 @@ public class PrettyGuardianItem {
     public static final RegistryObject<Item> STRAWBERRY_MOJITO = ITEMS.register("strawberry_mojito", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.MOJITO), 32, PrettyGuardianItem.JUICE_GLASS));
     public static final RegistryObject<Item> BUBBLE_TEA = ITEMS.register("bubble_tea", () -> new ReusableFoodContainerItem(new Item.Properties().food(ModFoods.BUBBLE_TEA), 32, PrettyGuardianItem.JUICE_GLASS));
     public static final RegistryObject<Item> WAFFLE = ITEMS.register("waffle", () -> new Item(new Item.Properties().food(ModFoods.WAFFLE)));
+    public static final RegistryObject<Item> FISH_WAFFLE = ITEMS.register("fish_waffle", () -> new Item(new Item.Properties().food(ModFoods.WAFFLE)));
     public static final RegistryObject<Item> CHOCOLATE_WAFFLE = ITEMS.register("chocolate_waffle", () -> new Item(new Item.Properties().food(ModFoods.CHOCOLATE_WAFFLE)));
+    public static final RegistryObject<Item> ICE_CREAM_WAFFLE_VANILLA = ITEMS.register("ice_cream_waffle_vanilla", () -> new Item(new Item.Properties().food(ModFoods.ICE_CREAM_WAFFLE)));
+    public static final RegistryObject<Item> ICE_CREAM_WAFFLE_CHOCOLATE = ITEMS.register("ice_cream_waffle_chocolate", () -> new Item(new Item.Properties().food(ModFoods.ICE_CREAM_WAFFLE)));
+    public static final RegistryObject<Item> ICE_CREAM_WAFFLE_STRAWBERRY = ITEMS.register("ice_cream_waffle_strawberry", () -> new Item(new Item.Properties().food(ModFoods.ICE_CREAM_WAFFLE)));
+    public static final RegistryObject<Item> ICE_CREAM_WAFFLE_PISTACHIO = ITEMS.register("ice_cream_waffle_pistachio", () -> new Item(new Item.Properties().food(ModFoods.ICE_CREAM_WAFFLE)));
     public static final RegistryObject<Item> CHOCOLATE_POCKY = ITEMS.register("chocolate_pocky", () -> new Item(new Item.Properties().food(ModFoods.POCKY)));
     public static final RegistryObject<Item> STRAWBERRY_POCKY = ITEMS.register("strawberry_pocky", () -> new Item(new Item.Properties().food(ModFoods.POCKY)));
+    public static final RegistryObject<Item> TAKOYAKI = ITEMS.register("takoyaki", () -> new Item(new Item.Properties().food(ModFoods.TAKOYAKI)));
     public static final RegistryObject<Item> DANGO_CARAMEL = ITEMS.register("dango_caramel", () -> new Item(new Item.Properties().food(ModFoods.DANGO)));
     public static final RegistryObject<Item> TRICOLOR_DANGO = ITEMS.register("tricolor_dango", () -> new Item(new Item.Properties().food(ModFoods.DANGO)));
     public static final RegistryObject<Item> POPSICLE = ITEMS.register("popsicle", () -> new Item(new Item.Properties().food(ModFoods.POPSICLE)));

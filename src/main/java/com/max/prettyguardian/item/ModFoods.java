@@ -62,5 +62,9 @@ public class ModFoods {
 
     public static final FoodProperties SQUID_COOKED = (new FoodProperties.Builder())
             .nutrition(6).saturationMod(0.75F).meat().build();
+    public static final FoodProperties ICE_CREAM_WAFFLE = (new FoodProperties.Builder())
+            .nutrition(8).saturationMod(0.60F).meat().build();
 
+    public static final FoodProperties TAKOYAKI = (new FoodProperties.Builder())
+            .nutrition(4).saturationMod(0.40F).meat().build();
 }
