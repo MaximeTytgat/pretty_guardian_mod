@@ -22,19 +22,13 @@ public class FairyRenderer extends MobRenderer<FairyEntity, FairyModel<FairyEnti
         }
     });
 
-    private static final Map<FairyEntity.Variant, ResourceLocation> DUST_TEXTURE_BY_TYPE = Util.make(Maps.newHashMap(), (p_242076_) -> {
-        for(FairyEntity.Variant fairy$variant : FairyEntity.Variant.values()) {
-            p_242076_.put(fairy$variant, new ResourceLocation(PrettyGuardian.MOD_ID, String.format(Locale.ROOT, "textures/entity/fairy/fairy_%s_dust.png", fairy$variant.getName())));
-        }
-    });
-
     public FairyRenderer(EntityRendererProvider.Context context) {
         super(context, new FairyModel<>(context.bakeLayer(ModModelLayers.FAIRY_LAYER)), 0.25f);
     }
 
     @Override
     public ResourceLocation getTextureLocation(FairyEntity fairyEntity) {
-        return fairyEntity.hasDust() ?  DUST_TEXTURE_BY_TYPE.get(fairyEntity.getVariant()) : TEXTURE_BY_TYPE.get(fairyEntity.getVariant());
+        return TEXTURE_BY_TYPE.get(fairyEntity.getVariant());
     }
 
     @Override

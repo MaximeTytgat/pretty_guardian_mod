@@ -3,7 +3,9 @@ package com.max.prettyguardian.entity.custom;
 import com.max.prettyguardian.entity.ModEntities;
 import com.max.prettyguardian.entity.goal.StopMoveWhenOrderedToGoal;
 import com.max.prettyguardian.item.PrettyGuardianItem;
+import com.max.prettyguardian.particle.ModParticles;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -83,6 +85,12 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
     @Override
     public void tick() {
         super.tick();
+
+        if (this.level().isClientSide) {
+            for(int i = 0; i < 2; ++i) {
+                this.level().addParticle(ModParticles.CELESTIAL_RABBIT_PARTICLES.get(), this.getRandomX(0.5), this.getRandomY() - 0.25, this.getRandomZ(0.5), (this.random.nextDouble() - 0.5) * 2.0, -this.random.nextDouble(), (this.random.nextDouble() - 0.5) * 2.0);
+            }
+        }
 
         if (this.level().isClientSide()) {
             this.setupAnimationStates();

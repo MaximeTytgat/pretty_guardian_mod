@@ -122,7 +122,7 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.JUICE_GLASS.get());
                 output.accept(PrettyGuardianItem.ICE_CREAM_CUP.get());
 
-                output.accept(PrettyGuardianItem.RAW_PINK_SAPPHIRE.get());
+//                output.accept(PrettyGuardianItem.RAW_PINK_SAPPHIRE.get());
                 output.accept(PrettyGuardianItem.PINK_SAPPHIRE.get());
                 output.accept(PrettyGuardianBlock.PINK_SAPPHIRE_BLOCK.get());
                 output.accept(PrettyGuardianBlock.PINK_SAPPHIRE_ORE.get());
@@ -139,9 +139,8 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.PINK_SAPPHIRE_LEGGINGS.get());
                 output.accept(PrettyGuardianItem.PINK_SAPPHIRE_BOOTS.get());
 
-//                output.accept(PrettyGuardianItem.RAW_RUBY.get());
                 output.accept(PrettyGuardianItem.RUBY.get());
-                output.accept(PrettyGuardianItem.RAW_RUBY.get());
+//                output.accept(PrettyGuardianItem.RAW_RUBY.get());
                 output.accept(PrettyGuardianBlock.RUBY_BLOCK.get());
                 output.accept(PrettyGuardianBlock.RUBY_ORE.get());
                 output.accept(PrettyGuardianBlock.DEEPSLATE_RUBY_ORE.get());
@@ -269,7 +268,7 @@ public class CreativeTab {
 
                 output.accept(PrettyGuardianItem.FAIRY_DUST.get());
                 output.accept(PrettyGuardianItem.GIFT_BOX.get());
-                output.accept(PrettyGuardianBlock.GEM_POLISHING_STATION.get());
+//                output.accept(PrettyGuardianBlock.GEM_POLISHING_STATION.get());
                 output.accept(PrettyGuardianBlock.MOON_ALTAR.get());
 
                 output.accept(PrettyGuardianItem.BUTTERFLY_NET.get());

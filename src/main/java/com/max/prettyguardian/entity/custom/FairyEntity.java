@@ -9,6 +9,8 @@ import com.max.prettyguardian.world.entity.ai.poi.ModPoiTypes;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -58,7 +60,7 @@ import java.util.stream.Stream;
 public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<FairyEntity.Variant> {
     private static final EntityDataAccessor<Integer> DATA_VARIANT = SynchedEntityData.defineId(FairyEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_REMAINING_TIME_BEFORE_DUST = SynchedEntityData.defineId(Strider.class, EntityDataSerializers.INT);
-    private static final UniformInt DUST_TIME = TimeUtil.rangeOfSeconds(300, 500);;
+    private static final UniformInt DUST_TIME = TimeUtil.rangeOfSeconds(10, 15);;
 
 
     public FairyEntity(EntityType<? extends Animal> entityType, Level level) {
@@ -81,7 +83,7 @@ public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<F
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new FlyAroundStructureGoal(this, 1.0));
+        this.goalSelector.addGoal(5, new FlyAroundStructureGoal(this, 1.0));
         this.goalSelector.addGoal(5, new FairyEntity.RandomFloatAroundGoal(this)); // Priorité arbitraire
         this.goalSelector.addGoal(7, new FairyEntity.GhastLookGoal(this));
 
@@ -139,7 +141,18 @@ public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<F
         if (this.level().isClientSide) {
             setupAnimationStates();
         }
+
+        if (this.hasDust() && this.random.nextFloat() < 0.05F) {
+            for(int i = 0; i < this.random.nextInt(2) + 1; ++i) {
+                this.spawnFluidParticle(this.level(), this.getX() - 0.30000001192092896, this.getX() + 0.30000001192092896, this.getZ() - 0.30000001192092896, this.getZ() + 0.30000001192092896, this.getY(0.5), ParticleTypes.FALLING_NECTAR);
+            }
+        }
     }
+
+    private void spawnFluidParticle(Level level, double p_27781_, double p_27782_, double p_27783_, double p_27784_, double p_27785_, ParticleOptions particleOptions) {
+        level.addParticle(particleOptions, Mth.lerp(level.random.nextDouble(), p_27781_, p_27782_), p_27785_, Mth.lerp(level.random.nextDouble(), p_27783_, p_27784_), 0.0, 0.0, 0.0);
+    }
+
 
     private void setupAnimationStates() {
         if (this.walkAnimation.isMoving()) {

@@ -8,10 +8,7 @@ import com.max.prettyguardian.entity.client.celestialrabbit.CelestialRabbitModel
 import com.max.prettyguardian.entity.client.ModModelLayers;
 import com.max.prettyguardian.entity.client.fairy.FairyModel;
 import com.max.prettyguardian.particle.ModParticles;
-import com.max.prettyguardian.particle.custom.BubbleParticles;
-import com.max.prettyguardian.particle.custom.LoveParticles;
-import com.max.prettyguardian.particle.custom.PinkCritParticles;
-import com.max.prettyguardian.particle.custom.StarLightParticles;
+import com.max.prettyguardian.particle.custom.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.CowModel;
 import net.minecraftforge.api.distmarker.Dist;
@@ -36,6 +33,15 @@ public class ModEventBusClientEvents {
 
         Minecraft.getInstance().particleEngine.register(ModParticles.BUBBLE.get(),
                 BubbleParticles.Provider::new);
+
+        Minecraft.getInstance().particleEngine.register(ModParticles.CELESTIAL_RABBIT_PARTICLES.get(),
+                CelestialRabbitParticles.Provider::new);
+
+        Minecraft.getInstance().particleEngine.register(ModParticles.PINK_FAIRY_PARTICLES.get(),
+                PinkFairyParticles.Provider::new);
+
+        Minecraft.getInstance().particleEngine.register(ModParticles.BLUE_FAIRY_PARTICLES.get(),
+                BlueFairyParticles.Provider::new);
     }
 
     @SubscribeEvent

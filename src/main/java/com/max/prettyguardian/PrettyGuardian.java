@@ -20,15 +20,18 @@ import com.max.prettyguardian.client.gui.sreens.inventory.ModMenuTypes;
 import com.max.prettyguardian.client.gui.sreens.PicnicBasketScreen;
 import com.max.prettyguardian.potion.ModPotions;
 import com.max.prettyguardian.sound.ModSounds;
+import com.max.prettyguardian.util.BetterBrewingRecipe;
 import com.max.prettyguardian.util.ModItemProperties;
 import com.max.prettyguardian.world.entity.ai.poi.ModPoiTypes;
 import com.max.prettyguardian.worldgen.entity.ModEntityType;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -116,6 +119,9 @@ public class PrettyGuardian
             EntityRenderers.register(ModEntities.CELESTIAL_RABBIT.get(), CelestialRabbitRenderer::new);
             EntityRenderers.register(ModEntities.BUTTERFLY.get(), ButterflyRenderer::new);
             EntityRenderers.register(ModEntities.FAIRY.get(), FairyRenderer::new);
-            EntityRenderers.register(ModEntityType.SEAT_JAP_CHAIR.get(), JapChairEvent.SeatJapChairRenderer::new);        }
+            EntityRenderers.register(ModEntityType.SEAT_JAP_CHAIR.get(), JapChairEvent.SeatJapChairRenderer::new);
+
+            BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.WATER, PrettyGuardianItem.FAIRY_DUST.get(), ModPotions.LOVE_POTION.get()));
+        }
     }
 }
