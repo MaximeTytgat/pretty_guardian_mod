@@ -2,6 +2,7 @@ package com.max.prettyguardian.datagen.loot;
 
 import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import com.max.prettyguardian.blocks.custom.crop.StrawberryCropBlock;
+import com.max.prettyguardian.blocks.custom.furniture.JapDoubleLanternBlock;
 import com.max.prettyguardian.blocks.custom.furniture.JapHugeLanternBlock;
 import com.max.prettyguardian.blocks.custom.furniture.JapScreenBlock;
 import com.max.prettyguardian.item.PrettyGuardianItem;
@@ -81,6 +82,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(PrettyGuardianBlock.LANTERN_JAPANESE.get());
         this.dropSelf(PrettyGuardianBlock.LANTERN_JAPANESE_SAKURA.get());
         this.dropSelf(PrettyGuardianBlock.LANTERN_JAPANESE_FESTIVAL.get());
+
+        this.add(PrettyGuardianBlock.LANTERN_JAPANESE_BIG.get(), this::createBigLanternLootTable);
+        this.add(PrettyGuardianBlock.LANTERN_JAPANESE_SAKURA_BIG.get(), this::createBigLanternLootTable);
+        this.add(PrettyGuardianBlock.LANTERN_JAPANESE_FESTIVAL_BIG.get(), this::createBigLanternLootTable);
 
         this.add(PrettyGuardianBlock.LANTERN_HUGE_JAPANESE.get(), this::createHugeLanternLootTable);
         this.add(PrettyGuardianBlock.LANTERN_SAKURA_HUGE_JAPANESE.get(), this::createHugeLanternLootTable);
@@ -184,6 +189,16 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                 .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
                                         .setProperties(StatePropertiesPredicate.Builder.properties()
                                                 .hasProperty(JapHugeLanternBlock.HALF, JapHugeLanternBlock.TripleBlockHalf.MIDDLE))))));
+
+    }
+
+    protected LootTable.Builder createBigLanternLootTable(Block block) {
+        return LootTable.lootTable().withPool(
+                (LootPool.Builder)this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(block)
+                                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                .hasProperty(JapDoubleLanternBlock.HALF, DoubleBlockHalf.UPPER))))));
 
     }
 

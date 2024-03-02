@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "prettyguardian:lantern_japanese_festival"
+    },
+    {
+      "item": "prettyguardian:lantern_japanese_festival"
+    }
+  ],
+  "result": {
+    "item": "prettyguardian:lantern_japanese_festival_big"
+  }
+}

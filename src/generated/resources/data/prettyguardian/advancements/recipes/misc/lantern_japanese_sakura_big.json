@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lantern_japanese_sakura": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:lantern_japanese_sakura"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "prettyguardian:lantern_japanese_sakura_big"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_lantern_japanese_sakura",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "prettyguardian:lantern_japanese_sakura_big"
+    ]
+  },
+  "sends_telemetry_event": false
+}

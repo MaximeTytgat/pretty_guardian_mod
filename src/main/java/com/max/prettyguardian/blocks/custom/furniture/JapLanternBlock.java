@@ -26,26 +26,24 @@ import java.util.stream.Stream;
 
 public class JapLanternBlock extends LanternBlock {
 
-    private static final VoxelShape AABB = Stream.of(
-            Block.box(5, 11, 5, 11, 12, 11),
-            Block.box(4, 10, 4, 12, 11, 12),
-            Block.box(3, 2, 3, 13, 10, 13),
-            Block.box(4, 1, 4, 12, 2, 12),
-            Block.box(5, 0, 5, 11, 1, 11)
-    ).reduce(Shapes::or).get();
+    private static final VoxelShape AABB = Shapes.or(
+            Block.box(5.000000000000002, 11, 4.999999999999995, 11.000000000000004, 12, 11),
+            Block.box(4.000000000000002, 10, 3.9999999999999947, 12, 11, 12.000000000000004),
+            Block.box(3.0000000000000018, 2, 2.9999999999999956, 13.000000000000002, 10, 13.000000000000012),
+            Block.box(4.000000000000002, 1, 3.9999999999999947, 12, 2, 12.000000000000004),
+            Block.box(5.000000000000002, 0, 4.999999999999995, 11.000000000000004, 1, 11)
+    );
 
-    private static final VoxelShape HANGING_AABB = Stream.of(
-            Block.box(5, 11, 5, 11, 12, 11),
-            Block.box(4, 10, 4, 12, 11, 12),
-            Block.box(3, 2, 3, 13, 10, 13),
-            Block.box(4, 1, 4, 12, 2, 12),
-            Block.box(5, 0, 5, 11, 1, 11),
-            Stream.of(
-                Block.box(0, 15, 9.8, 0, 17, 12.8),
-                Block.box(-1.5, 13, 11.25, 1.5, 16, 11.25),
-                Block.box(0, 12, 9.8, 0, 14, 12.8)
-            ).reduce(Shapes::or).get()
-    ).reduce(Shapes::or).get();
+    private static final VoxelShape HANGING_AABB = Shapes.or(
+            Block.box(8.000000000000002, 15, 6.486291501015234, 8.000000000000002, 17, 9.486291501015234),
+            Block.box(6.500000000000001, 13, 7.9362915010152335, 9.500000000000002, 16, 7.9362915010152335),
+            Block.box(8.000000000000002, 12, 6.486291501015234, 8.000000000000002, 14, 9.486291501015234),
+            Block.box(5.000000000000002, 11, 4.999999999999995, 11.000000000000004, 12, 11),
+            Block.box(4.000000000000002, 10, 3.9999999999999947, 12, 11, 12.000000000000004),
+            Block.box(3.0000000000000018, 2, 2.9999999999999956, 13.000000000000002, 10, 13.000000000000012),
+            Block.box(4.000000000000002, 1, 3.9999999999999947, 12, 2, 12.000000000000004),
+            Block.box(5.000000000000002, 0, 4.999999999999995, 11.000000000000004, 1, 11)
+    );
 
     public static final BooleanProperty HANGING = BlockStateProperties.HANGING;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;

@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lantern_japanese_festival": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:lantern_japanese_festival"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "prettyguardian:lantern_japanese_festival_big"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_lantern_japanese_festival",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "prettyguardian:lantern_japanese_festival_big"
+    ]
+  },
+  "sends_telemetry_event": false
+}

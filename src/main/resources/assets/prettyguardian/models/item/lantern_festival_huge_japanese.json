@@ -1,6 +1,6 @@
 {
 	"textures": {
-		"0": "prettyguardian:block/lantern_festival_huge_japanese",
+		"0": "prettyguardian:block/lantern_festival_japanese",
 		"particle": "#0"
 	},
 	"elements": [

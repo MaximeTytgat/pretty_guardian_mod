@@ -1,0 +1,17 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "lit=false,half=upper": {
+      "model": "prettyguardian:block/lantern_japanese_big_upper"
+    },
+    "lit=true,half=upper": {
+      "model": "prettyguardian:block/lantern_japanese_big_upper_lit"
+    },
+    "lit=false,half=lower": {
+      "model": "prettyguardian:block/lantern_japanese_big_lower"
+    },
+    "lit=true,half=lower": {
+      "model": "prettyguardian:block/lantern_japanese_big_lower_lit"
+    }
+  }
+}

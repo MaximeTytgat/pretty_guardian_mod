@@ -1,5 +1,6 @@
 package com.max.prettyguardian.client.gui.sreens.inventory;
 
+import com.max.prettyguardian.PrettyGuardian;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
@@ -21,7 +22,6 @@ public class GiftBoxMenu extends AbstractContainerMenu {
     public GiftBoxMenu(int pContainerId, Inventory inv, Container data) {
         super(ModMenuTypes.GIFT_BOX_MENU.get(), pContainerId);
         checkContainerSize(data, CONTAINER_SIZE);
-        data.startOpen(inv.player);
         this.container = data;
 
         addPlayerInventory(inv);
@@ -101,4 +101,6 @@ public class GiftBoxMenu extends AbstractContainerMenu {
         super.removed(player);
         this.container.stopOpen(player);
     }
+
+
 }

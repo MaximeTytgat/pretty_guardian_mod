@@ -473,6 +473,9 @@ public class ModRecipeProvider extends RecipeProvider {
         simpleLantern(pWriter, PrettyGuardianBlock.LANTERN_JAPANESE.get(), Items.PAPER);
         simpleLantern(pWriter, PrettyGuardianBlock.LANTERN_JAPANESE_SAKURA.get(), Items.PINK_DYE);
         simpleLantern(pWriter, PrettyGuardianBlock.LANTERN_JAPANESE_FESTIVAL.get(), Items.RED_DYE);
+        doubleSimpleShapelessOneUnlockedBy(pWriter, RecipeCategory.MISC, PrettyGuardianBlock.LANTERN_JAPANESE_BIG.get(), 1, PrettyGuardianBlock.LANTERN_JAPANESE.get(), PrettyGuardianBlock.LANTERN_JAPANESE.get());
+        doubleSimpleShapelessOneUnlockedBy(pWriter, RecipeCategory.MISC, PrettyGuardianBlock.LANTERN_JAPANESE_SAKURA_BIG.get(), 1, PrettyGuardianBlock.LANTERN_JAPANESE_SAKURA.get(), PrettyGuardianBlock.LANTERN_JAPANESE_SAKURA.get());
+        doubleSimpleShapelessOneUnlockedBy(pWriter, RecipeCategory.MISC, PrettyGuardianBlock.LANTERN_JAPANESE_FESTIVAL_BIG.get(), 1, PrettyGuardianBlock.LANTERN_JAPANESE_FESTIVAL.get(), PrettyGuardianBlock.LANTERN_JAPANESE_FESTIVAL.get());
         simpleThreeCake(pWriter, PrettyGuardianBlock.LANTERN_HUGE_JAPANESE.get(), PrettyGuardianBlock.LANTERN_JAPANESE.get());
         simpleThreeCake(pWriter, PrettyGuardianBlock.LANTERN_SAKURA_HUGE_JAPANESE.get(), PrettyGuardianBlock.LANTERN_JAPANESE_SAKURA.get());
         simpleThreeCake(pWriter, PrettyGuardianBlock.LANTERN_FESTIVAL_HUGE_JAPANESE.get(), PrettyGuardianBlock.LANTERN_JAPANESE_FESTIVAL.get());
@@ -748,6 +751,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(ingredient2, ingredient2Count)
                 .unlockedBy(getHasName(ingredient1), has(ingredient1))
                 .unlockedBy(getHasName(ingredient2), has(ingredient2))
+                .save(finishedRecipeConsumer);
+    }
+
+    protected static void doubleSimpleShapelessOneUnlockedBy(Consumer<FinishedRecipe> finishedRecipeConsumer, RecipeCategory category, ItemLike result, int resultCount, ItemLike ingredient1, ItemLike ingredient2) {
+        doubleSimpleShapelessOneUnlockedBy(finishedRecipeConsumer, category, result, resultCount, ingredient1, 1, ingredient2, 1);
+    }
+
+    protected static void doubleSimpleShapelessOneUnlockedBy(Consumer<FinishedRecipe> finishedRecipeConsumer, RecipeCategory category, ItemLike result, int resultCount, ItemLike ingredient1, int ingredient1Count, ItemLike ingredient2, int ingredient2Count) {
+        ShapelessRecipeBuilder.shapeless(category, result, resultCount)
+                .requires(ingredient1, ingredient1Count)
+                .requires(ingredient2, ingredient2Count)
+                .unlockedBy(getHasName(ingredient1), has(ingredient1))
                 .save(finishedRecipeConsumer);
     }
 
