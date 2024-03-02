@@ -192,5 +192,7 @@
 
   "enchantment.prettyguardian.slow": "Slow",
 
-  "effect.prettyguardian.love": "Truly in Love"
+  "effect.prettyguardian.love": "Truly in Love",
+
+  "container.giftBox.hoverText": "A gift box for you! Open it and see what's inside!"
 }

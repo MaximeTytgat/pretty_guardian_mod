@@ -192,5 +192,7 @@
 
   "enchantment.prettyguardian.slow": "Lenteur",
 
-  "effect.prettyguardian.love": "Plainement amoureux"
+  "effect.prettyguardian.love": "Plainement amoureux",
+
+  "container.giftBox.hoverText": "Une boîte-cadeau pour vous ! Ouvrez-la et voyez ce qu'il y a dedans !"
 }

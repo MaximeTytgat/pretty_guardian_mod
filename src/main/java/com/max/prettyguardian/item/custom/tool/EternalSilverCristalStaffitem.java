@@ -48,8 +48,15 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
     @Override
     public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int i, boolean b) {
         if (entity instanceof Player player) {
-            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 1));
-            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1));
+            if (player.getName().getString().equals("LittlePokky")) {
+                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 1));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1));
+                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 1));
+                player.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 200, 1));
+                player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 1));
+                player.addEffect(new MobEffectInstance(MobEffects.LUCK, 200, 1));
+                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 1));
+            }
         }
         super.inventoryTick(itemStack, level, entity, i, b);
     }

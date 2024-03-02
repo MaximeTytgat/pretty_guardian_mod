@@ -36,6 +36,11 @@ public class MoonAltarMenu extends AbstractContainerMenu {
                 public boolean mayPlace(ItemStack stack) {
                     return stack.is(PrettyGuardianItem.PLUTONS_KEY.get());
                 }
+
+                @Override
+                public int getMaxStackSize() {
+                    return super.getMaxStackSize();
+                }
             });
             this.addSlot(new SlotItemHandler(iItemHandler, 1, 104, -9) {
                 @Override

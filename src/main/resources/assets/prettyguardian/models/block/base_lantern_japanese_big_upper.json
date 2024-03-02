@@ -3,6 +3,7 @@
 	"textures": {
 		"particle": "#texture"
 	},
+	"render_type": "minecraft:cutout",
 	"elements": [
 		{
 			"from": [3, 9, 3],

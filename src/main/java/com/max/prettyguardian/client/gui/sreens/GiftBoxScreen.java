@@ -2,7 +2,6 @@ package com.max.prettyguardian.client.gui.sreens;
 
 import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.client.gui.sreens.inventory.GiftBoxMenu;
-import com.max.prettyguardian.client.gui.sreens.inventory.PicnicBasketMenu;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;

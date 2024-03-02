@@ -7,7 +7,6 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ShulkerBoxSlot;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
@@ -24,10 +23,12 @@ public class GiftBoxMenu extends AbstractContainerMenu {
         checkContainerSize(data, CONTAINER_SIZE);
         this.container = data;
 
-        addPlayerInventory(inv);
-        addPlayerHotbar(inv);
+        data.startOpen(inv.player);
 
-        this.addSlot(new ShulkerBoxSlot(data, 0, 78, 15));
+        addPlayerInventory(inv);
+        addPlayerHotbar(inv, inv.selected);
+
+        this.addSlot(new Slot(data, 0, 78, 15));
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -91,9 +92,18 @@ public class GiftBoxMenu extends AbstractContainerMenu {
         }
     }
 
-    private void addPlayerHotbar(Inventory playerInventory) {
+    private void addPlayerHotbar(Inventory playerInventory, int selected) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 109));
+            if (i == selected) {
+                this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 109) {
+                    @Override
+                    public boolean mayPickup(Player playerIn) {
+                        return false;
+                    }
+                });
+            } else {
+                this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 109));
+            }
         }
     }
 
