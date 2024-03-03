@@ -12,11 +12,14 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -28,12 +31,12 @@ import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ShulkerBullet;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
@@ -134,12 +137,13 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
         this.goalSelector.addGoal(3, new BreedGoal(this, 1.2D));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.3D, Ingredient.of(PrettyGuardianItem.FISH_WAFFLE.get()), false));
 
-        this.goalSelector.addGoal(4, new FollowMobGoal(this, 1.0D, 10.0F, 2.0F));
-        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 2.0D, 5.0F, 3.0F, true));
-        this.goalSelector.addGoal(5, new ShulkerAttackGoal());
-        this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.25D));
+        this.goalSelector.addGoal(5, new SonicAttackGoal());
 
+        this.goalSelector.addGoal(6, new FollowParentGoal(this, 1.25D));
+        this.goalSelector.addGoal(6, new FollowMobGoal(this, 1.0D, 10.0F, 2.0F));
+        this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 2.0D, 5.0F, 3.0F, true));
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.1D));
+
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 
@@ -307,20 +311,10 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
         this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
     }
 
-    class CelestialRabbitPanicGoal extends PanicGoal {
-        public CelestialRabbitPanicGoal(double p_203124_) {
-            super(CelestialRabbitEntity.this, p_203124_);
-        }
-
-        protected boolean shouldPanic() {
-            return this.mob.isFreezing() || this.mob.isOnFire();
-        }
-    }
-
-    class ShulkerAttackGoal extends Goal {
+    class SonicAttackGoal extends Goal {
         private int attackTime;
 
-        public ShulkerAttackGoal() {
+        public SonicAttackGoal() {
             this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
         }
 
@@ -334,7 +328,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
         }
 
         public void start() {
-            this.attackTime = 20;
+            this.attackTime = 60;
         }
 
         public void stop() {
@@ -353,10 +347,33 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                     CelestialRabbitEntity.this.getMoveControl().strafe(-0.5F, 0.0F);
 
                     double d0 = CelestialRabbitEntity.this.distanceToSqr(livingentity);
-                    if (d0 < 400.0D) {
+                    if (d0 < 1000.0D) {
                         if (this.attackTime <= 0) {
-                            this.attackTime = 20 + CelestialRabbitEntity.this.random.nextInt(10) * 20 / 2;
-                            CelestialRabbitEntity.this.level().addFreshEntity(new ShulkerBullet(CelestialRabbitEntity.this.level(), CelestialRabbitEntity.this, livingentity, CelestialRabbitEntity.this.getDirection().getAxis()));
+                            this.attackTime = 60 + CelestialRabbitEntity.this.random.nextInt(10) * 20 / 2;
+
+                            if (CelestialRabbitEntity.this.level() instanceof ServerLevel serverLevel) {
+
+                                Vec3 $$3 = CelestialRabbitEntity.this.position();
+                                Vec3 $$4 = livingentity.getEyePosition().subtract($$3);
+
+                                Vec3 $$5 = $$4.normalize();
+
+                                for(int $$6 = 1; $$6 < Mth.floor($$4.length()) + 7; ++$$6) {
+                                    Vec3 $$7 = $$3.add($$5.scale((double)$$6));
+                                    serverLevel.sendParticles(ParticleTypes.SONIC_BOOM, $$7.x, $$7.y, $$7.z, 1, 0.0, 0.0, 0.0, 0.0);
+                                }
+
+                                livingentity.hurt(CelestialRabbitEntity.this.damageSources().sonicBoom(CelestialRabbitEntity.this), 1.0F);
+
+                                livingentity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 1));
+                                livingentity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 1));
+                                livingentity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 1));
+                                livingentity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 200, 1));
+
+                                double $$8 = 0.5 * (1.0 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+                                double $$9 = 2.5 * (1.0 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+                                livingentity.push($$5.x() * $$9, $$5.y() * $$8, $$5.z() * $$9);
+                            }
                         }
                     } else {
                         CelestialRabbitEntity.this.setTarget((LivingEntity)null);
