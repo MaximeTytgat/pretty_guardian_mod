@@ -4,6 +4,7 @@ import com.max.prettyguardian.entity.ModEntities;
 import com.max.prettyguardian.entity.goal.StopMoveWhenOrderedToGoal;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.particle.ModParticles;
+import com.max.prettyguardian.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -124,16 +125,18 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new CelestialRabbitEntity.CelestialRabbitPanicGoal(1.5D));
+        this.goalSelector.addGoal(1, new PanicGoal(this, 1.5));
+//        this.goalSelector.addGoal(1, new CelestialRabbitEntity.CelestialRabbitPanicGoal(1.5D));
         this.goalSelector.addGoal(2, new StopMoveWhenOrderedToGoal(this));
 
+//        this.goalSelector.addGoal(3, new Cat.CatRelaxOnOwnerGoal(this));
 
         this.goalSelector.addGoal(3, new BreedGoal(this, 1.2D));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.3D, Ingredient.of(PrettyGuardianItem.STRAWBERRY.get()), false));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.3D, Ingredient.of(PrettyGuardianItem.FISH_WAFFLE.get()), false));
 
         this.goalSelector.addGoal(4, new FollowMobGoal(this, 1.0D, 10.0F, 2.0F));
+        this.goalSelector.addGoal(4, new FollowOwnerGoal(this, 2.0D, 5.0F, 3.0F, true));
         this.goalSelector.addGoal(5, new ShulkerAttackGoal());
-        this.goalSelector.addGoal(5, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F, true));
         this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.25D));
 
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.1D));
@@ -190,7 +193,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
 
     @Override
     public boolean isFood(ItemStack itemStack) {
-        return itemStack.is(PrettyGuardianItem.STRAWBERRY.get());
+        return itemStack.is(PrettyGuardianItem.FISH_WAFFLE.get());
     }
 
 
@@ -204,7 +207,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
         ItemStack itemstack = player.getItemInHand(interactionHand);
         Item item = itemstack.getItem();
         if (this.level().isClientSide) {
-            boolean flag = this.isOwnedBy(player) || this.isTame() || itemstack.is(Items.BONE) && !this.isTame() && !this.isAngry();
+            boolean flag = this.isOwnedBy(player) || this.isTame() || itemstack.is(ModTags.Items.CAKE) && !this.isTame() && !this.isAngry();
             return flag ? InteractionResult.CONSUME : InteractionResult.PASS;
         } else if (this.isTame()) {
             if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
@@ -244,7 +247,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                     return interactionresult;
                 }
             }
-        } else if (itemstack.is(Items.BONE) && !this.isAngry()) {
+        } else if (itemstack.is(ModTags.Items.CAKE) && !this.isAngry()) {
             if (!player.getAbilities().instabuild) {
                 itemstack.shrink(1);
             }

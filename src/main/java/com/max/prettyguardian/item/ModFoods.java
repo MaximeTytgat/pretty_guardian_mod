@@ -21,7 +21,8 @@ public class ModFoods {
     public static final FoodProperties MOJITO = (new FoodProperties.Builder())
             .nutrition(6).saturationMod(0.25F).build();
     public static final FoodProperties BUBBLE_TEA = (new FoodProperties.Builder())
-            .nutrition(6).saturationMod(0.25F).build();
+            .nutrition(6).saturationMod(0.25F)
+            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 300, 0), 1F).build();
     public static final FoodProperties POPSICLE = (new FoodProperties.Builder())
             .nutrition(6).saturationMod(0.25F).build();
     public static final FoodProperties POKKY_ICE_CREAM = (new FoodProperties.Builder())
@@ -58,7 +59,7 @@ public class ModFoods {
             .nutrition(4).saturationMod(0.5F).build();
     public static final FoodProperties SQUID = (new FoodProperties.Builder())
             .nutrition(2).saturationMod(0.3F)
-            .effect(new MobEffectInstance(MobEffects.HUNGER, 600, 0), 0.3F).meat().build();
+            .effect(new MobEffectInstance(MobEffects.HUNGER, 350, 0), 0.2F).meat().build();
 
     public static final FoodProperties SQUID_COOKED = (new FoodProperties.Builder())
             .nutrition(6).saturationMod(0.75F).meat().build();

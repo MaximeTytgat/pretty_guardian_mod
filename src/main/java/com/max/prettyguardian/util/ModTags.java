@@ -28,6 +28,8 @@ public class ModTags {
 
         public static final TagKey<Item> HEART_ARROWS = tag("heart_arrows");
 
+        public static final TagKey<Item> CAKE = tag("cake");
+
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(PrettyGuardian.MOD_ID, name));
         }

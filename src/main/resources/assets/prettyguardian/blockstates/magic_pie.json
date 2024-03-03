@@ -1,8 +1,20 @@
 {
   "variants": {
-    "bites=0": { "model": "prettyguardian:block/magic_pie" },
-    "bites=1": { "model": "prettyguardian:block/magic_pie_slice1"},
-    "bites=2": { "model": "prettyguardian:block/magic_pie_slice2"},
-    "bites=3": { "model": "prettyguardian:block/magic_pie_slice3"}
+    "bites=0,facing=north": { "model": "prettyguardian:block/magic_pie" },
+    "bites=1,facing=north": { "model": "prettyguardian:block/magic_pie_slice1"},
+    "bites=2,facing=north": { "model": "prettyguardian:block/magic_pie_slice2"},
+    "bites=3,facing=north": { "model": "prettyguardian:block/magic_pie_slice3"},
+    "bites=0,facing=east": { "model": "prettyguardian:block/magic_pie", "x": 90 },
+    "bites=1,facing=east": { "model": "prettyguardian:block/magic_pie_slice1", "x": 90 },
+    "bites=2,facing=east": { "model": "prettyguardian:block/magic_pie_slice2", "x": 90 },
+    "bites=3,facing=east": { "model": "prettyguardian:block/magic_pie_slice3", "x": 90 },
+    "bites=0,facing=south": { "model": "prettyguardian:block/magic_pie", "x": 180 },
+    "bites=1,facing=south": { "model": "prettyguardian:block/magic_pie_slice1", "x": 180 },
+    "bites=2,facing=south": { "model": "prettyguardian:block/magic_pie_slice2", "x": 180 },
+    "bites=3,facing=south": { "model": "prettyguardian:block/magic_pie_slice3", "x": 180 },
+    "bites=0,facing=west": { "model": "prettyguardian:block/magic_pie", "x": 270 },
+    "bites=1,facing=west": { "model": "prettyguardian:block/magic_pie_slice1", "x": 270 },
+    "bites=2,facing=west": { "model": "prettyguardian:block/magic_pie_slice2", "x": 270 },
+    "bites=3,facing=west": { "model": "prettyguardian:block/magic_pie_slice3", "x": 270 }
   }
 }

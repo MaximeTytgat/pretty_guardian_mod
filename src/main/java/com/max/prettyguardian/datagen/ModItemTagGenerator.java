@@ -2,6 +2,8 @@ package com.max.prettyguardian.datagen;
 
 import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.blocks.PrettyGuardianBlock;
+import com.max.prettyguardian.blocks.custom.food.BaseCake;
+import com.max.prettyguardian.blocks.custom.food.BaseThreeCake;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.util.ModTags;
 import net.minecraft.core.HolderLookup;
@@ -9,9 +11,11 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -33,6 +37,22 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                         PrettyGuardianItem.RUBY_CHESTPLATE.get(),
                         PrettyGuardianItem.RUBY_LEGGINGS.get(),
                         PrettyGuardianItem.RUBY_BOOTS.get()
+                );
+
+        this.tag(ModTags.Items.CAKE)
+                .add(
+                        PrettyGuardianBlock.CHOCOLATE_CAKE.get().asItem(),
+                        PrettyGuardianBlock.CREAM_CAKE.get().asItem(),
+                        PrettyGuardianBlock.RHUM_CAKE.get().asItem(),
+                        PrettyGuardianBlock.STRAWBERRY_CAKE.get().asItem(),
+                        PrettyGuardianBlock.BERRY_STRAWBERRY_CAKE.get().asItem(),
+                        PrettyGuardianBlock.VELVET_CAKE.get().asItem(),
+                        PrettyGuardianBlock.CREAM_STRAWBERRY_CAKE.get().asItem(),
+                        PrettyGuardianBlock.STRAWBERRY_CHOCO_CAKE.get().asItem(),
+                        PrettyGuardianBlock.THREE_STRAWBERRY_CAKE.get().asItem(),
+                        PrettyGuardianBlock.THREE_STRAWBERRY_CHOCO_CAKE.get().asItem(),
+                        PrettyGuardianBlock.THREE_CHOCO_CAKE.get().asItem(),
+                        PrettyGuardianBlock.THREE_VELVET_CAKE.get().asItem()
                 );
 
 //        this.tag(ItemTags.ARROWS)

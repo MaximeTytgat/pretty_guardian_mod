@@ -5,6 +5,7 @@ import com.max.prettyguardian.effect.ModEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -30,7 +31,7 @@ public class SilverCrystalBlockEntity extends BlockEntity {
 
             while(var17.hasNext()) {
                 ServerPlayer serverplayer = (ServerPlayer)var17.next();
-                serverplayer.addEffect(new MobEffectInstance(ModEffects.LOVE.get(), 270, 1));
+                serverplayer.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 270, 1));
             }
         }
     }

@@ -272,6 +272,7 @@ public class CreativeTab {
 
                 output.accept(PrettyGuardianItem.FAIRY_DUST.get());
                 output.accept(PrettyGuardianItem.GIFT_BOX.get());
+                output.accept(PrettyGuardianItem.LOVE_LETTER.get());
 //                output.accept(PrettyGuardianBlock.GEM_POLISHING_STATION.get());
                 output.accept(PrettyGuardianBlock.MOON_ALTAR.get());
 

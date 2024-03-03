@@ -219,6 +219,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(PrettyGuardianItem.FAIRY_DUST);
         simpleItem(PrettyGuardianItem.GIFT_BOX);
+        simpleItem(PrettyGuardianItem.LOVE_LETTER);
     }
 
 

@@ -22,6 +22,7 @@ public class ReusableFoodContainerItem extends Item {
     }
 
     public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
+        super.finishUsingItem(itemStack, level, livingEntity);
         if (!level.isClientSide) livingEntity.curePotionEffects(itemStack); // FORGE - move up so stack.shrink does not turn stack into air
         if (livingEntity instanceof ServerPlayer serverplayer) {
             CriteriaTriggers.CONSUME_ITEM.trigger(serverplayer, itemStack);
