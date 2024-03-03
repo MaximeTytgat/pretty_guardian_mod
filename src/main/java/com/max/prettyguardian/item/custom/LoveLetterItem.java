@@ -1,17 +1,13 @@
 package com.max.prettyguardian.item.custom;
 
-import net.minecraft.client.GameNarrator;
+import com.max.prettyguardian.client.gui.components.CustomMultiLineEditBox;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.font.TextFieldHelper;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -26,6 +22,7 @@ import java.awt.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.OptionalInt;
 
 public class LoveLetterItem extends Item  {
     public LoveLetterItem(Properties properties) {
@@ -62,10 +59,8 @@ public class LoveLetterItem extends Item  {
             int x = (this.width - 200) / 2;
             int y = (this.height - 50) / 2;
 
-//            textField = new TextFieldHelper(this.font, x, y, 200, 20, Component.nullToEmpty(I18n.get("gui.love_letter.enter_message")));
-//            textField.setFont(this.font);
-//            textField.setValue(stack.getOrCreateTag().getString("message"));
-//            this.addWidget(textField);
+
+            this.addRenderableWidget(new CustomMultiLineEditBox(this.font, x, y - 200, 200, 50, Component.nullToEmpty(""), Component.nullToEmpty("")));
 
 
             this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, (p_289629_) -> {
