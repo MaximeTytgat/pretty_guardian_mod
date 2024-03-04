@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:cherry_leaves"
+    },
+    "B": {
+      "item": "minecraft:cherry_sapling"
+    },
+    "C": {
+      "item": "minecraft:flower_pot"
+    }
+  },
+  "pattern": [
+    " A ",
+    "ABA",
+    " C "
+  ],
+  "result": {
+    "item": "prettyguardian:cherry_bonzai"
+  },
+  "show_notification": true
+}
