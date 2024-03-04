@@ -18,6 +18,7 @@ public class ModParticles {
     public static final RegistryObject<SimpleParticleType> CELESTIAL_RABBIT_PARTICLES = PARTICLE_TYPES.register("celestial_rabbit_particles", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> PINK_FAIRY_PARTICLES = PARTICLE_TYPES.register("pink_fairy_particles", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> BLUE_FAIRY_PARTICLES = PARTICLE_TYPES.register("blue_fairy_particles", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> PINK_SONIC_BOOM_PARTICLES = PARTICLE_TYPES.register("pink_sonic_boom_particles", () -> new SimpleParticleType(true));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

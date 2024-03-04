@@ -42,6 +42,9 @@ public class ModEventBusClientEvents {
 
         Minecraft.getInstance().particleEngine.register(ModParticles.BLUE_FAIRY_PARTICLES.get(),
                 BlueFairyParticles.Provider::new);
+
+        Minecraft.getInstance().particleEngine.register(ModParticles.PINK_SONIC_BOOM_PARTICLES.get(),
+                PinkSonicBoomParticle.Provider::new);
     }
 
     @SubscribeEvent

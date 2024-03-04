@@ -59,7 +59,8 @@ public class ModFoods {
             .nutrition(4).saturationMod(0.5F).build();
     public static final FoodProperties SQUID = (new FoodProperties.Builder())
             .nutrition(2).saturationMod(0.3F)
-            .effect(new MobEffectInstance(MobEffects.HUNGER, 350, 0), 0.2F).meat().build();
+            .effect(new MobEffectInstance(MobEffects.HUNGER, 350, 0), 0.2F)
+            .meat().build();
 
     public static final FoodProperties SQUID_COOKED = (new FoodProperties.Builder())
             .nutrition(6).saturationMod(0.75F).meat().build();

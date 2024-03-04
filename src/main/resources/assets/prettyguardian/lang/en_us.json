@@ -194,5 +194,9 @@
 
   "effect.prettyguardian.love": "Truly in Love",
 
-  "container.giftBox.hoverText": "A gift box for you! Open it and see what's inside!"
+  "container.giftBox.hoverText": "A gift box for you! Open it and see what's inside!",
+  "gui.sign_and_close": "Sign & Close",
+  "screen.prettyguardian.love_letter.placeholder": "Enter your love letter here...",
+  "screen.prettyguardian.love_letter.title": "Love Letter",
+  "screen.prettyguardian.love_letter.send_by": "Send by"
 }

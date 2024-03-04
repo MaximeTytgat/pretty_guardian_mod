@@ -1,10 +1,14 @@
 package com.max.prettyguardian.item.custom;
 
+import com.max.prettyguardian.PrettyGuardian;
+import com.max.prettyguardian.client.gui.components.CustomFittingMultiLineTextWidget;
 import com.max.prettyguardian.client.gui.components.CustomMultiLineEditBox;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.StringWidget;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -22,7 +26,6 @@ import java.awt.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.OptionalInt;
 
 public class LoveLetterItem extends Item  {
     public LoveLetterItem(Properties properties) {
@@ -39,33 +42,86 @@ public class LoveLetterItem extends Item  {
         return super.use(level, player, interactionHand);
     }
 
+    @Override
+    public boolean isFoil(ItemStack itemStack) {
+        return itemStack.hasTag() && itemStack.getTag().contains("author");
+    }
+
+
     private void openLetterEditor(ItemStack stack) {
     }
 
     private static class LetterEditorScreen extends Screen {
         private TextField textField;
+        private CustomMultiLineEditBox output;
+        private CustomFittingMultiLineTextWidget writtenOutput;
         private final ItemStack stack;
         private MutableComponent msg;
         private List<FormattedCharSequence> cachedPageComponents;
 
         protected LetterEditorScreen(ItemStack stack) {
-            super(Component.translatable("item.prettyguardian.love_letter"));
+            super(Component.translatable("screen.prettyguardian.love_letter.title"));
             this.cachedPageComponents = Collections.emptyList();
             this.stack = stack;
         }
 
         @Override
         protected void init() {
-            int x = (this.width - 200) / 2;
-            int y = (this.height - 50) / 2;
+            int bookX = (this.width - 192) / 2;
+            int bookY = 2;
+
+            Button.Builder doneButton = Button.builder(
+                    CommonComponents.GUI_DONE,
+                    (button) -> this.onClose()
+            ).bounds((this.width / 2) + 5, 196, 100, 20);
+
+            Button.Builder signButton = Button.builder(
+                    Component.translatable("gui.sign_and_close"),
+                    (button) -> this.onClose("sign")
+            ).bounds((this.width / 2) - 105, 196, 100, 20);
 
 
-            this.addRenderableWidget(new CustomMultiLineEditBox(this.font, x, y - 200, 200, 50, Component.nullToEmpty(""), Component.nullToEmpty("")));
+            this.output = new CustomMultiLineEditBox(
+                    this.font, bookX + 30, bookY + 18, 125, 150,
+                    Component.translatable("screen.prettyguardian.love_letter.placeholder"),
+                    Component.translatable("item.prettyguardian.msg")
+            );
 
+            if (this.stack.hasTag()) {
+                CompoundTag tag = this.stack.getTag();
 
-            this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, (p_289629_) -> {
-                this.onClose();
-            }).bounds(this.width / 2 - 100, 196, 200, 20).build());
+                if (tag != null && tag.contains("author")) {
+                    this.writtenOutput = new CustomFittingMultiLineTextWidget(
+                            bookX + 30, bookY + 18, 125, 150,
+                            Component.literal(tag.getString("msg")).withStyle(Style.EMPTY.withColor(3539535)),
+                            this.font
+                    );
+
+                    this.addRenderableWidget(new StringWidget((this.width / 2), 150, 200, 20,
+                            Component.translatable("screen.prettyguardian.love_letter.send_by")
+                                    .append(" ")
+                                    .append(tag.getString("author")),
+                            this.font));
+
+                    this.addRenderableWidget(this.writtenOutput);
+                    this.addRenderableWidget(Button.builder(
+                            CommonComponents.GUI_DONE,
+                            (button) -> this.onClose()
+                    ).bounds((this.width / 2) - 100, 196, 200, 20).build());
+                } else {
+                    if (tag != null && tag.contains("msg")) {
+                        this.output.setValue(tag.getString("msg"));
+                    }
+                    this.addRenderableWidget(this.output);
+                    this.addRenderableWidget(doneButton.build());
+                    this.addRenderableWidget(signButton.build());
+                }
+
+            } else {
+                this.addRenderableWidget(this.output);
+                this.addRenderableWidget(doneButton.build());
+                this.addRenderableWidget(signButton.build());
+            }
         }
 
         public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
@@ -116,12 +172,45 @@ public class LoveLetterItem extends Item  {
                 }
         }
 
+        @Override
+        public void onClose() {
+            PrettyGuardian.LOGGER.info("Closing " + this.output.getValue());
 
-//        @Override
-//        public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
-////            renderBackground(guiGraphics);
-//
-//            super.render(guiGraphics, mouseX, mouseY, delta);
-//        }
-}
+            if (this.stack.hasTag()) {
+                CompoundTag tag = this.stack.getTag();
+                if (tag != null && !tag.contains("author")) {
+                    tag.putString("msg", this.output.getValue());
+                }
+            } else {
+                CompoundTag tag = new CompoundTag();
+                tag.putString("msg", this.output.getValue());
+                this.stack.setTag(tag);
+            }
+
+            super.onClose();
+        }
+
+        public void onClose(String action) {
+            PrettyGuardian.LOGGER.info("Signing and closing " + this.output.getValue());
+            String playerName = Minecraft.getInstance().player.getName().getString();
+
+            if (Objects.equals(action, "sign")) {
+                if (this.stack.hasTag()) {
+                    CompoundTag tag = this.stack.getTag();
+                    if (tag != null) {
+                        tag.putString("msg", this.output.getValue());
+                        tag.putString("author", playerName);
+                    }
+                } else {
+                    CompoundTag tag = new CompoundTag();
+                    tag.putString("msg", this.output.getValue());
+                    tag.putString("author", playerName);
+                    this.stack.setTag(tag);
+                }
+            }
+
+            super.onClose();
+        }
+
+    }
 }

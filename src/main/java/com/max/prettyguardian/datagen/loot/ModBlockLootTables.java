@@ -91,6 +91,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(PrettyGuardianBlock.LANTERN_SAKURA_HUGE_JAPANESE.get(), this::createHugeLanternLootTable);
         this.add(PrettyGuardianBlock.LANTERN_FESTIVAL_HUGE_JAPANESE.get(), this::createHugeLanternLootTable);
 
+        this.add(PrettyGuardianBlock.BONZAI_CHERRY.get(), this::createBonzaiLootTable);
+
         this.dropSelf(PrettyGuardianBlock.LAMP_JAPANESE_OAK.get());
         this.dropSelf(PrettyGuardianBlock.LAMP_JAPANESE_BIRCH.get());
         this.dropSelf(PrettyGuardianBlock.LAMP_JAPANESE_SPRUCE.get());
@@ -200,6 +202,15 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                         .setProperties(StatePropertiesPredicate.Builder.properties()
                                                 .hasProperty(JapDoubleLanternBlock.HALF, DoubleBlockHalf.UPPER))))));
 
+    }
+
+    protected LootTable.Builder createBonzaiLootTable(Block block) {
+        return LootTable.lootTable().withPool(
+                (LootPool.Builder)this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(block)
+                                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                                        .setProperties(StatePropertiesPredicate.Builder.properties()
+                                                .hasProperty(JapDoubleLanternBlock.HALF, DoubleBlockHalf.LOWER))))));
     }
 
     @Override

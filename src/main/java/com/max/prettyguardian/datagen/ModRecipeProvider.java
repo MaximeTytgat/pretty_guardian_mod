@@ -509,6 +509,18 @@ public class ModRecipeProvider extends RecipeProvider {
         simpleChair(pWriter, PrettyGuardianBlock.CHAIR_JAPANESE_OAK.get(), Blocks.STRIPPED_OAK_LOG, Blocks.OAK_SLAB);
         simpleChair(pWriter, PrettyGuardianBlock.CHAIR_JAPANESE_SPRUCE.get(), Blocks.STRIPPED_SPRUCE_LOG, Blocks.SPRUCE_SLAB);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PrettyGuardianBlock.BONZAI_CHERRY.get(), 1)
+                .pattern(" A ")
+                .pattern("ABA")
+                .pattern(" C ")
+                .define('A', Blocks.CHERRY_LEAVES)
+                .define('B', Blocks.CHERRY_SAPLING)
+                .define('C', Blocks.FLOWER_POT)
+                .unlockedBy(getHasName(Blocks.CHERRY_LEAVES), has(Blocks.CHERRY_LEAVES))
+                .unlockedBy(getHasName(Blocks.CHERRY_SAPLING), has(Blocks.CHERRY_SAPLING))
+                .unlockedBy(getHasName(Blocks.FLOWER_POT), has(Blocks.FLOWER_POT))
+                .save(pWriter);
+
         simpleFruitSapling(pWriter, PrettyGuardianBlock.BOBA_SAPLING.get(), PrettyGuardianItem.BOBA.get());
         simpleFruitSapling(pWriter, PrettyGuardianBlock.LEMON_SAPLING.get(), PrettyGuardianItem.LEMON.get());
         simpleFruitSapling(pWriter, PrettyGuardianBlock.PISTACHIO_SAPLING.get(), PrettyGuardianItem.PISTACHIO.get());
