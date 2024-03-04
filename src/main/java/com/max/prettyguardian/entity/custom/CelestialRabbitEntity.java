@@ -128,7 +128,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 1.5));
+//        this.goalSelector.addGoal(1, new PanicGoal(this, 1.5));
 //        this.goalSelector.addGoal(1, new CelestialRabbitEntity.CelestialRabbitPanicGoal(1.5D));
         this.goalSelector.addGoal(2, new StopMoveWhenOrderedToGoal(this));
 
@@ -137,21 +137,21 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
         this.goalSelector.addGoal(3, new BreedGoal(this, 1.2D));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.3D, Ingredient.of(PrettyGuardianItem.FISH_WAFFLE.get()), false));
 
-        this.goalSelector.addGoal(5, new SonicAttackGoal());
+        this.goalSelector.addGoal(4, new SonicAttackGoal());
 
         this.goalSelector.addGoal(6, new FollowParentGoal(this, 1.25D));
-        this.goalSelector.addGoal(6, new FollowMobGoal(this, 1.0D, 10.0F, 2.0F));
-        this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 2.0D, 5.0F, 3.0F, true));
-        this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.1D));
+        this.goalSelector.addGoal(6, new FollowOwnerGoal(this, 2.0D, 8.0F, 5.0F, true));
 
+        this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.1D));
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(8, new FollowMobGoal(this, 1.0D, 10.0F, 2.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
 
         this.targetSelector.addGoal(1, new OwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new OwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::isAngryAt));
-        this.targetSelector.addGoal(5, new NonTameRandomTargetGoal<>(this, Animal.class, false, PREY_SELECTOR));
+//        this.targetSelector.addGoal(5, new NonTameRandomTargetGoal<>(this, Animal.class, false, PREY_SELECTOR));
         this.targetSelector.addGoal(6, new NonTameRandomTargetGoal<>(this, Turtle.class, false, Turtle.BABY_ON_LAND_SELECTOR));
         this.targetSelector.addGoal(7, new NearestAttackableTargetGoal<>(this, AbstractSkeleton.class, false));
         this.targetSelector.addGoal(8, new ResetUniversalAngerTargetGoal<>(this, true));
@@ -344,7 +344,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                 LivingEntity livingentity = CelestialRabbitEntity.this.getTarget();
                 if (livingentity != null) {
                     CelestialRabbitEntity.this.getLookControl().setLookAt(livingentity, 180.0F, 180.0F);
-                    CelestialRabbitEntity.this.getMoveControl().strafe(-0.5F, 0.0F);
+//                    CelestialRabbitEntity.this.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY()+1, livingentity.getZ(), 1.0D);
 
                     double d0 = CelestialRabbitEntity.this.distanceToSqr(livingentity);
                     if (d0 < 1000.0D) {
@@ -360,7 +360,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
 
                                 for(int $$6 = 1; $$6 < Mth.floor($$4.length()) + 7; ++$$6) {
                                     Vec3 $$7 = $$3.add($$5.scale((double)$$6));
-                                    serverLevel.sendParticles(ParticleTypes.SONIC_BOOM, $$7.x, $$7.y, $$7.z, 1, 0.0, 0.0, 0.0, 0.0);
+                                    serverLevel.sendParticles(ModParticles.PINK_SONIC_BOOM_PARTICLES.get(), $$7.x, $$7.y, $$7.z, 1, 0.0, 0.0, 0.0, 0.0);
                                 }
 
                                 livingentity.hurt(CelestialRabbitEntity.this.damageSources().sonicBoom(CelestialRabbitEntity.this), 1.0F);
@@ -369,6 +369,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                                 livingentity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 1));
                                 livingentity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 1));
                                 livingentity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 200, 1));
+                                livingentity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 1));
 
                                 double $$8 = 0.5 * (1.0 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
                                 double $$9 = 2.5 * (1.0 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
@@ -383,5 +384,15 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                 }
             }
         }
+    }
+
+    public class CelestialRabbitPanicGoal extends PanicGoal {
+        public CelestialRabbitPanicGoal(double p_203124_) {
+            super(CelestialRabbitEntity.this, p_203124_);
+        }
+
+//        protected boolean shouldPanic() {
+//            return this.mob.isFreezing() || this.mob.isOnFire() || super.shouldPanic();
+//        }
     }
 }
