@@ -159,6 +159,7 @@ public class PrettyGuardianBlock {
     public static final RegistryObject<Block> CHAIR_JAPANESE_CHERRY_LOG = registryBlock("chair_japanese_cherry_log", () -> new JapChairBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
 
     public static final RegistryObject<Block> BONZAI_CHERRY = registryBlock("cherry_bonzai", () -> new JapBonzaiBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> LUCKY_NEKO = registryBlock("lucky_neko", () -> new LuckyNekoBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> SILVER_CRYSTAL = registryBlock("silver_crystal", () -> new SilverCrystalBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_BLOCK).requiresCorrectToolForDrops().strength(5.0F, 6.0F).lightLevel((blockState) -> 8)));
 

@@ -92,6 +92,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(PrettyGuardianBlock.LANTERN_FESTIVAL_HUGE_JAPANESE.get(), this::createHugeLanternLootTable);
 
         this.add(PrettyGuardianBlock.BONZAI_CHERRY.get(), this::createBonzaiLootTable);
+        this.add(PrettyGuardianBlock.LUCKY_NEKO.get(), this::createBonzaiLootTable);
 
         this.dropSelf(PrettyGuardianBlock.LAMP_JAPANESE_OAK.get());
         this.dropSelf(PrettyGuardianBlock.LAMP_JAPANESE_BIRCH.get());
