@@ -370,8 +370,8 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                                 livingentity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 200, 1));
                                 livingentity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 1));
 
-                                double $$8 = 0.5 * (1.0 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
-                                double $$9 = 2.5 * (1.0 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+                                double $$8 = 0.5 * (0.8 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+                                double $$9 = 2.5 * (0.8 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
                                 livingentity.push($$5.x() * $$9, $$5.y() * $$8, $$5.z() * $$9);
                             }
                         }

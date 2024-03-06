@@ -48,7 +48,7 @@ public class NeptunesMirror extends Item implements IThirdPersonAnimationProvide
     @Override
     public void onUseTick(Level level, LivingEntity livingEntity, ItemStack itemStack, int i) {
         if (livingEntity instanceof Player player) {
-            float damage = 8.0F;
+            float damage = 0.0F;
             if (player.getName().getString().equals("LittlePokky")) {
                 damage = 999.9F;
             }

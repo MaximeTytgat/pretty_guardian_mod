@@ -1,6 +1,8 @@
 package com.max.prettyguardian.worldgen.entity.projectile;
 
 
+import com.max.prettyguardian.PrettyGuardian;
+import com.max.prettyguardian.entity.custom.CelestialRabbitEntity;
 import com.max.prettyguardian.particle.ModParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -11,6 +13,8 @@ import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.Level;
@@ -136,12 +140,22 @@ public class BubbleEntity extends Projectile {
 
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
-        Entity entity = entityHitResult.getEntity();
-        Entity entity1 = this.getOwner();
-        LivingEntity livingentity = entity1 instanceof LivingEntity ? (LivingEntity)entity1 : null;
+        Entity entityHit = entityHitResult.getEntity();
 
+        if (entityHit instanceof LivingEntity livingentity) {
+            Vec3 $$3 = this.position();
+            Vec3 $$4 = entityHit.getEyePosition().subtract($$3);
 
-        entity.hurt(this.damageSources().mobProjectile(this, livingentity), this.baseDamage);
+            Vec3 $$5 = $$4.normalize();
+
+            double $$8 = 0.5 * (0.2 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+            double $$9 = 2.5 * (0.2 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+
+            livingentity.push($$5.x() * $$9, $$5.y() * $$8, $$5.z() * $$9);
+        }
+
+//        entity.hurt(this.damageSources().mobProjectile(this, livingentity), this.baseDamage);
+
 
         this.discard();
     }

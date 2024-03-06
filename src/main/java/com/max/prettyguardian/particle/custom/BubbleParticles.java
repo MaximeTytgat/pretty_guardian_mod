@@ -7,6 +7,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class BubbleParticles extends TextureSheetParticle {
+    private final SpriteSet sprites;
+
 
     protected BubbleParticles(ClientLevel level, double xCoord, double yCoord, double zCoord,
                               SpriteSet spriteSet, double xd, double yd, double zd) {
@@ -16,19 +18,28 @@ public class BubbleParticles extends TextureSheetParticle {
         this.xd = xd;
         this.yd = yd;
         this.zd = zd;
+
         this.quadSize *= 1.85F;
-        this.lifetime = 35;
-        this.setSpriteFromAge(spriteSet);
+        this.lifetime = 40;
 
         this.rCol = 1F;
         this.gCol = 1F;
         this.bCol = 1F;
+
+        this.sprites = spriteSet;
+        this.setSpriteFromAge(spriteSet);
+
     }
 
     @Override
     public void tick() {
         super.tick();
-        fadeOut();
+//        fadeOut();
+        if (this.age++ >= this.lifetime) {
+            this.remove();
+        } else {
+            this.setSpriteFromAge(this.sprites);
+        }
     }
 
     private void fadeOut() {
@@ -37,7 +48,7 @@ public class BubbleParticles extends TextureSheetParticle {
 
     @Override
     public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+        return ParticleRenderType.PARTICLE_SHEET_LIT;
     }
 
     @OnlyIn(Dist.CLIENT)

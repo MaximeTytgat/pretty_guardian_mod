@@ -14,7 +14,7 @@ public class PinkSonicBoomParticle extends HugeExplosionParticle {
     protected PinkSonicBoomParticle(ClientLevel clientLevel, double p_234029_, double p_234030_, double p_234031_, double p_234032_, SpriteSet p_234033_) {
         super(clientLevel, p_234029_, p_234030_, p_234031_, p_234032_, p_234033_);
         this.lifetime = 16;
-        this.quadSize = 1.5F;
+        this.quadSize = 1F;
         this.setSpriteFromAge(p_234033_);
     }
 
