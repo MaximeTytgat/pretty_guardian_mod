@@ -3,20 +3,20 @@
   "category": "building",
   "key": {
     "A": {
-      "item": "minecraft:paper"
+      "item": "minecraft:cherry_planks"
     },
     "B": {
-      "item": "minecraft:birch_planks"
+      "item": "minecraft:paper"
     }
   },
   "pattern": [
-    "AB",
-    "BA",
-    "AB"
+    "BAB",
+    "ABA",
+    "BAB"
   ],
   "result": {
     "count": 3,
-    "item": "prettyguardian:door_shoji_birch_small"
+    "item": "prettyguardian:shoji_blossom_small"
   },
   "show_notification": true
 }

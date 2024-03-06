@@ -447,7 +447,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(PrettyGuardianItem.FAIRY_DUST.get()), has(PrettyGuardianItem.FAIRY_DUST.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PrettyGuardianItem.BUTTERFLY_NET.get(), 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PrettyGuardianItem.BUTTERFLY_NET.get(), 1)
                 .pattern(" AA")
                 .pattern("BAA")
                 .define('A', Items.STRING)
@@ -487,6 +487,19 @@ public class ModRecipeProvider extends RecipeProvider {
         simpleDoor(pWriter, PrettyGuardianBlock.DOOR_SHOJI_CHERRY.get(), Blocks.CHERRY_LOG);
         simpleDoor2(pWriter, PrettyGuardianBlock.DOOR_SHOJI_CHERRY_SMALL.get(), Blocks.CHERRY_LOG);
 
+        simpleShoji(pWriter, PrettyGuardianBlock.SHOJI_BIRCH.get(), Blocks.BIRCH_PLANKS);
+        simpleShoji2(pWriter, PrettyGuardianBlock.SHOJI_BIRCH_SMALL.get(), Blocks.BIRCH_PLANKS);
+        simpleShojiBase(pWriter, PrettyGuardianBlock.SHOJI_BIRCH_BOTTOM.get(), Blocks.BIRCH_PLANKS);
+        simpleShojiBase2(pWriter, PrettyGuardianBlock.SHOJI_BIRCH_SMALL_BOTTOM.get(), Blocks.BIRCH_PLANKS);
+        simpleShoji(pWriter, PrettyGuardianBlock.SHOJI_BLOSSOM.get(), Blocks.CHERRY_PLANKS);
+        simpleShoji2(pWriter, PrettyGuardianBlock.SHOJI_BLOSSOM_SMALL.get(), Blocks.CHERRY_PLANKS);
+        simpleShojiBase(pWriter, PrettyGuardianBlock.SHOJI_BLOSSOM_BOTTOM.get(), Blocks.CHERRY_PLANKS);
+        simpleShojiBase2(pWriter, PrettyGuardianBlock.SHOJI_BLOSSOM_SMALL_BOTTOM.get(), Blocks.CHERRY_PLANKS);
+        simpleShoji(pWriter, PrettyGuardianBlock.SHOJI_CHERRY.get(), Blocks.CHERRY_LOG);
+        simpleShoji2(pWriter, PrettyGuardianBlock.SHOJI_CHERRY_SMALL.get(), Blocks.CHERRY_LOG);
+        simpleShojiBase(pWriter, PrettyGuardianBlock.SHOJI_CHERRY_BOTTOM.get(), Blocks.CHERRY_LOG);
+        simpleShojiBase2(pWriter, PrettyGuardianBlock.SHOJI_CHERRY_SMALL_BOTTOM.get(), Blocks.CHERRY_LOG);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PrettyGuardianBlock.PICNIC_BASKET.get(), 1)
                 .pattern(" A ")
                 .pattern("ABA")
@@ -509,7 +522,7 @@ public class ModRecipeProvider extends RecipeProvider {
         simpleChair(pWriter, PrettyGuardianBlock.CHAIR_JAPANESE_OAK.get(), Blocks.STRIPPED_OAK_LOG, Blocks.OAK_SLAB);
         simpleChair(pWriter, PrettyGuardianBlock.CHAIR_JAPANESE_SPRUCE.get(), Blocks.STRIPPED_SPRUCE_LOG, Blocks.SPRUCE_SLAB);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PrettyGuardianBlock.BONZAI_CHERRY.get(), 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, PrettyGuardianBlock.BONZAI_CHERRY.get(), 1)
                 .pattern(" A ")
                 .pattern("ABA")
                 .pattern(" C ")
@@ -539,16 +552,14 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.STRING), has(Items.STRING))
                 .save(pWriter);
 
-        SimpleCookingRecipeBuilder.generic(
-                        Ingredient.of(PrettyGuardianItem.RAW_BOBA.get()), RecipeCategory.FOOD, PrettyGuardianItem.BOBA.get(), 0.35F, 200, RecipeSerializer.SMELTING_RECIPE)
+        SimpleCookingRecipeBuilder.generic(Ingredient.of(PrettyGuardianItem.RAW_BOBA.get()), RecipeCategory.FOOD, PrettyGuardianItem.BOBA.get(), 0.35F, 200, RecipeSerializer.SMELTING_RECIPE)
                 .group("roasted_marshmallow_stick")
                 .unlockedBy(getHasName(PrettyGuardianItem.RAW_BOBA.get()), has(PrettyGuardianItem.RAW_BOBA.get()))
                 .save(pWriter);
 
         doubleSimpleShapeless(pWriter, RecipeCategory.FOOD, PrettyGuardianItem.SQUID_STICK.get(), 1, PrettyGuardianItem.BOBA.get(), Items.STICK);
 
-        SimpleCookingRecipeBuilder.generic(
-                        Ingredient.of(PrettyGuardianItem.SQUID_STICK.get()), RecipeCategory.FOOD, PrettyGuardianItem.SQUID_COOKED.get(), 0.35F, 200, RecipeSerializer.SMELTING_RECIPE)
+        SimpleCookingRecipeBuilder.generic(Ingredient.of(PrettyGuardianItem.SQUID_STICK.get()), RecipeCategory.FOOD, PrettyGuardianItem.SQUID_COOKED.get(), 0.35F, 200, RecipeSerializer.SMELTING_RECIPE)
                 .group("roasted_marshmallow_stick")
                 .unlockedBy(getHasName(PrettyGuardianItem.SQUID_STICK.get()), has(PrettyGuardianItem.SQUID_STICK.get()))
                 .unlockedBy(getHasName(PrettyGuardianItem.RAW_SQUID.get()), has(PrettyGuardianItem.RAW_SQUID.get()))
@@ -620,8 +631,54 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(finishedRecipeConsumer);
     }
 
+    protected static void simpleShoji(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike shoji, ItemLike wood) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, shoji, 3)
+                .pattern("ABA")
+                .pattern("BAB")
+                .pattern("ABA")
+                .define('A', wood)
+                .define('B', Items.PAPER)
+                .unlockedBy(getHasName(wood), has(wood))
+                .unlockedBy(getHasName(Items.PAPER), has(Items.PAPER))
+                .save(finishedRecipeConsumer);
+    }
+    protected static void simpleShoji2(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike shoji, ItemLike wood) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, shoji, 3)
+                .pattern("BAB")
+                .pattern("ABA")
+                .pattern("BAB")
+                .define('A', wood)
+                .define('B', Items.PAPER)
+                .unlockedBy(getHasName(wood), has(wood))
+                .unlockedBy(getHasName(Items.PAPER), has(Items.PAPER))
+                .save(finishedRecipeConsumer);
+    }
+
+    protected static void simpleShojiBase(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike shoji, ItemLike wood) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, shoji, 3)
+                .pattern("ABA")
+                .pattern("BAB")
+                .pattern("AAA")
+                .define('A', wood)
+                .define('B', Items.PAPER)
+                .unlockedBy(getHasName(wood), has(wood))
+                .unlockedBy(getHasName(Items.PAPER), has(Items.PAPER))
+                .save(finishedRecipeConsumer);
+    }
+    protected static void simpleShojiBase2(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike shoji, ItemLike wood) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, shoji, 3)
+                .pattern("BAB")
+                .pattern("ABA")
+                .pattern("AAA")
+                .define('A', wood)
+                .define('B', Items.PAPER)
+                .unlockedBy(getHasName(wood), has(wood))
+                .unlockedBy(getHasName(Items.PAPER), has(Items.PAPER))
+                .save(finishedRecipeConsumer);
+    }
+
     protected static void simpleDoor(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike door, ItemLike wood) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, door, 3)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, door, 3)
                 .pattern("BA")
                 .pattern("AB")
                 .pattern("BA")
@@ -632,7 +689,7 @@ public class ModRecipeProvider extends RecipeProvider {
     }
 
     protected static void simpleDoor2(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike door, ItemLike wood) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, door, 3)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, door, 3)
                 .pattern("AB")
                 .pattern("BA")
                 .pattern("AB")
@@ -643,7 +700,7 @@ public class ModRecipeProvider extends RecipeProvider {
     }
 
     protected static void simpleLantern(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike lantern, ItemLike ingredient) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, lantern, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, lantern, 1)
                 .pattern("ABA")
                 .pattern("ACA")
                 .pattern("ABA")
@@ -655,7 +712,7 @@ public class ModRecipeProvider extends RecipeProvider {
     }
 
     protected static void simpleLamp(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike lamp, ItemLike wood) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, lamp, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, lamp, 1)
                 .pattern("A A")
                 .pattern("BCB")
                 .pattern("D D")
@@ -668,7 +725,7 @@ public class ModRecipeProvider extends RecipeProvider {
     }
 
     protected static void simpleScreen(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike screen, ItemLike wood) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, screen, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, screen, 1)
                 .pattern("ABA")
                 .pattern("ABA")
                 .pattern("AAA")
