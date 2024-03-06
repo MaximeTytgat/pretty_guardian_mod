@@ -174,8 +174,6 @@ public class LoveLetterItem extends Item  {
 
         @Override
         public void onClose() {
-            PrettyGuardian.LOGGER.info("Closing " + this.output.getValue());
-
             if (this.stack.hasTag()) {
                 CompoundTag tag = this.stack.getTag();
                 if (tag != null && !tag.contains("author")) {
@@ -191,7 +189,6 @@ public class LoveLetterItem extends Item  {
         }
 
         public void onClose(String action) {
-            PrettyGuardian.LOGGER.info("Signing and closing " + this.output.getValue());
             String playerName = Minecraft.getInstance().player.getName().getString();
 
             if (Objects.equals(action, "sign")) {

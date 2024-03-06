@@ -66,9 +66,6 @@ public class NeptunesMirror extends Item implements IThirdPersonAnimationProvide
 
             Vec3 look = player.getLookAngle();
 
-            // set the position of the bubble allways at 0.5 at the right of the player
-//            abstractBubble.setPos(player.getX() + look.x, player.getY() + 0.5, player.getZ() + look.z);
-            // at the right of the look direction
             // Calculer les coordonnées de décalage à droite
             // Calculer l'angle de rotation en radians
             double angleRadians = Math.atan2(look.z, look.x);

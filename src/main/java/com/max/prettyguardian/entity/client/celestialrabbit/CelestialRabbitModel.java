@@ -6,6 +6,7 @@ import com.max.prettyguardian.entity.custom.CelestialRabbitEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.HierarchicalModel;
+import net.minecraft.client.model.ParrotModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -13,6 +14,9 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.animal.Parrot;
+
+import java.util.Objects;
 
 
 public class CelestialRabbitModel<T extends Entity> extends HierarchicalModel<T> {
@@ -20,13 +24,20 @@ public class CelestialRabbitModel<T extends Entity> extends HierarchicalModel<T>
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(PrettyGuardian.MOD_ID, "celestial_rabbit"), "main");
 	private final ModelPart celestial_rabbit;
 	private final ModelPart head;
-	public final ModelPart flame;
+	private final ModelPart body;
+	private final ModelPart leg0;
+	private final ModelPart leg1;
+	private final ModelPart leg2;
+	private final ModelPart leg3;
+	private final ModelPart tail;
+	private final ModelPart tail2;
+	private final ModelPart tail3;
+	private final ModelPart tail4;
 
-	public CelestialRabbitModel(ModelPart root) {
-		this.celestial_rabbit = root.getChild("root");
-		this.head = this.celestial_rabbit.getChild("body").getChild("head");
-		this.flame = this.head.getChild("flame");
-	}
+
+//	public final ModelPart flame;
+
+
 
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
@@ -54,8 +65,8 @@ public class CelestialRabbitModel<T extends Entity> extends HierarchicalModel<T>
 		PartDefinition ear_right2 = ear_right.addOrReplaceChild("ear_right2", CubeListBuilder.create().texOffs(44, 29).mirror().addBox(-1.0F, 0.0F, -2.25F, 2.0F, 7.0F, 4.5F, new CubeDeformation(0.0F)).mirror(false)
 				.texOffs(0, 30).addBox(-1.5F, 2.0F, -2.75F, 3.0F, 1.0F, 5.5F, new CubeDeformation(0.0F)), PartPose.offset(-1.0F, 3.5F, 0.0F));
 
-		PartDefinition flame = head.addOrReplaceChild("flame", CubeListBuilder.create().texOffs(54, 48).addBox(-2.5F, -5.0F, 0.0F, 5.0F, 5.0F, 0.0F, new CubeDeformation(0.0F))
-				.texOffs(54, 43).addBox(0.0F, -5.0F, -2.5F, 0.0F, 5.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -3.0F, -2.5F));
+//		PartDefinition flame = head.addOrReplaceChild("flame", CubeListBuilder.create().texOffs(54, 48).addBox(-2.5F, -5.0F, 0.0F, 5.0F, 5.0F, 0.0F, new CubeDeformation(0.0F))
+//				.texOffs(54, 43).addBox(0.0F, -5.0F, -2.5F, 0.0F, 5.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -3.0F, -2.5F));
 
 		PartDefinition legs = body.addOrReplaceChild("legs", CubeListBuilder.create(), PartPose.offset(0.0F, 1.0F, -0.5F));
 
@@ -82,14 +93,80 @@ public class CelestialRabbitModel<T extends Entity> extends HierarchicalModel<T>
 		return LayerDefinition.create(meshdefinition, 64, 64);
 	}
 
+	public CelestialRabbitModel(ModelPart root) {
+		this.celestial_rabbit = root.getChild("root");
+		this.body = this.celestial_rabbit.getChild("body");
+		this.head = this.celestial_rabbit.getChild("body").getChild("head");
+		this.leg0 = this.celestial_rabbit.getChild("body").getChild("legs").getChild("leg_back").getChild("leg0");
+		this.leg1 = this.celestial_rabbit.getChild("body").getChild("legs").getChild("leg_back").getChild("leg1");
+		this.leg2 = this.celestial_rabbit.getChild("body").getChild("legs").getChild("leg_front").getChild("leg2");
+		this.leg3 = this.celestial_rabbit.getChild("body").getChild("legs").getChild("leg_front").getChild("leg3");
+		this.tail = this.celestial_rabbit.getChild("body").getChild("tail");
+		this.tail2 = this.celestial_rabbit.getChild("body").getChild("tail").getChild("tail2");
+		this.tail3 = this.celestial_rabbit.getChild("body").getChild("tail").getChild("tail2").getChild("tail3");
+		this.tail4 = this.celestial_rabbit.getChild("body").getChild("tail").getChild("tail2").getChild("tail3").getChild("tail4");
+//		this.flame = this.head.getChild("flame");
+	}
+
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
-		this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
+		this.setupAnim(getState((CelestialRabbitEntity) entity), (CelestialRabbitEntity) entity, entity.tickCount,limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+	}
 
-		this.animateWalk(ModAnimationDefinitions.CELESTIAL_RABBIT_WALK, limbSwing, limbSwingAmount, 1f, 2.5F);
-		this.animate(((CelestialRabbitEntity) entity).idleAnimationState, ModAnimationDefinitions.CELESTIAL_RABBIT_IDLE, ageInTicks, 1F);
-		this.animate(((CelestialRabbitEntity) entity).sitAnimationState, ModAnimationDefinitions.CELESTIAL_RABBIT_SIT, ageInTicks, 1F);
+	@Override
+	public void prepareMobModel(T entity, float p_102615_, float p_102616_, float p_102617_) {
+		this.prepare(getState((CelestialRabbitEntity) entity));
+	}
+
+	public void renderOnShoulder(PoseStack poseStack, VertexConsumer vertexConsumer, int p_103226_, int p_103227_, float p_103228_, float p_103229_, float p_103230_, float p_103231_, int p_103232_) {
+		this.setupAnim(State.ON_SHOULDER, p_103232_, p_103228_, p_103229_, 0.0F, p_103230_, p_103231_);
+		celestial_rabbit.render(poseStack, vertexConsumer, p_103226_, p_103227_);
+	}
+
+	private void setupAnim(CelestialRabbitModel.State state, CelestialRabbitEntity celestialRabbit, int tickCount, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		switch (state) {
+			case SITTING:
+				this.animate(celestialRabbit.sitAnimationState, ModAnimationDefinitions.CELESTIAL_RABBIT_SIT, ageInTicks, 1F);
+				break;
+			case FLYING:
+				this.animateWalk(ModAnimationDefinitions.CELESTIAL_RABBIT_WALK, limbSwing, limbSwingAmount, 1f, 2.5F);
+			default:
+				this.animate(celestialRabbit.idleAnimationState, ModAnimationDefinitions.CELESTIAL_RABBIT_IDLE, ageInTicks, 1F);
+				break;
+		}
+
+	}
+
+	private void setupAnim(State state, int tickCount, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		switch (state) {
+			case ON_SHOULDER:
+				this.head.xRot = headPitch * 0.017453292F;
+				this.head.yRot = netHeadYaw * 0.017453292F;
+
+				this.body.x = 1F;
+				this.body.y = 30F;
+				this.body.z = 0F;
+
+//				this.body.yRot = 3.2f;
+				this.body.xRot = -0.2f;
+
+				this.leg0.xRot = 0.5f;
+				this.leg1.xRot = 0.5f;
+				this.leg2.xRot = 0.5f;
+				this.leg3.xRot = 0.5f;
+
+				this.tail.xRot = 1.1F;
+				this.tail2.xRot = -0.2F;
+				this.tail3.xRot = -0.2F;
+				this.tail4.xRot = -0.1F;
+				break;
+		}
+    }
+
+
+	private void prepare(CelestialRabbitModel.State p_103240_) {
+
 	}
 
 	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {
@@ -97,7 +174,14 @@ public class CelestialRabbitModel<T extends Entity> extends HierarchicalModel<T>
 		pHeadPitch = Mth.clamp(pHeadPitch, -25.0F, 45.0F);
 
 		this.head.zRot = pNetHeadYaw * ((float)Math.PI / 180F);
-//		this.head.xRot = pHeadPitch * ((float)Math.PI / 180F);
+	}
+
+	private static State getState(CelestialRabbitEntity celestialRabbit) {
+		if (celestialRabbit.isInSittingPose()) {
+			return State.SITTING;
+		} else {
+			return celestialRabbit.walkAnimation.isMoving() ? State.FLYING : State.IDLE;
+		}
 	}
 
 
@@ -109,5 +193,15 @@ public class CelestialRabbitModel<T extends Entity> extends HierarchicalModel<T>
 	@Override
 	public ModelPart root() {
 		return celestial_rabbit;
+	}
+
+	public static enum State {
+		FLYING,
+		IDLE,
+		SITTING,
+		ON_SHOULDER;
+
+		private State() {
+		}
 	}
 }

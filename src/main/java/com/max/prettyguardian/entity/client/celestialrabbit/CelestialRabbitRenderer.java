@@ -27,12 +27,12 @@ public class CelestialRabbitRenderer extends MobRenderer<CelestialRabbitEntity, 
     }
 
     @Override
-    public void render(CelestialRabbitEntity p_115455_, float p_115456_, float p_115457_, PoseStack p_115458_, MultiBufferSource p_115459_, int p_115460_) {
-        if ( p_115455_.isBaby() ) {
-            p_115458_.scale(0.6f, 0.6f, 0.6f);
+    public void render(CelestialRabbitEntity celestialRabbit, float p_115456_, float p_115457_, PoseStack poseStack, MultiBufferSource multiBufferSource, int p_115460_) {
+        if ( celestialRabbit.isBaby() ) {
+            poseStack.scale(0.6f, 0.6f, 0.6f);
         }
 
 
-        super.render(p_115455_, p_115456_, p_115457_, p_115458_, p_115459_, p_115460_);
+        super.render(celestialRabbit, p_115456_, p_115457_, poseStack, multiBufferSource, p_115460_);
     }
 }

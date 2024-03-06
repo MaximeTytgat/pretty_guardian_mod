@@ -24,6 +24,10 @@ public class PlayerEntityOnShoulderProvider implements ICapabilityProvider, INBT
         return this.playerEntityOnShoulder;
     }
 
+    public PlayerEntityOnShoulder getPlayerEntityOnShoulder() {
+        return createPlayerEntityOnShoulder();
+    }
+
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction direction) {
@@ -39,7 +43,7 @@ public class PlayerEntityOnShoulderProvider implements ICapabilityProvider, INBT
         CompoundTag tag = new CompoundTag();
         createPlayerEntityOnShoulder().saveNBTData(tag);
 
-        return null;
+        return tag;
     }
 
     @Override

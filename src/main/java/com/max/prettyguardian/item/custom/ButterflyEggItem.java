@@ -101,16 +101,16 @@ public class ButterflyEggItem extends Item {
         }) : p_263579_;
     }
 
-    public static void updateCustomEntityTag(Level p_20621_, @Nullable Player p_20622_, @Nullable Entity p_20623_, @Nullable CompoundTag p_20624_) {
+    public static void updateCustomEntityTag(Level level, @Nullable Player player, @Nullable Entity entity, @Nullable CompoundTag p_20624_) {
         if (p_20624_ != null && p_20624_.contains("EntityTag", 10)) {
-            MinecraftServer minecraftserver = p_20621_.getServer();
-            if (minecraftserver != null && p_20623_ != null) {
-                if (p_20621_.isClientSide || !p_20623_.onlyOpCanSetNbt() || p_20622_ != null && minecraftserver.getPlayerList().isOp(p_20622_.getGameProfile())) {
-                    CompoundTag compoundtag = p_20623_.saveWithoutId(new CompoundTag());
-                    UUID uuid = p_20623_.getUUID();
+            MinecraftServer minecraftserver = level.getServer();
+            if (minecraftserver != null && entity != null) {
+                if (level.isClientSide || !entity.onlyOpCanSetNbt() || player != null && minecraftserver.getPlayerList().isOp(player.getGameProfile())) {
+                    CompoundTag compoundtag = entity.saveWithoutId(new CompoundTag());
+                    UUID uuid = entity.getUUID();
                     compoundtag.merge(p_20624_.getCompound("EntityTag"));
-                    p_20623_.setUUID(uuid);
-                    p_20623_.load(compoundtag);
+                    entity.setUUID(uuid);
+                    entity.load(compoundtag);
                 }
             }
         }

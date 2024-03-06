@@ -3,19 +3,32 @@ package com.max.prettyguardian.event;
 import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.blocks.entity.ModBlockEntities;
 import com.max.prettyguardian.blocks.entity.renderer.MoonAltarBlockEntityRenderer;
+import com.max.prettyguardian.client.ClientPlayerEntityOnShoulderData;
 import com.max.prettyguardian.entity.client.butterfly.ButterflyModel;
 import com.max.prettyguardian.entity.client.celestialrabbit.CelestialRabbitModel;
 import com.max.prettyguardian.entity.client.ModModelLayers;
+import com.max.prettyguardian.entity.client.celestialrabbit.CelestialRabbitOnShoulderLayer;
 import com.max.prettyguardian.entity.client.fairy.FairyModel;
+import com.max.prettyguardian.entityOnShoulder.PlayerEntityOnShoulderProvider;
 import com.max.prettyguardian.particle.ModParticles;
 import com.max.prettyguardian.particle.custom.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.CowModel;
+import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = PrettyGuardian.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEventBusClientEvents {
@@ -58,5 +71,13 @@ public class ModEventBusClientEvents {
     @SubscribeEvent
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(ModBlockEntities.MOON_ALTAR_BE.get(), MoonAltarBlockEntityRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void onEntityAddLayers(EntityRenderersEvent.AddLayers event) {
+        for (String name : event.getSkins()) {
+            PlayerRenderer parent = event.getSkin(name);
+            parent.addLayer(new CelestialRabbitOnShoulderLayer<>(parent));
+        }
     }
 }

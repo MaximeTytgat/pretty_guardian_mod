@@ -19,6 +19,7 @@ public class CelestialRabbitCollarPearlLayer<T extends CelestialRabbitEntity, M 
         if (celestialRabbitEntity.isTame() && !celestialRabbitEntity.isInvisible()) {
             float[] afloat = celestialRabbitEntity.getCollarColor().getTextureDiffuseColors();
             renderColoredCutoutModel(this.getParentModel(), CELESTIAL_RABBIT_COLLAR_LOCATION, poseStack, multiBufferSource, p_117722_, celestialRabbitEntity, afloat[0], afloat[1], afloat[2]);
+
         }
     }
 }

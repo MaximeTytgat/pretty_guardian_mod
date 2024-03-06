@@ -6,7 +6,6 @@ import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.particle.ModParticles;
 import com.max.prettyguardian.util.ModTags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;

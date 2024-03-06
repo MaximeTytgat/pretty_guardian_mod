@@ -15,6 +15,7 @@ import com.max.prettyguardian.entity.client.strawberryCow.StrawberryCowRenderer;
 import com.max.prettyguardian.event.custom.JapChairEvent;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.loot.ModLootModifiers;
+import com.max.prettyguardian.networking.ModMessages;
 import com.max.prettyguardian.particle.ModParticles;
 import com.max.prettyguardian.client.gui.sreens.inventory.ModMenuTypes;
 import com.max.prettyguardian.client.gui.sreens.PicnicBasketScreen;
@@ -91,6 +92,12 @@ public class PrettyGuardian
 //        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
 //
 //        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
+
+
+        event.enqueueWork(() -> {
+        });
+
+        ModMessages.register();
     }
 
 //    // You can use SubscribeEvent and let the Event Bus discover methods to call
