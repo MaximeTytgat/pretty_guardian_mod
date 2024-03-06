@@ -60,6 +60,17 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
         this.tag(ModTags.Items.HEART_ARROWS).add(PrettyGuardianItem.HEART_ARROW.get());
 
+        this.tag(ModTags.Items.STAFF_ITEM)
+                .add(
+                        PrettyGuardianItem.ETERNAL_SILVER_CISTAL_STAFF.get(),
+                        PrettyGuardianItem.CUTIE_MOON_ROD.get(),
+                        PrettyGuardianItem.ETERNAL_TIARE.get(),
+                        PrettyGuardianItem.MOON_KALEIDOSCOPE.get(),
+                        PrettyGuardianItem.MOON_STICK.get(),
+                        PrettyGuardianItem.MOON_STICK_PEARL.get(),
+                        PrettyGuardianItem.SPIRAL_HEART_MOON_ROD.get()
+                );
+
         this.tag(ItemTags.MUSIC_DISCS)
                 .add(
                         PrettyGuardianItem.SAILORMOON_OST_MUSIC_DISC.get(),

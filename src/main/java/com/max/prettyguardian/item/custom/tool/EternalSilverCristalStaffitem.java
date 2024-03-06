@@ -100,9 +100,23 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
                 player.awardStat(Stats.ITEM_USED.get(this));
             }
 
-            (player).getCooldowns().addCooldown(this, 30);
+            setPlayerStaffCooldown(player, 30);
         }
     }
+
+    public static void setPlayerStaffCooldown(Player player, int cooldown) {
+        player.getCooldowns().addCooldown(PrettyGuardianItem.ETERNAL_SILVER_CISTAL_STAFF.get(), cooldown);
+        player.getCooldowns().addCooldown(PrettyGuardianItem.CUTIE_MOON_ROD.get(), cooldown);
+        player.getCooldowns().addCooldown(PrettyGuardianItem.ETERNAL_TIARE.get(), cooldown);
+        player.getCooldowns().addCooldown(PrettyGuardianItem.MOON_KALEIDOSCOPE.get(), cooldown);
+        player.getCooldowns().addCooldown(PrettyGuardianItem.MOON_STICK.get(), cooldown);
+        player.getCooldowns().addCooldown(PrettyGuardianItem.MOON_STICK_PEARL.get(), cooldown);
+        player.getCooldowns().addCooldown(PrettyGuardianItem.SPIRAL_HEART_MOON_ROD.get(), cooldown);
+
+
+    }
+
+
     public boolean isFoil(ItemStack p_41172_) {
         return true;
     }

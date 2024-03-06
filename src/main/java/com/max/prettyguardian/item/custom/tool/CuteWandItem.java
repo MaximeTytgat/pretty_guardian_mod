@@ -70,7 +70,7 @@ public class CuteWandItem extends BowItem  {
                 player.awardStat(Stats.ITEM_USED.get(this));
             }
 
-            (player).getCooldowns().addCooldown(this, 30);
+            EternalSilverCristalStaffitem.setPlayerStaffCooldown(player, 30);
         }
     }
     public boolean isFoil(ItemStack p_41172_) {

@@ -27,6 +27,7 @@ public class ModTags {
     public static class Items {
 
         public static final TagKey<Item> HEART_ARROWS = tag("heart_arrows");
+        public static final TagKey<Item> STAFF_ITEM = tag("staff_item");
 
         public static final TagKey<Item> CAKE = tag("cake");
 
