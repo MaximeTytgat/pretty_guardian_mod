@@ -1,15 +1,22 @@
 package com.max.prettyguardian.item.custom.tool;
 
+import com.max.prettyguardian.PrettyGuardian;
+import com.max.prettyguardian.util.BaseTeleporter;
 import com.max.prettyguardian.util.ModTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.PlayerRespawnLogic;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BedBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.util.ITeleporter;
 
 import java.util.function.Predicate;
 
@@ -30,25 +37,53 @@ public class PlutonsKey extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         if (interactionHand == InteractionHand.MAIN_HAND) {
-            if (player instanceof ServerPlayer) {
-                ServerPlayer serverPlayer = (ServerPlayer) player;
+            if (player instanceof ServerPlayer serverPlayer) {
+                ResourceKey<Level> dimension = serverPlayer.getRespawnDimension();
+                ServerLevel serverLevel = null;
+                if (level instanceof ServerLevel) {
+                    if (dimension == level.dimension()) {
+                        serverLevel = (ServerLevel) level;
+                    } else {
+                        serverLevel = serverPlayer.getServer().getLevel(Level.OVERWORLD);
+                    }
+                }
                 BlockPos respawnPoint = serverPlayer.getRespawnPosition();
 
-                if (respawnPoint != null) {
-                    BlockState blockAtRespawn = level.getBlockState(respawnPoint);
+                PrettyGuardian.LOGGER.info("Respawn Point: " + respawnPoint);
+
+                if (serverLevel != null && respawnPoint != null) {
+                    BlockState blockAtRespawn = serverLevel.getBlockState(respawnPoint);
+                    PrettyGuardian.LOGGER.info("blockAtRespawn is bed ? : " + blockAtRespawn);
                     if (!(blockAtRespawn.getBlock() instanceof BedBlock)) {
-                        BlockPos worldSpawn = level.getSharedSpawnPos();
-                        serverPlayer.teleportTo(worldSpawn.getX(), worldSpawn.getY(), worldSpawn.getZ());
+                        if (dimension != level.dimension()) {
+                            BlockPos worldSpawn = serverLevel.getSharedSpawnPos();
+                            serverPlayer.changeDimension(serverLevel, new BaseTeleporter(worldSpawn.getX(), worldSpawn.getY(), worldSpawn.getZ()));
+                        } else {
+                            BlockPos worldSpawn = serverLevel.getSharedSpawnPos();
+                            serverPlayer.teleportTo(worldSpawn.getX(), worldSpawn.getY(), worldSpawn.getZ());
+                        }
                     } else {
-                        serverPlayer.teleportTo(respawnPoint.getX(), respawnPoint.getY(), respawnPoint.getZ());
+                        if (dimension != level.dimension()) {
+                            serverPlayer.changeDimension(serverLevel, new BaseTeleporter(respawnPoint.getX(), respawnPoint.getY()+0.5, respawnPoint.getZ()));
+                        } else {
+                            serverPlayer.teleportTo(respawnPoint.getX(), respawnPoint.getY()+0.5, respawnPoint.getZ());
+                        }
                     }
                 } else {
-                    serverPlayer.teleportTo(0, 70, 0);
+                    if (serverLevel != null) {
+                        BlockPos worldSpawn = serverLevel.getSharedSpawnPos();
+
+                        if (dimension != level.dimension()) {
+                            serverPlayer.changeDimension(serverLevel, new BaseTeleporter(worldSpawn.getX(), worldSpawn.getY(), worldSpawn.getZ()));
+                        } else {
+                            serverPlayer.teleportTo(worldSpawn.getX(), worldSpawn.getY(), worldSpawn.getZ());
+                        }
+                    }
                 }
             }
         }
 
-        (player).getCooldowns().addCooldown(this, 600);
+//        (player).getCooldowns().addCooldown(this, 600);
         return super.use(level, player, interactionHand);
     }
 
