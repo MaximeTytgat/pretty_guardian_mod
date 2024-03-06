@@ -28,7 +28,7 @@ public class GiftBoxMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv, inv.selected);
 
-        this.addSlot(new Slot(data, 0, 78, 15));
+        this.addSlot(new Slot(data, 0, 80, 34));
     }
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
@@ -87,7 +87,7 @@ public class GiftBoxMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 51 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 81 + i * 18));
             }
         }
     }
@@ -95,14 +95,14 @@ public class GiftBoxMenu extends AbstractContainerMenu {
     private void addPlayerHotbar(Inventory playerInventory, int selected) {
         for (int i = 0; i < 9; ++i) {
             if (i == selected) {
-                this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 109) {
+                this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 139) {
                     @Override
                     public boolean mayPickup(Player playerIn) {
                         return false;
                     }
                 });
             } else {
-                this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 109));
+                this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 139));
             }
         }
     }

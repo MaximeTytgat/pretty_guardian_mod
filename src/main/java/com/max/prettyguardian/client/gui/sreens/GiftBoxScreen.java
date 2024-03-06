@@ -28,6 +28,8 @@ public class GiftBoxScreen extends AbstractContainerScreen<GiftBoxMenu> {
 
     @Override
     protected void renderBg(GuiGraphics guiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
+        imageWidth = 197;
+        imageHeight = 227;
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
         RenderSystem.setShaderTexture(1, TEXTURE);

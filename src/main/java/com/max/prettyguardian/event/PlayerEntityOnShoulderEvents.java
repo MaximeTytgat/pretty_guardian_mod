@@ -156,10 +156,9 @@ public class PlayerEntityOnShoulderEvents {
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.ClientTickEvent event) {
         Player player = Minecraft.getInstance().player;
-        if(player != null && player.tickCount % 20 == 0) {
+        if(player != null && player.tickCount % 10 == 0) {
             boolean hasEntityOnShoulder = ClientPlayerEntityOnShoulderData.getHasEntityOnShoulder();
             if (hasEntityOnShoulder) {
-                PrettyGuardian.LOGGER.info("Player is ticked");
                 Random random = new Random();
                 Vec3 look = player.getLookAngle();
                 double angleRadians = Math.atan2(look.z, look.x);
@@ -169,7 +168,7 @@ public class PlayerEntityOnShoulderEvents {
                 double offsetX = Math.cos(Math.toRadians(angleDegrees)) * distance;
                 double offsetZ = Math.sin(Math.toRadians(angleDegrees)) * distance;
 
-                for(int i = 0; i < 4; ++i) {
+                for(int i = 0; i < 3; ++i) {
                     player.level().addParticle(ModParticles.CELESTIAL_RABBIT_PARTICLES.get(), player.getX() + offsetX, player.getY() + 1.6f, player.getZ() + offsetZ, (random.nextDouble() - 0.5) * 2.0, -random.nextDouble(), (random.nextDouble() - 0.5) * 2.0);
                 }
 
