@@ -11,14 +11,24 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.RegistryObject;
 
+import javax.annotation.Nullable;
+
 public class ReusableFoodContainerItem extends Item {
     private final int DRINK_DURATION;
+    private boolean isDrink = true;
     private final RegistryObject<Item> REUSE_ITEM;
 
     public ReusableFoodContainerItem(Properties properties, int drinkDuration, RegistryObject<Item> reuseItem) {
         super(properties);
         this.REUSE_ITEM = reuseItem;
         this.DRINK_DURATION = drinkDuration;
+    }
+
+    public ReusableFoodContainerItem(Properties properties, int drinkDuration, RegistryObject<Item> reuseItem, boolean isDrink) {
+        super(properties);
+        this.REUSE_ITEM = reuseItem;
+        this.DRINK_DURATION = drinkDuration;
+        this.isDrink = isDrink;
     }
 
     public ItemStack finishUsingItem(ItemStack itemStack, Level level, LivingEntity livingEntity) {
@@ -41,11 +51,21 @@ public class ReusableFoodContainerItem extends Item {
     }
 
     public UseAnim getUseAnimation(ItemStack itemStack) {
-        return UseAnim.DRINK;
+        return isDrink ? UseAnim.DRINK : UseAnim.EAT;
     }
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
-        return ItemUtils.startUsingInstantly(level, player, interactionHand);
+        ItemStack itemstack = player.getItemInHand(interactionHand);
+        if (itemstack.isEdible()) {
+            if (player.canEat(itemstack.getFoodProperties(player).canAlwaysEat())) {
+                player.startUsingItem(interactionHand);
+                return InteractionResultHolder.consume(itemstack);
+            } else {
+                return InteractionResultHolder.fail(itemstack);
+            }
+        } else {
+            return InteractionResultHolder.pass(player.getItemInHand(interactionHand));
+        }
     }
 
     @Override
