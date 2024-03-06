@@ -48,7 +48,7 @@ public class CuteBowItem extends BowItem  {
                     if (!level.isClientSide) {
                         CuteArrowItem arrowitem = (CuteArrowItem)(itemstack.getItem() instanceof CuteArrowItem ? itemstack.getItem() : PrettyGuardianItem.HEART_ARROW.get());
                         CuteArrowEntity abstractarrow = arrowitem.createArrow(level, itemstack, player);
-
+                        abstractarrow.setOwner(player);
                         abstractarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 3.0F, 1.0F);
                         if (f == 1.0F) {
                             abstractarrow.setCritArrow(true);

@@ -17,6 +17,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Predicate;
@@ -37,7 +38,7 @@ public class CuteWandItem extends BowItem  {
             ItemStack itemstack = player.getProjectile(itemStack);
 
             int i = this.getUseDuration(itemStack) - p_40670_;
-            i = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(itemStack, level, player, i, !itemstack.isEmpty() || flag);
+            i = ForgeEventFactory.onArrowLoose(itemStack, level, player, i, !itemstack.isEmpty() || flag);
             if (i < 0) return;
 
             if (itemstack.isEmpty()) {
@@ -54,6 +55,8 @@ public class CuteWandItem extends BowItem  {
                     }
                     HeartItem arrowitem = (HeartItem) PrettyGuardianItem.CUTE_HEART.get();
                     HeartEntity abstractarrow = arrowitem.createArrow(level, itemstack, player, damage);
+
+                    abstractarrow.setOwner(player);
 
                     Vec3 look = player.getLookAngle();
                     abstractarrow.setPos(player.getX(), player.getEyeY() - 0.5F, player.getZ());

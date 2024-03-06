@@ -56,6 +56,7 @@ public class NeptunesMirror extends Item implements IThirdPersonAnimationProvide
             BubbleItem arrowitem = (BubbleItem) PrettyGuardianItem.BUBBLE.get();
             BubbleEntity abstractBubble = arrowitem.createArrow(level, itemstack, player, damage);
 
+            abstractBubble.setOwner(player);
 
             Random rand = new Random();
             float random = rand.nextFloat() * 0.4F - 0.2F;

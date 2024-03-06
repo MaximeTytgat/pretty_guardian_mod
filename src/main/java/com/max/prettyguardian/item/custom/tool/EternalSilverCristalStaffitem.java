@@ -85,10 +85,12 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
 
                     StarLightItem arrowitem = (StarLightItem) PrettyGuardianItem.STAR_LIGHT.get();
                     StarLightEntity abstractarrow = arrowitem.createArrow(level, itemstack, player, damage);
+                    abstractarrow.setOwner(player);
 
                     Vec3 look = player.getLookAngle();
                     abstractarrow.setPos(player.getX(), player.getEyeY() - 0.5F, player.getZ());
-                    abstractarrow.shoot(look.x, look.y + 0.05F, look.z, f * 3.0F, 1.0F);
+//                    abstractarrow.shoot(look.x, look.y + 0.05F, look.z, f * 3.0F, 1.0F);
+                    abstractarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 3.0F, 1.0F);
 
                     level.addFreshEntity(abstractarrow);
                 }

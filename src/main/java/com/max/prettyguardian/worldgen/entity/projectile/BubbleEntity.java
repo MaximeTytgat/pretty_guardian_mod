@@ -140,6 +140,9 @@ public class BubbleEntity extends Projectile {
 
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
+        if (entityHitResult.getEntity() == this.getOwner()) {
+            return;
+        }
         Entity entityHit = entityHitResult.getEntity();
 
         if (entityHit instanceof LivingEntity livingentity) {

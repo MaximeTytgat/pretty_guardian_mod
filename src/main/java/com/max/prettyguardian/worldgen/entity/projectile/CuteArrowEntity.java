@@ -45,6 +45,9 @@ public class CuteArrowEntity extends AbstractArrow {
 
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
+        if (entityHitResult.getEntity() == this.getOwner()) {
+            return;
+        }
         this.hited = true;
         super.onHitEntity(entityHitResult);
 

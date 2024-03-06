@@ -1,6 +1,7 @@
 package com.max.prettyguardian.worldgen.entity.projectile;
 
 
+import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.particle.ModParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -132,6 +133,10 @@ public class HeartEntity extends Projectile {
 
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
+        PrettyGuardian.LOGGER.info("getOwner " + this.getOwner());
+        if (entityHitResult.getEntity() == this.getOwner()) {
+            return;
+        }
         Entity entity = entityHitResult.getEntity();
         Entity entity1 = this.getOwner();
         LivingEntity livingentity = entity1 instanceof LivingEntity ? (LivingEntity)entity1 : null;

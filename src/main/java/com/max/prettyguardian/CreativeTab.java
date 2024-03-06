@@ -208,15 +208,6 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.PLUSH_BEAR_HUGE.get());
                 output.accept(PrettyGuardianBlock.RANDOM_PLUSH_BOX.get());
 
-                output.accept(PrettyGuardianBlock.SHOJI_BLOSSOM.get());
-                output.accept(PrettyGuardianBlock.SHOJI_BLOSSOM_BOTTOM.get());
-                output.accept(PrettyGuardianBlock.SHOJI_BLOSSOM_SMALL.get());
-                output.accept(PrettyGuardianBlock.SHOJI_BLOSSOM_SMALL_BOTTOM.get());
-
-                output.accept(PrettyGuardianBlock.SHOJI_CHERRY.get());
-                output.accept(PrettyGuardianBlock.SHOJI_CHERRY_BOTTOM.get());
-                output.accept(PrettyGuardianBlock.SHOJI_CHERRY_SMALL.get());
-                output.accept(PrettyGuardianBlock.SHOJI_CHERRY_SMALL_BOTTOM.get());
 
                 output.accept(PrettyGuardianBlock.SHOJI_BIRCH.get());
                 output.accept(PrettyGuardianBlock.SHOJI_BIRCH_BOTTOM.get());
@@ -244,6 +235,20 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.LAMP_JAPANESE_MANGROVE.get());
                 output.accept(PrettyGuardianBlock.LAMP_JAPANESE_CHERRY.get());
 
+                output.accept(PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_PLANK.get());
+                output.accept(PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_LOG.get());
+                output.accept(PrettyGuardianBlock.SCREEN_JAPANESE_BIRCH.get());
+
+                output.accept(PrettyGuardianBlock.SHOJI_BLOSSOM.get());
+                output.accept(PrettyGuardianBlock.SHOJI_BLOSSOM_BOTTOM.get());
+                output.accept(PrettyGuardianBlock.SHOJI_BLOSSOM_SMALL.get());
+                output.accept(PrettyGuardianBlock.SHOJI_BLOSSOM_SMALL_BOTTOM.get());
+
+                output.accept(PrettyGuardianBlock.SHOJI_CHERRY.get());
+                output.accept(PrettyGuardianBlock.SHOJI_CHERRY_BOTTOM.get());
+                output.accept(PrettyGuardianBlock.SHOJI_CHERRY_SMALL.get());
+                output.accept(PrettyGuardianBlock.SHOJI_CHERRY_SMALL_BOTTOM.get());
+
                 output.accept(PrettyGuardianBlock.DOOR_SHOJI_BLOSSOM.get());
                 output.accept(PrettyGuardianBlock.DOOR_SHOJI_BLOSSOM_SMALL.get());
                 output.accept(PrettyGuardianBlock.DOOR_SHOJI_BIRCH.get());
@@ -266,9 +271,6 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.BONZAI_CHERRY.get());
                 output.accept(PrettyGuardianBlock.LUCKY_NEKO.get());
 
-                output.accept(PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_PLANK.get());
-                output.accept(PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_LOG.get());
-                output.accept(PrettyGuardianBlock.SCREEN_JAPANESE_BIRCH.get());
 
 
                 output.accept(PrettyGuardianBlock.SEA_SHELL.get());

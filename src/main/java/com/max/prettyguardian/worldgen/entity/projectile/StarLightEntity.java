@@ -135,6 +135,9 @@ public class StarLightEntity extends Projectile {
 
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
+        if (entityHitResult.getEntity() == this.getOwner()) {
+            return;
+        }
         Entity entity = entityHitResult.getEntity();
         Entity entity1 = this.getOwner();
         LivingEntity livingentity = entity1 instanceof LivingEntity ? (LivingEntity)entity1 : null;
