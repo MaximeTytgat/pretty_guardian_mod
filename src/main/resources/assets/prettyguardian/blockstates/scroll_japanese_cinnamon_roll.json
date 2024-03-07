@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,half=upper": { "model": "prettyguardian:block/scroll_japanese_cinnamon_roll_upper", "y": 180 },
+    "facing=north,half=lower": { "model": "prettyguardian:block/scroll_japanese_cinnamon_roll_lower", "y": 180 },
+    "facing=south,half=upper": { "model": "prettyguardian:block/scroll_japanese_cinnamon_roll_upper", "y": 0 },
+    "facing=south,half=lower": { "model": "prettyguardian:block/scroll_japanese_cinnamon_roll_lower", "y": 0 },
+    "facing=east,half=upper": { "model": "prettyguardian:block/scroll_japanese_cinnamon_roll_upper", "y": 270 },
+    "facing=east,half=lower": { "model": "prettyguardian:block/scroll_japanese_cinnamon_roll_lower", "y": 270 },
+    "facing=west,half=upper": { "model": "prettyguardian:block/scroll_japanese_cinnamon_roll_upper", "y": 90 },
+    "facing=west,half=lower": { "model": "prettyguardian:block/scroll_japanese_cinnamon_roll_lower", "y": 90 }
+  }
+}

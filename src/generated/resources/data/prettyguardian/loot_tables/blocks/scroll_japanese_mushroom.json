@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "prettyguardian:scroll_japanese_mushroom",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ],
+          "name": "prettyguardian:scroll_japanese_mushroom"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "prettyguardian:blocks/scroll_japanese_mushroom"
+}

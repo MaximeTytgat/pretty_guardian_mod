@@ -249,6 +249,11 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.SHOJI_CHERRY_SMALL.get());
                 output.accept(PrettyGuardianBlock.SHOJI_CHERRY_SMALL_BOTTOM.get());
 
+                output.accept(PrettyGuardianBlock.SCROLL_JAPANESE_AXOLOTL.get());
+                output.accept(PrettyGuardianBlock.SCROLL_JAPANESE_BEE.get());
+                output.accept(PrettyGuardianBlock.SCROLL_JAPANESE_CINNAMON_ROLL.get());
+                output.accept(PrettyGuardianBlock.SCROLL_JAPANESE_MUSHROOM.get());
+
                 output.accept(PrettyGuardianBlock.DOOR_SHOJI_BLOSSOM.get());
                 output.accept(PrettyGuardianBlock.DOOR_SHOJI_BLOSSOM_SMALL.get());
                 output.accept(PrettyGuardianBlock.DOOR_SHOJI_BIRCH.get());
