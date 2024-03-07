@@ -3,6 +3,8 @@ package com.max.prettyguardian.item.custom;
 import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.client.gui.components.CustomFittingMultiLineTextWidget;
 import com.max.prettyguardian.client.gui.components.CustomMultiLineEditBox;
+import com.max.prettyguardian.client.gui.components.CustomStringWidget;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -31,7 +33,8 @@ public class LoveLetterItem extends Item  {
     public LoveLetterItem(Properties properties) {
         super(properties);
     }
-    public static final ResourceLocation BOOK_LOCATION = new ResourceLocation("textures/gui/book.png");
+    public static final ResourceLocation LOVE_LETTER_LOCATION = new ResourceLocation(PrettyGuardian.MOD_ID, "textures/gui/love_letter.png");
+    public static final ResourceLocation LOVE_LETTER_LAYER_LOCATIION = new ResourceLocation(PrettyGuardian.MOD_ID, "textures/gui/love_letter_layer.png");
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
@@ -67,8 +70,8 @@ public class LoveLetterItem extends Item  {
 
         @Override
         protected void init() {
-            int bookX = (this.width - 192) / 2;
-            int bookY = 2;
+            int bookX = (this.width - 170) / 2;
+            int bookY = 20;
 
             Button.Builder doneButton = Button.builder(
                     CommonComponents.GUI_DONE,
@@ -82,23 +85,25 @@ public class LoveLetterItem extends Item  {
 
 
             this.output = new CustomMultiLineEditBox(
-                    this.font, bookX + 30, bookY + 18, 125, 150,
-                    Component.translatable("screen.prettyguardian.love_letter.placeholder"),
-                    Component.translatable("item.prettyguardian.msg")
+                    this.font, bookX + 30, bookY + 18, 105, 115,
+                    Component.translatable("screen.prettyguardian.love_letter.placeholder").withStyle(Style.EMPTY.withColor(11828699)),
+                    Component.empty()
             );
+
+            this.output.setMessage(Component.translatable("screen.prettyguardian.love_letter.placeholder").withStyle(Style.EMPTY.withColor(11828699)));
 
             if (this.stack.hasTag()) {
                 CompoundTag tag = this.stack.getTag();
 
                 if (tag != null && tag.contains("author")) {
                     this.writtenOutput = new CustomFittingMultiLineTextWidget(
-                            bookX + 30, bookY + 18, 125, 150,
-                            Component.literal(tag.getString("msg")).withStyle(Style.EMPTY.withColor(3539535)),
+                            bookX + 30, bookY + 18, 105, 115,
+                            Component.literal(tag.getString("msg")).withStyle(Style.EMPTY.withColor(11828699)),
                             this.font
                     );
 
-                    this.addRenderableWidget(new StringWidget((this.width / 2), 150, 200, 20,
-                            Component.translatable("screen.prettyguardian.love_letter.send_by")
+                    this.addRenderableWidget(new CustomStringWidget(bookX + 22, 160, 100, 20,
+                            Component.translatable("screen.prettyguardian.love_letter.send_by").withStyle(Style.EMPTY.withColor(10455011).applyFormats(ChatFormatting.BOLD))
                                     .append(" ")
                                     .append(tag.getString("author")),
                             this.font));
@@ -126,9 +131,9 @@ public class LoveLetterItem extends Item  {
 
         public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTicks) {
             this.renderBackground(graphics);
-            int bookX = (this.width - 192) / 2;
-            int bookY = 2;
-            graphics.blit(BOOK_LOCATION, bookX, bookY, 0, 0, 192, 192);
+            int bookX = (this.width - 170) / 2;
+            int bookY = 20;
+            graphics.blit(LOVE_LETTER_LOCATION, bookX, bookY, 0, 0, 192, 192);
 
             int maxLines = Math.min(128 / 9, this.cachedPageComponents.size());
             for (int lineIndex = 0; lineIndex < maxLines; ++lineIndex) {
@@ -143,6 +148,7 @@ public class LoveLetterItem extends Item  {
             }
 
             super.render(graphics, mouseX, mouseY, partialTicks);
+            graphics.blit(LOVE_LETTER_LAYER_LOCATIION, bookX, bookY, 0, 0, 192, 192);
         }
 
         @Nullable

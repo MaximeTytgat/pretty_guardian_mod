@@ -14,12 +14,12 @@ import java.util.Objects;
 @OnlyIn(Dist.CLIENT)
 public class CustomFittingMultiLineTextWidget extends CustomAbstractScrollWidget {
     private final Font font;
-    private final MultiLineTextWidget multilineWidget;
+    private final CustomMultiLineTextWidget multilineWidget;
 
     public CustomFittingMultiLineTextWidget(int p_289785_, int p_289777_, int p_289760_, int p_289801_, Component p_289788_, Font p_289781_) {
         super(p_289785_, p_289777_, p_289760_, p_289801_, p_289788_);
         this.font = p_289781_;
-        this.multilineWidget = (new MultiLineTextWidget(0, 0, p_289788_, p_289781_)).setMaxWidth(this.getWidth() - this.totalInnerPadding());
+        this.multilineWidget = (new CustomMultiLineTextWidget(0, 0, p_289788_, p_289781_)).setMaxWidth(this.getWidth() - this.totalInnerPadding());
     }
 
     public CustomFittingMultiLineTextWidget setColor(int p_289780_) {

@@ -18,10 +18,10 @@ import java.util.function.Consumer;
 @OnlyIn(Dist.CLIENT)
 public class CustomMultiLineEditBox extends CustomAbstractScrollWidget {
     private static final int CURSOR_INSERT_WIDTH = 1;
-    private static final int CURSOR_INSERT_COLOR = 16777215;
+    private static final int CURSOR_INSERT_COLOR = 11828699;
     private static final String CURSOR_APPEND_CHARACTER = "_";
-    private static final int TEXT_COLOR = 3539535;
-    private static final int PLACEHOLDER_TEXT_COLOR = 3539535;
+    private static final int TEXT_COLOR = 11828699;
+    private static final int PLACEHOLDER_TEXT_COLOR = 11828699;
     private final Font font;
     private final Component placeholder;
     private final CustomMultilineTextField textField;
@@ -117,17 +117,17 @@ public class CustomMultiLineEditBox extends CustomAbstractScrollWidget {
                 boolean $$12 = this.withinContentAreaTopBottom($$10, $$10 + 9);
                 if ($$6 && $$7 && $$5 >= $$11.beginIndex() && $$5 <= $$11.endIndex()) {
                     if ($$12) {
-                        $$8 = p_283676_.drawString(this.font, $$4.substring($$11.beginIndex(), $$5), this.getX() + this.innerPadding(), $$10, TEXT_COLOR) - 1;
+                        $$8 = p_283676_.drawString(this.font, $$4.substring($$11.beginIndex(), $$5), this.getX() + this.innerPadding(), $$10, TEXT_COLOR, false) - 1;
                         var10002 = $$10 - 1;
                         int var10003 = $$8 + 1;
                         var10004 = $$10 + 1;
                         Objects.requireNonNull(this.font);
                         p_283676_.fill($$8, var10002, var10003, var10004 + 9, CURSOR_INSERT_COLOR);
-                        p_283676_.drawString(this.font, $$4.substring($$5, $$11.endIndex()), $$8, $$10, TEXT_COLOR);
+                        p_283676_.drawString(this.font, $$4.substring($$5, $$11.endIndex()), $$8, $$10, TEXT_COLOR, false);
                     }
                 } else {
                     if ($$12) {
-                        $$8 = p_283676_.drawString(this.font, $$4.substring($$11.beginIndex(), $$11.endIndex()), this.getX() + this.innerPadding(), $$10, TEXT_COLOR) - 1;
+                        $$8 = p_283676_.drawString(this.font, $$4.substring($$11.beginIndex(), $$11.endIndex()), this.getX() + this.innerPadding(), $$10, TEXT_COLOR, false) - 1;
                     }
 
                     $$9 = $$10;
@@ -139,7 +139,7 @@ public class CustomMultiLineEditBox extends CustomAbstractScrollWidget {
             if ($$6 && !$$7) {
                 Objects.requireNonNull(this.font);
                 if (this.withinContentAreaTopBottom($$9, $$9 + 9)) {
-                    p_283676_.drawString(this.font, CURSOR_APPEND_CHARACTER, $$8, $$9, CURSOR_INSERT_COLOR);
+                    p_283676_.drawString(this.font, CURSOR_APPEND_CHARACTER, $$8, $$9, CURSOR_INSERT_COLOR, false);
                 }
             }
 
