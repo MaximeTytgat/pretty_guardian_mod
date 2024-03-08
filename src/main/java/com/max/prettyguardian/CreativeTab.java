@@ -276,8 +276,6 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.BONZAI_CHERRY.get());
                 output.accept(PrettyGuardianBlock.LUCKY_NEKO.get());
 
-
-
                 output.accept(PrettyGuardianBlock.SEA_SHELL.get());
 
                 output.accept(PrettyGuardianItem.FAIRY_DUST.get());

@@ -36,5 +36,6 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new ModPoiTypeTagGenerator(packOutput, lookupProvider, existingFileHelper));
 
         generator.addProvider(event.includeServer(), new ModGlobalLootModifiersProvider(packOutput, PrettyGuardian.MOD_ID));
+        generator.addProvider(event.includeServer(), new ModPaintingVariantTagProvider(packOutput, lookupProvider, existingFileHelper));
     }
 }

@@ -4,6 +4,7 @@ import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.client.gui.components.CustomFittingMultiLineTextWidget;
 import com.max.prettyguardian.client.gui.components.CustomMultiLineEditBox;
 import com.max.prettyguardian.client.gui.components.CustomStringWidget;
+import com.max.prettyguardian.item.PrettyGuardianItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -18,6 +19,7 @@ import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -49,7 +51,6 @@ public class LoveLetterItem extends Item  {
     public boolean isFoil(ItemStack itemStack) {
         return itemStack.hasTag() && itemStack.getTag().contains("author");
     }
-
 
     private void openLetterEditor(ItemStack stack) {
     }
@@ -107,6 +108,7 @@ public class LoveLetterItem extends Item  {
                                     .append(" ")
                                     .append(tag.getString("author")),
                             this.font));
+                    PrettyGuardian.LOGGER.info("Author: " + tag);
 
                     this.addRenderableWidget(this.writtenOutput);
                     this.addRenderableWidget(Button.builder(
@@ -203,11 +205,13 @@ public class LoveLetterItem extends Item  {
                     if (tag != null) {
                         tag.putString("msg", this.output.getValue());
                         tag.putString("author", playerName);
+                        tag.putString("Sign", "true");
                     }
                 } else {
                     CompoundTag tag = new CompoundTag();
                     tag.putString("msg", this.output.getValue());
                     tag.putString("author", playerName);
+                    tag.putString("Sign", "true");
                     this.stack.setTag(tag);
                 }
             }

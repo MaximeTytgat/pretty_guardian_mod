@@ -16,6 +16,7 @@ import com.max.prettyguardian.event.custom.JapChairEvent;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.loot.ModLootModifiers;
 import com.max.prettyguardian.networking.ModMessages;
+import com.max.prettyguardian.painting.ModPaintings;
 import com.max.prettyguardian.particle.ModParticles;
 import com.max.prettyguardian.client.gui.sreens.inventory.ModMenuTypes;
 import com.max.prettyguardian.client.gui.sreens.PicnicBasketScreen;
@@ -55,27 +56,34 @@ public class PrettyGuardian
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         PrettyGuardianBlock.init();
-        modEventBus.register(this);
-        // Register the commonSetup method for modloading
-        modEventBus.addListener(this::commonSetup);
 
-        PrettyGuardianItem.register(modEventBus);
         PrettyGuardianBlock.register(modEventBus);
-        ModLootModifiers.register(modEventBus);
+        PrettyGuardianItem.register(modEventBus);
+
+        ModPaintings.register(modEventBus);
+        ModPoiTypes.register(modEventBus);
+
         ModEntityType.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+
+        ModLootModifiers.register(modEventBus);
         ModParticles.register(modEventBus);
         ModBlockEntities.register(modEventBus);
-        ModMenuTypes.register(modEventBus);
         ModSounds.register(modEventBus);
         ModEntities.register(modEventBus);
         ModEnchantments.register(modEventBus);
         ModEffects.register(modEventBus);
-        CreativeTab.register(modEventBus);
-        ModPoiTypes.register(modEventBus);
         ModPotions.register(modEventBus);
 
+
+        modEventBus.register(this);
+
+        // Register the commonSetup method for modloading
+        modEventBus.addListener(this::commonSetup);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
+        CreativeTab.register(modEventBus);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);

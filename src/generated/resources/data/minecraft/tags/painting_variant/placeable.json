@@ -1,0 +1,84 @@
+{
+  "values": [
+    {
+      "id": "prettyguardian:rainbow",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:small_pusheen",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:luna",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:gudetama",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:kuromi",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:mymelody",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:pompompurin",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:hellokitty",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:keroppi",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:sanrio",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:cweeper",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:little_twin_stars",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:hellokitty2",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:kuma",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:pusheen_right",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:rilakkuma",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:nyancat",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:pusheen_left",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:minitotoro",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:korilakkuma",
+      "required": false
+    }
+  ]
+}
