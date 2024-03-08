@@ -39,6 +39,11 @@ public class ModPaintingVariantTagProvider extends PaintingVariantTagsProvider {
                 .addOptional(new ResourceLocation(PrettyGuardian.MOD_ID, "nyancat"))
                 .addOptional(new ResourceLocation(PrettyGuardian.MOD_ID, "pusheen_left"))
                 .addOptional(new ResourceLocation(PrettyGuardian.MOD_ID, "minitotoro"))
-                .addOptional(new ResourceLocation(PrettyGuardian.MOD_ID, "korilakkuma"));
+                .addOptional(new ResourceLocation(PrettyGuardian.MOD_ID, "korilakkuma"))
+                .addOptional(new ResourceLocation(PrettyGuardian.MOD_ID, "butterfly"))
+                .addOptional(new ResourceLocation(PrettyGuardian.MOD_ID, "butterfly2"))
+                .addOptional(new ResourceLocation(PrettyGuardian.MOD_ID, "cherry_birch"))
+                .addOptional(new ResourceLocation(PrettyGuardian.MOD_ID, "day_flowers"))
+                .addOptional(new ResourceLocation(PrettyGuardian.MOD_ID, "night_flowers"));
     }
 }

@@ -79,6 +79,26 @@
     {
       "id": "prettyguardian:korilakkuma",
       "required": false
+    },
+    {
+      "id": "prettyguardian:butterfly",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:butterfly2",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:cherry_birch",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:day_flowers",
+      "required": false
+    },
+    {
+      "id": "prettyguardian:night_flowers",
+      "required": false
     }
   ]
 }

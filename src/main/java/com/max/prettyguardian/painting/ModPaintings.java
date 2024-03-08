@@ -31,6 +31,12 @@ public class ModPaintings {
     public static final RegistryObject<PaintingVariant> PUSHEEN_LEFT = PAINTING_VARIANTS.register("pusheen_left", () -> new PaintingVariant(32, 32));
     public static final RegistryObject<PaintingVariant> MINITOTORO = PAINTING_VARIANTS.register("minitotoro", () -> new PaintingVariant(16, 32));
     public static final RegistryObject<PaintingVariant> KORILAKKUMA = PAINTING_VARIANTS.register("korilakkuma", () -> new PaintingVariant(32, 32));
+    public static final RegistryObject<PaintingVariant> BUTTERFLY = PAINTING_VARIANTS.register("butterfly", () -> new PaintingVariant(32, 16));
+    public static final RegistryObject<PaintingVariant> BUTTERFLY_2 = PAINTING_VARIANTS.register("butterfly2", () -> new PaintingVariant(32, 16));
+    public static final RegistryObject<PaintingVariant> CHERRY_BIRCH = PAINTING_VARIANTS.register("cherry_birch", () -> new PaintingVariant(32, 32));
+    public static final RegistryObject<PaintingVariant> DAY_FLOWERS = PAINTING_VARIANTS.register("day_flowers", () -> new PaintingVariant(48, 32));
+    public static final RegistryObject<PaintingVariant> NIGHT_FLOWERS = PAINTING_VARIANTS.register("night_flowers", () -> new PaintingVariant(48, 32));
+
 
     public static void register(IEventBus eventBus) {
         PAINTING_VARIANTS.register(eventBus);

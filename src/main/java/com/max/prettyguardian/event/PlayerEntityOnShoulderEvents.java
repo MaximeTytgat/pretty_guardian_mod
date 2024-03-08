@@ -155,8 +155,9 @@ public class PlayerEntityOnShoulderEvents {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.ClientTickEvent event) {
-        Player player = Minecraft.getInstance().player;
-        if(player != null && player.tickCount % 10 == 0) {
+        Minecraft MC = Minecraft.getInstance();
+        Player player = MC.player;
+        if(player != null && player.tickCount % 10 == 0 && player.level().isClientSide() && !MC.isPaused()) {
             boolean hasEntityOnShoulder = ClientPlayerEntityOnShoulderData.getHasEntityOnShoulder();
             if (hasEntityOnShoulder) {
                 Random random = new Random();
