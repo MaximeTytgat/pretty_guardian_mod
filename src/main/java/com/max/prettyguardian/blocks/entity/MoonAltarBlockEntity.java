@@ -1,28 +1,28 @@
 package com.max.prettyguardian.blocks.entity;
 
+import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import com.max.prettyguardian.blocks.custom.table.MoonAltarBlock;
 import com.max.prettyguardian.client.gui.sreens.inventory.MoonAltarMenu;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.Containers;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -30,26 +30,17 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class MoonAltarBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(4) {
-        @Override
-        protected void onContentsChanged(int slot) {
-            setChanged();
-            if (!level.isClientSide()) {
-                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-            }
-        }
-    };
+public class MoonAltarBlockEntity extends RandomizableContainerBlockEntity implements MenuProvider, Container {
+    private NonNullList<ItemStack> items = NonNullList.withSize(4, ItemStack.EMPTY);
     private static final int INPUT_SLOT_1 = 0;
     private static final int INPUT_SLOT_2 = 1;
     private static final int INPUT_SLOT_3 = 2;
     private static final int OUTPUT_SLOT = 3;
-    private LazyOptional<ItemStackHandler> lazyItemHandler = LazyOptional.empty();
+    private final LazyOptional<ItemStackHandler> lazyItemHandler = LazyOptional.empty();
 
     public MoonAltarBlockEntity(BlockPos blockPos, BlockState blockState) {
         super(ModBlockEntities.MOON_ALTAR_BE.get(), blockPos, blockState);
     }
-
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
@@ -60,15 +51,17 @@ public class MoonAltarBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     @Override
-    public void onLoad() {
-        super.onLoad();
-        lazyItemHandler = LazyOptional.of(() -> itemHandler);
+    public void setChanged() {
+        if (level != null && !level.isClientSide()) {
+            level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+        }
+        super.setChanged();
     }
 
     public void drops() {
-        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
-        for (int i = 0; i < itemHandler.getSlots(); i++) {
-            inventory.setItem(i, itemHandler.getStackInSlot(i));
+        SimpleContainer inventory = new SimpleContainer(items.size());
+        for (int i = 0; i < items.size(); i++) {
+            inventory.setItem(i, items.get(i));
         }
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
@@ -84,28 +77,68 @@ public class MoonAltarBlockEntity extends BlockEntity implements MenuProvider {
         return Component.translatable("block.prettyguardian.moon_altar");
     }
 
-    @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+    protected Component getDefaultName() {
+        return Component.translatable("block.prettyguardian.moon_altar");
+    }
+
+    @Override
+    protected NonNullList<ItemStack> getItems() {
+        return this.items;
+    }
+
+    @Override
+    protected void setItems(NonNullList<ItemStack> itemStacks) {
+        this.items = itemStacks;
+    }
+
+    @Override
+    public AbstractContainerMenu createMenu(int id, Inventory inventory) {
         return new MoonAltarMenu(id, inventory, this);
     }
 
-    @Override
-    protected void saveAdditional(CompoundTag pTag) {
-        pTag.put("inventory", itemHandler.serializeNBT());
-        super.saveAdditional(pTag);
-    }
-
-    @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-        itemHandler.deserializeNBT(tag.getCompound("inventory"));
+        this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
+        if (!this.tryLoadLootTable(tag)) {
+            ContainerHelper.loadAllItems(tag, this.items);
+        }
+
     }
 
+    @Override
+    public void setItem(int i, ItemStack itemStack) {
+        PrettyGuardian.LOGGER.info("Setting item");
+        this.unpackLootTable((Player)null);
+        if (itemStack.getItem() == PrettyGuardianItem.PLUTONS_KEY.get()) {
+            this.getItems().set(0, itemStack);
+        } else if (itemStack.getItem() == PrettyGuardianItem.SPACE_SWORD.get()) {
+            this.getItems().set(1, itemStack);
+        } else if (itemStack.getItem() == PrettyGuardianItem.NEPTUNES_MIRROR.get()) {
+            this.getItems().set(2, itemStack);
+        } else {
+            this.getItems().set(i, itemStack);
+        }
+
+        if (itemStack.getCount() > this.getMaxStackSize()) {
+            itemStack.setCount(this.getMaxStackSize());
+        }
+
+        this.setChanged();
+    }
+
+    protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        if (!this.trySaveLootTable(tag)) {
+            ContainerHelper.saveAllItems(tag, this.items);
+        }
+
+    }
 
 
     public void tick(Level level, BlockPos pPos, BlockState pState) {
         if (hasRecipe()) {
+            PrettyGuardian.LOGGER.info("Has recipe");
             setChanged(level, pPos, pState);
             craftItem();
         }
@@ -113,36 +146,38 @@ public class MoonAltarBlockEntity extends BlockEntity implements MenuProvider {
 
     private void craftItem() {
         ItemStack result = new ItemStack(PrettyGuardianBlock.SILVER_CRYSTAL.get());
-        this.itemHandler.extractItem(INPUT_SLOT_1, 1, false);
-        this.itemHandler.extractItem(INPUT_SLOT_2, 1, false);
-        this.itemHandler.extractItem(INPUT_SLOT_3, 1, false);
+        if (this.items == null) {
+            return;
+        }
+        this.items.clear();
 
-        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(), this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
+        this.items.set(OUTPUT_SLOT, new ItemStack(result.getItem(), this.items.get(OUTPUT_SLOT).getCount() + result.getCount()));
+        setChanged();
     }
 
     private boolean hasRecipe() {
-        Item item1 = this.itemHandler.getStackInSlot(INPUT_SLOT_1).getItem();
-        Item item2 = this.itemHandler.getStackInSlot(INPUT_SLOT_2).getItem();
-        Item item3 = this.itemHandler.getStackInSlot(INPUT_SLOT_3).getItem();
+        ItemStack item1 = this.items.get(INPUT_SLOT_1);
+        ItemStack item2 = this.items.get(INPUT_SLOT_2);
+        ItemStack item3 = this.items.get(INPUT_SLOT_3);
 
-        boolean slot1HasArtephacte = item1 == PrettyGuardianItem.PLUTONS_KEY.get() || item1 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item1 == PrettyGuardianItem.SPACE_SWORD.get();
-        boolean slot2HasArtephacte = item2 == PrettyGuardianItem.PLUTONS_KEY.get() || item2 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item2 == PrettyGuardianItem.SPACE_SWORD.get();
-        boolean slot3HasArtephacte = item3 == PrettyGuardianItem.PLUTONS_KEY.get() || item3 == PrettyGuardianItem.NEPTUNES_MIRROR.get() || item3 == PrettyGuardianItem.SPACE_SWORD.get();
+        if (item1.isEmpty() || item2.isEmpty() || item3.isEmpty()) {
+            return false;
+        }
 
         ItemStack result = new ItemStack(PrettyGuardianBlock.SILVER_CRYSTAL.get());
-        return (slot1HasArtephacte && slot2HasArtephacte && slot3HasArtephacte) && (item1 != item2 && item2 != item3 && item1 != item3) && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+        return (!item1.isEmpty() && !item2.isEmpty() && !item3.isEmpty()) && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item);
+        return this.items.get(OUTPUT_SLOT).isEmpty() || this.items.get(OUTPUT_SLOT).is(item);
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
+        return this.items.get(OUTPUT_SLOT).getCount() + count <= this.items.get(OUTPUT_SLOT).getMaxStackSize();
     }
 
-    public ItemStack getRenderStack(int slot) {
-        return itemHandler.getStackInSlot(slot);
+    public @Nullable ItemStack getRenderStack(int slot) {
+        return items.get(slot);
     }
 
     public Direction getFacingProperty() {
@@ -158,5 +193,10 @@ public class MoonAltarBlockEntity extends BlockEntity implements MenuProvider {
     @Override
     public CompoundTag getUpdateTag() {
         return saveWithoutMetadata();
+    }
+
+    @Override
+    public int getContainerSize() {
+        return this.items.size();
     }
 }

@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:cherry_grove",
-    "minecraft:plains"
+    "minecraft:cherry_grove"
+//    "minecraft:plains"
   ]
 }

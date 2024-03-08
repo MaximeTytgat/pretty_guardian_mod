@@ -26,6 +26,7 @@ import com.max.prettyguardian.util.BetterBrewingRecipe;
 import com.max.prettyguardian.util.ModItemProperties;
 import com.max.prettyguardian.world.entity.ai.poi.ModPoiTypes;
 import com.max.prettyguardian.worldgen.entity.ModEntityType;
+import com.max.prettyguardian.worldgen.structure.ModStructures;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -74,6 +75,7 @@ public class PrettyGuardian
         ModEnchantments.register(modEventBus);
         ModEffects.register(modEventBus);
         ModPotions.register(modEventBus);
+        ModStructures.register(modEventBus);
 
 
         modEventBus.register(this);

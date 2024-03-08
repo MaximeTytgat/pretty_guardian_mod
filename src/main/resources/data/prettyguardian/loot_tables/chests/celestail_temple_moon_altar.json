@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "prettyguardian:neptunes_mirror"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "prettyguardian:space_sword"
+        }
+      ]
+    }
+  ]
+}
+
+
+// /data merge block 3017 151 10931 {LootTable:"prettyguardian:chests/celestail_temple_moon_altar"}
