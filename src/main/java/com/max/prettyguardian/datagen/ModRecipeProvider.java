@@ -473,6 +473,15 @@ public class ModRecipeProvider extends RecipeProvider {
         simpleScreen(pWriter, PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_LOG.get(), Blocks.CHERRY_LOG);
         simpleScreen(pWriter, PrettyGuardianBlock.SCREEN_JAPANESE_CHERRY_PLANK.get(), Blocks.CHERRY_PLANKS);
 
+        simpleScrool(pWriter, PrettyGuardianBlock.SCROLL_JAPANESE_MUSHROOM.get(), Items.RED_MUSHROOM);
+        simpleScrool(pWriter, PrettyGuardianBlock.SCROLL_JAPANESE_BEE.get(), Items.HONEYCOMB);
+        simpleScrool(pWriter, PrettyGuardianBlock.SCROLL_JAPANESE_AXOLOTL.get(), Items.AXOLOTL_BUCKET);
+        simpleScrool(pWriter, PrettyGuardianBlock.SCROLL_JAPANESE_CINNAMON_ROLL.get(), Items.WHEAT);
+        simpleScrool(pWriter, PrettyGuardianBlock.SCROLL_JAPANESE_DAY.get(), Items.ORANGE_WOOL);
+        simpleScrool(pWriter, PrettyGuardianBlock.SCROLL_JAPANESE_NIGHT.get(), Items.BLUE_WOOL);
+        simpleScrool(pWriter, PrettyGuardianBlock.SCROLL_JAPANESE_SUNFLOWER.get(), Items.SUNFLOWER);
+        simpleScrool(pWriter, PrettyGuardianBlock.SCROLL_JAPANESE_DAY_2.get(), Items.PINK_WOOL);
+
         simpleLamp(pWriter, PrettyGuardianBlock.LAMP_JAPANESE_BIRCH.get(), Blocks.BIRCH_LOG);
         simpleLamp(pWriter, PrettyGuardianBlock.LAMP_JAPANESE_CHERRY.get(), Blocks.CHERRY_LOG);
         simpleLamp(pWriter, PrettyGuardianBlock.LAMP_JAPANESE_JUNGLE.get(), Blocks.JUNGLE_LOG);
@@ -733,6 +742,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('C', Items.TORCH)
                 .define('D', wood)
                 .unlockedBy(getHasName(wood), has(wood))
+                .save(finishedRecipeConsumer);
+    }
+
+    protected static void simpleScrool(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike result, ItemLike ingredient1) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 1)
+                .pattern(" A ")
+                .pattern("BCB")
+                .pattern("DDD")
+                .define('A', Items.STRING)
+                .define('B', Items.STICK)
+                .define('C', ingredient1)
+                .define('D', Items.PAPER)
+                .unlockedBy(getHasName(ingredient1), has(ingredient1))
+                .unlockedBy(getHasName(Items.PAPER), has(Items.PAPER))
                 .save(finishedRecipeConsumer);
     }
 
