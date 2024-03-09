@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -23,7 +24,7 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_TREE_LEMON = registerKey("add_tree_lemon");
     public static final ResourceKey<BiomeModifier> ADD_TREE_BOBA = registerKey("add_tree_boba");
     public static final ResourceKey<BiomeModifier> ADD_SEA_SHELL = registerKey("add_sea_shell");
-//    public static final ResourceKey<BiomeModifier> ADD_STRAWBERRY_COW = registerKey("add_strawberry_cow");
+    public static final ResourceKey<BiomeModifier> ADD_FAIRY = registerKey("add_fairy");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -63,9 +64,9 @@ public class ModBiomeModifiers {
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
 
-//        context.register(ADD_STRAWBERRY_COW, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
-//                biomes.get(BiomeTags.IS_FOREST).orElseThrow(),
-//                List.of(new MobSpawnSettings.SpawnerData(ModEntities.STRAWBERRY_COW.get(), 20, 2, 3))
+//        context.register(ADD_FAIRY, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+//                biomes.getOrThrow(BiomeTags.IS_FOREST),
+//                List.of(new MobSpawnSettings.SpawnerData(ModEntities.FAIRY.get(), 10, 2, 3))
 //        ));
     }
 

@@ -17,6 +17,7 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> LOFI = registerSoundEvents("lofi_music_disc");
     public static final RegistryObject<SoundEvent> SAILORMOON_OST = registerSoundEvents("sailormoon_ost_music_disc");
     public static final RegistryObject<SoundEvent> CUTE_WAND_SHOOT = registerSoundEvents("cute_want_shoot");
+    public static final RegistryObject<SoundEvent> FAIRY = registerSoundEvents("fairy");
     public static final RegistryObject<SoundEvent> ETERNAL_SILVER_CRISTAL_STAFF_SHOOT = registerSoundEvents("eternal_silver_cristal_staff_shoot");
 
     private static RegistryObject<SoundEvent> registerSoundEvents(String name) {

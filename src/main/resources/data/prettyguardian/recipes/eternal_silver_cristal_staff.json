@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "prettyguardian:silver_crystal"
+    },
+    {
+      "tag": "prettyguardian:moon_stick"
+    }
+  ],
+  "result": {
+    "item": "prettyguardian:eternal_silver_cristal_staff"
+  }
+}

@@ -24,6 +24,7 @@ public class FairyRenderer extends MobRenderer<FairyEntity, FairyModel<FairyEnti
 
     public FairyRenderer(EntityRendererProvider.Context context) {
         super(context, new FairyModel<>(context.bakeLayer(ModModelLayers.FAIRY_LAYER)), 0.25f);
+        this.addLayer(new FairyGlowLayer<>(this));
     }
 
     @Override

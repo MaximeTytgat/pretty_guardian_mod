@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "prettyguardian:pink_sapphire"
+    },
+    "B": {
+      "item": "minecraft:feather"
+    },
+    "C": {
+      "item": "minecraft:bow"
+    },
+    "D": {
+      "item": "prettyguardian:fairy_dust"
+    }
+  },
+  "pattern": [
+    "ABB",
+    "BCD",
+    "BDD"
+  ],
+  "result": {
+    "item": "prettyguardian:cupidon_bow"
+  },
+  "show_notification": true
+}

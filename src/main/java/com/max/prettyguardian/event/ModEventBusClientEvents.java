@@ -1,6 +1,7 @@
 package com.max.prettyguardian.event;
 
 import com.max.prettyguardian.PrettyGuardian;
+import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import com.max.prettyguardian.blocks.entity.ModBlockEntities;
 import com.max.prettyguardian.blocks.entity.renderer.MoonAltarBlockEntityRenderer;
 import com.max.prettyguardian.entity.client.butterfly.ButterflyModel;
@@ -12,9 +13,14 @@ import com.max.prettyguardian.particle.ModParticles;
 import com.max.prettyguardian.particle.custom.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.CowModel;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.FoliageColor;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -70,5 +76,29 @@ public class ModEventBusClientEvents {
             PlayerRenderer parent = event.getSkin(name);
             parent.addLayer(new CelestialRabbitOnShoulderLayer<>(parent));
         }
+    }
+
+    @SubscribeEvent
+    public static void blockColorHandlerEvent(final RegisterColorHandlersEvent.Block event)
+    {
+        event.register((state, world, pos, tintIndex) -> {
+            return world != null && pos != null ? BiomeColors.getAverageFoliageColor(world, pos) : FoliageColor.getDefaultColor();
+        },
+                PrettyGuardianBlock.BOBA_LEAVES_CROP.get(),
+                PrettyGuardianBlock.LEMON_LEAVES_CROP.get(),
+                PrettyGuardianBlock.PISTACHIO_LEAVES_CROP.get()
+        );
+    }
+
+    @SubscribeEvent
+    public static void itemColorHandlerEvent(final RegisterColorHandlersEvent.Item event)
+    {
+        event.register((stack, tintIndex) -> {
+            BlockState state = ((BlockItem)stack.getItem()).getBlock().defaultBlockState();
+            return event.getBlockColors().getColor(state, null, null, tintIndex);
+        }, PrettyGuardianBlock.BOBA_LEAVES_CROP.get(),
+                PrettyGuardianBlock.LEMON_LEAVES_CROP.get(),
+                PrettyGuardianBlock.PISTACHIO_LEAVES_CROP.get()
+        );
     }
 }

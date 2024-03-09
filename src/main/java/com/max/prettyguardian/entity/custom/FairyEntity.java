@@ -4,9 +4,11 @@ import com.max.prettyguardian.blocks.custom.table.MoonAltarBlock;
 import com.max.prettyguardian.entity.ModEntities;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.item.custom.tool.ButterflyNetItem;
+import com.max.prettyguardian.sound.ModSounds;
 import com.max.prettyguardian.util.ModTags;
 import com.max.prettyguardian.world.entity.ai.poi.ModPoiTypes;
 import net.minecraft.Util;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.ParticleOptions;
@@ -60,7 +62,7 @@ import java.util.stream.Stream;
 public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<FairyEntity.Variant> {
     private static final EntityDataAccessor<Integer> DATA_VARIANT = SynchedEntityData.defineId(FairyEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_REMAINING_TIME_BEFORE_DUST = SynchedEntityData.defineId(Strider.class, EntityDataSerializers.INT);
-    private static final UniformInt DUST_TIME = TimeUtil.rangeOfSeconds(10, 15);;
+    private static final UniformInt DUST_TIME = TimeUtil.rangeOfSeconds(40, 60);;
 
 
     public FairyEntity(EntityType<? extends Animal> entityType, Level level) {
@@ -94,7 +96,7 @@ public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<F
 
     public static AttributeSupplier.Builder createAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 2.0D)
+                .add(Attributes.MAX_HEALTH, 10.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.25D)
                 .add(Attributes.FLYING_SPEED, 0.7D)
                 .add(Attributes.FOLLOW_RANGE, 10.0D);
@@ -142,9 +144,14 @@ public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<F
             setupAnimationStates();
         }
 
-        if (this.hasDust() && this.random.nextFloat() < 0.05F) {
-            for(int i = 0; i < this.random.nextInt(2) + 1; ++i) {
-                this.spawnFluidParticle(this.level(), this.getX() - 0.30000001192092896, this.getX() + 0.30000001192092896, this.getZ() - 0.30000001192092896, this.getZ() + 0.30000001192092896, this.getY(0.5), ParticleTypes.FALLING_NECTAR);
+        if (this.hasDust()) {
+            if (this.random.nextFloat() < 0.05F) {
+                for(int i = 0; i < this.random.nextInt(2) + 1; ++i) {
+                    this.spawnFluidParticle(this.level(), this.getX() - 0.30000001192092896, this.getX() + 0.30000001192092896, this.getZ() - 0.30000001192092896, this.getZ() + 0.30000001192092896, this.getY(0.5), ParticleTypes.FALLING_NECTAR);
+                }
+            }
+            if (this.level().getDayTime() % 100 == 0 && this.random.nextFloat() < 0.7F) {
+                this.level().playSound(this, this.blockPosition(), ModSounds.FAIRY.get(), this.getSoundSource(), 0.35F, 1F);
             }
         }
     }

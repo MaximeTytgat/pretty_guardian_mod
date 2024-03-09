@@ -618,6 +618,39 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.FEATHER), has(Items.FEATHER))
                 .unlockedBy(getHasName(PrettyGuardianItem.FAIRY_DUST.get()), has(PrettyGuardianItem.FAIRY_DUST.get()))
                 .save(pWriter);
+
+        simpleMoonStick(pWriter, PrettyGuardianItem.CUTIE_MOON_ROD.get());
+        simpleMoonStick(pWriter, PrettyGuardianItem.ETERNAL_TIARE.get());
+        simpleMoonStick(pWriter, PrettyGuardianItem.MOON_KALEIDOSCOPE.get());
+        simpleMoonStick(pWriter, PrettyGuardianItem.MOON_STICK.get());
+        simpleMoonStick(pWriter, PrettyGuardianItem.MOON_STICK_PEARL.get());
+        simpleMoonStick(pWriter, PrettyGuardianItem.SPIRAL_HEART_MOON_ROD.get());
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PrettyGuardianItem.CUPIDON_BOW.get(), 1)
+                .pattern("ABB")
+                .pattern("BCD")
+                .pattern("BDD")
+                .define('A', PrettyGuardianItem.PINK_SAPPHIRE.get())
+                .define('B', Items.FEATHER)
+                .define('C', Items.BOW)
+                .define('D', PrettyGuardianItem.FAIRY_DUST.get())
+                .unlockedBy(getHasName(PrettyGuardianItem.PINK_SAPPHIRE.get()), has(PrettyGuardianItem.PINK_SAPPHIRE.get()))
+                .unlockedBy(getHasName(Items.FEATHER), has(Items.FEATHER))
+                .unlockedBy(getHasName(Items.BOW), has(Items.BOW))
+                .unlockedBy(getHasName(PrettyGuardianItem.FAIRY_DUST.get()), has(PrettyGuardianItem.FAIRY_DUST.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PrettyGuardianItem.HEART_ARROW.get(), 1)
+                .pattern("A")
+                .pattern("B")
+                .pattern("C")
+                .define('A', PrettyGuardianItem.PINK_SAPPHIRE.get())
+                .define('B', Items.ARROW)
+                .define('C', PrettyGuardianItem.FAIRY_DUST.get())
+                .unlockedBy(getHasName(PrettyGuardianItem.PINK_SAPPHIRE.get()), has(PrettyGuardianItem.PINK_SAPPHIRE.get()))
+                .unlockedBy(getHasName(Items.ARROW), has(Items.ARROW))
+                .unlockedBy(getHasName(PrettyGuardianItem.FAIRY_DUST.get()), has(PrettyGuardianItem.FAIRY_DUST.get()))
+                .save(pWriter);
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> p_250654_, List<ItemLike> p_250172_, RecipeCategory p_250588_, ItemLike p_251868_, float p_250789_, int p_252144_, String p_251687_) {
@@ -636,6 +669,20 @@ public class ModRecipeProvider extends RecipeProvider {
                     .unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(finishedRecipeConsumer);
         }
+    }
+
+    protected static void simpleMoonStick(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike stick) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, stick, 1)
+                .pattern(" A ")
+                .pattern(" B ")
+                .pattern(" C ")
+                .define('A', PrettyGuardianItem.PINK_SAPPHIRE.get())
+                .define('B', Items.BLAZE_ROD)
+                .define('C', PrettyGuardianItem.FAIRY_DUST.get())
+                .unlockedBy(getHasName(PrettyGuardianItem.PINK_SAPPHIRE.get()), has(PrettyGuardianItem.PINK_SAPPHIRE.get()))
+                .unlockedBy(getHasName(Items.BLAZE_ROD), has(Items.BLAZE_ROD))
+                .unlockedBy(getHasName(PrettyGuardianItem.FAIRY_DUST.get()), has(PrettyGuardianItem.FAIRY_DUST.get()))
+                .save(finishedRecipeConsumer);
     }
 
     protected static void simpleMilkBucket(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike ingredient, ItemLike result) {

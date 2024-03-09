@@ -46,6 +46,13 @@
       }
     ]
   },
+  "fairy": {
+    "sounds": [
+      {
+        "name": "prettyguardian:fairy"
+      }
+    ]
+  },
   "eternal_silver_cristal_staff_shoot": {
     "sounds": [
       {

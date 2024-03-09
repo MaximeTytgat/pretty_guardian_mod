@@ -19,12 +19,12 @@ public class ModFoods {
     public static final FoodProperties ICE_CREAM = (new FoodProperties.Builder())
             .nutrition(6).saturationMod(0.25F).build();
     public static final FoodProperties MOJITO = (new FoodProperties.Builder())
-            .nutrition(6).saturationMod(0.25F).build();
+            .nutrition(4).saturationMod(0.25F).build();
     public static final FoodProperties BUBBLE_TEA = (new FoodProperties.Builder())
             .nutrition(6).saturationMod(0.25F)
             .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 300, 0), 1F).build();
     public static final FoodProperties POPSICLE = (new FoodProperties.Builder())
-            .nutrition(6).saturationMod(0.25F).build();
+            .nutrition(4).saturationMod(0.25F).build();
     public static final FoodProperties POKKY_ICE_CREAM = (new FoodProperties.Builder())
             .nutrition(10).saturationMod(0.75F).build();
     public static final FoodProperties PUDDING = (new FoodProperties.Builder())
