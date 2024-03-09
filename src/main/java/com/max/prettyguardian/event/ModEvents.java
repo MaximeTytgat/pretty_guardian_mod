@@ -194,7 +194,7 @@ public class ModEvents {
                     itemStack,
                     12,
                     2,
-                    0.55F
+                    0.1F
             ));
 
             trades.get(villagerLevel).add((trader, random) -> new MerchantOffer(
@@ -202,7 +202,7 @@ public class ModEvents {
                     itemStack,
                     12,
                     2,
-                    0.55F
+                    0.1F
             ));
 
             trades.get(villagerLevel).add((trader, random) -> new MerchantOffer(
@@ -210,7 +210,7 @@ public class ModEvents {
                     itemStack,
                     12,
                     2,
-                    0.55F
+                    0.1F
             ));
 
             trades.get(3).add((trader, random) -> new MerchantOffer(

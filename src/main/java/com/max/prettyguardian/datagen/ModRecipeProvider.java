@@ -374,7 +374,19 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(PrettyGuardianItem.STRAWBERRY.get()), has(PrettyGuardianItem.STRAWBERRY.get()))
                 .save(pWriter);
 
-        simpleCake(pWriter, PrettyGuardianBlock.RHUM_CAKE.get(), PrettyGuardianItem.CARAMEL.get(), PrettyGuardianItem.RHUM_BOTTLE.get());
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PrettyGuardianBlock.RHUM_CAKE.get())
+                .pattern("ABA")
+                .pattern("CDC")
+                .pattern("EEE")
+                .define('A', PrettyGuardianItem.CARAMEL.get())
+                .define('B', PrettyGuardianItem.RHUM_BOTTLE.get())
+                .define('C', Items.EGG)
+                .define('D', Items.MILK_BUCKET)
+                .define('E', Items.WHEAT)
+                .unlockedBy(getHasName(PrettyGuardianItem.CARAMEL.get()), has(PrettyGuardianItem.CARAMEL.get()))
+                .unlockedBy(getHasName(PrettyGuardianItem.RHUM_BOTTLE.get()), has(PrettyGuardianItem.RHUM_BOTTLE.get()))
+                .save(pWriter);
+
         simpleCake(pWriter, PrettyGuardianBlock.STRAWBERRY_CAKE.get(), PrettyGuardianItem.STRAWBERRY.get(), PrettyGuardianItem.CREAM.get());
         simpleCake(pWriter, PrettyGuardianBlock.VELVET_CAKE.get(), Items.RED_DYE, PrettyGuardianItem.CHOCOLATE.get());
         simpleCake(pWriter, PrettyGuardianBlock.CREAM_CAKE.get(), PrettyGuardianItem.VANILLA.get(), PrettyGuardianItem.CREAM.get());
