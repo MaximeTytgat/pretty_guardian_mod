@@ -40,7 +40,7 @@
       "bounding_box": "piece",
       "spawns": [
         {
-          "type": "entity.prettyguardian:celestial_rabbit",
+          "type": "prettyguardian:celestial_rabbit",
           "weight": 1,
           "minCount": 3,
           "maxCount": 9

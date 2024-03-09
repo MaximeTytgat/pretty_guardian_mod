@@ -1,46 +1,51 @@
 package com.max.prettyguardian.event;
 
 import com.max.prettyguardian.PrettyGuardian;
+import com.max.prettyguardian.blocks.PrettyGuardianBlock;
+import com.max.prettyguardian.blocks.custom.food.BaseCake;
 import com.max.prettyguardian.client.ClientPlayerEntityOnShoulderData;
 import com.max.prettyguardian.entity.ModEntities;
 import com.max.prettyguardian.entity.custom.CelestialRabbitEntity;
 import com.max.prettyguardian.entityOnShoulder.PlayerEntityOnShoulder;
 import com.max.prettyguardian.entityOnShoulder.PlayerEntityOnShoulderProvider;
+import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.networking.ModMessages;
 import com.max.prettyguardian.networking.packet.PlayerEntityOnShoulderDataSCPacket;
 import com.max.prettyguardian.particle.ModParticles;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.client.Minecraft;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.PacketDistributor;
-import net.minecraftforge.network.simple.SimpleChannel;
+import net.minecraftforge.registries.RegistryObject;
 
-import java.nio.channels.NetworkChannel;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = PrettyGuardian.MOD_ID)
-public class PlayerEntityOnShoulderEvents {
+public class ModEvents {
     @SubscribeEvent
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
         if(event.getObject() instanceof Player) {
@@ -174,6 +179,103 @@ public class PlayerEntityOnShoulderEvents {
                 }
 
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void addCustomTrades(VillagerTradesEvent event) {
+        if (event.getType() == VillagerProfession.FARMER) {
+            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+            ItemStack itemStack = new ItemStack(Items.EMERALD, 1);
+            int villagerLevel = 1;
+
+            trades.get(villagerLevel).add((trader, random) -> new MerchantOffer(
+                    new ItemStack(PrettyGuardianItem.STRAWBERRY.get(), 7),
+                    itemStack,
+                    12,
+                    2,
+                    0.55F
+            ));
+
+            trades.get(villagerLevel).add((trader, random) -> new MerchantOffer(
+                    new ItemStack(PrettyGuardianItem.MINT.get(), 7),
+                    itemStack,
+                    12,
+                    2,
+                    0.55F
+            ));
+
+            trades.get(villagerLevel).add((trader, random) -> new MerchantOffer(
+                    new ItemStack(PrettyGuardianItem.VANILLA.get(), 5),
+                    itemStack,
+                    12,
+                    2,
+                    0.55F
+            ));
+
+            trades.get(3).add((trader, random) -> new MerchantOffer(
+                    new ItemStack(Items.EMERALD, 1),
+                    new ItemStack(PrettyGuardianBlock.CREAM_STRAWBERRY_CAKE.get(), 1),
+                    8,
+                    8,
+                    0.35F
+            ));
+
+            trades.get(3).add((trader, random) -> new MerchantOffer(
+                    new ItemStack(Items.EMERALD, 1),
+                    new ItemStack(PrettyGuardianBlock.STRAWBERRY_CHOCO_CAKE.get(), 1),
+                    8,
+                    8,
+                    0.35F
+            ));
+
+            trades.get(3).add((trader, random) -> new MerchantOffer(
+                    new ItemStack(Items.EMERALD, 1),
+                    new ItemStack(PrettyGuardianBlock.CREAM_CAKE.get(), 1),
+                    8,
+                    8,
+                    0.35F
+            ));
+
+            trades.get(3).add((trader, random) -> new MerchantOffer(
+                    new ItemStack(Items.EMERALD, 1),
+                    new ItemStack(PrettyGuardianBlock.BERRY_STRAWBERRY_CAKE.get(), 1),
+                    8,
+                    8,
+                    0.35F
+            ));
+
+            trades.get(3).add((trader, random) -> new MerchantOffer(
+                    new ItemStack(Items.EMERALD, 1),
+                    new ItemStack(PrettyGuardianBlock.STRAWBERRY_CAKE.get(), 1),
+                    8,
+                    8,
+                    0.35F
+            ));
+
+            trades.get(3).add((trader, random) -> new MerchantOffer(
+                    new ItemStack(Items.EMERALD, 1),
+                    new ItemStack(PrettyGuardianBlock.RHUM_CAKE.get(), 1),
+                    8,
+                    8,
+                    0.35F
+            ));
+
+            trades.get(3).add((trader, random) -> new MerchantOffer(
+                    new ItemStack(Items.EMERALD, 1),
+                    new ItemStack(PrettyGuardianBlock.CHOCOLATE_CAKE.get(), 1),
+                    8,
+                    8,
+                    0.35F
+            ));
+
+            trades.get(3).add((trader, random) -> new MerchantOffer(
+                    new ItemStack(Items.EMERALD, 1),
+                    new ItemStack(PrettyGuardianBlock.VELVET_CAKE.get(), 1),
+                    8,
+                    8,
+                    0.35F
+            ));
         }
     }
 }
