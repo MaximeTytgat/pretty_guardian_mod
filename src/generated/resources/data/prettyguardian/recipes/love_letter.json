@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "prettyguardian:fairy_dust"
+    }
+  ],
+  "result": {
+    "item": "prettyguardian:love_letter"
+  }
+}

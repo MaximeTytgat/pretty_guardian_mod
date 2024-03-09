@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "prettyguardian:item/japanese_flute_music_disc"
+    "layer0": "prettyguardian:item/fireflies_music_disc"
   }
 }

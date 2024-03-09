@@ -3,26 +3,25 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "minecraft:kelp"
+      "item": "minecraft:gold_ingot"
     },
     "B": {
-      "item": "minecraft:egg"
+      "item": "minecraft:string"
     },
     "C": {
-      "item": "prettyguardian:squid_cooked"
+      "item": "minecraft:red_dye"
     },
     "D": {
-      "item": "minecraft:wheat"
+      "item": "minecraft:gold_block"
     }
   },
   "pattern": [
-    " A ",
+    "A A",
     "BCB",
     "DDD"
   ],
   "result": {
-    "count": 3,
-    "item": "prettyguardian:takoyaki"
+    "item": "prettyguardian:lucky_neko"
   },
   "show_notification": true
 }

@@ -71,9 +71,8 @@ public class JapDoubleLanternBlock extends LanternBlock {
         for(Direction direction : clickedPos.getNearestLookingDirections()) {
             if (direction == Direction.UP) {
                 BlockPos belowPos = clickedPos.getClickedPos().below();
-                BlockPos belowPos2 = belowPos.below();
 
-                if (clickedPos.getLevel().getBlockState(belowPos).canBeReplaced(clickedPos) && clickedPos.getLevel().getBlockState(belowPos2).canBeReplaced(clickedPos)) {
+                if (clickedPos.getLevel().getBlockState(belowPos).canBeReplaced(clickedPos)) {
                     BlockState blockstate = this.defaultBlockState().setValue(HANGING, Boolean.TRUE);
 
                     if (clickedPos.getLevel().hasNeighborSignal(clickedPos.getClickedPos())) {

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_boba": {
+    "has_raw_boba": {
       "conditions": {
         "items": [
           {
             "items": [
-              "prettyguardian:boba"
+              "prettyguardian:raw_boba"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_boba",
+      "has_raw_boba",
       "has_the_recipe"
     ]
   ],

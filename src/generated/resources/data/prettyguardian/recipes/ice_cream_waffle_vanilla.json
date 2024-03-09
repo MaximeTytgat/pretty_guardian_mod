@@ -15,7 +15,7 @@
       "item": "minecraft:sugar"
     },
     "E": {
-      "item": "prettyguardian:waffle"
+      "item": "prettyguardian:fish_waffle"
     },
     "F": {
       "item": "prettyguardian:vanilla"
@@ -26,7 +26,6 @@
     "DEF"
   ],
   "result": {
-    "count": 3,
     "item": "prettyguardian:ice_cream_waffle_vanilla"
   },
   "show_notification": true

@@ -192,10 +192,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(PrettyGuardianItem.RUBY_SWORD);
 
         simpleItem(PrettyGuardianItem.SAILORMOON_OST_MUSIC_DISC);
-        simpleItem(PrettyGuardianItem.SAILORMOON_MOONPRIDE_MUSIC_DISC);
+        simpleItem(PrettyGuardianItem.FIREFLIES_MUSIC_DISC);
         simpleItem(PrettyGuardianItem.LOFI_MUSIC_DISC);
         simpleItem(PrettyGuardianItem.TAVERN_MUSIC_DISC);
-        simpleItem(PrettyGuardianItem.JAPANESE_FLUTE_MUSIC_DISC);
+        simpleItem(PrettyGuardianItem.THE_LANTERN_FAIR_MUSIC_DISC);
 
         simpleItem(PrettyGuardianItem.BUTTERFLY_NET);
 

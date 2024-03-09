@@ -7,10 +7,10 @@
       }
     ]
   },
-  "sailormoon_moonpride_music_disc": {
+  "fireflies_music_disc": {
     "sounds": [
       {
-        "name": "prettyguardian:sailormoon_moonpride_music_disc",
+        "name": "prettyguardian:fireflies_music_disc",
         "stream": true
       }
     ]
@@ -23,10 +23,10 @@
       }
     ]
   },
-  "japanese_flute_music_disc": {
+  "the_lantern_fair_music_disc": {
     "sounds": [
       {
-        "name": "prettyguardian:japanese_flute_music_disc",
+        "name": "prettyguardian:the_lantern_fair_music_disc",
         "stream": true
       }
     ]

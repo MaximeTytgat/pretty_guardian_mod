@@ -147,20 +147,18 @@ public class PrettyGuardianItem {
     public static final RegistryObject<Item> PLUTONS_KEY = ITEMS.register("plutons_key", () -> new PlutonsKey(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> NEPTUNES_MIRROR = ITEMS.register("neptunes_mirror", () -> new NeptunesMirror(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SPACE_SWORD = ITEMS.register("space_sword", () -> new SpaceSwordItem(ModToolTiers.SPACE_SWORD, 3, -2.4F, new Item.Properties().stacksTo(1)));
-//    public static final RegistryObject<Item> NEPTUNES_MIRROR = ITEMS.register("neptunes_mirror", () -> new NeptunesMirror(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> STRAWBERRY_COW_EGG = ITEMS.register("strawberry_cow_egg", () -> new ForgeSpawnEggItem(ModEntities.STRAWBERRY_COW, 0xfcd6df, 0xf798be, new Item.Properties()));
     public static final RegistryObject<Item> CELESTIAL_RABBIT_EGG = ITEMS.register("celestial_rabbit_egg", () -> new ForgeSpawnEggItem(ModEntities.CELESTIAL_RABBIT, 0xf564df, 0xf548be, new Item.Properties()));
 
     public static final RegistryObject<Item> SAILORMOON_OST_MUSIC_DISC = ITEMS.register("sailormoon_ost_music_disc", () -> new RecordItem(4, ModSounds.SAILORMOON_OST.get(), new Item.Properties().stacksTo(1), 10380));
-    public static final RegistryObject<Item> SAILORMOON_MOONPRIDE_MUSIC_DISC = ITEMS.register("sailormoon_moonpride_music_disc", () -> new RecordItem(4, ModSounds.SAILORMOON_MOONPRIDE.get(), new Item.Properties().stacksTo(1), 1780));
+    public static final RegistryObject<Item> FIREFLIES_MUSIC_DISC = ITEMS.register("fireflies_music_disc", () -> new RecordItem(4, ModSounds.SAILORMOON_MOONPRIDE.get(), new Item.Properties().stacksTo(1), 3100));
     public static final RegistryObject<Item> LOFI_MUSIC_DISC = ITEMS.register("lofi_music_disc", () -> new RecordItem(4, ModSounds.LOFI.get(), new Item.Properties().stacksTo(1), 9700));
     public static final RegistryObject<Item> TAVERN_MUSIC_DISC = ITEMS.register("tavern_music_disc", () -> new RecordItem(4, ModSounds.TAVERN.get(), new Item.Properties().stacksTo(1), 16000));
-    public static final RegistryObject<Item> JAPANESE_FLUTE_MUSIC_DISC = ITEMS.register("japanese_flute_music_disc", () -> new RecordItem(4, ModSounds.JAPANESE_FLUTE.get(), new Item.Properties().stacksTo(1), 999999999));
+    public static final RegistryObject<Item> THE_LANTERN_FAIR_MUSIC_DISC = ITEMS.register("the_lantern_fair_music_disc", () -> new RecordItem(4, ModSounds.JAPANESE_FLUTE.get(), new Item.Properties().stacksTo(1), 4480));
 
     public static final RegistryObject<Item> FAIRY_DUST = ITEMS.register("fairy_dust", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GIFT_BOX = ITEMS.register("gift_box", () -> new GiftBoxItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> LOVE_LETTER = ITEMS.register("love_letter", () -> new LoveLetterItem(new Item.Properties().stacksTo(1)));
-//    public static final RegistryObject<Item> LOVE_LETTER_WRITTEN = ITEMS.register("love_letter_written", () -> new LoveLetterItem(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> BUTTERFLY_NET = ITEMS.register("butterfly_net", () -> new ButterflyNetItem(new Item.Properties().stacksTo(1).durability(100)));
     public static final RegistryObject<Item> ADMIRAL_BUTTERFLY_EGG = ITEMS.register("admiral_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.ADMIRAL, new Item.Properties().stacksTo(16)));

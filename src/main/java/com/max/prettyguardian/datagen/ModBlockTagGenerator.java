@@ -26,10 +26,9 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 PrettyGuardianBlock.THREE_STRAWBERRY_CHOCO_CAKE.get()
         );
 
-
-        this.tag(ModTags.Blocks.NEEDS_PINK_SAPPHIRE_TOOL).add(
-                PrettyGuardianBlock.PINK_SAPPHIRE_BLOCK.get()
-        );
+//
+//        this.tag(ModTags.Blocks.NEEDS_PINK_SAPPHIRE_TOOL).add(
+//        );
 
         this.tag(ModTags.Blocks.JAP_TABLE).add(
                 PrettyGuardianBlock.TABLE_JAPANESE_OAK.get(),

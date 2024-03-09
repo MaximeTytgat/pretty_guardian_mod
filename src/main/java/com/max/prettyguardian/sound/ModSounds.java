@@ -11,9 +11,9 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModSounds {
     private static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, "prettyguardian");
 
-    public static final RegistryObject<SoundEvent> SAILORMOON_MOONPRIDE = registerSoundEvents("sailormoon_moonpride_music_disc");
+    public static final RegistryObject<SoundEvent> SAILORMOON_MOONPRIDE = registerSoundEvents("fireflies_music_disc");
     public static final RegistryObject<SoundEvent> TAVERN = registerSoundEvents("tavern_music_disc");
-    public static final RegistryObject<SoundEvent> JAPANESE_FLUTE = registerSoundEvents("japanese_flute_music_disc");
+    public static final RegistryObject<SoundEvent> JAPANESE_FLUTE = registerSoundEvents("the_lantern_fair_music_disc");
     public static final RegistryObject<SoundEvent> LOFI = registerSoundEvents("lofi_music_disc");
     public static final RegistryObject<SoundEvent> SAILORMOON_OST = registerSoundEvents("sailormoon_ost_music_disc");
     public static final RegistryObject<SoundEvent> CUTE_WAND_SHOOT = registerSoundEvents("cute_want_shoot");

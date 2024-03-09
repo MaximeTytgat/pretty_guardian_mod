@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "prettyguardian:gem_polishing_station"
+    "prettyguardian:gem_polishing_station",
+    "prettyguardian:lucky_neko",
+    "prettyguardian:silver_crystal",
+    "prettyguardian:moon_altar"
   ]
 }

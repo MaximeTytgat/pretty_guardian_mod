@@ -2,20 +2,14 @@ package com.max.prettyguardian.datagen;
 
 import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.blocks.PrettyGuardianBlock;
-import com.max.prettyguardian.blocks.custom.food.BaseCake;
-import com.max.prettyguardian.blocks.custom.food.BaseThreeCake;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -74,19 +68,19 @@ public class ModItemTagGenerator extends ItemTagsProvider {
         this.tag(ItemTags.MUSIC_DISCS)
                 .add(
                         PrettyGuardianItem.SAILORMOON_OST_MUSIC_DISC.get(),
-                        PrettyGuardianItem.SAILORMOON_MOONPRIDE_MUSIC_DISC.get(),
+                        PrettyGuardianItem.FIREFLIES_MUSIC_DISC.get(),
                         PrettyGuardianItem.LOFI_MUSIC_DISC.get(),
                         PrettyGuardianItem.TAVERN_MUSIC_DISC.get(),
-                        PrettyGuardianItem.JAPANESE_FLUTE_MUSIC_DISC.get()
+                        PrettyGuardianItem.THE_LANTERN_FAIR_MUSIC_DISC.get()
                 );
 
         this.tag(ItemTags.CREEPER_DROP_MUSIC_DISCS)
                 .add(
                         PrettyGuardianItem.SAILORMOON_OST_MUSIC_DISC.get(),
-                        PrettyGuardianItem.SAILORMOON_MOONPRIDE_MUSIC_DISC.get(),
+                        PrettyGuardianItem.FIREFLIES_MUSIC_DISC.get(),
                         PrettyGuardianItem.LOFI_MUSIC_DISC.get(),
                         PrettyGuardianItem.TAVERN_MUSIC_DISC.get(),
-                        PrettyGuardianItem.JAPANESE_FLUTE_MUSIC_DISC.get()
+                        PrettyGuardianItem.THE_LANTERN_FAIR_MUSIC_DISC.get()
                 );
     }
 }

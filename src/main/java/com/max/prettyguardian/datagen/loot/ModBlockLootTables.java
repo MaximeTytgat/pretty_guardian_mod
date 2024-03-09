@@ -111,12 +111,12 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(PrettyGuardianBlock.LAMP_JAPANESE_MANGROVE.get());
         this.dropSelf(PrettyGuardianBlock.LAMP_JAPANESE_CHERRY.get());
 
-        this.dropSelf(PrettyGuardianBlock.DOOR_SHOJI_BLOSSOM.get());
-        this.dropSelf(PrettyGuardianBlock.DOOR_SHOJI_BLOSSOM_SMALL.get());
-        this.dropSelf(PrettyGuardianBlock.DOOR_SHOJI_BIRCH.get());
-        this.dropSelf(PrettyGuardianBlock.DOOR_SHOJI_BIRCH_SMALL.get());
-        this.dropSelf(PrettyGuardianBlock.DOOR_SHOJI_CHERRY.get());
-        this.dropSelf(PrettyGuardianBlock.DOOR_SHOJI_CHERRY_SMALL.get());
+        this.add(PrettyGuardianBlock.DOOR_SHOJI_BLOSSOM.get(), this::createBonzaiLootTable);
+        this.add(PrettyGuardianBlock.DOOR_SHOJI_BLOSSOM_SMALL.get(), this::createBonzaiLootTable);
+        this.add(PrettyGuardianBlock.DOOR_SHOJI_BIRCH.get(), this::createBonzaiLootTable);
+        this.add(PrettyGuardianBlock.DOOR_SHOJI_BIRCH_SMALL.get(), this::createBonzaiLootTable);
+        this.add(PrettyGuardianBlock.DOOR_SHOJI_CHERRY.get(), this::createBonzaiLootTable);
+        this.add(PrettyGuardianBlock.DOOR_SHOJI_CHERRY_SMALL.get(), this::createBonzaiLootTable);
 
         this.dropSelf(PrettyGuardianBlock.TABLE_JAPANESE_OAK.get());
         this.dropSelf(PrettyGuardianBlock.TABLE_JAPANESE_BIRCH.get());
@@ -149,8 +149,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(PrettyGuardianBlock.PINK_SAPPHIRE_ORE.get(), createOreDrop(PrettyGuardianBlock.PINK_SAPPHIRE_ORE.get(), PrettyGuardianItem.PINK_SAPPHIRE.get()));
         this.add(PrettyGuardianBlock.DEEPSLATE_PINK_SAPPHIRE_ORE.get(), createOreDrop(PrettyGuardianBlock.DEEPSLATE_PINK_SAPPHIRE_ORE.get(), PrettyGuardianItem.PINK_SAPPHIRE.get()));
 
-        this.add(PrettyGuardianBlock.RUBY_ORE.get(), createOreDrop(PrettyGuardianBlock.RUBY_ORE.get(), PrettyGuardianItem.RAW_RUBY.get()));
-        this.add(PrettyGuardianBlock.DEEPSLATE_RUBY_ORE.get(), createOreDrop(PrettyGuardianBlock.DEEPSLATE_RUBY_ORE.get(), PrettyGuardianItem.RAW_RUBY.get()));
+        this.add(PrettyGuardianBlock.RUBY_ORE.get(), createOreDrop(PrettyGuardianBlock.RUBY_ORE.get(), PrettyGuardianItem.RUBY.get()));
+        this.add(PrettyGuardianBlock.DEEPSLATE_RUBY_ORE.get(), createOreDrop(PrettyGuardianBlock.DEEPSLATE_RUBY_ORE.get(), PrettyGuardianItem.RUBY.get()));
 
         LootItemCondition.Builder lootitemcondition$builder = LootItemBlockStatePropertyCondition
                 .hasBlockStateProperties(PrettyGuardianBlock.STRAWBERRY_CROP.get())

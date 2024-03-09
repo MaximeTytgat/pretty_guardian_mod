@@ -1,15 +1,21 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "category": "misc",
-  "ingredients": [
-    {
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "A": {
       "item": "prettyguardian:chocolate"
     },
-    {
+    "B": {
       "item": "minecraft:milk_bucket"
     }
+  },
+  "pattern": [
+    " A ",
+    "ABA",
+    " A "
   ],
   "result": {
     "item": "prettyguardian:chocolate_milk_bucket"
-  }
+  },
+  "show_notification": true
 }

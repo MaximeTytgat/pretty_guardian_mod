@@ -3,18 +3,22 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "minecraft:sugar"
+      "item": "prettyguardian:vanilla"
     },
     "B": {
+      "item": "minecraft:sugar"
+    },
+    "C": {
       "item": "minecraft:milk_bucket"
     }
   },
   "pattern": [
-    "AAA",
-    "BBB"
+    "A",
+    "B",
+    "C"
   ],
   "result": {
-    "count": 6,
+    "count": 3,
     "item": "prettyguardian:cream"
   },
   "show_notification": true

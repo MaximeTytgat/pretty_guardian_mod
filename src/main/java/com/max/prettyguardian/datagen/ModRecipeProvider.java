@@ -96,11 +96,13 @@ public class ModRecipeProvider extends RecipeProvider {
 
         simpleShapeless(pWriter, RecipeCategory.FOOD, PrettyGuardianItem.AGARAGAR.get(), 2, Items.KELP, 1);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PrettyGuardianItem.CREAM.get(), 6)
-                .pattern("AAA")
-                .pattern("BBB")
-                .define('A', Items.SUGAR)
-                .define('B', Items.MILK_BUCKET)
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PrettyGuardianItem.CREAM.get(), 3)
+                .pattern("A")
+                .pattern("B")
+                .pattern("C")
+                .define('A', PrettyGuardianItem.VANILLA.get())
+                .define('B', Items.SUGAR)
+                .define('C', Items.MILK_BUCKET)
                 .unlockedBy(getHasName(Items.SUGAR), has(Items.SUGAR))
                 .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
                 .save(pWriter);
@@ -169,12 +171,10 @@ public class ModRecipeProvider extends RecipeProvider {
                 PrettyGuardianItem.MOCHI_DONUT.get(), PrettyGuardianItem.STRAWBERRY.get());
         doubleSimpleShapeless(pWriter, RecipeCategory.FOOD, PrettyGuardianItem.CHOCOLATE_STRAWBERRY.get(), 1,
                 PrettyGuardianItem.CHOCOLATE.get(), PrettyGuardianItem.STRAWBERRY.get());
-        doubleSimpleShapeless(pWriter, RecipeCategory.FOOD, PrettyGuardianItem.CHOCOLATE_MILK_BUCKET.get(), 1,
-                PrettyGuardianItem.CHOCOLATE.get(), Items.MILK_BUCKET);
-        doubleSimpleShapeless(pWriter, RecipeCategory.FOOD, PrettyGuardianItem.STRAWBERRY_MILK_BUCKET.get(), 3,
-                PrettyGuardianItem.STRAWBERRY.get(), Items.MILK_BUCKET);
-        doubleSimpleShapeless(pWriter, RecipeCategory.FOOD, PrettyGuardianItem.VANILLA_MILK_BUCKET.get(), 3,
-                PrettyGuardianItem.VANILLA.get(), Items.MILK_BUCKET);
+
+        simpleMilkBucket(pWriter, PrettyGuardianItem.VANILLA.get(), PrettyGuardianItem.VANILLA_MILK_BUCKET.get());
+        simpleMilkBucket(pWriter, PrettyGuardianItem.STRAWBERRY.get(), PrettyGuardianItem.STRAWBERRY_MILK_BUCKET.get());
+        simpleMilkBucket(pWriter, PrettyGuardianItem.CHOCOLATE.get(), PrettyGuardianItem.CHOCOLATE_MILK_BUCKET.get());
 
         simpleShapeless(pWriter, RecipeCategory.FOOD, PrettyGuardianItem.VANILLA_MILK_CARTON.get(), 3, PrettyGuardianItem.VANILLA_MILK_BUCKET.get());
         simpleShapeless(pWriter, RecipeCategory.FOOD, PrettyGuardianItem.STRAWBERRY_MILK_CARTON.get(), 3, PrettyGuardianItem.STRAWBERRY_MILK_BUCKET.get());
@@ -290,17 +290,15 @@ public class ModRecipeProvider extends RecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PrettyGuardianItem.TAKOYAKI.get(), 3)
                 .pattern(" A ")
                 .pattern("BCB")
-                .pattern("DED")
+                .pattern("DDD")
                 .define('A', Items.KELP)
                 .define('B', Items.EGG)
                 .define('C', PrettyGuardianItem.SQUID_COOKED.get())
                 .define('D', Items.WHEAT)
-                .define('E', PrettyGuardianItem.AGARAGAR.get())
                 .unlockedBy(getHasName(Items.KELP), has(Items.KELP))
                 .unlockedBy(getHasName(Items.EGG), has(Items.EGG))
                 .unlockedBy(getHasName(PrettyGuardianItem.SQUID_COOKED.get()), has(PrettyGuardianItem.SQUID_COOKED.get()))
                 .unlockedBy(getHasName(Items.WHEAT), has(Items.WHEAT))
-                .unlockedBy(getHasName(PrettyGuardianItem.AGARAGAR.get()), has(PrettyGuardianItem.AGARAGAR.get()))
                 .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, PrettyGuardianItem.DANGO_CARAMEL.get(), 3)
@@ -555,7 +553,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Blocks.FLOWER_POT), has(Blocks.FLOWER_POT))
                 .save(pWriter);
 
-        simpleFruitSapling(pWriter, PrettyGuardianBlock.BOBA_SAPLING.get(), PrettyGuardianItem.BOBA.get());
+        simpleFruitSapling(pWriter, PrettyGuardianBlock.BOBA_SAPLING.get(), PrettyGuardianItem.RAW_BOBA.get());
         simpleFruitSapling(pWriter, PrettyGuardianBlock.LEMON_SAPLING.get(), PrettyGuardianItem.LEMON.get());
         simpleFruitSapling(pWriter, PrettyGuardianBlock.PISTACHIO_SAPLING.get(), PrettyGuardianItem.PISTACHIO.get());
 
@@ -578,7 +576,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(PrettyGuardianItem.RAW_BOBA.get()), has(PrettyGuardianItem.RAW_BOBA.get()))
                 .save(pWriter);
 
-        doubleSimpleShapeless(pWriter, RecipeCategory.FOOD, PrettyGuardianItem.SQUID_STICK.get(), 1, PrettyGuardianItem.BOBA.get(), Items.STICK);
+        doubleSimpleShapeless(pWriter, RecipeCategory.FOOD, PrettyGuardianItem.SQUID_STICK.get(), 1, PrettyGuardianItem.RAW_SQUID.get(), Items.STICK);
 
         SimpleCookingRecipeBuilder.generic(Ingredient.of(PrettyGuardianItem.SQUID_STICK.get()), RecipeCategory.FOOD, PrettyGuardianItem.SQUID_COOKED.get(), 0.35F, 200, RecipeSerializer.SMELTING_RECIPE)
                 .group("roasted_marshmallow_stick")
@@ -598,6 +596,28 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.PINK_DYE), has(Items.PINK_DYE))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PrettyGuardianBlock.LUCKY_NEKO.get(), 1)
+                .pattern("A A")
+                .pattern("BCB")
+                .pattern("DDD")
+                .define('A', Items.GOLD_INGOT)
+                .define('B', Items.STRING)
+                .define('C', Items.RED_DYE)
+                .define('D', Blocks.GOLD_BLOCK)
+                .unlockedBy(getHasName(Items.GOLD_INGOT), has(Items.GOLD_INGOT))
+                .unlockedBy(getHasName(Items.STRING), has(Items.STRING))
+                .unlockedBy(getHasName(Items.RED_DYE), has(Items.RED_DYE))
+                .unlockedBy(getHasName(Items.GOLD_BLOCK), has(Items.GOLD_BLOCK))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, PrettyGuardianItem.LOVE_LETTER.get(), 1)
+                .requires(Items.PAPER)
+                .requires(Items.FEATHER)
+                .requires(PrettyGuardianItem.FAIRY_DUST.get())
+                .unlockedBy(getHasName(Items.PAPER), has(Items.PAPER))
+                .unlockedBy(getHasName(Items.FEATHER), has(Items.FEATHER))
+                .unlockedBy(getHasName(PrettyGuardianItem.FAIRY_DUST.get()), has(PrettyGuardianItem.FAIRY_DUST.get()))
+                .save(pWriter);
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> p_250654_, List<ItemLike> p_250172_, RecipeCategory p_250588_, ItemLike p_251868_, float p_250789_, int p_252144_, String p_251687_) {
@@ -616,6 +636,18 @@ public class ModRecipeProvider extends RecipeProvider {
                     .unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(finishedRecipeConsumer);
         }
+    }
+
+    protected static void simpleMilkBucket(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike ingredient, ItemLike result) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result, 1)
+                .pattern(" A ")
+                .pattern("ABA")
+                .pattern(" A ")
+                .define('A', ingredient)
+                .define('B', Items.MILK_BUCKET)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
+                .save(finishedRecipeConsumer);
     }
 
     protected static void simpleTable(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike table, ItemLike log, ItemLike slab) {
@@ -805,7 +837,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('A', PrettyGuardianItem.AGARAGAR.get())
                 .define('B', Items.SUGAR)
                 .define('C', ingredient1)
-                .define('D', Items.WATER_BUCKET)
+                .define('D', Items.MILK_BUCKET)
                 .unlockedBy(getHasName(ingredient1), has(ingredient1))
                 .save(finishedRecipeConsumer);
     }
@@ -900,7 +932,7 @@ public class ModRecipeProvider extends RecipeProvider {
     }
 
     protected static void iceCreamRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike iceCream, ItemLike flavor) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, iceCream, 3)
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, iceCream, 1)
                 .pattern("ABC")
                 .pattern("DEF")
                 .define('A', Items.MILK_BUCKET)
@@ -914,14 +946,14 @@ public class ModRecipeProvider extends RecipeProvider {
     }
 
     protected static void waffleIceCreamRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer, ItemLike waffleIceCream, ItemLike flavor) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, waffleIceCream, 3)
+        ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, waffleIceCream, 1)
                 .pattern("ABC")
                 .pattern("DEF")
                 .define('A', Items.MILK_BUCKET)
                 .define('B', Items.SNOWBALL)
                 .define('C', Items.EGG)
                 .define('D', Items.SUGAR)
-                .define('E', PrettyGuardianItem.WAFFLE.get())
+                .define('E', PrettyGuardianItem.FISH_WAFFLE.get())
                 .define('F', flavor)
                 .unlockedBy(getHasName(PrettyGuardianItem.WAFFLE.get()), has(PrettyGuardianItem.WAFFLE.get()))
                 .save(finishedRecipeConsumer);

@@ -96,20 +96,18 @@ public class PrettyGuardianBlock {
     public static final RegistryObject<Block> PLUSH_BEAR_HUGE = registryBlock("plush_bear_huge", () -> new PlushiesBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL)));
     public static final RegistryObject<Block> RANDOM_PLUSH_BOX = registryBlock("random_plush_box", () -> new RandomPlushBoxBlock(BlockBehaviour.Properties.copy(Blocks.WHITE_WOOL).noLootTable()));
 
-    public static final RegistryObject<Block> SHOJI_BLOSSOM = registryBlock("shoji_blossom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> SHOJI_BLOSSOM_BOTTOM = registryBlock("shoji_blossom_bottom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> SHOJI_BLOSSOM_SMALL = registryBlock("shoji_blossom_small", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> SHOJI_BLOSSOM_SMALL_BOTTOM = registryBlock("shoji_blossom_small_bottom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
-
-    public static final RegistryObject<Block> SHOJI_CHERRY = registryBlock("shoji_cherry", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> SHOJI_CHERRY_BOTTOM = registryBlock("shoji_cherry_bottom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> SHOJI_CHERRY_SMALL = registryBlock("shoji_cherry_small", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> SHOJI_CHERRY_SMALL_BOTTOM = registryBlock("shoji_cherry_small_bottom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
-
-    public static final RegistryObject<Block> SHOJI_BIRCH = registryBlock("shoji_birch", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> SHOJI_BIRCH_BOTTOM = registryBlock("shoji_birch_bottom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> SHOJI_BIRCH_SMALL = registryBlock("shoji_birch_small", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> SHOJI_BIRCH_SMALL_BOTTOM = registryBlock("shoji_birch_small_bottom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> SHOJI_BLOSSOM = registryBlock("shoji_blossom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR)));
+    public static final RegistryObject<Block> SHOJI_BLOSSOM_BOTTOM = registryBlock("shoji_blossom_bottom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR)));
+    public static final RegistryObject<Block> SHOJI_BLOSSOM_SMALL = registryBlock("shoji_blossom_small", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR)));
+    public static final RegistryObject<Block> SHOJI_BLOSSOM_SMALL_BOTTOM = registryBlock("shoji_blossom_small_bottom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR)));
+    public static final RegistryObject<Block> SHOJI_CHERRY = registryBlock("shoji_cherry", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR)));
+    public static final RegistryObject<Block> SHOJI_CHERRY_BOTTOM = registryBlock("shoji_cherry_bottom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR)));
+    public static final RegistryObject<Block> SHOJI_CHERRY_SMALL = registryBlock("shoji_cherry_small", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR)));
+    public static final RegistryObject<Block> SHOJI_CHERRY_SMALL_BOTTOM = registryBlock("shoji_cherry_small_bottom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.CHERRY_TRAPDOOR)));
+    public static final RegistryObject<Block> SHOJI_BIRCH = registryBlock("shoji_birch", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR)));
+    public static final RegistryObject<Block> SHOJI_BIRCH_BOTTOM = registryBlock("shoji_birch_bottom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR)));
+    public static final RegistryObject<Block> SHOJI_BIRCH_SMALL = registryBlock("shoji_birch_small", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR)));
+    public static final RegistryObject<Block> SHOJI_BIRCH_SMALL_BOTTOM = registryBlock("shoji_birch_small_bottom", () -> new ShojiBlock(BlockBehaviour.Properties.copy(Blocks.BIRCH_TRAPDOOR)));
 
     public static final RegistryObject<Block> LANTERN_JAPANESE = registryBlock("lantern_japanese", () -> new JapLanternBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
     public static final RegistryObject<Block> LANTERN_JAPANESE_SAKURA = registryBlock("lantern_japanese_sakura", () -> new JapLanternBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
@@ -121,14 +119,14 @@ public class PrettyGuardianBlock {
     public static final RegistryObject<Block> LANTERN_SAKURA_HUGE_JAPANESE = registryBlock("lantern_sakura_huge_japanese", () -> new JapHugeLanternBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
     public static final RegistryObject<Block> LANTERN_FESTIVAL_HUGE_JAPANESE = registryBlock("lantern_festival_huge_japanese", () -> new JapHugeLanternBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
 
-    public static final RegistryObject<Block> LAMP_JAPANESE_OAK = registryBlock("lamp_japanese_oak", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> LAMP_JAPANESE_SPRUCE = registryBlock("lamp_japanese_spruce", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> LAMP_JAPANESE_MANGROVE = registryBlock("lamp_japanese_mangrove", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> LAMP_JAPANESE_CHERRY = registryBlock("lamp_japanese_cherry", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> LAMP_JAPANESE_BIRCH = registryBlock("lamp_japanese_birch", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> LAMP_JAPANESE_JUNGLE = registryBlock("lamp_japanese_jungle", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> LAMP_JAPANESE_ACACIA = registryBlock("lamp_japanese_acacia", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
-    public static final RegistryObject<Block> LAMP_JAPANESE_DARK_OAK = registryBlock("lamp_japanese_dark_oak", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_OAK = registryBlock("lamp_japanese_oak", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.6F, 0.6F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_SPRUCE = registryBlock("lamp_japanese_spruce", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.6F, 0.6F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_MANGROVE = registryBlock("lamp_japanese_mangrove", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.6F, 0.6F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_CHERRY = registryBlock("lamp_japanese_cherry", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.6F, 0.6F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_BIRCH = registryBlock("lamp_japanese_birch", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.6F, 0.6F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_JUNGLE = registryBlock("lamp_japanese_jungle", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.6F, 0.6F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_ACACIA = registryBlock("lamp_japanese_acacia", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.6F, 0.6F)));
+    public static final RegistryObject<Block> LAMP_JAPANESE_DARK_OAK = registryBlock("lamp_japanese_dark_oak", () -> new JapLampBlock(BlockBehaviour.Properties.copy(Blocks.REDSTONE_LAMP).sound(SoundType.WOOD).strength(0.6F, 0.6F)));
 
     public static final RegistryObject<Block> DOOR_SHOJI_BLOSSOM = registryBlock("door_shoji_blossom", () -> new JapDoorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(3.0F).noOcclusion().ignitedByLava(), BlockSetType.CHERRY));
     public static final RegistryObject<Block> DOOR_SHOJI_BLOSSOM_SMALL = registryBlock("door_shoji_blossom_small", () -> new JapDoorBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).strength(3.0F).noOcclusion().ignitedByLava(), BlockSetType.CHERRY));
@@ -147,7 +145,7 @@ public class PrettyGuardianBlock {
     public static final RegistryObject<Block> SCREEN_JAPANESE_CHERRY_LOG = registryBlock("screen_japanese_cherry_log", () -> new JapScreenBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
     public static final RegistryObject<Block> SCREEN_JAPANESE_BIRCH = registryBlock("screen_japanese_birch", () -> new JapScreenBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
 
-    public static final RegistryObject<Block> SEA_SHELL = registryBlock("sea_shell", () -> new SeaShell(BlockBehaviour.Properties.copy(Blocks.TUBE_CORAL_BLOCK).sound(SoundType.WOOL).strength(0.2F, 0.2F)));
+    public static final RegistryObject<Block> SEA_SHELL = registryBlock("sea_shell", () -> new SeaShell(BlockBehaviour.Properties.copy(Blocks.TUBE_CORAL_BLOCK).sound(SoundType.CORAL_BLOCK)));
 
     public static final RegistryObject<Block> GEM_POLISHING_STATION = registryBlock("gem_polishing_station", () -> new GemPolishingStationBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> MOON_ALTAR = registryBlock("moon_altar", () -> new MoonAltarBlock(BlockBehaviour.Properties.copy(Blocks.ENCHANTING_TABLE).noOcclusion().requiresCorrectToolForDrops()));
