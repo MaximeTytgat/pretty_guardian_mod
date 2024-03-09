@@ -1,0 +1,6 @@
+{
+  "parent": "prettyguardian:item/base_scroll_item",
+  "textures": {
+    "texture": "prettyguardian:block/scroll_sunflower"
+  }
+}

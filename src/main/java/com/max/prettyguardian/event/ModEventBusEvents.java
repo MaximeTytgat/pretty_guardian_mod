@@ -13,11 +13,15 @@ import com.max.prettyguardian.networking.packet.PlayerEntityOnShoulderDataSCPack
 import com.max.prettyguardian.particle.ModParticles;
 import net.minecraft.client.Minecraft;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -32,5 +36,11 @@ public class ModEventBusEvents {
         event.put(ModEntities.CELESTIAL_RABBIT.get(), CelestialRabbitEntity.createAttributes().build());
         event.put(ModEntities.BUTTERFLY.get(), ButterflyEntity.createAttributes().build());
         event.put(ModEntities.FAIRY.get(), FairyEntity.createAttributes().build());
+    }
+
+    @SubscribeEvent
+    public static void registerSpawnPlacement(SpawnPlacementRegisterEvent event) {
+        event.register(ModEntities.STRAWBERRY_COW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 }

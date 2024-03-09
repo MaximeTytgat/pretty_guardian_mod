@@ -151,8 +151,8 @@ public class BubbleEntity extends Projectile {
 
             Vec3 $$5 = $$4.normalize();
 
-            double $$8 = 0.5 * (0.2 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
-            double $$9 = 2.5 * (0.2 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+            double $$8 = 0.5 * (0.5 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+            double $$9 = 2.5 * (0.5 - livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
 
             livingentity.push($$5.x() * $$9, $$5.y() * $$8, $$5.z() * $$9);
         }

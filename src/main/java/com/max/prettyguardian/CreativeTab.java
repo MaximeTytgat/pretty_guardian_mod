@@ -253,6 +253,10 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.SCROLL_JAPANESE_BEE.get());
                 output.accept(PrettyGuardianBlock.SCROLL_JAPANESE_CINNAMON_ROLL.get());
                 output.accept(PrettyGuardianBlock.SCROLL_JAPANESE_MUSHROOM.get());
+                output.accept(PrettyGuardianBlock.SCROLL_JAPANESE_DAY.get());
+                output.accept(PrettyGuardianBlock.SCROLL_JAPANESE_NIGHT.get());
+                output.accept(PrettyGuardianBlock.SCROLL_JAPANESE_DAY_2.get());
+                output.accept(PrettyGuardianBlock.SCROLL_JAPANESE_SUNFLOWER.get());
 
                 output.accept(PrettyGuardianBlock.DOOR_SHOJI_BLOSSOM.get());
                 output.accept(PrettyGuardianBlock.DOOR_SHOJI_BLOSSOM_SMALL.get());

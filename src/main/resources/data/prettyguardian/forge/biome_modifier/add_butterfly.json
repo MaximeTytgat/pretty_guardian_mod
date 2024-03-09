@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "minecraft:cherry_grove",
+  "spawners": {
+    "type": "prettyguardian:butterfly",
+    "maxCount": 3,
+    "minCount": 2,
+    "weight": 4
+  }
+}

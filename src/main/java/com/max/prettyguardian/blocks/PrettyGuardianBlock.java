@@ -162,6 +162,10 @@ public class PrettyGuardianBlock {
     public static final RegistryObject<Block> SCROLL_JAPANESE_BEE = registryBlock("scroll_japanese_bee", () -> new JapScrollBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
     public static final RegistryObject<Block> SCROLL_JAPANESE_CINNAMON_ROLL = registryBlock("scroll_japanese_cinnamon_roll", () -> new JapScrollBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
     public static final RegistryObject<Block> SCROLL_JAPANESE_MUSHROOM = registryBlock("scroll_japanese_mushroom", () -> new JapScrollBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> SCROLL_JAPANESE_DAY = registryBlock("scroll_japanese_day", () -> new JapScrollBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> SCROLL_JAPANESE_NIGHT = registryBlock("scroll_japanese_night", () -> new JapScrollBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> SCROLL_JAPANESE_DAY_2 = registryBlock("scroll_japanese_day2", () -> new JapScrollBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
+    public static final RegistryObject<Block> SCROLL_JAPANESE_SUNFLOWER = registryBlock("scroll_japanese_sunflower", () -> new JapScrollBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).sound(SoundType.WOOD).strength(2.5F, 2.5F)));
 
     public static final RegistryObject<Block> BONZAI_CHERRY = registryBlock("cherry_bonzai", () -> new JapBonzaiBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).strength(2.5F, 2.5F)));
     public static final RegistryObject<Block> LUCKY_NEKO = registryBlock("lucky_neko", () -> new LuckyNekoBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion().requiresCorrectToolForDrops()));

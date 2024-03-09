@@ -83,7 +83,7 @@ public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<F
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(5, new FlyAroundStructureGoal(this, 1.0));
+//        this.goalSelector.addGoal(5, new FlyAroundStructureGoal(this, 1.0));
         this.goalSelector.addGoal(5, new FairyEntity.RandomFloatAroundGoal(this)); // Priorité arbitraire
         this.goalSelector.addGoal(5, new FairyEntity.GhastLookGoal(this));
 

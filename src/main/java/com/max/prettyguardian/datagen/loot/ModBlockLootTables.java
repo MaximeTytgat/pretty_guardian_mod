@@ -97,6 +97,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(PrettyGuardianBlock.SCROLL_JAPANESE_BEE.get(), this::createBonzaiLootTable);
         this.add(PrettyGuardianBlock.SCROLL_JAPANESE_CINNAMON_ROLL.get(), this::createBonzaiLootTable);
         this.add(PrettyGuardianBlock.SCROLL_JAPANESE_MUSHROOM.get(), this::createBonzaiLootTable);
+        this.add(PrettyGuardianBlock.SCROLL_JAPANESE_DAY.get(), this::createBonzaiLootTable);
+        this.add(PrettyGuardianBlock.SCROLL_JAPANESE_NIGHT.get(), this::createBonzaiLootTable);
+        this.add(PrettyGuardianBlock.SCROLL_JAPANESE_DAY_2.get(), this::createBonzaiLootTable);
+        this.add(PrettyGuardianBlock.SCROLL_JAPANESE_SUNFLOWER.get(), this::createBonzaiLootTable);
 
         this.dropSelf(PrettyGuardianBlock.LAMP_JAPANESE_OAK.get());
         this.dropSelf(PrettyGuardianBlock.LAMP_JAPANESE_BIRCH.get());

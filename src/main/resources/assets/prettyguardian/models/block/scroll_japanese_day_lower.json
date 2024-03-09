@@ -1,0 +1,6 @@
+{
+  "parent": "prettyguardian:block/base_scroll_lower",
+  "textures": {
+    "texture": "prettyguardian:block/scroll_day"
+  }
+}

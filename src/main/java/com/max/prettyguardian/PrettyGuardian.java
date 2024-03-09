@@ -77,7 +77,6 @@ public class PrettyGuardian
         ModPotions.register(modEventBus);
         ModStructures.register(modEventBus);
 
-
         modEventBus.register(this);
 
         // Register the commonSetup method for modloading
