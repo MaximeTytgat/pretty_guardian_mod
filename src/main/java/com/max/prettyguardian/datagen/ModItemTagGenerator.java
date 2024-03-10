@@ -56,7 +56,7 @@ public class ModItemTagGenerator extends ItemTagsProvider {
 
         this.tag(ModTags.Items.STAFF_ITEM)
                 .add(
-                        PrettyGuardianItem.ETERNAL_SILVER_CISTAL_STAFF.get(),
+                        PrettyGuardianItem.ETERNAL_SILVER_CRISTAL_STAFF.get(),
                         PrettyGuardianItem.CUTIE_MOON_ROD.get(),
                         PrettyGuardianItem.ETERNAL_TIARE.get(),
                         PrettyGuardianItem.MOON_KALEIDOSCOPE.get(),

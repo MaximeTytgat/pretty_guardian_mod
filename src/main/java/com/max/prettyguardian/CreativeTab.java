@@ -156,7 +156,7 @@ public class CreativeTab {
                 output.accept(PrettyGuardianItem.RUBY_LEGGINGS.get());
                 output.accept(PrettyGuardianItem.RUBY_BOOTS.get());
 
-                output.accept(PrettyGuardianItem.ETERNAL_SILVER_CISTAL_STAFF.get());
+                output.accept(PrettyGuardianItem.ETERNAL_SILVER_CRISTAL_STAFF.get());
 
                 output.accept(PrettyGuardianItem.CUPIDON_BOW.get());
                 output.accept(PrettyGuardianItem.HEART_ARROW.get());

@@ -2,7 +2,6 @@ package com.max.prettyguardian.event;
 
 import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.blocks.PrettyGuardianBlock;
-import com.max.prettyguardian.blocks.custom.food.BaseCake;
 import com.max.prettyguardian.client.ClientPlayerEntityOnShoulderData;
 import com.max.prettyguardian.entity.ModEntities;
 import com.max.prettyguardian.entity.custom.CelestialRabbitEntity;
@@ -26,7 +25,6 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -38,7 +36,6 @@ import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
 import java.util.Objects;
@@ -124,8 +121,6 @@ public class ModEvents {
                                 Component name = celestialRabbit.hasCustomName() ? celestialRabbit.getCustomName() : null;
                                 boolean isInSittingPose = celestialRabbit.isInSittingPose();
 
-                                PrettyGuardian.LOGGER.info("ID of the rabbit: " + id);
-
                                 entityOnShoulder.setEntityOnShoulder(id, ModEntities.CELESTIAL_RABBIT.get(), collarColor, name, isInSittingPose);
 
                                 livingEntity.discard();
@@ -154,30 +149,6 @@ public class ModEvents {
                             entityOnShoulder.getId() != null ? entityOnShoulder.getId() : ""
                     ), player);
                 });
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void onPlayerTick(TickEvent.ClientTickEvent event) {
-        Minecraft MC = Minecraft.getInstance();
-        Player player = MC.player;
-        if(player != null && player.tickCount % 10 == 0 && player.level().isClientSide() && !MC.isPaused()) {
-            boolean hasEntityOnShoulder = ClientPlayerEntityOnShoulderData.getHasEntityOnShoulder();
-            if (hasEntityOnShoulder) {
-                Random random = new Random();
-                Vec3 look = player.getLookAngle();
-                double angleRadians = Math.atan2(look.z, look.x);
-                double angleDegrees = Math.toDegrees(angleRadians);
-                angleDegrees += 270;
-                float distance = 0.4F;
-                double offsetX = Math.cos(Math.toRadians(angleDegrees)) * distance;
-                double offsetZ = Math.sin(Math.toRadians(angleDegrees)) * distance;
-
-                for(int i = 0; i < 3; ++i) {
-                    player.level().addParticle(ModParticles.CELESTIAL_RABBIT_PARTICLES.get(), player.getX() + offsetX, player.getY() + 1.6f, player.getZ() + offsetZ, (random.nextDouble() - 0.5) * 2.0, -random.nextDouble(), (random.nextDouble() - 0.5) * 2.0);
-                }
-
             }
         }
     }

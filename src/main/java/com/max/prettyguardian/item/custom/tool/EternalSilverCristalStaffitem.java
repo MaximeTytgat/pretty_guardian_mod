@@ -105,7 +105,7 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
     }
 
     public static void setPlayerStaffCooldown(Player player, int cooldown) {
-        player.getCooldowns().addCooldown(PrettyGuardianItem.ETERNAL_SILVER_CISTAL_STAFF.get(), cooldown);
+        player.getCooldowns().addCooldown(PrettyGuardianItem.ETERNAL_SILVER_CRISTAL_STAFF.get(), cooldown);
         player.getCooldowns().addCooldown(PrettyGuardianItem.CUTIE_MOON_ROD.get(), cooldown);
         player.getCooldowns().addCooldown(PrettyGuardianItem.ETERNAL_TIARE.get(), cooldown);
         player.getCooldowns().addCooldown(PrettyGuardianItem.MOON_KALEIDOSCOPE.get(), cooldown);

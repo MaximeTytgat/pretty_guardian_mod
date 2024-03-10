@@ -26,6 +26,9 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<GiftBoxMenu>> GIFT_BOX_MENU =
             registerMenuType("gift_box_menu", GiftBoxMenu::new);
 
+    public static final RegistryObject<MenuType<FakeLoveLetterMenu>> LETTER_EDITOR_MENU =
+            registerMenuType("letter_editor_menu", FakeLoveLetterMenu::new);
+
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));
     }

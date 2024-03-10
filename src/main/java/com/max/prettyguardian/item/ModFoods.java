@@ -6,6 +6,8 @@ import net.minecraft.world.food.FoodProperties;
 
 public class ModFoods {
 
+    public static final FoodProperties BASE = (new FoodProperties.Builder())
+            .nutrition(1).saturationMod(0.2F).build();
     public static final FoodProperties STRAWBERRY = (new FoodProperties.Builder())
             .nutrition(2).saturationMod(0.3F).build();
     public static final FoodProperties CHOCOLATE_HEART = (new FoodProperties.Builder())
@@ -36,9 +38,9 @@ public class ModFoods {
     public static final FoodProperties SMORE = (new FoodProperties.Builder())
             .nutrition(8).saturationMod(0.75F).build();
     public static final FoodProperties DONUT = (new FoodProperties.Builder())
-            .nutrition(0).saturationMod(0F).build();
+            .nutrition(3).saturationMod(0.2F).build();
     public static final FoodProperties MOCHI_DONUT = (new FoodProperties.Builder())
-            .nutrition(0).saturationMod(0F).build();
+            .nutrition(3).saturationMod(0.2F).build();
     public static final FoodProperties RHUM = (new FoodProperties.Builder())
             .nutrition(1).saturationMod(0.1F).build();
     public static final FoodProperties CANDY_APPLE = (new FoodProperties.Builder())
@@ -63,7 +65,7 @@ public class ModFoods {
             .meat().build();
 
     public static final FoodProperties SQUID_COOKED = (new FoodProperties.Builder())
-            .nutrition(6).saturationMod(0.75F).meat().build();
+            .nutrition(8).saturationMod(0.75F).meat().build();
     public static final FoodProperties ICE_CREAM_WAFFLE = (new FoodProperties.Builder())
             .nutrition(8).saturationMod(0.60F).meat().build();
 

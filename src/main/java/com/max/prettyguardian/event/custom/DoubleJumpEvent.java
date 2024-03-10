@@ -54,6 +54,6 @@ public class DoubleJumpEvent {
     }
 
     public static final Predicate<ItemStack> ETERNAL_SILVER_CISTAL_STAFF_ONLY = (itemStack) -> {
-        return itemStack.is(PrettyGuardianItem.ETERNAL_SILVER_CISTAL_STAFF.get());
+        return itemStack.is(PrettyGuardianItem.ETERNAL_SILVER_CRISTAL_STAFF.get());
     };
 }

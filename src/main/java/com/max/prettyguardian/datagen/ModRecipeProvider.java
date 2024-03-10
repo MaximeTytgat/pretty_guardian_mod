@@ -640,7 +640,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(PrettyGuardianItem.FAIRY_DUST.get()), has(PrettyGuardianItem.FAIRY_DUST.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PrettyGuardianItem.HEART_ARROW.get(), 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, PrettyGuardianItem.HEART_ARROW.get(), 3)
                 .pattern("A")
                 .pattern("B")
                 .pattern("C")

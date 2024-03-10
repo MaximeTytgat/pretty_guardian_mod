@@ -108,7 +108,6 @@ public class MoonAltarBlockEntity extends RandomizableContainerBlockEntity imple
 
     @Override
     public void setItem(int i, ItemStack itemStack) {
-        PrettyGuardian.LOGGER.info("Setting item");
         this.unpackLootTable((Player)null);
         if (itemStack.getItem() == PrettyGuardianItem.PLUTONS_KEY.get()) {
             this.getItems().set(0, itemStack);
@@ -138,7 +137,6 @@ public class MoonAltarBlockEntity extends RandomizableContainerBlockEntity imple
 
     public void tick(Level level, BlockPos pPos, BlockState pState) {
         if (hasRecipe()) {
-            PrettyGuardian.LOGGER.info("Has recipe");
             setChanged(level, pPos, pState);
             craftItem();
         }

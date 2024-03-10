@@ -2,22 +2,15 @@ package com.max.prettyguardian.event.custom;
 
 import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.blocks.custom.furniture.JapChairBlock;
-import com.max.prettyguardian.item.PrettyGuardianItem;
-import com.max.prettyguardian.item.custom.food.ClassicDonut;
 import com.max.prettyguardian.worldgen.entity.ModEntityType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
@@ -28,7 +21,7 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.List;
 
 @Mod.EventBusSubscriber(modid = PrettyGuardian.MOD_ID, value = Dist.CLIENT)
-public class JapChairEvent {
+public class  JapChairEvent {
     @SubscribeEvent
     public static void onIteractWithBlock(PlayerInteractEvent.RightClickBlock event) {
         if (!event.getSide().isClient()) {

@@ -13,6 +13,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import java.util.Objects;
 import java.util.OptionalInt;
 
+@OnlyIn(Dist.CLIENT)
 public class CustomMultiLineTextWidget extends AbstractStringWidget {
     private OptionalInt maxWidth;
     private OptionalInt maxRows;

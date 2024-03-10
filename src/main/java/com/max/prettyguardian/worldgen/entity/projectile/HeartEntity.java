@@ -133,7 +133,6 @@ public class HeartEntity extends Projectile {
 
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
-        PrettyGuardian.LOGGER.info("getOwner " + this.getOwner());
         if (entityHitResult.getEntity() == this.getOwner()) {
             return;
         }
