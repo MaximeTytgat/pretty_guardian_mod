@@ -42,6 +42,7 @@ public class CreativeTab {
                 output.accept(PrettyGuardianBlock.MAGIC_PIE.get());
                 output.accept(PrettyGuardianBlock.LEMON_PIE.get());
                 output.accept(PrettyGuardianBlock.STRAWBERRY_PIE.get());
+                output.accept(PrettyGuardianItem.CARAMEL.get());
                 output.accept(PrettyGuardianItem.RAW_BOBA.get());
                 output.accept(PrettyGuardianItem.BOBA.get());
                 output.accept(PrettyGuardianItem.LEMON.get());
