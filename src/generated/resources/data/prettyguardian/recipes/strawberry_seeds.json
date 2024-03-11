@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "prettyguardian:strawberry"
+    }
+  ],
+  "result": {
+    "item": "prettyguardian:strawberry_seeds"
+  }
+}

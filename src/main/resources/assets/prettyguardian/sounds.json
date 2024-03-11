@@ -59,5 +59,26 @@
         "name": "prettyguardian:eternal_silver_cristal_staff_shoot"
       }
     ]
+  },
+  "test_1": {
+    "sounds": [
+      {
+        "name": "prettyguardian:test_1"
+      }
+    ]
+  },
+  "test_2": {
+    "sounds": [
+      {
+        "name": "prettyguardian:test_2"
+      }
+    ]
+  },
+  "test_3": {
+    "sounds": [
+      {
+        "name": "prettyguardian:test_3"
+      }
+    ]
   }
 }

@@ -651,6 +651,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(Items.ARROW), has(Items.ARROW))
                 .unlockedBy(getHasName(PrettyGuardianItem.FAIRY_DUST.get()), has(PrettyGuardianItem.FAIRY_DUST.get()))
                 .save(pWriter);
+
+        simpleShapeless(pWriter, RecipeCategory.MISC, PrettyGuardianItem.STRAWBERRY_SEEDS.get(), 1, PrettyGuardianItem.STRAWBERRY.get());
+        simpleShapeless(pWriter, RecipeCategory.MISC, PrettyGuardianItem.MINT_SEEDS.get(), 1, PrettyGuardianItem.MINT.get());
+        simpleShapeless(pWriter, RecipeCategory.MISC, PrettyGuardianItem.VANILLA_SEEDS.get(), 1, PrettyGuardianItem.VANILLA.get());
+
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> p_250654_, List<ItemLike> p_250172_, RecipeCategory p_250588_, ItemLike p_251868_, float p_250789_, int p_252144_, String p_251687_) {

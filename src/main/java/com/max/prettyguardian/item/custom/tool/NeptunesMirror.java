@@ -1,5 +1,6 @@
 package com.max.prettyguardian.item.custom.tool;
 
+import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.item.custom.projectiles.BubbleItem;
 import com.max.prettyguardian.worldgen.entity.projectile.BubbleEntity;
@@ -47,11 +48,9 @@ public class NeptunesMirror extends Item implements IThirdPersonAnimationProvide
 
     @Override
     public void onUseTick(Level level, LivingEntity livingEntity, ItemStack itemStack, int i) {
+        PrettyGuardian.LOGGER.info("onUseTick " + livingEntity);
         if (livingEntity instanceof Player player) {
             float damage = 0.0F;
-            if (player.getName().getString().equals("LittlePokky")) {
-                damage = 999.9F;
-            }
             ItemStack itemstack = new ItemStack(PrettyGuardianItem.BUBBLE.get());
             BubbleItem arrowitem = (BubbleItem) PrettyGuardianItem.BUBBLE.get();
             BubbleEntity abstractBubble = arrowitem.createArrow(level, itemstack, player, damage);

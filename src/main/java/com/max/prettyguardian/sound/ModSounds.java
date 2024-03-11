@@ -19,6 +19,9 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> CUTE_WAND_SHOOT = registerSoundEvents("cute_want_shoot");
     public static final RegistryObject<SoundEvent> FAIRY = registerSoundEvents("fairy");
     public static final RegistryObject<SoundEvent> ETERNAL_SILVER_CRISTAL_STAFF_SHOOT = registerSoundEvents("eternal_silver_cristal_staff_shoot");
+    public static final RegistryObject<SoundEvent> TEST_1 = registerSoundEvents("test_1");
+    public static final RegistryObject<SoundEvent> TEST_2 = registerSoundEvents("test_2");
+    public static final RegistryObject<SoundEvent> TEST_3 = registerSoundEvents("test_3");
 
     private static RegistryObject<SoundEvent> registerSoundEvents(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(PrettyGuardian.MOD_ID, name)));
