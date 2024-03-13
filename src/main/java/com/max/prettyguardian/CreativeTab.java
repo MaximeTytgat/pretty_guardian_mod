@@ -3,6 +3,7 @@ package com.max.prettyguardian;
 import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -13,6 +14,7 @@ public class CreativeTab {
     // Creates a creative tab with the id "prettyguardian:example_tab" for the example item, that is placed after the combat tab
     public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("pretty_guardian", () -> CreativeModeTab.builder()
             .icon(() -> PrettyGuardianItem.CHOCOLATE.get().getDefaultInstance())
+            .title(Component.literal("Pretty Guardian"))
             .displayItems((parameters, output) -> {
                 output.accept(PrettyGuardianBlock.CREAM_CAKE.get());
                 output.accept(PrettyGuardianBlock.STRAWBERRY_CAKE.get());
