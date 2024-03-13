@@ -31,10 +31,20 @@ public class ModRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
         SimpleCookingRecipeBuilder.generic(
-                Ingredient.of(Items.SUGAR), RecipeCategory.MISC, PrettyGuardianItem.CARAMEL.get(), 0.35F, 200, RecipeSerializer.SMELTING_RECIPE)
+                        Ingredient.of(Items.SUGAR), RecipeCategory.MISC, PrettyGuardianItem.CARAMEL.get(), 0.35F, 200, RecipeSerializer.SMELTING_RECIPE)
                 .group("caramel_from_sugar")
                 .unlockedBy(getHasName(Items.SUGAR), has(Items.SUGAR))
                 .save(pWriter);
+
+        SimpleCookingRecipeBuilder.generic(
+                        Ingredient.of(PrettyGuardianBlock.PINK_SAPPHIRE_ORE.get()), RecipeCategory.MISC, PrettyGuardianItem.PINK_SAPPHIRE.get(), 0.35F, 200, RecipeSerializer.SMELTING_RECIPE)
+                .unlockedBy(getHasName(PrettyGuardianBlock.PINK_SAPPHIRE_ORE.get()), has(PrettyGuardianBlock.PINK_SAPPHIRE_ORE.get()))
+                .save(pWriter, new ResourceLocation(PrettyGuardian.MOD_ID, "pink_sapphire_from_ore"));
+
+        SimpleCookingRecipeBuilder.generic(
+                        Ingredient.of(PrettyGuardianBlock.DEEPSLATE_PINK_SAPPHIRE_ORE.get()), RecipeCategory.MISC, PrettyGuardianItem.PINK_SAPPHIRE.get(), 0.35F, 200, RecipeSerializer.SMELTING_RECIPE)
+                .unlockedBy(getHasName(PrettyGuardianBlock.DEEPSLATE_PINK_SAPPHIRE_ORE.get()), has(PrettyGuardianBlock.DEEPSLATE_PINK_SAPPHIRE_ORE.get()))
+                .save(pWriter, new ResourceLocation(PrettyGuardian.MOD_ID, "pink_sapphire_from_deepsalte_ore"));
 
         BlockIngotRecipes(pWriter,
                 PrettyGuardianBlock.PINK_SAPPHIRE_BLOCK.get(),

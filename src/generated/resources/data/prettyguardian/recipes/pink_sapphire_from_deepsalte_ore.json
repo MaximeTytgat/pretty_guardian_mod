@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "prettyguardian:deepslate_pink_sapphire_ore"
+  },
+  "result": "prettyguardian:pink_sapphire"
+}
