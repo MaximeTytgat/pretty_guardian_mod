@@ -19,13 +19,13 @@ public class ModToolTiers {
     );
 
     public static final Tier PINK_SAPPHIRE = TierSortingRegistry.registerTier(
-            new ForgeTier(5, 1500, 5f, 4f, 25,
+            new ForgeTier(5, 1500, 8.0F, 3.0F, 25,
                     ModTags.Blocks.NEEDS_PINK_SAPPHIRE_TOOL, () -> Ingredient.of(PrettyGuardianItem.PINK_SAPPHIRE.get())),
             new ResourceLocation(PrettyGuardian.MOD_ID, "pink_sapphire"), List.of(Tiers.NETHERITE), List.of()
     );
 
     public static final Tier RUBY = TierSortingRegistry.registerTier(
-            new ForgeTier(6, 3000, 7f, 8f, 65,
+            new ForgeTier(6, 3000, 9.0F, 4.0F, 65,
                     ModTags.Blocks.NEEDS_PINK_SAPPHIRE_TOOL, () -> Ingredient.of(PrettyGuardianItem.PINK_SAPPHIRE.get())),
             new ResourceLocation(PrettyGuardian.MOD_ID, "ruby"), List.of(Tiers.NETHERITE), List.of()
     );

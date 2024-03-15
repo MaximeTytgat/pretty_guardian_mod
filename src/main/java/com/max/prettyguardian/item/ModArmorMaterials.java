@@ -10,10 +10,10 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    PINK_SAPPHIRE("pink_sapphire", 26, new int[]{5, 7, 5, 4}, 25,
+    PINK_SAPPHIRE("pink_sapphire", 26, new int[]{4, 9, 6, 4}, 25,
             SoundEvents.ARMOR_EQUIP_GOLD, 1.0F, 0.0F,
             () -> Ingredient.of(PrettyGuardianItem.PINK_SAPPHIRE.get())),
-    RUBY("ruby", 26, new int[]{5, 7, 5, 4}, 25,
+    RUBY("ruby", 26, new int[]{5, 10, 7, 5}, 25,
             SoundEvents.ARMOR_EQUIP_GOLD, 1.0F, 0.0F,
             () -> Ingredient.of(PrettyGuardianItem.RUBY.get()));
 
