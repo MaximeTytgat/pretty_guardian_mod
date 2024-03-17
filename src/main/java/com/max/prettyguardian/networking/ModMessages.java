@@ -2,6 +2,7 @@ package com.max.prettyguardian.networking;
 
 import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.networking.packet.PlayerEntityOnShoulderDataSCPacket;
+import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;

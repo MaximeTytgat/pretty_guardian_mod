@@ -55,6 +55,7 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
                 player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 1));
                 player.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 200, 1));
                 player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 1));
+                player.addEffect(new MobEffectInstance(MobEffects.HERO_OF_THE_VILLAGE, 200, 0));
 //            }
         }
         super.inventoryTick(itemStack, level, entity, i, b);

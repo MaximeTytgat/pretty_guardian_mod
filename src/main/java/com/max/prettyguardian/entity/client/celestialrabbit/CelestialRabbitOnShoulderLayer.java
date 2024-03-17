@@ -38,9 +38,8 @@ public class CelestialRabbitOnShoulderLayer<T extends Player> extends RenderLaye
     }
 
     private void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, T player, float limbSwing, float limbSwingAmount, float netHeadYaw, float headPitch, boolean leftShoulder) {
-        if(ClientPlayerEntityOnShoulderData.getHasEntityOnShoulder()) {
+        if(ClientPlayerEntityOnShoulderData.getHasEntityOnShoulder() && ClientPlayerEntityOnShoulderData.getPlayerId().equals(player.getStringUUID())) {
 
-            CelestialRabbitEntity pet = ModEntities.CELESTIAL_RABBIT.get().create(Minecraft.getInstance().level);
             poseStack.pushPose();
             poseStack.translate(leftShoulder ? 0.4F : -0.4F, player.isCrouching() ? -1.3F : -1.5F, 0.0F);
             poseStack.scale(0.75f, 0.75f, 0.75f);

@@ -51,8 +51,7 @@ public class CuteArrowEntity extends AbstractArrow {
         this.hited = true;
         super.onHitEntity(entityHitResult);
 
-        if (entityHitResult.getEntity() instanceof LivingEntity) {
-            LivingEntity livingEntity = (LivingEntity) entityHitResult.getEntity();
+        if (entityHitResult.getEntity() instanceof LivingEntity livingEntity) {
             livingEntity.addEffect(new MobEffectInstance(ModEffects.LOVE.get(), 100, 1));
         }
         // this, x, y, z, explosionStrength, setsFires, breakMode

@@ -13,9 +13,11 @@ import com.max.prettyguardian.networking.packet.PlayerEntityOnShoulderDataSCPack
 import com.max.prettyguardian.particle.ModParticles;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.npc.VillagerProfession;
@@ -30,6 +32,7 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
@@ -77,13 +80,34 @@ public class ModEvents {
                 return;
             }
 
-            if (player.isShiftKeyDown()) {
+            if (player.isShiftKeyDown() && event.getHand() == InteractionHand.MAIN_HAND && player.getItemInHand(InteractionHand.MAIN_HAND).getItem() == Items.AIR) {
                 if(event.getSide() == LogicalSide.SERVER) {
                     player.getCapability(PlayerEntityOnShoulderProvider.PLAYER_ENTITY_ON_SHOULDER_CAPABILITY).ifPresent(entityOnShoulder -> {
                         if(entityOnShoulder.getEntityType() != null && entityOnShoulder.getEntityType() == ModEntities.CELESTIAL_RABBIT.get()) {
                             CelestialRabbitEntity newRabbit = new CelestialRabbitEntity(ModEntities.CELESTIAL_RABBIT.get(), player.level());
 
-                            newRabbit.setPos(event.getPos().getX(), event.getPos().getY() + 1.5, event.getPos().getZ());
+                            Direction direction = event.getFace();
+                            switch (direction) {
+                                case UP:
+                                    newRabbit.setPos(event.getPos().getX() + 0.5, event.getPos().getY() + 1, event.getPos().getZ() + 0.5);
+                                    break;
+                                case DOWN:
+                                    newRabbit.setPos(event.getPos().getX() + 0.5, event.getPos().getY() - 1, event.getPos().getZ() + 0.5);
+                                    break;
+                                case NORTH:
+                                    newRabbit.setPos(event.getPos().getX() + 0.5, event.getPos().getY(), event.getPos().getZ() - 0.5);
+                                    break;
+                                case SOUTH:
+                                    newRabbit.setPos(event.getPos().getX() + 0.5, event.getPos().getY(), event.getPos().getZ() + 1.5);
+                                    break;
+                                case WEST:
+                                    newRabbit.setPos(event.getPos().getX() - 0.5, event.getPos().getY(), event.getPos().getZ() + 0.5);
+                                    break;
+                                case EAST:
+                                    newRabbit.setPos(event.getPos().getX() + 1.5, event.getPos().getY(), event.getPos().getZ() + 0.5);
+                                    break;
+                            }
+
                             newRabbit.setCollarColor(entityOnShoulder.getCollarColor());
                             newRabbit.setOrderedToSit(entityOnShoulder.isInSittingPose());
 
@@ -97,7 +121,7 @@ public class ModEvents {
                             ModMessages.sendToPlayer(
                                     new PlayerEntityOnShoulderDataSCPacket(
                                             entityOnShoulder.getEntityType() != null,
-                                            entityOnShoulder.getId() != null ? entityOnShoulder.getId() : ""
+                                            player.getStringUUID()
                                     ), (ServerPlayer) player);
                         }
                     });
@@ -128,7 +152,7 @@ public class ModEvents {
                                 ModMessages.sendToPlayer(
                                         new PlayerEntityOnShoulderDataSCPacket(
                                                 entityOnShoulder.getEntityType() != null,
-                                                entityOnShoulder.getId() != null ? entityOnShoulder.getId() : ""
+                                                player.getStringUUID()
                                         ), (ServerPlayer) player);
                             }
                         });
@@ -146,10 +170,36 @@ public class ModEvents {
                 player.getCapability(PlayerEntityOnShoulderProvider.PLAYER_ENTITY_ON_SHOULDER_CAPABILITY).ifPresent(entityOnShoulder -> {
                     ModMessages.sendToPlayer(new PlayerEntityOnShoulderDataSCPacket(
                             entityOnShoulder.getEntityType() != null,
-                            entityOnShoulder.getId() != null ? entityOnShoulder.getId() : ""
+                            player.getStringUUID()
                     ), player);
                 });
             }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onEntityDeath(LivingDeathEvent event) {
+        if(event.getEntity() instanceof Player player) {
+            player.getCapability(PlayerEntityOnShoulderProvider.PLAYER_ENTITY_ON_SHOULDER_CAPABILITY).ifPresent(entityOnShoulder -> {
+                if(entityOnShoulder.getEntityType() != null) {
+                    CelestialRabbitEntity newRabbit = new CelestialRabbitEntity(ModEntities.CELESTIAL_RABBIT.get(), player.level());
+                    newRabbit.setPos(player.getX(), player.getY() + 1.5, player.getZ());
+                    newRabbit.setCollarColor(entityOnShoulder.getCollarColor());
+                    newRabbit.setOrderedToSit(true);
+                    if (entityOnShoulder.getName() != null) newRabbit.setCustomName(entityOnShoulder.getName());
+                    newRabbit.tame(player);
+
+                    player.level().addFreshEntity(newRabbit);
+
+                    entityOnShoulder.letGoEntity();
+
+                    ModMessages.sendToPlayer(
+                            new PlayerEntityOnShoulderDataSCPacket(
+                                    entityOnShoulder.getEntityType() != null,
+                                    player.getStringUUID()
+                            ), (ServerPlayer) player);
+                }
+            });
         }
     }
 
