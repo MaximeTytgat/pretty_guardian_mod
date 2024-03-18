@@ -185,7 +185,7 @@ public class ModEvents {
                     CelestialRabbitEntity newRabbit = new CelestialRabbitEntity(ModEntities.CELESTIAL_RABBIT.get(), player.level());
                     newRabbit.setPos(player.getX(), player.getY() + 1.5, player.getZ());
                     newRabbit.setCollarColor(entityOnShoulder.getCollarColor());
-                    newRabbit.setOrderedToSit(true);
+                    newRabbit.setOrderedToSit(false);
                     if (entityOnShoulder.getName() != null) newRabbit.setCustomName(entityOnShoulder.getName());
                     newRabbit.tame(player);
 

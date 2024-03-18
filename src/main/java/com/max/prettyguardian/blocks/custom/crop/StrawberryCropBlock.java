@@ -64,7 +64,7 @@ public class StrawberryCropBlock extends CropBlock {
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         if (blockState.getValue(AGE) == MAX_AGE) {
             Random random = new Random();
-            int bonus_seed = random.nextInt(5) + 1;
+            int bonus_seed = random.nextInt(2) + 1;
 
             level.setBlockAndUpdate(blockPos, blockState.setValue(AGE, 0));
             level.addDestroyBlockEffect(blockPos, blockState);

@@ -12,6 +12,8 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -31,6 +33,8 @@ import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
+import net.minecraft.world.entity.monster.Phantom;
+import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -170,9 +174,9 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
         this.targetSelector.addGoal(3, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, this::isAngryAt));
 //        this.targetSelector.addGoal(5, new NonTameRandomTargetGoal<>(this, Animal.class, false, PREY_SELECTOR));
-        this.targetSelector.addGoal(6, new NonTameRandomTargetGoal<>(this, Turtle.class, false, Turtle.BABY_ON_LAND_SELECTOR));
-        this.targetSelector.addGoal(7, new NearestAttackableTargetGoal<>(this, AbstractSkeleton.class, false));
-        this.targetSelector.addGoal(8, new ResetUniversalAngerTargetGoal<>(this, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Phantom.class, false));
+        this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, Skeleton.class, false));
+        this.targetSelector.addGoal(7, new ResetUniversalAngerTargetGoal<>(this, true));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -381,10 +385,15 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                                     serverLevel.sendParticles(ModParticles.PINK_SONIC_BOOM_PARTICLES.get(), $$7.x, $$7.y, $$7.z, 1, 0.0, 0.0, 0.0, 0.0);
                                 }
 
-                                if (livingentity instanceof Player player && (player.getName().getString().equals("__max__________") || player.getName().getString().equals("Dev"))) {
+                                if (livingentity instanceof Player player && (player.getName().getString().equals("__Max__________") || player.getName().getString().equals("Dev"))) {
                                     player.heal(9999);
+                                    level().playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.FIREWORK_ROCKET_LARGE_BLAST_FAR, SoundSource.NEUTRAL, 1.0F, 1.0F);
                                 } else {
-                                    livingentity.hurt(CelestialRabbitEntity.this.damageSources().sonicBoom(CelestialRabbitEntity.this), 1.0F);
+                                    if (livingentity instanceof Phantom) {
+                                        livingentity.hurt(CelestialRabbitEntity.this.damageSources().sonicBoom(CelestialRabbitEntity.this), 10.0F);
+                                    } else {
+                                        livingentity.hurt(CelestialRabbitEntity.this.damageSources().sonicBoom(CelestialRabbitEntity.this), 1.0F);
+                                    }
 
                                     livingentity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 1));
                                     livingentity.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 1));
