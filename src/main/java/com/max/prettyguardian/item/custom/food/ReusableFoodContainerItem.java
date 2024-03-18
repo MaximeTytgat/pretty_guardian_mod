@@ -15,13 +15,14 @@ import javax.annotation.Nullable;
 
 public class ReusableFoodContainerItem extends Item {
     private final int DRINK_DURATION;
-    private boolean isDrink = true;
+    private final boolean isDrink;
     private final RegistryObject<Item> REUSE_ITEM;
 
     public ReusableFoodContainerItem(Properties properties, int drinkDuration, RegistryObject<Item> reuseItem) {
         super(properties);
         this.REUSE_ITEM = reuseItem;
         this.DRINK_DURATION = drinkDuration;
+        this.isDrink = true;
     }
 
     public ReusableFoodContainerItem(Properties properties, int drinkDuration, RegistryObject<Item> reuseItem, boolean isDrink) {
@@ -39,11 +40,18 @@ public class ReusableFoodContainerItem extends Item {
             serverplayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        if (livingEntity instanceof Player && !((Player)livingEntity).getAbilities().instabuild) {
+        if (livingEntity instanceof Player player && !player.getAbilities().instabuild) {
             itemStack.shrink(1);
         }
 
-        return itemStack.isEmpty() ? new ItemStack(REUSE_ITEM.get()) : itemStack;
+        if (itemStack.isEmpty()) {
+            return new ItemStack(REUSE_ITEM.get());
+        } else {
+            if (livingEntity instanceof Player player) {
+                player.addItem(new ItemStack(REUSE_ITEM.get()));
+            }
+            return itemStack;
+        }
     }
 
     public int getUseDuration(ItemStack itemStack) {
