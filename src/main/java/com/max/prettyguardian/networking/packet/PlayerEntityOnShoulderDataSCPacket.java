@@ -7,29 +7,32 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class PlayerEntityOnShoulderDataSCPacket {
-    private final Boolean hasEntityOnShoulder;
     private final String playerId;
+    private final boolean isEntityOnShoulder;
 
-    public PlayerEntityOnShoulderDataSCPacket(boolean hasEntityOnShoulder, String playerId) {
-        this.hasEntityOnShoulder = hasEntityOnShoulder;
+    public PlayerEntityOnShoulderDataSCPacket(String playerId, boolean isEntityOnShoulder) {
         this.playerId = playerId;
+        this.isEntityOnShoulder = isEntityOnShoulder;
     }
 
     public PlayerEntityOnShoulderDataSCPacket(FriendlyByteBuf buf) {
-        this.hasEntityOnShoulder = buf.readBoolean();
         this.playerId = buf.readUtf(32767);
+        this.isEntityOnShoulder = buf.readBoolean();
     }
 
     public void toBytes(FriendlyByteBuf buf) {
-        buf.writeBoolean(this.hasEntityOnShoulder);
         buf.writeUtf(this.playerId);
+        buf.writeBoolean(this.isEntityOnShoulder);
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
             // Here we are in the client
-            ClientPlayerEntityOnShoulderData.setEntityOnShoulder(this.hasEntityOnShoulder, this.playerId);
+            if (isEntityOnShoulder)
+                ClientPlayerEntityOnShoulderData.setEntityOnShoulder(this.playerId);
+            else
+                ClientPlayerEntityOnShoulderData.letGoEntity(this.playerId);
         });
         return true;
     }

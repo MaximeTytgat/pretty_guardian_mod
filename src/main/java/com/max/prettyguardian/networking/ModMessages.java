@@ -42,4 +42,7 @@ public class ModMessages {
     public static <MSG> void sendToPlayer(MSG message, ServerPlayer player) {
         INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), message);
     }
+    public static <MSG> void sendToAllPlayer(MSG message) {
+        INSTANCE.send(PacketDistributor.ALL.noArg(), message);
+    }
 }

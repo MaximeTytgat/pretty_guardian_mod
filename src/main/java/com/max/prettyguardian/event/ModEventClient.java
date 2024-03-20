@@ -25,7 +25,7 @@ public class ModEventClient {
         Minecraft MC = Minecraft.getInstance();
         Player player = MC.player;
         if(player != null && player.tickCount % 10 == 0 && player.level().isClientSide() && !MC.isPaused()) {
-            boolean hasEntityOnShoulder = ClientPlayerEntityOnShoulderData.getHasEntityOnShoulder();
+            boolean hasEntityOnShoulder = ClientPlayerEntityOnShoulderData.hasEntityOnShoulder(player.getStringUUID());
             if (hasEntityOnShoulder) {
                 Random random = new Random();
                 Vec3 look = player.getLookAngle();

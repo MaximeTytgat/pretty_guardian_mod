@@ -118,11 +118,12 @@ public class ModEvents {
 
                             entityOnShoulder.letGoEntity();
 
-                            ModMessages.sendToPlayer(
+                            ModMessages.sendToAllPlayer(
                                     new PlayerEntityOnShoulderDataSCPacket(
-                                            entityOnShoulder.getEntityType() != null,
-                                            player.getStringUUID()
-                                    ), (ServerPlayer) player);
+                                            player.getStringUUID(),
+                                            false
+                                    )
+                            );
                         }
                     });
                 }
@@ -149,11 +150,12 @@ public class ModEvents {
 
                                 livingEntity.discard();
 
-                                ModMessages.sendToPlayer(
+                                ModMessages.sendToAllPlayer(
                                         new PlayerEntityOnShoulderDataSCPacket(
-                                                entityOnShoulder.getEntityType() != null,
-                                                player.getStringUUID()
-                                        ), (ServerPlayer) player);
+                                                player.getStringUUID(),
+                                                true
+                                        )
+                                );
                             }
                         });
                     }
@@ -168,10 +170,12 @@ public class ModEvents {
         if(!event.getLevel().isClientSide()) {
             if(event.getEntity() instanceof ServerPlayer player) {
                 player.getCapability(PlayerEntityOnShoulderProvider.PLAYER_ENTITY_ON_SHOULDER_CAPABILITY).ifPresent(entityOnShoulder -> {
-                    ModMessages.sendToPlayer(new PlayerEntityOnShoulderDataSCPacket(
-                            entityOnShoulder.getEntityType() != null,
-                            player.getStringUUID()
-                    ), player);
+                    if (entityOnShoulder.getEntityType() != null) {
+                        ModMessages.sendToAllPlayer(new PlayerEntityOnShoulderDataSCPacket(
+                                player.getStringUUID(),
+                                true
+                        ));
+                    }
                 });
             }
         }
@@ -193,11 +197,12 @@ public class ModEvents {
 
                     entityOnShoulder.letGoEntity();
 
-                    ModMessages.sendToPlayer(
+                    ModMessages.sendToAllPlayer(
                             new PlayerEntityOnShoulderDataSCPacket(
-                                    entityOnShoulder.getEntityType() != null,
-                                    player.getStringUUID()
-                            ), (ServerPlayer) player);
+                                    player.getStringUUID(),
+                                    false
+                            )
+                    );
                 }
             });
         }

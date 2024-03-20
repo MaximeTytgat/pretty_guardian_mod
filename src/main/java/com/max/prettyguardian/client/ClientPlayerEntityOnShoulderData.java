@@ -1,20 +1,21 @@
 package com.max.prettyguardian.client;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ClientPlayerEntityOnShoulderData {
-    private static Boolean hasEntityOnShoulder;
-    private static String playerId;
+    private static List<String> playerIds = new ArrayList<>();
 
-    public static void setEntityOnShoulder(Boolean hasEntityOnShoulder, String playerId) {
-        ClientPlayerEntityOnShoulderData.hasEntityOnShoulder = hasEntityOnShoulder;
-        ClientPlayerEntityOnShoulderData.playerId = playerId;
+    public static void setEntityOnShoulder(String playerId) {
+        ClientPlayerEntityOnShoulderData.playerIds.add(playerId);
     }
 
-    public static Boolean getHasEntityOnShoulder() {
-        return hasEntityOnShoulder;
+    public static void letGoEntity(String playerId) {
+        ClientPlayerEntityOnShoulderData.playerIds.remove(playerId);
     }
 
-    public static String getPlayerId() {
-        return playerId;
+    public static boolean hasEntityOnShoulder(String playerId) {
+        return playerIds.contains(playerId);
     }
 }
