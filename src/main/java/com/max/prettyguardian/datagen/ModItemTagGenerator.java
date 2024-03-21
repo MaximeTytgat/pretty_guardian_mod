@@ -82,5 +82,12 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                         PrettyGuardianItem.TAVERN_MUSIC_DISC.get(),
                         PrettyGuardianItem.THE_LANTERN_FAIR_MUSIC_DISC.get()
                 );
+
+        this.tag(ItemTags.SAPLINGS)
+                .add(
+                        PrettyGuardianBlock.BOBA_SAPLING.get().asItem(),
+                        PrettyGuardianBlock.LEMON_SAPLING.get().asItem(),
+                        PrettyGuardianBlock.PISTACHIO_SAPLING.get().asItem()
+                );
     }
 }
