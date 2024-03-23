@@ -4,6 +4,7 @@ import com.max.prettyguardian.entity.ModEntities;
 import com.max.prettyguardian.entity.goal.StopMoveWhenOrderedToGoal;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.particle.ModParticles;
+import com.max.prettyguardian.sound.ModSounds;
 import com.max.prettyguardian.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -94,18 +95,20 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return super.getAmbientSound();
-    }
+        // random sound between 0 and 4
+        int random = this.random.nextInt(4);
 
-    @Nullable
-    @Override
-    protected SoundEvent getHurtSound(DamageSource p_21239_) {
-        return super.getHurtSound(p_21239_);
-    }
+        if (!this.walkAnimation.isMoving()) {
+            return switch (random) {
+                case 0 -> ModSounds.CELESTIAL_RABBIT_AMBIENT_SOUND_0.get();
+                case 1 -> ModSounds.CELESTIAL_RABBIT_AMBIENT_SOUND_1.get();
+                case 2 -> ModSounds.CELESTIAL_RABBIT_AMBIENT_SOUND_2.get();
+                case 3 -> ModSounds.CELESTIAL_RABBIT_AMBIENT_SOUND_3.get();
+                default -> ModSounds.CELESTIAL_RABBIT_AMBIENT_SOUND_0.get();
+            };
+        }
 
-    @Override
-    protected SoundEvent getDeathSound() {
-        return super.getDeathSound();
+        return null;
     }
 
     @Override
@@ -184,7 +187,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                 .add(Attributes.MAX_HEALTH, 80.0D)
                 .add(Attributes.ARMOR_TOUGHNESS, 10.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.25D)
-                .add(Attributes.FOLLOW_RANGE, 25.0D)
+                .add(Attributes.FOLLOW_RANGE, 40.0D)
                 .add(Attributes.ATTACK_DAMAGE, 2.0D)
                 .add(Attributes.ATTACK_KNOCKBACK, 2.0D)
                 .add(Attributes.ATTACK_SPEED, 2.0D)
@@ -374,6 +377,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                             this.attackTime = 60 + CelestialRabbitEntity.this.random.nextInt(10) * 20 / 2;
 
                             if (CelestialRabbitEntity.this.level() instanceof ServerLevel serverLevel) {
+                                CelestialRabbitEntity.this.level().playSound(null, CelestialRabbitEntity.this.getX(), CelestialRabbitEntity.this.getY(), CelestialRabbitEntity.this.getZ(), ModSounds.CELESTIAL_RABBIT_SHOOT.get(), SoundSource.NEUTRAL, 1.0F, 1.0F);
 
                                 Vec3 $$3 = CelestialRabbitEntity.this.position();
                                 Vec3 $$4 = livingentity.getEyePosition().subtract($$3);

@@ -60,24 +60,38 @@
       }
     ]
   },
-  "test_1": {
+  "celestial_rabbit_ambient_sound_0": {
     "sounds": [
       {
-        "name": "prettyguardian:test_1"
+        "name": "prettyguardian:celestial_rabbit_ambient_sound_0"
       }
     ]
   },
-  "test_2": {
+  "celestial_rabbit_ambient_sound_1": {
     "sounds": [
       {
-        "name": "prettyguardian:test_2"
+        "name": "prettyguardian:celestial_rabbit_ambient_sound_1"
       }
     ]
   },
-  "test_3": {
+  "celestial_rabbit_ambient_sound_2": {
     "sounds": [
       {
-        "name": "prettyguardian:test_3"
+        "name": "prettyguardian:celestial_rabbit_ambient_sound_2"
+      }
+    ]
+  },
+  "celestial_rabbit_ambient_sound_3": {
+    "sounds": [
+      {
+        "name": "prettyguardian:celestial_rabbit_ambient_sound_3"
+      }
+    ]
+  },
+  "celestial_rabbit_shoot": {
+    "sounds": [
+      {
+        "name": "prettyguardian:celestial_rabbit_shoot"
       }
     ]
   }

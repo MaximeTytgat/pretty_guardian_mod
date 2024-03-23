@@ -5,6 +5,7 @@ import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import com.max.prettyguardian.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.common.Mod;
@@ -36,6 +37,18 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 PrettyGuardianBlock.TABLE_JAPANESE_SPRUCE.get(),
                 PrettyGuardianBlock.TABLE_JAPANESE_CHERRY_LOG.get(),
                 PrettyGuardianBlock.TABLE_JAPANESE_CHERRY_PLANK.get()
+        );
+
+        this.tag(BlockTags.SAPLINGS).add(
+                PrettyGuardianBlock.BOBA_SAPLING.get(),
+                PrettyGuardianBlock.LEMON_SAPLING.get(),
+                PrettyGuardianBlock.PISTACHIO_SAPLING.get()
+        );
+
+        this.tag(BlockTags.LEAVES).add(
+                PrettyGuardianBlock.BOBA_LEAVES_CROP.get(),
+                PrettyGuardianBlock.LEMON_LEAVES_CROP.get(),
+                PrettyGuardianBlock.PISTACHIO_LEAVES_CROP.get()
         );
     }
 }
