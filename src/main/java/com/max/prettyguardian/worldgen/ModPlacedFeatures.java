@@ -32,11 +32,11 @@ public class ModPlacedFeatures {
 
         register(context, PINK_SAPPHIRE_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_PINK_SAPPHIRE_ORE_KEY),
                 ModOrePlacement.commonOrePlacement(7, // vein size
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-20))));
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-63), VerticalAnchor.absolute(-20))));
 
         register(context, RUBY_ORE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.OVERWORLD_RUBY_ORE_KEY),
-                ModOrePlacement.commonOrePlacement(4, // vein size
-                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-40))));
+                ModOrePlacement.commonOrePlacement(2, // vein size
+                        HeightRangePlacement.triangle(VerticalAnchor.absolute(-80), VerticalAnchor.absolute(-38))));
 
         register(context, PISTACHIO_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.PISTACHIO_KEY),
                 VegetationPlacements.treePlacement(RarityFilter.onAverageOnceEvery(20),

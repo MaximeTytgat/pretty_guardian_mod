@@ -20,8 +20,8 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = PrettyGuardian.MOD_ID, value = Dist.CLIENT)
-public class  JapChairEvent {
+@Mod.EventBusSubscriber(modid = PrettyGuardian.MOD_ID)
+public class JapChairEvent {
     @SubscribeEvent
     public static void onIteractWithBlock(PlayerInteractEvent.RightClickBlock event) {
         if (!event.getSide().isClient()) {
@@ -54,7 +54,7 @@ public class  JapChairEvent {
 
         public SeatJapChairEntity(Level level, BlockPos pos) {
             this(ModEntityType.SEAT_JAP_CHAIR.get(), level);
-            setPos(pos.getX() + 0.5D, pos.getY() + 0.2D, pos.getZ() + 0.5D);
+            setPos(pos.getX() + 0.5D, pos.getY() + 0.35D, pos.getZ() + 0.5D);
         }
 
         @Override
@@ -76,27 +76,19 @@ public class  JapChairEvent {
             for (Entity entity: passengers) {
                 if (entity instanceof Player player) {
                     if (player.isShiftKeyDown()) {
-                        this.ejectPassengers();
                         this.discard();
+                        player.setPos(player.getX(), player.getY() + 1D, player.getZ());
                     }
                 }
             }
         }
 
         @Override
-        protected void defineSynchedData() {
-
-        }
-
+        protected void defineSynchedData() {}
         @Override
-        protected void readAdditionalSaveData(CompoundTag compoundTag) {
-
-        }
-
+        protected void readAdditionalSaveData(CompoundTag compoundTag) {}
         @Override
-        protected void addAdditionalSaveData(CompoundTag compoundTag) {
-
-        }
+        protected void addAdditionalSaveData(CompoundTag compoundTag) {}
     }
 
     public static class SeatJapChairRenderer extends EntityRenderer<SeatJapChairEntity> {

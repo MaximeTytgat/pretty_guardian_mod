@@ -50,9 +50,9 @@ public class CuteWandItem extends BowItem  {
                 boolean flag1 = player.getAbilities().instabuild || (itemstack.getItem() instanceof HeartItem && ((HeartItem)itemstack.getItem()).isInfinite(itemstack, itemStack, player));
                 if (!level.isClientSide) {
                     float damage = 8.0F;
-                    if (player.getName().getString().equals("LittlePokky")) {
-                        damage = 999.9F;
-                    }
+//                    if (player.getName().getString().equals("LittlePokky")) {
+//                        damage = 999.9F;
+//                    }
                     HeartItem arrowitem = (HeartItem) PrettyGuardianItem.CUTE_HEART.get();
                     HeartEntity abstractarrow = arrowitem.createArrow(level, itemstack, player, damage);
 

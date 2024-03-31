@@ -1,0 +1,61 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pink_sapphire_leggings": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:pink_sapphire_leggings"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ruby": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:ruby"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ruby_template_upgrade": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:ruby_template_upgrade"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "prettyguardian:ruby_leggings_from_pink_sapphire_leggings"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_ruby_template_upgrade",
+      "has_pink_sapphire_leggings",
+      "has_ruby",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "prettyguardian:ruby_leggings_from_pink_sapphire_leggings"
+    ]
+  },
+  "sends_telemetry_event": false
+}

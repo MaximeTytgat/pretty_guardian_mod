@@ -142,8 +142,8 @@ public class StarLightEntity extends Projectile {
         }
         Entity entity = entityHitResult.getEntity();
         Entity entity1 = this.getOwner();
-        LivingEntity livingentity = entity1 instanceof LivingEntity ? (LivingEntity)entity1 : null;
-        if (entity instanceof Player player && (player.getName().getString().equals("__Max__________"))) {
+        LivingEntity livingentity = entity1 instanceof LivingEntity ? (LivingEntity) entity1 : null;
+        if (entity instanceof Player player && (player.getName().getString().equals("___Max__________"))) {
             player.heal(9999);
         } else {
             entity.hurt(this.damageSources().mobProjectile(this, livingentity), this.baseDamage);

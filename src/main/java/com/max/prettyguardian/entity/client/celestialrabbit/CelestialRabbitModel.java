@@ -35,7 +35,7 @@ public class CelestialRabbitModel<T extends Entity> extends HierarchicalModel<T>
 	private final ModelPart tail4;
 
 
-//	public final ModelPart flame;
+	public final ModelPart flame;
 
 
 
@@ -65,8 +65,8 @@ public class CelestialRabbitModel<T extends Entity> extends HierarchicalModel<T>
 		PartDefinition ear_right2 = ear_right.addOrReplaceChild("ear_right2", CubeListBuilder.create().texOffs(44, 29).mirror().addBox(-1.0F, 0.0F, -2.25F, 2.0F, 7.0F, 4.5F, new CubeDeformation(0.0F)).mirror(false)
 				.texOffs(0, 30).addBox(-1.5F, 2.0F, -2.75F, 3.0F, 1.0F, 5.5F, new CubeDeformation(0.0F)), PartPose.offset(-1.0F, 3.5F, 0.0F));
 
-//		PartDefinition flame = head.addOrReplaceChild("flame", CubeListBuilder.create().texOffs(54, 48).addBox(-2.5F, -5.0F, 0.0F, 5.0F, 5.0F, 0.0F, new CubeDeformation(0.0F))
-//				.texOffs(54, 43).addBox(0.0F, -5.0F, -2.5F, 0.0F, 5.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -3.0F, -2.5F));
+		PartDefinition flame = head.addOrReplaceChild("flame", CubeListBuilder.create().texOffs(54, 48).addBox(-2.5F, -5.0F, 0.0F, 5.0F, 5.0F, 0.0F, new CubeDeformation(0.0F))
+				.texOffs(54, 43).addBox(0.0F, -5.0F, -2.5F, 0.0F, 5.0F, 5.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -3.0F, -2.5F));
 
 		PartDefinition legs = body.addOrReplaceChild("legs", CubeListBuilder.create(), PartPose.offset(0.0F, 1.0F, -0.5F));
 
@@ -105,7 +105,7 @@ public class CelestialRabbitModel<T extends Entity> extends HierarchicalModel<T>
 		this.tail2 = this.celestial_rabbit.getChild("body").getChild("tail").getChild("tail2");
 		this.tail3 = this.celestial_rabbit.getChild("body").getChild("tail").getChild("tail2").getChild("tail3");
 		this.tail4 = this.celestial_rabbit.getChild("body").getChild("tail").getChild("tail2").getChild("tail3").getChild("tail4");
-//		this.flame = this.head.getChild("flame");
+		this.flame = this.head.getChild("flame");
 	}
 
 	@Override

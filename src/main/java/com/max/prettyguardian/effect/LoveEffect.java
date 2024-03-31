@@ -41,6 +41,7 @@ public class LoveEffect extends MobEffect {
 
             livingEntity.level().addParticle(ModParticles.LOVE_PARTICLES.get(), livingEntity.getX() + offsetX, livingEntity.getY() + 2 + f, livingEntity.getZ() + offsetZ, 0.0D, 0.0D, 0.0D);
         }
+
         super.applyEffectTick(livingEntity, pAmplifier);
     }
 

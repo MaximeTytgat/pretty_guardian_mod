@@ -54,13 +54,11 @@ public class ModConfiguredFeatures {
                         PrettyGuardianBlock.PINK_SAPPHIRE_ORE.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceabeles, PrettyGuardianBlock.DEEPSLATE_PINK_SAPPHIRE_ORE.get().defaultBlockState()));
 
-        register(context, OVERWORLD_PINK_SAPPHIRE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldPinkSapphireOres, 4)); // vein per chunk
+        register(context, OVERWORLD_PINK_SAPPHIRE_ORE_KEY, Feature.ORE, new OreConfiguration(overworldPinkSapphireOres, 2)); // vein per chunk
 
-        List<OreConfiguration.TargetBlockState> overworldRubyOres = List.of(OreConfiguration.target(stoneReplaceabeles,
-                        PrettyGuardianBlock.RUBY_ORE.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceabeles, PrettyGuardianBlock.DEEPSLATE_RUBY_ORE.get().defaultBlockState()));
+        List<OreConfiguration.TargetBlockState> overworldRubyOres = List.of(OreConfiguration.target(deepslateReplaceabeles, PrettyGuardianBlock.DEEPSLATE_RUBY_ORE.get().defaultBlockState()));
 
-        register(context, OVERWORLD_RUBY_ORE_KEY, Feature.ORE, new OreConfiguration(overworldRubyOres, 2)); // vein per chunk
+        register(context, OVERWORLD_RUBY_ORE_KEY, Feature.ORE, new OreConfiguration(overworldRubyOres, 3)); // vein per chunk
 
         register(context, PISTACHIO_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.OAK_LOG.defaultBlockState()),

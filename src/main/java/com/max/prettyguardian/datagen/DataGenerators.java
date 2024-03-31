@@ -1,4 +1,4 @@
-package com.max.prettyguardian.datagen;
+    package com.max.prettyguardian.datagen;
 
 import com.max.prettyguardian.PrettyGuardian;
 import net.minecraft.core.HolderLookup;

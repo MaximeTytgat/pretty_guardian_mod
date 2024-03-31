@@ -49,13 +49,13 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
     public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int i, boolean b) {
         if (entity instanceof Player player) {
 //            if (player.getName().getString().equals("LittlePokky")) {
-                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 1));
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1));
-                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 1));
-                player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 1));
-                player.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 200, 1));
-                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 1));
-                player.addEffect(new MobEffectInstance(MobEffects.HERO_OF_THE_VILLAGE, 200, 0));
+                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 1,false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1,false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 1,false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 200, 1,false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 200, 1,false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 1,false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.HERO_OF_THE_VILLAGE, 200, 0,false, false));
 //            }
         }
         super.inventoryTick(itemStack, level, entity, i, b);

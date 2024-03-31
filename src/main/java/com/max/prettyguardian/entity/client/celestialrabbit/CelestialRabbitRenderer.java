@@ -18,7 +18,7 @@ public class CelestialRabbitRenderer extends MobRenderer<CelestialRabbitEntity, 
         this.addLayer(new CelestialRabbitGlowLayer<>(this));
         this.addLayer(new CelestialRabbitCollarLayer<>(this));
         this.addLayer(new CelestialRabbitCollarPearlLayer<>(this));
-//        this.addLayer(new CelestialRabbitFlameLayer<>(this));
+        this.addLayer(new CelestialRabbitFlameLayer<>(this));
     }
 
     @Override

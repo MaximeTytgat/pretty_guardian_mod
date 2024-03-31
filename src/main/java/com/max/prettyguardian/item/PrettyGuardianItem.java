@@ -14,12 +14,16 @@ import com.max.prettyguardian.item.custom.projectiles.HeartItem;
 import com.max.prettyguardian.item.custom.projectiles.StarLightItem;
 import com.max.prettyguardian.item.custom.tool.*;
 import com.max.prettyguardian.sound.ModSounds;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.List;
 
 public class PrettyGuardianItem {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, PrettyGuardian.MOD_ID);
@@ -137,7 +141,7 @@ public class PrettyGuardianItem {
     public static final RegistryObject<Item> BUBBLE = ITEMS.register("bubble", () -> new BubbleItem(new Item.Properties(), 2F));
     public static final RegistryObject<Item> STAR_LIGHT = ITEMS.register("star_light", () -> new StarLightItem(new Item.Properties(), 5.9F));
     public static final RegistryObject<Item> ETERNAL_SILVER_CRISTAL_STAFF = ITEMS.register("eternal_silver_cristal_staff", () -> new EternalSilverCristalStaffitem(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> CUPIDON_BOW = ITEMS.register("cupidon_bow", () -> new CuteBowItem(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> CUPIDON_BOW = ITEMS.register("cupidon_bow", () -> new CuteBowItem(new Item.Properties().stacksTo(1).durability(784)));
     public static final RegistryObject<Item> CUTIE_MOON_ROD = ITEMS.register("cutie_moon_rod", () -> new CuteWandItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> ETERNAL_TIARE = ITEMS.register("eternal_tiare", () -> new CuteWandItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> MOON_KALEIDOSCOPE = ITEMS.register("moon_kaleidoscope", () -> new CuteWandItem(new Item.Properties().stacksTo(1)));
@@ -173,6 +177,28 @@ public class PrettyGuardianItem {
     public static final RegistryObject<Item> VIOLETTE_BUTTERFLY_EGG = ITEMS.register("violette_butterfly_egg", () -> new ButterflyEggItem(ModEntities.BUTTERFLY, ButterflyEntity.Variant.VIOLETTE, new Item.Properties().stacksTo(16)));
 
     public static final RegistryObject<Item> FAIRY_EGG = ITEMS.register("fairy_egg", () -> new ForgeSpawnEggItem(ModEntities.FAIRY, 0xf5d6df, 0x9798be, new Item.Properties()));
+
+    public static final RegistryObject<Item> RUBY_TEMPLATE_UPGRADE = ITEMS.register("ruby_template_upgrade", () -> new SmithingTemplateItem(
+            Component.translatable("item.prettyguardian.ruby_template_upgrade_apply_to"),
+            Component.translatable("item.prettyguardian.ruby_template_upgrade_ingridient"),
+            Component.translatable("item.prettyguardian.ruby_template_upgrade_upgrade_description"),
+            Component.translatable("item.prettyguardian.ruby_template_upgrade_base_slot_description"),
+            Component.translatable("item.prettyguardian.ruby_template_upgrade_additional_slot_description"),
+            List.of(
+                    new ResourceLocation("item/empty_armor_slot_boots"),
+                    new ResourceLocation("item/empty_armor_slot_chestplate"),
+                    new ResourceLocation("item/empty_armor_slot_helmet"),
+                    new ResourceLocation("item/empty_armor_slot_leggings"),
+                    new ResourceLocation("item/empty_slot_axe"),
+                    new ResourceLocation("item/empty_slot_hoe"),
+                    new ResourceLocation("item/empty_slot_pickaxe"),
+                    new ResourceLocation("item/empty_slot_shovel"),
+                    new ResourceLocation("item/empty_slot_sword")
+            ),
+            List.of(
+                    new ResourceLocation(PrettyGuardian.MOD_ID, "item/empty_slot_ruby")
+            )
+    ));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

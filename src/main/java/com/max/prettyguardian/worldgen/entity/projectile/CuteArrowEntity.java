@@ -1,6 +1,7 @@
 package com.max.prettyguardian.worldgen.entity.projectile;
 
 
+import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.effect.ModEffects;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import net.minecraft.core.particles.ParticleTypes;
@@ -76,6 +77,10 @@ public class CuteArrowEntity extends AbstractArrow {
     @Override
     public void tick() {
         super.tick();
+
+        if(this.tickCount > 600 && this.pickup == CuteArrowEntity.Pickup.CREATIVE_ONLY) {
+            this.discard();
+        }
 
         if (!this.hited) {
             Vec3 vec3 = this.getDeltaMovement();

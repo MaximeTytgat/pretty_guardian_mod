@@ -134,7 +134,7 @@
   "item.prettyguardian.ice_cream_waffle_chocolate": "Ice Cream Waffle Chocolate",
   "item.prettyguardian.ice_cream_waffle_strawberry": "Ice Cream Waffle Strawberry",
   "item.prettyguardian.ice_cream_waffle_pistachio": "Ice Cream Waffle Pistachio",
-  "item.prettyguardian.marshmellow_strawberry_burger": "Marshmellow Strawberry Burger",
+  "item.prettyguardian.marshmellow_strawberry_burger": "Strawberry cream sandwich",
   "item.prettyguardian.bubbletea_strawberry": "Bubble Tea Strawberry",
   "item.prettyguardian.bubbletea_melon": "Bubble Tea Melon",
   "item.prettyguardian.bubbletea_caramel": "Bubble Tea Caramel",
@@ -142,6 +142,13 @@
   "item.prettyguardian.takoyaki": "Takoyaki",
   "item.prettyguardian.eteral_silver_cristal_staff": "Eteral Silver Cristal Staff",
   "item.prettyguardian.space_sword": "Space Sword",
+
+  "item.prettyguardian.ruby_template_upgrade_apply_to": "Pink Sapphire Equipment",
+  "item.prettyguardian.ruby_template_upgrade_ingridient": "Ruby",
+  "item.prettyguardian.ruby_template_upgrade_upgrade_description": "Ruby Upgrade",
+  "item.prettyguardian.ruby_template_upgrade_base_slot_description": "Add Pink Sapphire armor, weapon or tool",
+  "item.prettyguardian.ruby_template_upgrade_additional_slot_description": "Add Ruby",
+
   "block.prettyguardian.chocolate_cake": "Chocolate Cake",
   "block.prettyguardian.cream_cake": "Cream Cake",
   "block.prettyguardian.rhum_cake": "Rhum Cake",

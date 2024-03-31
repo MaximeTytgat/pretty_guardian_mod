@@ -1,0 +1,61 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pink_sapphire_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:pink_sapphire_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ruby": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:ruby"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_ruby_template_upgrade": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "prettyguardian:ruby_template_upgrade"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "prettyguardian:ruby_sword_from_pink_sapphire_sword"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_ruby_template_upgrade",
+      "has_pink_sapphire_sword",
+      "has_ruby",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "prettyguardian:ruby_sword_from_pink_sapphire_sword"
+    ]
+  },
+  "sends_telemetry_event": false
+}

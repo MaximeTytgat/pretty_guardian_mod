@@ -1,6 +1,7 @@
 package com.max.prettyguardian.item.custom.tool;
 
 
+import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import com.max.prettyguardian.item.custom.projectiles.CuteArrowItem;
 import com.max.prettyguardian.util.ModTags;
@@ -107,6 +108,11 @@ public class CuteBowItem extends BowItem  {
     @Override
     public @NotNull Predicate<ItemStack> getAllSupportedProjectiles() {
         return HEART_ARROW_ONLY;
+    }
+
+    @Override
+    public boolean isValidRepairItem(ItemStack bow, ItemStack itemStack1) {
+        return bow.is(PrettyGuardianItem.CUPIDON_BOW.get()) && itemStack1.is(PrettyGuardianItem.PINK_SAPPHIRE.get());
     }
 }
 

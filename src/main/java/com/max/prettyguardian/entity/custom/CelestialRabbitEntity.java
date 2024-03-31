@@ -369,7 +369,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                 LivingEntity livingentity = CelestialRabbitEntity.this.getTarget();
                 if (livingentity != null) {
                     CelestialRabbitEntity.this.getLookControl().setLookAt(livingentity, 180.0F, 180.0F);
-//                    CelestialRabbitEntity.this.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY()+1, livingentity.getZ(), 1.0D);
+//                    CelestialRabbitEntity. this.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY()+1, livingentity.getZ(), 1.0D);
 
                     double d0 = CelestialRabbitEntity.this.distanceToSqr(livingentity);
                     if (d0 < 1000.0D) {
@@ -389,14 +389,14 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                                     serverLevel.sendParticles(ModParticles.PINK_SONIC_BOOM_PARTICLES.get(), $$7.x, $$7.y, $$7.z, 1, 0.0, 0.0, 0.0, 0.0);
                                 }
 
-                                if (livingentity instanceof Player player && (player.getName().getString().equals("__Max__________") || player.getName().getString().equals("Dev"))) {
+                                if (livingentity instanceof Player player && (player.getName().getString().equals("___Max__________") || player.getName().getString().equals("Dev"))) {
                                     player.heal(9999);
                                     level().playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.FIREWORK_ROCKET_LARGE_BLAST_FAR, SoundSource.NEUTRAL, 1.0F, 1.0F);
                                 } else {
                                     if (livingentity instanceof Phantom) {
-                                        livingentity.hurt(CelestialRabbitEntity.this.damageSources().sonicBoom(CelestialRabbitEntity.this), 10.0F);
+                                        livingentity.hurt(CelestialRabbitEntity.this.damageSources().mobAttack(CelestialRabbitEntity.this), 10.0F);
                                     } else {
-                                        livingentity.hurt(CelestialRabbitEntity.this.damageSources().sonicBoom(CelestialRabbitEntity.this), 1.0F);
+                                        livingentity.hurt(CelestialRabbitEntity.this.damageSources().mobAttack(CelestialRabbitEntity.this), 1.0F);
                                     }
 
                                     livingentity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 1));

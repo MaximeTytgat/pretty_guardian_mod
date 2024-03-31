@@ -12,16 +12,22 @@ import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.projectile.*;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
+import java.util.Iterator;
 import java.util.Random;
 
 public class HeartEntity extends Projectile {
+    private static final int EXPOSED_POTION_DECAY_TIME = 600;
+    protected boolean inGround;
+    protected int inGroundTime;
     public double xPower;
     public double yPower;
     public double zPower;
@@ -142,7 +148,7 @@ public class HeartEntity extends Projectile {
         LivingEntity livingentity = entity1 instanceof LivingEntity ? (LivingEntity)entity1 : null;
 
 
-        if (livingentity instanceof Player player && (player.getName().getString().equals("__Max__________") || player.getName().getString().equals("Dev"))) {
+        if (entity instanceof Player player && (player.getName().getString().equals("___Max__________") || player.getName().getString().equals("Dev"))) {
             player.heal(9999);
         } else {
             entity.hurt(this.damageSources().mobProjectile(this, livingentity), this.baseDamage);

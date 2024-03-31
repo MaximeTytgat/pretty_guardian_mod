@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "prettyguardian:ruby"
+  },
+  "base": {
+    "item": "prettyguardian:pink_sapphire_chestplate"
+  },
+  "result": {
+    "item": "prettyguardian:ruby_chestplate"
+  },
+  "template": {
+    "item": "prettyguardian:ruby_template_upgrade"
+  }
+}

@@ -1,5 +1,6 @@
 {
   "entries": [
+    "prettyguardian:ruby_template_upgrade_from_ancient_city",
     "prettyguardian:raw_squid_from_squid"
   ],
   "replace": false

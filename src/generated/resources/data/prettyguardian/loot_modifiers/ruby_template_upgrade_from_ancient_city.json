@@ -1,0 +1,14 @@
+{
+  "type": "prettyguardian:add_item",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/ancient_city"
+    },
+    {
+      "chance": 0.6,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "item": "prettyguardian:ruby_template_upgrade"
+}

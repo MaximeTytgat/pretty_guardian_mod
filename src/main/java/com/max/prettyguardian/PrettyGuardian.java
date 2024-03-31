@@ -31,6 +31,7 @@ import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
@@ -91,39 +92,21 @@ public class PrettyGuardian
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
-        // Some common setup code
-//        LOGGER.info("HELLO FROM COMMON SETUP");
-//
-//        if (Config.logDirtBlock)
-//            LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
-//
-//        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
-//
-//        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
-
-
-        event.enqueueWork(() -> {
-        });
-
+        ComposterBlock.COMPOSTABLES.put(PrettyGuardianItem.VANILLA_SEEDS.get(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(PrettyGuardianItem.MINT_SEEDS.get(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(PrettyGuardianItem.STRAWBERRY_SEEDS.get(), 0.3F);
+        ComposterBlock.COMPOSTABLES.put(PrettyGuardianItem.STRAWBERRY.get(), 0.65F);
+        ComposterBlock.COMPOSTABLES.put(PrettyGuardianItem.MINT.get(), 0.65F);
+        ComposterBlock.COMPOSTABLES.put(PrettyGuardianItem.VANILLA.get(), 0.65F);
         ModMessages.register();
     }
 
-//    // You can use SubscribeEvent and let the Event Bus discover methods to call
-//    @SubscribeEvent
-//    public void onServerStarting(ServerStartingEvent event)
-//    {
-//        // Do something when the server starts
-//        LOGGER.info("HELLO from server starting");
-//    }
-
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
             ModItemProperties.addCustomProperties();
 
             MenuScreens.register(ModMenuTypes.PICNIC_BASKET_MENU.get(), PicnicBasketScreen::new);
