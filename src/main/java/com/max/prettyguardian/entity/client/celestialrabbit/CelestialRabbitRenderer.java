@@ -15,10 +15,10 @@ public class CelestialRabbitRenderer extends MobRenderer<CelestialRabbitEntity, 
 
     public CelestialRabbitRenderer(EntityRendererProvider.Context context) {
         super(context, new CelestialRabbitModel<>(context.bakeLayer(ModModelLayers.CELESTIAL_RABBIT_LAYER)), 0.5f);
+        this.addLayer(new CelestialRabbitFlameLayer<>(this));
         this.addLayer(new CelestialRabbitGlowLayer<>(this));
         this.addLayer(new CelestialRabbitCollarLayer<>(this));
         this.addLayer(new CelestialRabbitCollarPearlLayer<>(this));
-        this.addLayer(new CelestialRabbitFlameLayer<>(this));
     }
 
     @Override

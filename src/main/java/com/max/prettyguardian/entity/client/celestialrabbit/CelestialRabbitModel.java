@@ -39,6 +39,7 @@ public class CelestialRabbitModel<T extends Entity> extends HierarchicalModel<T>
 
 
 
+
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
