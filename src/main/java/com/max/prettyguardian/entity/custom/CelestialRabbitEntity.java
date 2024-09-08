@@ -112,6 +112,11 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
     }
 
     @Override
+    protected @Nullable SoundEvent getDeathSound() {
+        return  ModSounds.CELESTIAL_RABBIT_DEATH.get();
+    }
+
+    @Override
     public void tick() {
         super.tick();
 

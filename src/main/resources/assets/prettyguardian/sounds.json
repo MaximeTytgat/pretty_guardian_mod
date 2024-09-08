@@ -94,5 +94,12 @@
         "name": "prettyguardian:celestial_rabbit_shoot"
       }
     ]
+  },
+  "celestial_rabbit_death": {
+    "sounds": [
+      {
+        "name": "prettyguardian:celestial_rabbit_death"
+      }
+    ]
   }
 }
