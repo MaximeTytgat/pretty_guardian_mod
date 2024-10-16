@@ -107,7 +107,7 @@ public class NeptunesMirror extends Item implements IThirdPersonAnimationProvide
     }
 
     @Override
-    public void animateItemFirstPerson(LivingEntity entity, ItemStack stack, InteractionHand hand, PoseStack matrixStack, float partialTicks, float pitch, float attackAnim, float handHeight) {
+    public void animateItemFirstPerson(Player entity, ItemStack stack, InteractionHand hand, HumanoidArm arm, PoseStack matrixStack, float partialTicks, float pitch, float attackAnim, float handHeight) {
         //is using item
         if (entity.isUsingItem() && entity.getUseItemRemainingTicks() > 0 && entity.getUsedItemHand() == hand) {
             //bow anim

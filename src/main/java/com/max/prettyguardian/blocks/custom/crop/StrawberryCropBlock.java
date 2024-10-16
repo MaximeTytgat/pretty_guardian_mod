@@ -60,7 +60,6 @@ public class StrawberryCropBlock extends CropBlock {
         builder.add(AGE);
     }
 
-    @Override
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         if (blockState.getValue(AGE) == MAX_AGE) {
             Random random = new Random();
@@ -76,6 +75,6 @@ public class StrawberryCropBlock extends CropBlock {
 
             return InteractionResult.SUCCESS;
         }
-        return super.use(blockState, level, blockPos, player, interactionHand, blockHitResult);
+        return InteractionResult.PASS;
     }
 }

@@ -102,7 +102,6 @@ public class JapLanternBlock extends LanternBlock {
         p_153490_.add(HANGING, LIT, POWERED, WATERLOGGED);
     }
 
-    @Override
     public InteractionResult use(BlockState p_57540_, Level p_57541_, BlockPos p_57542_, Player p_57543_, InteractionHand p_57544_, BlockHitResult p_57545_) {
         p_57540_ = p_57540_.cycle(LIT);
         p_57541_.setBlock(p_57542_, p_57540_, 2);

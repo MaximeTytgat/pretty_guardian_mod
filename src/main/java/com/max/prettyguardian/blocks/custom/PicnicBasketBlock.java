@@ -2,6 +2,7 @@ package com.max.prettyguardian.blocks.custom;
 
 import com.max.prettyguardian.blocks.entity.ModBlockEntities;
 import com.max.prettyguardian.blocks.entity.PicnicBasketBlockEntity;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -39,6 +40,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -46,6 +48,7 @@ import java.util.stream.Stream;
 
 public class PicnicBasketBlock extends BaseEntityBlock {
 
+    public static final MapCodec<PicnicBasketBlock> CODEC = simpleCodec(PicnicBasketBlock::new);
     public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
     public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
     public static final ResourceLocation CONTENTS = new ResourceLocation("contents");
@@ -57,6 +60,11 @@ public class PicnicBasketBlock extends BaseEntityBlock {
     public PicnicBasketBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(OPEN, false));
+    }
+
+    @Override
+    protected @NotNull MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override

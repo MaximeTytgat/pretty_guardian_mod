@@ -20,7 +20,7 @@ public class LoveGuiRendererEvent {
         Player player = Minecraft.getInstance().player;
         if (player == null) return;
         if (player.getHealth() <= 0) return;
-        if (player.hasEffect(ModEffects.LOVE.get())) {
+        if (player.hasEffect(ModEffects.LOVE.getHolder().get())) {
             renderPinkBlurOnScreen(event.getGuiGraphics());
         }
     }

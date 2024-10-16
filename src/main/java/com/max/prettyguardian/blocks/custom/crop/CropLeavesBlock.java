@@ -1,5 +1,6 @@
 package com.max.prettyguardian.blocks.custom.crop;
 
+import net.mehvahdjukaar.moonlight.core.fake_player.FakeGenericPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -24,13 +25,12 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.OptionalInt;
 
-public class CropLeavesBlock extends LeavesBlock implements  BonemealableBlock {
+public class CropLeavesBlock extends LeavesBlock implements BonemealableBlock {
 
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     public static final int MAX_AGE = 3;
@@ -49,7 +49,7 @@ public class CropLeavesBlock extends LeavesBlock implements  BonemealableBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader p_256559_, BlockPos p_50898_, BlockState p_50899_, boolean p_50900_) {
+    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
         return false;
     }
 
@@ -147,13 +147,12 @@ public class CropLeavesBlock extends LeavesBlock implements  BonemealableBlock {
         return defaultBlockState().setValue(PERSISTENT, true).setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
     }
 
-
-    @Override
+//    @Override
     public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player playerIn, InteractionHand hand, BlockHitResult ray) {
         if (state.getValue(AGE) == 3 && worldIn.setBlockAndUpdate(pos, state.setValue(AGE, 1))) {
             if (!worldIn.isClientSide) {
                 ItemStack fruit = new ItemStack(this.fruit.get());
-                if (playerIn instanceof FakePlayer) {
+                if (playerIn instanceof FakeGenericPlayer) {
                     popResourceFromFace(worldIn, pos, ray.getDirection(), fruit);
                 } else {
                     ItemHandlerHelper.giveItemToPlayer(playerIn, fruit);

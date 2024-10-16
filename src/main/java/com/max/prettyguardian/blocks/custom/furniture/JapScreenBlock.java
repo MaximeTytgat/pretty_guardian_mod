@@ -108,7 +108,7 @@ public class JapScreenBlock extends Block {
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
         // prevent creative drops
         if (player.isCreative()) {
             DoubleBlockHalf half = blockState.getValue(HALF);
@@ -126,7 +126,7 @@ public class JapScreenBlock extends Block {
             level.destroyBlock(blockToDestroy, false);
         }
 
-        super.playerWillDestroy(level, blockPos, blockState, player);
+        return super.playerWillDestroy(level, blockPos, blockState, player);
     }
 
     public enum ParaventPart implements StringRepresentable {

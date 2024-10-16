@@ -1,14 +1,18 @@
 package com.max.prettyguardian.enchantment;
 
+import com.max.prettyguardian.util.ModTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.flag.FeatureFlagSet;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
 public class SlowEnchantment extends Enchantment {
-    protected SlowEnchantment(Rarity rarity, EnchantmentCategory enchantmentCategory, EquipmentSlot... equipmentSlots) {
-        super(rarity, enchantmentCategory, equipmentSlots);
+    protected SlowEnchantment() {
+        super(Enchantment.definition(ModTags.Items.SPACE_SWORD_ENCHANTABLE, 10, 2, Enchantment.dynamicCost(1, 11), Enchantment.dynamicCost(21, 11), 1, FeatureFlagSet.of(FeatureFlags.BUNDLE), new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
+
     }
 
     @Override
@@ -18,10 +22,5 @@ public class SlowEnchantment extends Enchantment {
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 150, 4));
             }
         }
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 2;
     }
 }

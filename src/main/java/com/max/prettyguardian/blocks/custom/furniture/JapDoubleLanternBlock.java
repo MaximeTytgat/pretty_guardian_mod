@@ -107,7 +107,7 @@ public class JapDoubleLanternBlock extends LanternBlock {
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
         // prevent creative drops
         if (player.isCreative()) {
             DoubleBlockHalf half = blockState.getValue(HALF);
@@ -119,7 +119,8 @@ public class JapDoubleLanternBlock extends LanternBlock {
             level.destroyBlock(blockToDestroy, false);
         }
 
-        super.playerWillDestroy(level, blockPos, blockState, player);
+
+        return super.playerWillDestroy(level, blockPos, blockState, player);;
     }
 
     public void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos blockPos1, boolean b) {
@@ -143,7 +144,6 @@ public class JapDoubleLanternBlock extends LanternBlock {
         p_153490_.add(HALF, LIT, POWERED, HANGING, WATERLOGGED);
     }
 
-    @Override
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
 
         if (blockState.getValue(HALF) == DoubleBlockHalf.LOWER) {

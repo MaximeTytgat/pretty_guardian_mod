@@ -10,10 +10,8 @@ import com.max.prettyguardian.entity.client.butterfly.ButterflyRenderer;
 import com.max.prettyguardian.entity.client.celestialrabbit.CelestialRabbitRenderer;
 import com.max.prettyguardian.entity.client.fairy.FairyRenderer;
 import com.max.prettyguardian.entity.client.strawberryCow.StrawberryCowRenderer;
-//import com.max.prettyguardian.event.custom.JapChairEvent;
 import com.max.prettyguardian.event.custom.JapChairEvent;
 import com.max.prettyguardian.item.PrettyGuardianItem;
-import com.max.prettyguardian.item.custom.LoveLetterItem;
 import com.max.prettyguardian.loot.ModLootModifiers;
 import com.max.prettyguardian.networking.ModMessages;
 import com.max.prettyguardian.painting.ModPaintings;
@@ -21,7 +19,6 @@ import com.max.prettyguardian.particle.ModParticles;
 import com.max.prettyguardian.client.gui.sreens.inventory.ModMenuTypes;
 import com.max.prettyguardian.potion.ModPotions;
 import com.max.prettyguardian.sound.ModSounds;
-import com.max.prettyguardian.util.BetterBrewingRecipe;
 import com.max.prettyguardian.util.ModItemProperties;
 import com.max.prettyguardian.world.entity.ai.poi.ModPoiTypes;
 import com.max.prettyguardian.worldgen.entity.ModEntityType;
@@ -29,12 +26,9 @@ import com.max.prettyguardian.worldgen.structure.ModStructures;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -43,7 +37,6 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -119,8 +112,6 @@ public class PrettyGuardian
             EntityRenderers.register(ModEntities.BUTTERFLY.get(), ButterflyRenderer::new);
             EntityRenderers.register(ModEntities.FAIRY.get(), FairyRenderer::new);
             EntityRenderers.register(ModEntityType.SEAT_JAP_CHAIR.get(), JapChairEvent.SeatJapChairRenderer::new);
-
-            BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.WATER, PrettyGuardianItem.FAIRY_DUST.get(), ModPotions.LOVE_POTION.get()));
         }
     }
 }

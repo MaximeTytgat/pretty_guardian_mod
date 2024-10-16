@@ -1,7 +1,5 @@
 package com.max.prettyguardian.blocks.custom.furniture;
 
-import com.max.prettyguardian.PrettyGuardian;
-import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
@@ -21,7 +19,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -31,7 +28,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
-import java.util.stream.Stream;
 
 public class JapHugeLanternBlock extends LanternBlock {
 
@@ -131,7 +127,7 @@ public class JapHugeLanternBlock extends LanternBlock {
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
         // prevent creative drops
         if (player.isCreative()) {
             TripleBlockHalf half = blockState.getValue(HALF);
@@ -144,7 +140,7 @@ public class JapHugeLanternBlock extends LanternBlock {
             level.destroyBlock(blockToDestroy, false);
         }
 
-        super.playerWillDestroy(level, blockPos, blockState, player);
+        return super.playerWillDestroy(level, blockPos, blockState, player);
     }
 
     public void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos blockPos1, boolean b) {
@@ -168,7 +164,6 @@ public class JapHugeLanternBlock extends LanternBlock {
         p_153490_.add(HALF, LIT, POWERED, HANGING, WATERLOGGED);
     }
 
-    @Override
     public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
 
         if (blockState.getValue(HALF) == TripleBlockHalf.LOWER) {

@@ -36,7 +36,7 @@ public class CuteArrowEntity extends AbstractArrow {
     }
 
     public CuteArrowEntity(EntityType<CuteArrowEntity> entityType, LivingEntity shooter, Level world) {
-        super(entityType, shooter, world);
+        super(entityType, world, shooter);
         this.level = world;
     }
     @Override
@@ -53,7 +53,7 @@ public class CuteArrowEntity extends AbstractArrow {
         super.onHitEntity(entityHitResult);
 
         if (entityHitResult.getEntity() instanceof LivingEntity livingEntity) {
-            livingEntity.addEffect(new MobEffectInstance(ModEffects.LOVE.get(), 100, 1));
+            livingEntity.addEffect(new MobEffectInstance(ModEffects.LOVE.getHolder().get(), 100, 1));
         }
         // this, x, y, z, explosionStrength, setsFires, breakMode
     }
@@ -67,11 +67,6 @@ public class CuteArrowEntity extends AbstractArrow {
     @Override
     protected void tickDespawn() {
 
-    }
-
-    @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
     }
 
     @Override

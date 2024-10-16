@@ -16,7 +16,6 @@ public class ModTags {
         public static final TagKey<Block> CAKE = tag("cake");
         public static final TagKey<Block> JAP_TABLE = tag("jap_table");
 
-        public static final TagKey<Block> SPACE_SWORD = tag("space_sword");
         public static final TagKey<Block> NEEDS_PINK_SAPPHIRE_TOOL = tag("needs_pink_sapphire_tool");
         public static final TagKey<Block> SAPLING = tag("sapling");
 
@@ -30,6 +29,9 @@ public class ModTags {
         public static final TagKey<Item> STAFF_ITEM = tag("staff_item");
 
         public static final TagKey<Item> CAKE = tag("cake");
+
+        public static final TagKey<Item> SPACE_SWORD = tag("space_sword");
+        public static final TagKey<Item> SPACE_SWORD_ENCHANTABLE = tag("space_sword_enchantable");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(PrettyGuardian.MOD_ID, name));

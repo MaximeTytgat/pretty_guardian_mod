@@ -6,7 +6,7 @@ import com.max.prettyguardian.entity.custom.ButterflyEntity;
 import com.max.prettyguardian.entity.custom.CelestialRabbitEntity;
 import com.max.prettyguardian.entity.custom.FairyEntity;
 import com.max.prettyguardian.entity.custom.StrawberryCowEntity;
-import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -28,7 +28,7 @@ public class ModEventBusEvents {
 
     @SubscribeEvent
     public static void registerSpawnPlacement(SpawnPlacementRegisterEvent event) {
-        event.register(ModEntities.STRAWBERRY_COW.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        event.register(ModEntities.STRAWBERRY_COW.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Animal::checkAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
     }
 }
