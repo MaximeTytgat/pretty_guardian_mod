@@ -183,7 +183,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     protected LootTable.Builder createSreenLootTable(Block block) {
         return LootTable.lootTable().withPool(
-                (LootPool.Builder)this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                                 .add(LootItem.lootTableItem(block)
                                         .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
                                                 .setProperties(StatePropertiesPredicate.Builder.properties()
@@ -194,7 +194,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     protected LootTable.Builder createHugeLanternLootTable(Block block) {
         return LootTable.lootTable().withPool(
-                (LootPool.Builder)this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                         .add(LootItem.lootTableItem(block)
                                 .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
                                         .setProperties(StatePropertiesPredicate.Builder.properties()
@@ -204,7 +204,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     protected LootTable.Builder createBigLanternLootTable(Block block) {
         return LootTable.lootTable().withPool(
-                (LootPool.Builder)this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                         .add(LootItem.lootTableItem(block)
                                 .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
                                         .setProperties(StatePropertiesPredicate.Builder.properties()
@@ -214,7 +214,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     protected LootTable.Builder createBonzaiLootTable(Block block) {
         return LootTable.lootTable().withPool(
-                (LootPool.Builder)this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+                this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                         .add(LootItem.lootTableItem(block)
                                 .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
                                         .setProperties(StatePropertiesPredicate.Builder.properties()

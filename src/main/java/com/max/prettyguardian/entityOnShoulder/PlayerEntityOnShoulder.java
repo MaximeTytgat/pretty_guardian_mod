@@ -7,7 +7,7 @@ import net.minecraft.world.item.DyeColor;
 
 public class PlayerEntityOnShoulder {
 
-    private String id = null;
+    private final String id = null;
     private EntityType<?> entityType = null;
     private DyeColor collarColor = null;
     private Component name = null;

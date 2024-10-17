@@ -56,7 +56,7 @@ public class CustomMultiLineEditBox extends CustomAbstractScrollWidget {
     }
 
     public void updateWidgetNarration(NarrationElementOutput p_259393_) {
-        p_259393_.add(NarratedElementType.TITLE, Component.translatable("gui.narrate.editBox", new Object[]{this.getMessage(), this.getValue()}));
+        p_259393_.add(NarratedElementType.TITLE, Component.translatable("gui.narrate.editBox", this.getMessage(), this.getValue()));
     }
 
     public boolean mouseClicked(double p_239101_, double p_239102_, int p_239103_) {
@@ -188,7 +188,7 @@ public class CustomMultiLineEditBox extends CustomAbstractScrollWidget {
         super.renderDecorations(p_282551_);
         if (this.textField.hasCharacterLimit()) {
             int $$1 = this.textField.characterLimit();
-            Component $$2 = Component.translatable("gui.multiLineEditBox.character_limit", new Object[]{this.textField.value().length(), $$1});
+            Component $$2 = Component.translatable("gui.multiLineEditBox.character_limit", this.textField.value().length(), $$1);
             p_282551_.drawString(this.font, $$2, this.getX() + this.width - this.font.width($$2), this.getY() + this.height + 4, 10526880);
         }
 
@@ -221,7 +221,7 @@ public class CustomMultiLineEditBox extends CustomAbstractScrollWidget {
         if (this.textField.cursor() <= $$1.beginIndex()) {
             var5 = this.textField.getLineAtCursor();
             Objects.requireNonNull(this.font);
-            $$0 = (double)(var5 * 9);
+            $$0 = var5 * 9;
         } else {
             var10000 = this.textField;
             double var10001 = $$0 + (double)this.height;
@@ -232,7 +232,7 @@ public class CustomMultiLineEditBox extends CustomAbstractScrollWidget {
                 Objects.requireNonNull(this.font);
                 var5 = var5 * 9 - this.height;
                 Objects.requireNonNull(this.font);
-                $$0 = (double)(var5 + 9 + this.totalInnerPadding());
+                $$0 = var5 + 9 + this.totalInnerPadding();
             }
         }
 
@@ -240,7 +240,7 @@ public class CustomMultiLineEditBox extends CustomAbstractScrollWidget {
     }
 
     private double getDisplayableLineCount() {
-        double var10000 = (double)(this.height - this.totalInnerPadding());
+        double var10000 = this.height - this.totalInnerPadding();
         Objects.requireNonNull(this.font);
         return var10000 / 9.0;
     }

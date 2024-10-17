@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.state.properties.DoorHingeSide;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 
 public class JapDoorBlock extends DoorBlock {
     protected static final VoxelShape SOUTH_AABB = Block.box(0, 0, 7, 16, 16, 9);
@@ -29,26 +30,40 @@ public class JapDoorBlock extends DoorBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+    public @NotNull VoxelShape getShape(
+            BlockState blockState,
+            @NotNull BlockGetter blockGetter,
+            @NotNull BlockPos blockPos,
+            @NotNull CollisionContext collisionContext
+    ) {
         Direction direction = blockState.getValue(FACING);
-        boolean flag = !blockState.getValue(OPEN);
-        boolean flag1 = blockState.getValue(HINGE) == DoorHingeSide.RIGHT;
-        switch (direction) {
-            case EAST:
-            default:
-                return flag ? EAST_AABB : (flag1 ? EAST_AABB_OPEN : WEST_AABB_OPEN);
-            case SOUTH:
-                return flag ? SOUTH_AABB : (flag1 ? NORTH_AABB_OPEN : SOUTH_AABB_OPEN);
-            case WEST:
-                return flag ? WEST_AABB : (flag1 ? WEST_AABB_OPEN : EAST_AABB_OPEN);
-            case NORTH:
-                return flag ? NORTH_AABB : (flag1 ? SOUTH_AABB_OPEN : NORTH_AABB_OPEN);
-        }
+        boolean open = blockState.getValue(OPEN);
+        boolean hingeRight = blockState.getValue(HINGE) == DoorHingeSide.RIGHT;
+        VoxelShape hingeShape = getHingeShape(direction, hingeRight);
+        return switch (direction) {
+            case SOUTH -> open ? hingeShape: SOUTH_AABB;
+            case WEST -> open ? hingeShape: WEST_AABB;
+            case NORTH -> open ? hingeShape : NORTH_AABB;
+            default -> open ? hingeShape: EAST_AABB;
+        };
+    }
+
+    private static VoxelShape getHingeShape(Direction direction, boolean hingeRight) {
+        return switch (direction) {
+            case SOUTH -> hingeRight ? NORTH_AABB_OPEN : SOUTH_AABB_OPEN;
+            case WEST -> hingeRight ? WEST_AABB_OPEN : EAST_AABB_OPEN;
+            case NORTH -> hingeRight ? SOUTH_AABB_OPEN : NORTH_AABB_OPEN;
+            default -> hingeRight ? EAST_AABB_OPEN : WEST_AABB_OPEN;
+        };
     }
 
     @Override
-    public BlockState playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
-        // prevent creative drops
+    public @NotNull BlockState playerWillDestroy(
+            @NotNull Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull BlockState blockState,
+            Player player
+    ) {
         if (player.isCreative()) {
             DoubleBlockHalf half = blockState.getValue(HALF);
             BlockPos blockToDestroy = switch (half) {

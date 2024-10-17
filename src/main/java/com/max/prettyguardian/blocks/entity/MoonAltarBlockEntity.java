@@ -107,7 +107,7 @@ public class MoonAltarBlockEntity extends RandomizableContainerBlockEntity imple
 
     @Override
     public void setItem(int i, ItemStack itemStack) {
-        this.unpackLootTable((Player)null);
+        this.unpackLootTable(null);
         if (itemStack.getItem() == PrettyGuardianItem.PLUTONS_KEY.get()) {
             this.getItems().set(0, itemStack);
         } else if (itemStack.getItem() == PrettyGuardianItem.SPACE_SWORD.get()) {

@@ -56,17 +56,17 @@ public class CustomMultiLineTextWidget extends AbstractStringWidget {
     }
 
     public int getWidth() {
-        return ((MultiLineLabel)this.cache.getValue(this.getFreshCacheKey())).getWidth();
+        return this.cache.getValue(this.getFreshCacheKey()).getWidth();
     }
 
     public int getHeight() {
-        int var10000 = ((MultiLineLabel)this.cache.getValue(this.getFreshCacheKey())).getLineCount();
+        int var10000 = this.cache.getValue(this.getFreshCacheKey()).getLineCount();
         Objects.requireNonNull(this.getFont());
         return var10000 * 9;
     }
 
     public void renderWidget(GuiGraphics p_282535_, int p_261774_, int p_261640_, float p_261514_) {
-        MultiLineLabel $$4 = (MultiLineLabel)this.cache.getValue(this.getFreshCacheKey());
+        MultiLineLabel $$4 = this.cache.getValue(this.getFreshCacheKey());
         int $$5 = this.getX();
         int $$6 = this.getY();
         Objects.requireNonNull(this.getFont());
@@ -85,7 +85,7 @@ public class CustomMultiLineTextWidget extends AbstractStringWidget {
     }
 
     @OnlyIn(Dist.CLIENT)
-    static record CacheKey(Component message, int maxWidth, OptionalInt maxRows) {
+    record CacheKey(Component message, int maxWidth, OptionalInt maxRows) {
         CacheKey(Component message, int maxWidth, OptionalInt maxRows) {
             this.message = message;
             this.maxWidth = maxWidth;

@@ -135,7 +135,7 @@ public class JapScreenBlock extends Block {
 
         private final String name;
 
-        private ParaventPart(String name) {
+        ParaventPart(String name) {
             this.name = name;
         }
 

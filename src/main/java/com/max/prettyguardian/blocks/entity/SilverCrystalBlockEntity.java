@@ -27,7 +27,7 @@ public class SilverCrystalBlockEntity extends BlockEntity {
             int x = pPos.getX();
             int y = pPos.getY();
             int z = pPos.getZ();
-            Iterator var17 = level.getEntitiesOfClass(ServerPlayer.class, (new AABB((double)x, (double)y, (double)z, (double)x, (double)(y - 4), (double)z)).inflate(50.0, 5.0, 50.0)).iterator();
+            Iterator var17 = level.getEntitiesOfClass(ServerPlayer.class, (new AABB(x, y, z, x, y - 4, z)).inflate(50.0, 5.0, 50.0)).iterator();
 
             while(var17.hasNext()) {
                 ServerPlayer serverplayer = (ServerPlayer)var17.next();

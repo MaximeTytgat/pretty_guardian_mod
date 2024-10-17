@@ -62,7 +62,7 @@ import java.util.stream.Stream;
 public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<FairyEntity.Variant> {
     private static final EntityDataAccessor<Integer> DATA_VARIANT = SynchedEntityData.defineId(FairyEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_REMAINING_TIME_BEFORE_DUST = SynchedEntityData.defineId(Strider.class, EntityDataSerializers.INT);
-    private static final UniformInt DUST_TIME = TimeUtil.rangeOfSeconds(40, 60);;
+    private static final UniformInt DUST_TIME = TimeUtil.rangeOfSeconds(40, 60);
 
 
     public FairyEntity(EntityType<? extends Animal> entityType, Level level) {
@@ -325,7 +325,7 @@ public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<F
             if (this.isInWater()) {
                 this.moveRelative(0.02F, p_20818_);
                 this.move(MoverType.SELF, this.getDeltaMovement());
-                this.setDeltaMovement(this.getDeltaMovement().scale((double)0.8F));
+                this.setDeltaMovement(this.getDeltaMovement().scale(0.8F));
             } else if (this.isInLava()) {
                 this.moveRelative(0.02F, p_20818_);
                 this.move(MoverType.SELF, this.getDeltaMovement());
@@ -345,7 +345,7 @@ public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<F
 
                 this.moveRelative(this.onGround() ? 0.1F * f1 : 0.02F, p_20818_);
                 this.move(MoverType.SELF, this.getDeltaMovement());
-                this.setDeltaMovement(this.getDeltaMovement().scale((double)f));
+                this.setDeltaMovement(this.getDeltaMovement().scale(f));
             }
         }
 
@@ -501,14 +501,14 @@ public class FairyEntity extends Animal implements FlyingAnimal, VariantHolder<F
     }
 
 
-    public static enum Variant implements StringRepresentable {
+    public enum Variant implements StringRepresentable {
         BLUE(0, "blue"),
         PINK(1, "pink");
 
         private static final IntFunction<Variant> BY_ID = ByIdMap.continuous(Variant::getId, values(), ByIdMap.OutOfBoundsStrategy.ZERO);
         private final int id;
         private final String name;
-        private Variant(int id, String name) {
+        Variant(int id, String name) {
             this.id = id;
             this.name = name;
         }

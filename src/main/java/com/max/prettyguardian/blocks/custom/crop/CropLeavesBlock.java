@@ -7,7 +7,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -27,11 +26,11 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.OptionalInt;
 
 public class CropLeavesBlock extends LeavesBlock implements BonemealableBlock {
-
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     public static final int MAX_AGE = 3;
 
@@ -49,32 +48,33 @@ public class CropLeavesBlock extends LeavesBlock implements BonemealableBlock {
     }
 
     @Override
-    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
+    public boolean isValidBonemealTarget(@NotNull LevelReader levelReader, @NotNull BlockPos blockPos, @NotNull BlockState blockState) {
         return false;
     }
 
     @Override
-    public boolean isBonemealSuccess(Level worldIn, RandomSource rand, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(@NotNull Level worldIn, @NotNull RandomSource rand, @NotNull BlockPos pos, BlockState state) {
         return state.getValue(AGE) != 3;
     }
-    protected int getBonemealAgeIncrease(Level p_52262_) {
-        return Mth.nextInt(p_52262_.random, 2, 5);
+
+    protected int getBonemealAgeIncrease(Level level) {
+        return Mth.nextInt(level.random, 2, 5);
     }
 
 
     @Override
-    public void performBonemeal(ServerLevel world, RandomSource rand, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel world, @NotNull RandomSource rand, @NotNull BlockPos pos, BlockState state) {
         int i = state.getValue(AGE) + this.getBonemealAgeIncrease(world.getLevel());
         int j = MAX_AGE;
         if (i > j) {
             i = j;
         }
 
-        world.setBlock(pos, state.setValue(AGE, Integer.valueOf(i)), 2);
+        world.setBlock(pos, state.setValue(AGE, i), 2);
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource rand) {
+    public void randomTick(@NotNull BlockState state, @NotNull ServerLevel world, @NotNull BlockPos pos, @NotNull RandomSource rand) {
         if (shouldDecay(state)) {
             dropResources(state, world, pos);
             world.removeBlock(pos, false);
@@ -88,40 +88,40 @@ public class CropLeavesBlock extends LeavesBlock implements BonemealableBlock {
         }
     }
 
-    private static BlockState updateDistance(BlockState p_54436_, LevelAccessor p_54437_, BlockPos p_54438_) {
+    private static BlockState updateDistance(BlockState blockState, LevelAccessor levelAccessor, BlockPos blockPos) {
         int i = 7;
-        BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
+        BlockPos.MutableBlockPos mutableBlockPos = new BlockPos.MutableBlockPos();
 
         for(Direction direction : Direction.values()) {
-            blockpos$mutableblockpos.setWithOffset(p_54438_, direction);
-            i = Math.min(i, getDistanceAt(p_54437_.getBlockState(blockpos$mutableblockpos)) + 1);
+            mutableBlockPos.setWithOffset(blockPos, direction);
+            i = Math.min(i, getDistanceAt(levelAccessor.getBlockState(mutableBlockPos)) + 1);
             if (i == 1) {
                 break;
             }
         }
 
-        return p_54436_.setValue(DISTANCE, Integer.valueOf(i));
+        return blockState.setValue(DISTANCE, i);
     }
 
-    private static int getDistanceAt(BlockState p_54464_) {
-        return getOptionalDistanceAt(p_54464_).orElse(7);
+    private static int getDistanceAt(BlockState blockState) {
+        return getOptionalDistanceAt(blockState).orElse(7);
     }
 
-    public static OptionalInt getOptionalDistanceAt(BlockState p_277868_) {
-        if (p_277868_.is(BlockTags.LOGS)) {
+    public static @NotNull OptionalInt getOptionalDistanceAt(BlockState blockState) {
+        if (blockState.is(BlockTags.LOGS)) {
             return OptionalInt.of(0);
         } else {
-            return p_277868_.hasProperty(DISTANCE) ? OptionalInt.of(p_277868_.getValue(DISTANCE)) : OptionalInt.empty();
+            return blockState.hasProperty(DISTANCE) ? OptionalInt.of(blockState.getValue(DISTANCE)) : OptionalInt.empty();
         }
     }
 
     @Override
-    public void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
+    public void tick(@NotNull BlockState blockState, ServerLevel serverLevel, @NotNull BlockPos blockPos, @NotNull RandomSource randomSource) {
         serverLevel.setBlock(blockPos, updateDistance(blockState, serverLevel, blockPos), 3);
     }
 
     @Override
-    public boolean isRandomlyTicking(BlockState state) {
+    public boolean isRandomlyTicking(@NotNull BlockState state) {
         return shouldDecay(state) || canGrow(state) || state.getValue(AGE) == 0;
     }
 
@@ -134,7 +134,14 @@ public class CropLeavesBlock extends LeavesBlock implements BonemealableBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
+    public @NotNull BlockState updateShape(
+            @NotNull BlockState state,
+            @NotNull Direction facing,
+            @NotNull BlockState facingState,
+            @NotNull LevelAccessor worldIn,
+            @NotNull BlockPos currentPos,
+            @NotNull BlockPos facingPos
+    ) {
         if (canGrow(state) || state.getValue(AGE) == 0) {
             return super.updateShape(state, facing, facingState, worldIn, currentPos, facingPos);
         }
@@ -147,19 +154,25 @@ public class CropLeavesBlock extends LeavesBlock implements BonemealableBlock {
         return defaultBlockState().setValue(PERSISTENT, true).setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
     }
 
-//    @Override
-    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player playerIn, InteractionHand hand, BlockHitResult ray) {
-        if (state.getValue(AGE) == 3 && worldIn.setBlockAndUpdate(pos, state.setValue(AGE, 1))) {
-            if (!worldIn.isClientSide) {
-                ItemStack fruit = new ItemStack(this.fruit.get());
-                if (playerIn instanceof FakeGenericPlayer) {
-                    popResourceFromFace(worldIn, pos, ray.getDirection(), fruit);
+    @Override
+    protected @NotNull InteractionResult useWithoutItem(
+            @NotNull BlockState blockState,
+           @NotNull Level level,
+           @NotNull BlockPos blockPos,
+           @NotNull Player player,
+           @NotNull BlockHitResult blockHitResult
+    ) {
+        if (blockState.getValue(AGE) == 3 && level.setBlockAndUpdate(blockPos, blockState.setValue(AGE, 1))) {
+            if (!level.isClientSide) {
+                ItemStack fruitItem = new ItemStack(this.fruit.get());
+                if (player instanceof FakeGenericPlayer) {
+                    popResourceFromFace(level, blockPos, blockHitResult.getDirection(), fruitItem);
                 } else {
-                    ItemHandlerHelper.giveItemToPlayer(playerIn, fruit);
+                    ItemHandlerHelper.giveItemToPlayer(player, fruitItem);
                 }
             }
             return InteractionResult.SUCCESS;
         }
-        return InteractionResult.PASS;
+        return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);
     }
 }

@@ -48,7 +48,7 @@ public class ButterflyModel<T extends Entity> extends HierarchicalModel<T> {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 
 		this.animateWalk(ModAnimationDefinitions.BUTTERFLY_FLY, limbSwing, limbSwingAmount, 2f, 2.5f);
-		this.animate(((ButterflyEntity) entity).idleAnimationState, ModAnimationDefinitions.BUTTERFLY_IDLE, ageInTicks, 1F);
+		this.animate(ButterflyEntity.idleAnimationState, ModAnimationDefinitions.BUTTERFLY_IDLE, ageInTicks, 1F);
 	}
 
 	@Override

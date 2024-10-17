@@ -59,12 +59,10 @@ public class GiftBoxItem extends Item {
         ItemStack item = ItemStack.EMPTY;
         if (tag != null && tag.contains("Items")) {
             Tag itemsTag = tag.get("Items");
-            if (itemsTag instanceof ListTag) {
-                ListTag itemsList = (ListTag) itemsTag;
+            if (itemsTag instanceof ListTag itemsList) {
                 if (!itemsList.isEmpty()) {
                     Tag itemTag = itemsList.get(0);
-                    if (itemTag instanceof CompoundTag) {
-                        CompoundTag compoundItemTag = (CompoundTag) itemTag;
+                    if (itemTag instanceof CompoundTag compoundItemTag) {
                         item = ItemStack.of(compoundItemTag);
                     }
                 }

@@ -129,7 +129,7 @@ public class BubbleEntity extends Projectile {
         HitResult.Type hitresult$type = hitresult.getType();
         if (hitresult$type == HitResult.Type.ENTITY) {
             this.onHitEntity((EntityHitResult)hitresult);
-            this.level().gameEvent(GameEvent.PROJECTILE_LAND, hitresult.getLocation(), GameEvent.Context.of(this, (BlockState)null));
+            this.level().gameEvent(GameEvent.PROJECTILE_LAND, hitresult.getLocation(), GameEvent.Context.of(this, null));
         } else if (hitresult$type == HitResult.Type.BLOCK) {
             BlockHitResult blockhitresult = (BlockHitResult)hitresult;
             this.onHitBlock(blockhitresult);
@@ -174,7 +174,7 @@ public class BubbleEntity extends Projectile {
 
     public void addAdditionalSaveData(CompoundTag p_36848_) {
         super.addAdditionalSaveData(p_36848_);
-        p_36848_.put("power", this.newDoubleList(new double[]{this.xPower, this.yPower, this.zPower}));
+        p_36848_.put("power", this.newDoubleList(this.xPower, this.yPower, this.zPower));
     }
 
     public void readAdditionalSaveData(CompoundTag p_36844_) {

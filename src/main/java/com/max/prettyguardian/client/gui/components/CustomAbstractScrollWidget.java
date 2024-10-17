@@ -50,10 +50,10 @@ public abstract class CustomAbstractScrollWidget extends AbstractWidget implemen
             if (p_239640_ < (double)this.getY()) {
                 this.setScrollAmount(0.0);
             } else if (p_239640_ > (double)(this.getY() + this.height)) {
-                this.setScrollAmount((double)this.getMaxScrollAmount());
+                this.setScrollAmount(this.getMaxScrollAmount());
             } else {
                 int $$5 = this.getScrollBarHeight();
-                double $$6 = (double)Math.max(1, this.getMaxScrollAmount() / (this.height - $$5));
+                double $$6 = Math.max(1, this.getMaxScrollAmount() / (this.height - $$5));
                 this.setScrollAmount(this.scrollAmount + p_239643_ * $$6);
             }
 
@@ -123,7 +123,7 @@ public abstract class CustomAbstractScrollWidget extends AbstractWidget implemen
     }
 
     protected void setScrollAmount(double p_240207_) {
-        this.scrollAmount = Mth.clamp(p_240207_, 0.0, (double)this.getMaxScrollAmount());
+        this.scrollAmount = Mth.clamp(p_240207_, 0.0, this.getMaxScrollAmount());
     }
 
     protected int getMaxScrollAmount() {

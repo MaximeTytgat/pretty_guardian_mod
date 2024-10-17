@@ -133,7 +133,7 @@ public class ButterflyEggItem extends Item {
             aabb = aabb.expandTowards(0.0D, -1.0D, 0.0D);
         }
 
-        Iterable<VoxelShape> iterable = p_20626_.getCollisions((Entity)null, aabb);
+        Iterable<VoxelShape> iterable = p_20626_.getCollisions(null, aabb);
         return 1.0D + Shapes.collide(Direction.Axis.Y, p_20629_, iterable, p_20628_ ? -2.0D : -1.0D);
     }
 
@@ -141,11 +141,11 @@ public class ButterflyEggItem extends Item {
     public ButterflyEntity create(ServerLevel p_262637_, @Nullable CompoundTag p_262687_, @Nullable Consumer<ButterflyEntity> p_262629_, BlockPos p_262595_, MobSpawnType p_262666_, boolean p_262685_, boolean p_262588_) {
         ButterflyEntity t = this.create(p_262637_);
         if (t == null) {
-            return (ButterflyEntity)null;
+            return null;
         } else {
             double d0;
             if (p_262685_) {
-                t.setPos((double)p_262595_.getX() + 0.5D, (double)(p_262595_.getY() + 1), (double)p_262595_.getZ() + 0.5D);
+                t.setPos((double)p_262595_.getX() + 0.5D, p_262595_.getY() + 1, (double)p_262595_.getZ() + 0.5D);
                 d0 = getYOffset(p_262637_, p_262595_, p_262588_, t.getBoundingBox());
             } else {
                 d0 = 0.0D;
@@ -153,7 +153,7 @@ public class ButterflyEggItem extends Item {
 
             t.moveTo((double)p_262595_.getX() + 0.5D, (double)p_262595_.getY() + d0, (double)p_262595_.getZ() + 0.5D, Mth.wrapDegrees(p_262637_.random.nextFloat() * 360.0F), 0.0F);
             if (t instanceof ButterflyEntity) {
-                ButterflyEntity mob = (ButterflyEntity)t;
+                ButterflyEntity mob = t;
                 mob.yHeadRot = mob.getYRot();
                 mob.yBodyRot = mob.getYRot();
                 ButterflyEntity.ButterflyGroupData mobgroupdata = new ButterflyEntity.ButterflyGroupData(this.variant);
@@ -171,7 +171,7 @@ public class ButterflyEggItem extends Item {
 
     @Nullable
     public ButterflyEntity create(Level p_20616_) {
-        return (ButterflyEntity)(!this.isEnabled(p_20616_.enabledFeatures()) ? null : ModEntities.BUTTERFLY.get().create(p_20616_));
+        return !this.isEnabled(p_20616_.enabledFeatures()) ? null : ModEntities.BUTTERFLY.get().create(p_20616_);
     }
 
 

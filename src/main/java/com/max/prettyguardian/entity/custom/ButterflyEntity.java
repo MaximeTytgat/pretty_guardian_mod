@@ -51,7 +51,7 @@ public class ButterflyEntity extends Animal implements FlyingAnimal, VariantHold
     }
 
     public static AnimationState idleAnimationState = new AnimationState();
-    private int idleAnimationTimeOut = 0;
+    private final int idleAnimationTimeOut = 0;
 
     public boolean isPushable() { return false; }
     protected void doPush(Entity p_27415_) {}
@@ -297,7 +297,7 @@ public class ButterflyEntity extends Animal implements FlyingAnimal, VariantHold
         }
     }
 
-    public static enum Variant implements StringRepresentable {
+    public enum Variant implements StringRepresentable {
         ADMIRAL(0, "admiral"),
         APOLLO(1, "apollo"),
         DUSK(2, "dusk"),
@@ -313,7 +313,7 @@ public class ButterflyEntity extends Animal implements FlyingAnimal, VariantHold
         public static final Codec<Variant> CODEC = StringRepresentable.fromEnum(Variant::values);
         private final int id;
         private final String name;
-        private Variant(int id, String name) {
+        Variant(int id, String name) {
             this.id = id;
             this.name = name;
         }

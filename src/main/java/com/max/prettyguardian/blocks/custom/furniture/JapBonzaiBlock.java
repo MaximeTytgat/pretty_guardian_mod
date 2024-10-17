@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class JapBonzaiBlock extends Block {
@@ -40,10 +41,14 @@ public class JapBonzaiBlock extends Block {
         this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(HALF, DoubleBlockHalf.LOWER);
     }
     @Override
-    public VoxelShape getShape(BlockState blockState, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
+    public @NotNull VoxelShape getShape(
+            BlockState blockState,
+            @NotNull BlockGetter blockGetter,
+            @NotNull BlockPos blockPos,
+            @NotNull CollisionContext collisionContext
+    ) {
         DoubleBlockHalf half = blockState.getValue(HALF);
         return switch (blockState.getValue(FACING)) {
-            case NORTH -> half == DoubleBlockHalf.UPPER ? SHAPE_NORTH_UPPER : SHAPE_NORTH_LOWER;
             case SOUTH -> half == DoubleBlockHalf.UPPER ? SHAPE_SOUTH_UPPER : SHAPE_SOUTH_LOWER;
             case EAST -> half == DoubleBlockHalf.UPPER ? SHAPE_EAST_UPPER : SHAPE_EAST_LOWER;
             case WEST -> half == DoubleBlockHalf.UPPER ? SHAPE_WEST_UPPER : SHAPE_WEST_LOWER;
@@ -52,24 +57,35 @@ public class JapBonzaiBlock extends Block {
     }
 
     @Override
-    public BlockState updateShape(BlockState currentState, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+    public @NotNull BlockState updateShape(
+            BlockState currentState,
+            @NotNull Direction facing,
+            BlockState facingState,
+            @NotNull LevelAccessor level,
+            @NotNull BlockPos currentPos,
+            @NotNull BlockPos facingPos
+    ) {
         Block facingBlock = facingState.getBlock();
 
         if (currentState.getValue(HALF) == DoubleBlockHalf.LOWER) {
             if (facing == Direction.UP && facingBlock != this) {
                 return Blocks.AIR.defaultBlockState();
             }
-        } else if (currentState.getValue(HALF) == DoubleBlockHalf.UPPER) {
-            if (facing == Direction.DOWN && facingBlock != this) {
+        } else if (currentState.getValue(HALF) == DoubleBlockHalf.UPPER && facing == Direction.DOWN && facingBlock != this) {
                 return Blocks.AIR.defaultBlockState();
             }
-        }
+
 
         return super.updateShape(currentState, facing, facingState, level, currentPos, facingPos);
     }
 
     @Override
-    public BlockState playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
+    public @NotNull BlockState playerWillDestroy(
+            @NotNull Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull BlockState blockState,
+            Player player
+    ) {
         // prevent creative drops
         if (player.isCreative()) {
             DoubleBlockHalf half = blockState.getValue(HALF);
@@ -87,15 +103,29 @@ public class JapBonzaiBlock extends Block {
 
 
     @Override
-    public void setPlacedBy(Level p_49847_, BlockPos p_49848_, BlockState p_49849_, @Nullable LivingEntity p_49850_, ItemStack p_49851_) {
-        p_49847_.setBlock(p_49848_.above(), this.defaultBlockState().setValue(FACING, p_49849_.getValue(FACING)).setValue(HALF, DoubleBlockHalf.UPPER), 3);
+    public void setPlacedBy(
+            Level level,
+            BlockPos blockPos,
+            BlockState blockState,
+            @Nullable LivingEntity livingEntity,
+            @NotNull ItemStack itemStack
+    ) {
+        level.setBlock(
+                blockPos.above(),
+                this.defaultBlockState()
+                        .setValue(FACING, blockState.getValue(FACING))
+                        .setValue(HALF, DoubleBlockHalf.UPPER),
+                3
+        );
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         if (context.getLevel().getBlockState(context.getClickedPos().above()).canBeReplaced(context)) {
-            return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(HALF, DoubleBlockHalf.LOWER);
+            return this.defaultBlockState()
+                    .setValue(FACING, context.getHorizontalDirection().getOpposite())
+                    .setValue(HALF, DoubleBlockHalf.LOWER);
         } else {
             return null;
         }

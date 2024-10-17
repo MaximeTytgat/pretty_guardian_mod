@@ -27,7 +27,7 @@ public class StopMoveWhenOrderedToGoal extends Goal {
             if (livingentity == null) {
                 return true;
             } else {
-                return this.mob.distanceToSqr(livingentity) < 144.0D && livingentity.getLastHurtByMob() != null ? false : this.mob.isOrderedToSit();
+                return (!(this.mob.distanceToSqr(livingentity) < 144.0D) || livingentity.getLastHurtByMob() == null) && this.mob.isOrderedToSit();
             }
         }
     }

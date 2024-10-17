@@ -68,7 +68,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
 
     public final AnimationState idleAnimationState = new AnimationState();
     public final AnimationState sitAnimationState = new AnimationState();
-    private int idleAnimationTimeout = 0;
+    private final int idleAnimationTimeout = 0;
 
 
     protected void defineSynchedData() {
@@ -253,8 +253,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                 this.gameEvent(GameEvent.EAT, this);
                 return InteractionResult.SUCCESS;
             } else {
-                if (item instanceof DyeItem) {
-                    DyeItem dyeitem = (DyeItem)item;
+                if (item instanceof DyeItem dyeitem) {
                     if (this.isOwnedBy(player)) {
                         DyeColor dyecolor = dyeitem.getDyeColor();
                         if (dyecolor != this.getCollarColor()) {
@@ -275,7 +274,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                     this.setOrderedToSit(!this.isOrderedToSit());
                     this.jumping = false;
                     this.navigation.stop();
-                    this.setTarget((LivingEntity) null);
+                    this.setTarget(null);
                     return InteractionResult.SUCCESS;
                 } else {
                     return interactionresult;
@@ -289,7 +288,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
             if (this.random.nextInt(3) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, player)) {
                 this.tame(player);
                 this.navigation.stop();
-                this.setTarget((LivingEntity)null);
+                this.setTarget(null);
                 this.setOrderedToSit(true);
                 this.level().broadcastEntityEvent(this, (byte)7);
             } else {
@@ -390,7 +389,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                                 Vec3 $$5 = $$4.normalize();
 
                                 for(int $$6 = 1; $$6 < Mth.floor($$4.length()) + 7; ++$$6) {
-                                    Vec3 $$7 = $$3.add($$5.scale((double)$$6));
+                                    Vec3 $$7 = $$3.add($$5.scale($$6));
                                     serverLevel.sendParticles(ModParticles.PINK_SONIC_BOOM_PARTICLES.get(), $$7.x, $$7.y, $$7.z, 1, 0.0, 0.0, 0.0, 0.0);
                                 }
 
@@ -417,7 +416,7 @@ public class CelestialRabbitEntity extends TamableAnimal implements FlyingAnimal
                             }
                         }
                     } else {
-                        CelestialRabbitEntity.this.setTarget((LivingEntity)null);
+                        CelestialRabbitEntity.this.setTarget(null);
                     }
 
                     super.tick();

@@ -35,7 +35,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
-    private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+    private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
     public static final Predicate<ItemStack> HEART_ARROW_ONLY = (itemStack) -> {
         return itemStack.is(ModTags.Items.HEART_ARROWS);
@@ -96,7 +96,7 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
                     level.addFreshEntity(abstractarrow);
                 }
 
-                level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), ModSounds.ETERNAL_SILVER_CRISTAL_STAFF_SHOOT.get(), SoundSource.PLAYERS, 0.3F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.ETERNAL_SILVER_CRISTAL_STAFF_SHOOT.get(), SoundSource.PLAYERS, 0.3F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
                 player.awardStat(Stats.ITEM_USED.get(this));
             }

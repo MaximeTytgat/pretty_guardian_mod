@@ -26,18 +26,19 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
 public class JapHugeLanternBlock extends LanternBlock {
-
     private static final VoxelShape AABB = Shapes.or(
             Block.box(6.500000000000005, 11, 8, 9.500000000000005, 13, 8),
             Block.box(8, 12, 6.500000000000002, 8, 15, 9.500000000000002),
             Block.box(6.500000000000005, 14, 8, 9.500000000000005, 16, 8),
             Block.box(3, 9, 3, 13, 11, 13),
             Block.box(1, 8, 1, 15, 9, 15),
-            Block.box(0, 0, 0, 16, 8, 16));
+            Block.box(0, 0, 0, 16, 8, 16)
+    );
 
     private static final VoxelShape MIDDLE_AABB = Shapes.or(
             Block.box(0, 13, 0, 16, 16, 16),
@@ -47,33 +48,74 @@ public class JapHugeLanternBlock extends LanternBlock {
             Block.box(2, 3, 2, 14, 10, 14),
             Block.box(3, 2, 3, 13, 3, 13),
             Block.box(5, 1, 5, 11, 2, 11),
-            Block.box(4, 0, 4, 12, 1, 12));
+            Block.box(4, 0, 4, 12, 1, 12)
+    );
 
     private static final VoxelShape LOWER_AABB = Shapes.or(
             Block.box(3, 10, 3, 13, 16, 13),
             Block.box(4, 9, 4, 12, 10, 12),
-            Block.box(5, 8, 5, 11, 9, 11));
+            Block.box(5, 8, 5, 11, 9, 11)
+    );
 
-
-    public static final EnumProperty<TripleBlockHalf> HALF = EnumProperty.create("half", TripleBlockHalf.class);;
+    public static final EnumProperty<TripleBlockHalf> HALF = EnumProperty.create("half", TripleBlockHalf.class);
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
 
-
     public JapHugeLanternBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HALF, TripleBlockHalf.UPPER).setValue(POWERED, Boolean.valueOf(false)).setValue(HANGING, Boolean.valueOf(false)).setValue(LIT, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
-    }
-
-    public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack) {
-        BlockPos middlePos = blockPos.below();
-        level.setBlock(middlePos, blockState.setValue(HALF, TripleBlockHalf.MIDDLE).setValue(POWERED, Boolean.valueOf(false)).setValue(HANGING, Boolean.valueOf(true)).setValue(LIT, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)), 3);
-        level.setBlock(middlePos.below(), blockState.setValue(HALF, TripleBlockHalf.LOWER).setValue(POWERED, Boolean.valueOf(false)).setValue(HANGING, Boolean.valueOf(true)).setValue(LIT, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)), 3);
+        this.registerDefaultState(
+                this.stateDefinition.any()
+                    .setValue(HALF, TripleBlockHalf.UPPER)
+                    .setValue(POWERED, Boolean.FALSE)
+                    .setValue(HANGING, Boolean.FALSE)
+                    .setValue(LIT, Boolean.FALSE)
+                    .setValue(WATERLOGGED, Boolean.FALSE)
+        );
     }
 
     @Override
-    public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        return blockState.getValue(HALF) == TripleBlockHalf.LOWER ? LOWER_AABB : blockState.getValue(HALF) == TripleBlockHalf.MIDDLE ? MIDDLE_AABB : AABB;
+    public void setPlacedBy(
+            Level level,
+            BlockPos blockPos,
+            BlockState blockState,
+            LivingEntity livingEntity,
+            @NotNull ItemStack itemStack
+    ) {
+        BlockPos middlePos = blockPos.below();
+        level.setBlock(
+                middlePos,
+                blockState
+                    .setValue(HALF, TripleBlockHalf.MIDDLE)
+                    .setValue(POWERED, Boolean.FALSE)
+                    .setValue(HANGING, Boolean.TRUE)
+                    .setValue(LIT, Boolean.FALSE)
+                    .setValue(WATERLOGGED, Boolean.FALSE),
+                3
+        );
+        level.setBlock(
+                middlePos.below(),
+                blockState
+                    .setValue(HALF, TripleBlockHalf.LOWER)
+                    .setValue(POWERED, Boolean.FALSE)
+                    .setValue(HANGING, Boolean.TRUE)
+                    .setValue(LIT, Boolean.FALSE)
+                    .setValue(WATERLOGGED, Boolean.FALSE),
+                3
+        );
+    }
+
+    @Override
+    public @NotNull VoxelShape getShape(
+            BlockState blockState,
+            @NotNull BlockGetter blockGetter,
+            @NotNull BlockPos blockPos,
+            @NotNull CollisionContext collisionContext
+    ) {
+        return switch (blockState.getValue(HALF)) {
+            case LOWER -> LOWER_AABB;
+            case MIDDLE -> MIDDLE_AABB;
+            default -> AABB;
+        };
     }
 
     @Nullable
@@ -104,31 +146,35 @@ public class JapHugeLanternBlock extends LanternBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState currentState, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+    public @NotNull BlockState updateShape(
+            BlockState currentState,
+            @NotNull Direction facing,
+            BlockState facingState,
+            @NotNull LevelAccessor level,
+            @NotNull BlockPos currentPos,
+            @NotNull BlockPos facingPos
+    ) {
         Block facingBlock = facingState.getBlock();
+        boolean facingIsNotThis = facingBlock != this;
 
-        if (currentState.getValue(HALF) == TripleBlockHalf.LOWER) {
-            if (facing == Direction.UP && facingBlock != this) {
-                return Blocks.AIR.defaultBlockState();
-            }
-        } else if (currentState.getValue(HALF) == TripleBlockHalf.MIDDLE) {
-            if (facing == Direction.UP && facingBlock != this) {
-                return Blocks.AIR.defaultBlockState();
-            } else if (facing == Direction.DOWN && facingBlock != this) {
-                return Blocks.AIR.defaultBlockState();
-            }
-        } else if (currentState.getValue(HALF) == TripleBlockHalf.UPPER) {
-            if (facing == Direction.DOWN && facingBlock != this) {
-                return Blocks.AIR.defaultBlockState();
-            }
+        if (
+                (currentState.getValue(HALF) == TripleBlockHalf.LOWER && facing == Direction.UP && facingIsNotThis) ||
+                (currentState.getValue(HALF) == TripleBlockHalf.MIDDLE && (facing == Direction.UP || facing == Direction.DOWN) && facingIsNotThis) ||
+                (currentState.getValue(HALF) == TripleBlockHalf.UPPER && facing == Direction.DOWN && facingIsNotThis)
+        ){
+            return Blocks.AIR.defaultBlockState();
         }
 
         return super.updateShape(currentState, facing, facingState, level, currentPos, facingPos);
     }
 
     @Override
-    public BlockState playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
-        // prevent creative drops
+    public @NotNull BlockState playerWillDestroy(
+            @NotNull Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull BlockState blockState,
+            Player player
+    ) {
         if (player.isCreative()) {
             TripleBlockHalf half = blockState.getValue(HALF);
             BlockPos blockToDestroy = switch (half) {
@@ -143,16 +189,24 @@ public class JapHugeLanternBlock extends LanternBlock {
         return super.playerWillDestroy(level, blockPos, blockState, player);
     }
 
-    public void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos blockPos1, boolean b) {
+    @Override
+    public void neighborChanged(
+            @NotNull BlockState blockState,
+            Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull Block block,
+            @NotNull BlockPos blockPos1,
+            boolean b
+    ) {
         if (!level.isClientSide) {
             boolean flag = level.hasNeighborSignal(blockPos);
-            if (flag != blockState.getValue(POWERED)) {
-                if (blockState.getValue(LIT) != flag) {
-                    blockState = blockState.setValue(LIT, Boolean.valueOf(flag));
+            if (flag != Boolean.TRUE.equals(blockState.getValue(POWERED))) {
+                if (Boolean.TRUE.equals(blockState.getValue(LIT)) != flag) {
+                    blockState = blockState.setValue(LIT, flag);
                 }
 
-                level.setBlock(blockPos, blockState.setValue(POWERED, Boolean.valueOf(flag)), 2);
-                if (blockState.getValue(WATERLOGGED)) {
+                level.setBlock(blockPos, blockState.setValue(POWERED, flag), 2);
+                if (Boolean.TRUE.equals(blockState.getValue(WATERLOGGED))) {
                     level.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
                 }
             }
@@ -160,24 +214,36 @@ public class JapHugeLanternBlock extends LanternBlock {
         }
     }
 
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_153490_) {
-        p_153490_.add(HALF, LIT, POWERED, HANGING, WATERLOGGED);
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockBlockStateBuilder) {
+        blockBlockStateBuilder.add(HALF, LIT, POWERED, HANGING, WATERLOGGED);
     }
 
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-
-        if (blockState.getValue(HALF) == TripleBlockHalf.LOWER) {
-            changeCycle(level, blockPos.above());
-            changeCycle(level, blockPos.above().above());
-        } else if (blockState.getValue(HALF) == TripleBlockHalf.MIDDLE) {
-            changeCycle(level, blockPos.above());
-            changeCycle(level, blockPos.below());
-        } else {
-            changeCycle(level, blockPos.below());
-            changeCycle(level, blockPos.below().below());
+    @Override
+    protected @NotNull InteractionResult useWithoutItem(
+            @NotNull BlockState blockState,
+            @NotNull Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull Player player,
+            @NotNull BlockHitResult blockHitResult
+    ) {
+        switch (blockState.getValue(HALF)) {
+            case LOWER -> {
+                changeCycle(level, blockPos.above());
+                changeCycle(level, blockPos.above().above());
+            }
+            case MIDDLE -> {
+                changeCycle(level, blockPos.above());
+                changeCycle(level, blockPos.below());
+            }
+            case UPPER -> {
+                changeCycle(level, blockPos.below());
+                changeCycle(level, blockPos.below().below());
+            }
         }
 
         changeCycle(level, blockPos);
+
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
@@ -185,7 +251,7 @@ public class JapHugeLanternBlock extends LanternBlock {
         BlockState blockState = level.getBlockState(blockPos);
         blockState = blockState.cycle(LIT);
         level.setBlock(blockPos, blockState, 2);
-        if (blockState.getValue(WATERLOGGED)) {
+        if (Boolean.TRUE.equals(blockState.getValue(WATERLOGGED))) {
             level.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
     }
@@ -195,14 +261,15 @@ public class JapHugeLanternBlock extends LanternBlock {
         MIDDLE,
         LOWER;
 
-        private TripleBlockHalf() {
+        TripleBlockHalf() {
         }
 
+        @Override
         public String toString() {
             return this.getSerializedName();
         }
 
-        public String getSerializedName() {
+        public @NotNull String getSerializedName() {
             return this.name().toLowerCase();
         }
     }

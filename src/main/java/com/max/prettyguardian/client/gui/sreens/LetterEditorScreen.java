@@ -35,7 +35,7 @@ public class LetterEditorScreen extends AbstractContainerScreen<FakeLoveLetterMe
     private CustomFittingMultiLineTextWidget writtenOutput;
     private final ItemStack stack;
     private MutableComponent msg;
-    private List<FormattedCharSequence> cachedPageComponents;
+    private final List<FormattedCharSequence> cachedPageComponents;
 
     public LetterEditorScreen(FakeLoveLetterMenu fakeMenu, Inventory inventory, Component component) {
         super(fakeMenu, inventory, Component.empty());
@@ -114,12 +114,12 @@ public class LetterEditorScreen extends AbstractContainerScreen<FakeLoveLetterMe
 
         int maxLines = Math.min(128 / 9, this.cachedPageComponents.size());
         for (int lineIndex = 0; lineIndex < maxLines; ++lineIndex) {
-            FormattedCharSequence line = (FormattedCharSequence)this.cachedPageComponents.get(lineIndex);
+            FormattedCharSequence line = this.cachedPageComponents.get(lineIndex);
             int lineY = 32 + lineIndex * 9;
             graphics.drawString(this.font, line, bookX + 36, lineY, 0, false);
         }
 
-        Style hoveredComponentStyle = this.getClickedComponentStyleAt((double)mouseX, (double)mouseY);
+        Style hoveredComponentStyle = this.getClickedComponentStyleAt(mouseX, mouseY);
         if (hoveredComponentStyle != null) {
             graphics.renderComponentHoverEffect(this.font, hoveredComponentStyle, mouseX, mouseY);
         }
@@ -146,7 +146,7 @@ public class LetterEditorScreen extends AbstractContainerScreen<FakeLoveLetterMe
                     Objects.requireNonNull(this.minecraft.font);
                     int $$5 = $$3 / 9;
                     if ($$5 >= 0 && $$5 < this.cachedPageComponents.size()) {
-                        FormattedCharSequence $$6 = (FormattedCharSequence)this.cachedPageComponents.get($$5);
+                        FormattedCharSequence $$6 = this.cachedPageComponents.get($$5);
                         return this.minecraft.font.getSplitter().componentStyleAtWidth($$6, $$2);
                     }
 

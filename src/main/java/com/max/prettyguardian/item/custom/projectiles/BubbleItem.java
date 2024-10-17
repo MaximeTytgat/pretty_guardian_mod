@@ -27,6 +27,6 @@ public class BubbleItem extends Item {
 
     public boolean isInfinite(ItemStack stack, ItemStack bow, Player player) {
         int enchant = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, bow);
-        return enchant <= 0 ? false : this.getClass() == BubbleItem.class;
+        return enchant > 0 && this.getClass() == BubbleItem.class;
     }
 }

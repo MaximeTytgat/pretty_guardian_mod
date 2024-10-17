@@ -16,7 +16,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
@@ -31,16 +30,21 @@ public class CuteArrowEntity extends AbstractArrow {
     }
 
     public CuteArrowEntity(EntityType<CuteArrowEntity> entityType, double x, double y, double z, Level world) {
-        super(entityType, x, y, z, world);
+        super(entityType, x, y, z, world, new ItemStack(PrettyGuardianItem.HEART_ARROW.get()));
         this.level = world;
     }
 
     public CuteArrowEntity(EntityType<CuteArrowEntity> entityType, LivingEntity shooter, Level world) {
-        super(entityType, world, shooter);
+        super(entityType, shooter, world, new ItemStack(PrettyGuardianItem.HEART_ARROW.get()));
         this.level = world;
     }
     @Override
     protected @NotNull ItemStack getPickupItem() {
+        return new ItemStack(PrettyGuardianItem.HEART_ARROW.get());
+    }
+
+    @Override
+    protected ItemStack getDefaultPickupItem() {
         return new ItemStack(PrettyGuardianItem.HEART_ARROW.get());
     }
 

@@ -11,7 +11,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 
 public class SlowEnchantment extends Enchantment {
     protected SlowEnchantment() {
-        super(Enchantment.definition(ModTags.Items.SPACE_SWORD_ENCHANTABLE, 10, 2, Enchantment.dynamicCost(1, 11), Enchantment.dynamicCost(21, 11), 1, FeatureFlagSet.of(FeatureFlags.BUNDLE), new EquipmentSlot[]{EquipmentSlot.MAINHAND}));
+        super(Enchantment.definition(ModTags.Items.SPACE_SWORD_ENCHANTABLE, 10, 2, Enchantment.dynamicCost(1, 11), Enchantment.dynamicCost(21, 11), 1, FeatureFlagSet.of(FeatureFlags.BUNDLE), EquipmentSlot.MAINHAND));
 
     }
 

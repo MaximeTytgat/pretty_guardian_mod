@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 public class SeaShell extends Block {
     public static final IntegerProperty VARIANT = IntegerProperty.create("variant", 0, 3);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-    private static final VoxelShape SHAPE_BY_VARIANT[] = {
+    private static final VoxelShape[] SHAPE_BY_VARIANT = {
             Block.box(2, 0, 2, 14, 2, 14),
             Block.box(2, 0, 2, 15, 2, 14),
             Block.box(3, 0, 2, 13, 2, 13),

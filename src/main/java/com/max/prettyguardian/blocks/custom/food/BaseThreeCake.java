@@ -8,6 +8,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -20,11 +21,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Stream;
 
@@ -39,39 +40,64 @@ public class BaseThreeCake extends Block  {
         this.registerDefaultState(this.stateDefinition.any().setValue(BITES, 0));
     }
 
-    public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext context) {
+    @Override
+    public @NotNull VoxelShape getShape(
+            BlockState state,
+            @NotNull BlockGetter getter,
+            @NotNull BlockPos pos,
+            @NotNull CollisionContext context
+    ) {
         return SHAPE_BY_BITE[state.getValue(BITES)];
     }
 
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        ItemStack itemstack = player.getItemInHand(interactionHand);
-        Item item = itemstack.getItem();
-        if (itemstack.is(ItemTags.CANDLES) && blockState.getValue(BITES) == 0) {
-            Block block = Block.byItem(item);
-            if (block instanceof CandleBlock candleBlock) {
-                if (!player.isCreative()) {
-                    itemstack.shrink(1);
-                }
-
-                level.playSound((Player)null, blockPos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                level.setBlockAndUpdate(blockPos, CandleCakeBlock.byCandle(candleBlock));
-                level.gameEvent(player, GameEvent.BLOCK_CHANGE, blockPos);
-                player.awardStat(Stats.ITEM_USED.get(item));
-                return InteractionResult.SUCCESS;
-            }
-        }
-
+    @Override
+    protected @NotNull InteractionResult useWithoutItem(
+            @NotNull BlockState blockState,
+            @NotNull Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull Player player,
+            @NotNull BlockHitResult blockHitResult
+    ) {
         if (level.isClientSide) {
             if (eat(level, blockPos, blockState, player).consumesAction()) {
                 return InteractionResult.SUCCESS;
             }
 
-            if (itemstack.isEmpty()) {
+            if (player.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
                 return InteractionResult.CONSUME;
             }
         }
 
         return eat(level, blockPos, blockState, player);
+    }
+
+    @Override
+    protected @NotNull ItemInteractionResult useItemOn(
+            ItemStack itemStack,
+            @NotNull BlockState blockState,
+            @NotNull Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull Player player,
+            @NotNull InteractionHand interactionHand,
+            @NotNull BlockHitResult blockHitResult
+    ) {
+        Item item = itemStack.getItem();
+        if (itemStack.is(ItemTags.CANDLES) && blockState.getValue(BITES) == 0) {
+            Block block = Block.byItem(item);
+            if (block instanceof CandleBlock candleBlock) {
+                if (!player.isCreative()) {
+                    itemStack.shrink(1);
+                }
+
+                level.playSound(null, blockPos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.setBlockAndUpdate(blockPos, CandleCakeBlock.byCandle(candleBlock));
+                level.gameEvent(player, GameEvent.BLOCK_CHANGE, blockPos);
+                player.awardStat(Stats.ITEM_USED.get(item));
+                return ItemInteractionResult.SUCCESS;
+            }
+        }
+
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     protected static InteractionResult eat(LevelAccessor accessor, BlockPos blockPos, BlockState blockState, Player player) {
@@ -83,7 +109,7 @@ public class BaseThreeCake extends Block  {
             int i = blockState.getValue(BITES);
             accessor.gameEvent(player, GameEvent.EAT, blockPos);
             if (i < MAX_BITES) {
-                accessor.setBlock(blockPos, blockState.setValue(BITES, Integer.valueOf(i + 1)), 3);
+                accessor.setBlock(blockPos, blockState.setValue(BITES, i + 1), 3);
             } else {
                 accessor.removeBlock(blockPos, false);
                 accessor.gameEvent(player, GameEvent.BLOCK_DESTROY, blockPos);
@@ -93,31 +119,41 @@ public class BaseThreeCake extends Block  {
         }
     }
 
-    public BlockState updateShape(BlockState state, Direction dir, BlockState state2, LevelAccessor accessor, BlockPos pos1, BlockPos pos2) {
-        return dir == Direction.DOWN && !state.canSurvive(accessor, pos1) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, dir, state2, accessor, pos1, pos2);
+    @Override
+    public @NotNull BlockState updateShape(
+            @NotNull BlockState state,
+            @NotNull Direction dir,
+            @NotNull BlockState state2,
+            @NotNull LevelAccessor accessor,
+            @NotNull BlockPos pos1,
+            @NotNull BlockPos pos2
+    ) {
+        return dir == Direction.DOWN && !state.canSurvive(accessor, pos1) ?
+                Blocks.AIR.defaultBlockState() :
+                super.updateShape(state, dir, state2, accessor, pos1, pos2);
     }
 
-    public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
+    @Override
+    public boolean canSurvive(@NotNull BlockState state, LevelReader reader, BlockPos pos) {
         return !reader.getBlockState(pos.below()).isAir();
     }
 
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder builder) {
         builder.add(BITES);
     }
 
-    public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+    @Override
+    public int getAnalogOutputSignal(BlockState state, @NotNull Level level, @NotNull BlockPos pos) {
         return getOutputSignal(state.getValue(BITES));
     }
 
-    public static int getOutputSignal(int p_152747_) {
-        return (7 - p_152747_) * 2;
+    public static int getOutputSignal(int i) {
+        return (7 - i) * 2;
     }
 
-    public boolean hasAnalogOutputSignal(BlockState state) {
+    @Override
+    public boolean hasAnalogOutputSignal(@NotNull BlockState state) {
         return true;
-    }
-
-    public boolean isPathfindable(BlockState state, BlockGetter getter, BlockPos pos, PathComputationType type) {
-        return false;
     }
 }

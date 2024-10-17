@@ -196,13 +196,13 @@ public class CelestialRabbitModel<T extends Entity> extends HierarchicalModel<T>
 		return celestial_rabbit;
 	}
 
-	public static enum State {
+	public enum State {
 		FLYING,
 		IDLE,
 		SITTING,
 		ON_SHOULDER;
 
-		private State() {
+		State() {
 		}
 	}
 }

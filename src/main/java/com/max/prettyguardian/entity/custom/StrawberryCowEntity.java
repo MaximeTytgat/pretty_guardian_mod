@@ -41,7 +41,7 @@ public class StrawberryCowEntity extends MushroomCow {
         ItemStack itemstack = player.getItemInHand(interactionHand);
         if (itemstack.is(Items.BOWL) && !this.isBaby()) {
             return InteractionResult.sidedSuccess(this.level().isClientSide);
-        } else if (false && itemstack.getItem() == Items.SHEARS && this.readyForShearing()) { //Forge: Moved to onSheared
+        } else if (false) { //Forge: Moved to onSheared
             this.shear(SoundSource.PLAYERS);
             this.gameEvent(GameEvent.SHEAR, player);
             if (!this.level().isClientSide) {

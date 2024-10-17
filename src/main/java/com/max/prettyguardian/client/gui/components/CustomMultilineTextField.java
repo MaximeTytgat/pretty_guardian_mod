@@ -112,7 +112,7 @@ public class CustomMultilineTextField {
 
     public int getLineAtCursor() {
         for(int $$0 = 0; $$0 < this.displayLines.size(); ++$$0) {
-            CustomMultilineTextField.StringView $$1 = (CustomMultilineTextField.StringView)this.displayLines.get($$0);
+            CustomMultilineTextField.StringView $$1 = this.displayLines.get($$0);
             if (this.cursor >= $$1.beginIndex && this.cursor <= $$1.endIndex) {
                 return $$0;
             }
@@ -122,7 +122,7 @@ public class CustomMultilineTextField {
     }
 
     public CustomMultilineTextField.StringView getLineView(int p_239145_) {
-        return (CustomMultilineTextField.StringView)this.displayLines.get(Mth.clamp(p_239145_, 0, this.displayLines.size() - 1));
+        return this.displayLines.get(Mth.clamp(p_239145_, 0, this.displayLines.size() - 1));
     }
 
     public void seekCursor(Whence p_239798_, int p_239799_) {
@@ -158,7 +158,7 @@ public class CustomMultilineTextField {
         int $$2 = Mth.floor(p_239579_);
         Objects.requireNonNull(this.font);
         int $$3 = Mth.floor(p_239580_ / 9.0);
-        CustomMultilineTextField.StringView $$4 = (CustomMultilineTextField.StringView)this.displayLines.get(Mth.clamp($$3, 0, this.displayLines.size() - 1));
+        CustomMultilineTextField.StringView $$4 = this.displayLines.get(Mth.clamp($$3, 0, this.displayLines.size() - 1));
         int $$5 = this.font.plainSubstrByWidth(this.value.substring($$4.beginIndex, $$4.endIndex), $$2).length();
         this.seekCursor(Whence.ABSOLUTE, $$4.beginIndex + $$5);
     }
@@ -286,7 +286,7 @@ public class CustomMultilineTextField {
             int var10002 = this.cursor;
             throw new IllegalStateException("Cursor is not within text (cursor = " + var10002 + ", length = " + this.value.length() + ")");
         } else {
-            return (CustomMultilineTextField.StringView)this.displayLines.get(Mth.clamp($$1 + p_239855_, 0, this.displayLines.size() - 1));
+            return this.displayLines.get(Mth.clamp($$1 + p_239855_, 0, this.displayLines.size() - 1));
         }
     }
 
@@ -367,10 +367,10 @@ public class CustomMultilineTextField {
     }
 
     @OnlyIn(Dist.CLIENT)
-    protected static record StringView(int beginIndex, int endIndex) {
+    protected record StringView(int beginIndex, int endIndex) {
         static final CustomMultilineTextField.StringView EMPTY = new CustomMultilineTextField.StringView(0, 0);
 
-        protected StringView(int beginIndex, int endIndex) {
+        private StringView(int beginIndex, int endIndex) {
             this.beginIndex = beginIndex;
             this.endIndex = endIndex;
         }

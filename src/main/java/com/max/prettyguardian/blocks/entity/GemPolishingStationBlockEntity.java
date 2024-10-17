@@ -53,7 +53,7 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements MenuP
                 switch (pIndex){
                     case 0 -> GemPolishingStationBlockEntity.this.progress = pValue;
                     case 1 -> GemPolishingStationBlockEntity.this.maxProgress = pValue;
-                };
+                }
             }
 
             @Override

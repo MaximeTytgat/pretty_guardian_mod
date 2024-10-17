@@ -2,7 +2,6 @@ package com.max.prettyguardian.blocks.custom.furniture;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -26,8 +25,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 public class JapDoubleLanternBlock extends LanternBlock {
 
@@ -43,72 +41,109 @@ public class JapDoubleLanternBlock extends LanternBlock {
             Block.box(3, 10, 3, 13, 12, 13)
     );
 
-
-    public static final EnumProperty<DoubleBlockHalf> HALF = EnumProperty.create("half", DoubleBlockHalf.class);;
+    public static final EnumProperty<DoubleBlockHalf> HALF = EnumProperty.create("half", DoubleBlockHalf.class);
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
 
 
     public JapDoubleLanternBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HALF, DoubleBlockHalf.UPPER).setValue(POWERED, Boolean.valueOf(false)).setValue(HANGING, Boolean.valueOf(false)).setValue(LIT, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
-    }
-
-    public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack) {
-        level.setBlock(blockPos.below(), blockState.setValue(HALF, DoubleBlockHalf.LOWER).setValue(POWERED, Boolean.valueOf(false)).setValue(HANGING, Boolean.valueOf(true)).setValue(LIT, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)), 3);
+        this.registerDefaultState(
+                this.stateDefinition.any()
+                    .setValue(HALF, DoubleBlockHalf.UPPER)
+                    .setValue(POWERED, Boolean.FALSE)
+                    .setValue(HANGING, Boolean.FALSE)
+                    .setValue(LIT, Boolean.FALSE)
+                    .setValue(WATERLOGGED, Boolean.FALSE)
+        );
     }
 
     @Override
-    public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+    public void setPlacedBy(
+            Level level,
+            BlockPos blockPos,
+            BlockState blockState,
+            LivingEntity livingEntity,
+            @NotNull ItemStack itemStack
+    ) {
+        level.setBlock(
+                blockPos.below(),
+                blockState
+                    .setValue(HALF, DoubleBlockHalf.LOWER)
+                    .setValue(POWERED, Boolean.FALSE)
+                    .setValue(HANGING, Boolean.TRUE)
+                    .setValue(LIT, Boolean.FALSE)
+                    .setValue(WATERLOGGED, Boolean.FALSE),
+                3);
+    }
+
+    @Override
+    public @NotNull VoxelShape getShape(
+            BlockState blockState,
+            @NotNull BlockGetter blockGetter,
+            @NotNull BlockPos blockPos,
+            @NotNull CollisionContext collisionContext
+    ) {
         return blockState.getValue(HALF) == DoubleBlockHalf.LOWER ? LOWER_AABB : AABB;
     }
 
-    @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext clickedPos) {
-        FluidState fluidstate = clickedPos.getLevel().getFluidState(clickedPos.getClickedPos());
+    public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
+        Level level = blockPlaceContext.getLevel();
+        BlockPos clickedPos = blockPlaceContext.getClickedPos();
+        FluidState fluidstate = level.getFluidState(clickedPos);
 
-        for(Direction direction : clickedPos.getNearestLookingDirections()) {
-            if (direction == Direction.UP) {
-                BlockPos belowPos = clickedPos.getClickedPos().below();
+        for(Direction direction : blockPlaceContext.getNearestLookingDirections()) {
+            BlockPos belowPos = clickedPos.below();
+            if (direction != Direction.UP || !level.getBlockState(belowPos).canBeReplaced(blockPlaceContext)) continue;
 
-                if (clickedPos.getLevel().getBlockState(belowPos).canBeReplaced(clickedPos)) {
-                    BlockState blockstate = this.defaultBlockState().setValue(HANGING, Boolean.TRUE);
+            BlockState blockstate = this.defaultBlockState().setValue(HANGING, Boolean.TRUE);
 
-                    if (clickedPos.getLevel().hasNeighborSignal(clickedPos.getClickedPos())) {
-                        blockstate = blockstate.setValue(LIT, Boolean.TRUE).setValue(POWERED, Boolean.TRUE);
-                    }
+            if (level.hasNeighborSignal(clickedPos)) {
+                blockstate = blockstate.setValue(LIT, Boolean.TRUE).setValue(POWERED, Boolean.TRUE);
+            }
 
-                    if (blockstate.canSurvive(clickedPos.getLevel(), clickedPos.getClickedPos())) {
-                        return blockstate.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
-                    }
-                }
+            if (blockstate.canSurvive(level, clickedPos)) {
+                return blockstate.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
             }
         }
 
-        return null;
+        return super.getStateForPlacement(blockPlaceContext);
     }
 
     @Override
-    public BlockState updateShape(BlockState currentState, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+    public @NotNull BlockState updateShape(
+            BlockState currentState,
+            @NotNull Direction facing,
+            BlockState facingState,
+            @NotNull LevelAccessor level,
+            @NotNull BlockPos currentPos,
+            @NotNull BlockPos facingPos
+    ) {
         Block facingBlock = facingState.getBlock();
 
         if (currentState.getValue(HALF) == DoubleBlockHalf.LOWER) {
             if (facing == Direction.UP && facingBlock != this) {
                 return Blocks.AIR.defaultBlockState();
             }
-        } else if (currentState.getValue(HALF) == DoubleBlockHalf.UPPER) {
-            if (facing == Direction.DOWN && facingBlock != this) {
-                return Blocks.AIR.defaultBlockState();
-            }
+        } else if (
+                currentState.getValue(HALF) == DoubleBlockHalf.UPPER
+                        && facing == Direction.DOWN
+                        && facingBlock != this
+        ) {
+            return Blocks.AIR.defaultBlockState();
         }
 
         return super.updateShape(currentState, facing, facingState, level, currentPos, facingPos);
     }
 
     @Override
-    public BlockState playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
-        // prevent creative drops
+    public @NotNull BlockState playerWillDestroy(
+            @NotNull Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull BlockState blockState,
+            Player player
+    ) {
         if (player.isCreative()) {
             DoubleBlockHalf half = blockState.getValue(HALF);
             BlockPos blockToDestroy = switch (half) {
@@ -119,20 +154,26 @@ public class JapDoubleLanternBlock extends LanternBlock {
             level.destroyBlock(blockToDestroy, false);
         }
 
-
-        return super.playerWillDestroy(level, blockPos, blockState, player);;
+        return super.playerWillDestroy(level, blockPos, blockState, player);
     }
 
-    public void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos blockPos1, boolean b) {
+    @Override
+    public void neighborChanged(
+            @NotNull BlockState blockState, Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull Block block,
+            @NotNull BlockPos blockPos1,
+            boolean b
+    ) {
         if (!level.isClientSide) {
             boolean flag = level.hasNeighborSignal(blockPos);
-            if (flag != blockState.getValue(POWERED)) {
-                if (blockState.getValue(LIT) != flag) {
-                    blockState = blockState.setValue(LIT, Boolean.valueOf(flag));
+            if (flag != Boolean.TRUE.equals(blockState.getValue(POWERED))) {
+                if (Boolean.TRUE.equals(blockState.getValue(LIT)) != flag) {
+                    blockState = blockState.setValue(LIT, flag);
                 }
 
-                level.setBlock(blockPos, blockState.setValue(POWERED, Boolean.valueOf(flag)), 2);
-                if (blockState.getValue(WATERLOGGED)) {
+                level.setBlock(blockPos, blockState.setValue(POWERED, flag), 2);
+                if (Boolean.TRUE.equals(blockState.getValue(WATERLOGGED))) {
                     level.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
                 }
             }
@@ -140,12 +181,19 @@ public class JapDoubleLanternBlock extends LanternBlock {
         }
     }
 
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_153490_) {
-        p_153490_.add(HALF, LIT, POWERED, HANGING, WATERLOGGED);
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockBlockStateBuilder) {
+        blockBlockStateBuilder.add(HALF, LIT, POWERED, HANGING, WATERLOGGED);
     }
 
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-
+    @Override
+    protected @NotNull InteractionResult useWithoutItem(
+            BlockState blockState,
+            @NotNull Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull Player player,
+            @NotNull BlockHitResult blockHitResult
+    ) {
         if (blockState.getValue(HALF) == DoubleBlockHalf.LOWER) {
             changeCycle(level, blockPos.above());
         } else {
@@ -160,7 +208,7 @@ public class JapDoubleLanternBlock extends LanternBlock {
         BlockState blockState = level.getBlockState(blockPos);
         blockState = blockState.cycle(LIT);
         level.setBlock(blockPos, blockState, 2);
-        if (blockState.getValue(WATERLOGGED)) {
+        if (Boolean.TRUE.equals(blockState.getValue(WATERLOGGED))) {
             level.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
     }

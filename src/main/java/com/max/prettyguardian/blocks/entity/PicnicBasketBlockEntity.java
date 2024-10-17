@@ -51,7 +51,7 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
             updateBlockState(this.getBlockState(), true);
             if (this.openCount == 1) {
                 this.level.gameEvent(p_59692_, GameEvent.CONTAINER_OPEN, this.worldPosition);
-                this.level.playSound((Player)null, this.worldPosition, SoundEvents.BARREL_OPEN, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
+                this.level.playSound(null, this.worldPosition, SoundEvents.BARREL_OPEN, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
             }
         }
 
@@ -64,7 +64,7 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
             this.level.blockEvent(this.worldPosition, this.getBlockState().getBlock(), 1, this.openCount);
             if (this.openCount <= 0) {
                 this.level.gameEvent(p_59688_, GameEvent.CONTAINER_CLOSE, this.worldPosition);
-                this.level.playSound((Player)null, this.worldPosition, SoundEvents.BARREL_CLOSE, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
+                this.level.playSound(null, this.worldPosition, SoundEvents.BARREL_CLOSE, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
             }
         }
     }
