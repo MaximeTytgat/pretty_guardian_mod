@@ -23,13 +23,13 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
+import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoItem;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.*;
-import software.bernie.geckolib.core.object.PlayState;
-import software.bernie.geckolib.util.RenderUtils;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animatable.instance.SingletonAnimatableInstanceCache;
+import software.bernie.geckolib.animation.*;
+import software.bernie.geckolib.util.RenderUtil;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -46,9 +46,9 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
     }
 
     @Override
-    public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int i, boolean b) {
+    public void inventoryTick(@NotNull ItemStack itemStack, @NotNull Level level, @NotNull Entity entity, int i, boolean b) {
         if (entity instanceof Player player) {
-//            if (player.getName().getString().equals("LittlePokky")) {
+            if (player.getName().getString().equals("LittlePokky")) {
                 player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 1,false, false));
                 player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1,false, false));
                 player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 1,false, false));
@@ -56,18 +56,18 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
                 player.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 200, 1,false, false));
                 player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 1,false, false));
                 player.addEffect(new MobEffectInstance(MobEffects.HERO_OF_THE_VILLAGE, 200, 0,false, false));
-//            }
+            }
         }
         super.inventoryTick(itemStack, level, entity, i, b);
     }
 
-    public void releaseUsing(ItemStack itemStack, Level level, LivingEntity livingEntity, int p_40670_) {
+    public void releaseUsing(@NotNull ItemStack itemStack, @NotNull Level level, @NotNull LivingEntity livingEntity, int p_40670_) {
         if (livingEntity instanceof Player player) {
-            boolean flag = player.getAbilities().instabuild || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, itemStack) > 0;
+            boolean flag = player.getAbilities().instabuild || EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY, itemStack) > 0;
             ItemStack itemstack = player.getProjectile(itemStack);
 
             int i = this.getUseDuration(itemStack) - p_40670_;
-            i = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(itemStack, level, player, i, !itemstack.isEmpty() || flag);
+            i = ForgeEventFactory.onArrowLoose(itemStack, level, player, i, !itemstack.isEmpty() || flag);
             if (i < 0) return;
 
 
@@ -77,7 +77,6 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
 
             float f = getPowerForTime(i);
             if (!((double)f < 0.1D)) {
-                boolean flag1 = player.getAbilities().instabuild || (itemstack.getItem() instanceof StarLightItem && ((StarLightItem)itemstack.getItem()).isInfinite(itemstack, itemStack, player));
                 if (!level.isClientSide) {
                     float damage = 8.0F;
                     if (player.getName().getString().equals("LittlePokky")) {
@@ -88,9 +87,7 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
                     StarLightEntity abstractarrow = arrowitem.createArrow(level, itemstack, player, damage);
                     abstractarrow.setOwner(player);
 
-                    Vec3 look = player.getLookAngle();
                     abstractarrow.setPos(player.getX(), player.getEyeY() - 0.5F, player.getZ());
-//                    abstractarrow.shoot(look.x, look.y + 0.05F, look.z, f * 3.0F, 1.0F);
                     abstractarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 3.0F, 1.0F);
 
                     level.addFreshEntity(abstractarrow);
@@ -113,10 +110,7 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
         player.getCooldowns().addCooldown(PrettyGuardianItem.MOON_STICK.get(), cooldown);
         player.getCooldowns().addCooldown(PrettyGuardianItem.MOON_STICK_PEARL.get(), cooldown);
         player.getCooldowns().addCooldown(PrettyGuardianItem.SPIRAL_HEART_MOON_ROD.get(), cooldown);
-
-
     }
-
 
     public boolean isFoil(ItemStack p_41172_) {
         return true;
@@ -128,7 +122,7 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
 
 
     @Override
-    public int getUseDuration(ItemStack p_40680_) {
+    public int getUseDuration(@NotNull ItemStack itemStack) {
         return 72000;
     }
 
@@ -138,7 +132,7 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack p_40678_) {
+    public @NotNull UseAnim getUseAnimation(@NotNull ItemStack itemStack) {
         return UseAnim.NONE;
     }
 
@@ -150,7 +144,7 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        controllerRegistrar.add(new AnimationController(this, "controller", 0, this::predicate));
+        controllerRegistrar.add(new AnimationController<>(this, "controller", 0, this::predicate));
     }
 
     @Override
@@ -160,7 +154,7 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
 
     @Override
     public double getTick(Object itemStack) {
-        return RenderUtils.getCurrentTick();
+        return RenderUtil.getCurrentTick();
     }
 
     @Override
@@ -178,7 +172,7 @@ public class EternalSilverCristalStaffitem extends BowItem implements GeoItem {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         ItemStack itemstack = player.getItemInHand(interactionHand);
         boolean flag = true;
 

@@ -11,12 +11,11 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class PlushiesBlock extends Block {
-
     public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
-
     private static final VoxelShape SHAPE = Block.box(3, 0, 3, 13, 14, 13);
 
     public PlushiesBlock(Properties properties) {
@@ -29,7 +28,12 @@ public class PlushiesBlock extends Block {
     }
 
     @Override
-    public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+    public @NotNull VoxelShape getShape(
+            @NotNull BlockState blockState,
+            @NotNull BlockGetter blockGetter,
+            @NotNull BlockPos blockPos,
+            @NotNull CollisionContext collisionContext
+    ) {
         return SHAPE;
     }
 

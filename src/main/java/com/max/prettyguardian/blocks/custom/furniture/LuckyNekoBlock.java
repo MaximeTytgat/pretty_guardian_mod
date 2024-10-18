@@ -19,12 +19,12 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class LuckyNekoBlock extends Block {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
     public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
-
     private static final VoxelShape SHAPE_NORTH_LOWER = Shapes.or(Block.box(1.5000000000000004, 0.001, 3, 14.499999999999998, 16, 16), Block.box(-0.9999999999999996, 0, 1, 4.000000000000002, 8, 15), Block.box(11.999999999999996, 0, 1, 17.000000000000014, 8, 15));
     private static final VoxelShape SHAPE_EAST_LOWER = Shapes.or(Block.box(0, 0.001, 1.5, 13, 16, 14.499999999999998), Block.box(1, 0, -1, 15, 8, 4.000000000000002), Block.box(1, 0, 11.999999999999996, 15, 8, 17.000000000000014));
     private static final VoxelShape SHAPE_SOUTH_LOWER = Shapes.or(Block.box(1.5000000000000018, 0.001, 0, 14.5, 16, 13), Block.box(11.999999999999998, 0, 1, 17, 8, 15), Block.box(-1.0000000000000142, 0, 1, 4.0000000000000036, 8, 15));
@@ -36,14 +36,20 @@ public class LuckyNekoBlock extends Block {
 
     public LuckyNekoBlock(Properties properties) {
         super(properties);
-        this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(HALF, DoubleBlockHalf.LOWER);
+        this.defaultBlockState()
+                .setValue(FACING, Direction.NORTH)
+                .setValue(HALF, DoubleBlockHalf.LOWER);
     }
 
     @Override
-    public VoxelShape getShape(BlockState blockState, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
+    public @NotNull VoxelShape getShape(
+            BlockState blockState,
+            @NotNull BlockGetter blockGetter,
+            @NotNull BlockPos blockPos,
+            @NotNull CollisionContext collisionContext
+    ) {
         DoubleBlockHalf half = blockState.getValue(HALF);
         return switch (blockState.getValue(FACING)) {
-            case NORTH -> half == DoubleBlockHalf.UPPER ? SHAPE_NORTH_UPPER : SHAPE_NORTH_LOWER;
             case SOUTH -> half == DoubleBlockHalf.UPPER ? SHAPE_SOUTH_UPPER : SHAPE_SOUTH_LOWER;
             case EAST -> half == DoubleBlockHalf.UPPER ? SHAPE_EAST_UPPER : SHAPE_EAST_LOWER;
             case WEST -> half == DoubleBlockHalf.UPPER ? SHAPE_WEST_UPPER : SHAPE_WEST_LOWER;
@@ -52,7 +58,14 @@ public class LuckyNekoBlock extends Block {
     }
 
     @Override
-    public BlockState updateShape(BlockState currentState, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+    public @NotNull BlockState updateShape(
+            BlockState currentState,
+            @NotNull Direction facing,
+            BlockState facingState,
+            @NotNull LevelAccessor level,
+            @NotNull BlockPos currentPos,
+            @NotNull BlockPos facingPos
+    ) {
         Block facingBlock = facingState.getBlock();
 
         if (currentState.getValue(HALF) == DoubleBlockHalf.LOWER) {
@@ -69,8 +82,12 @@ public class LuckyNekoBlock extends Block {
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
-        // prevent creative drops
+    public @NotNull BlockState playerWillDestroy(
+            @NotNull Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull BlockState blockState,
+            Player player
+    ) {
         if (player.isCreative()) {
             DoubleBlockHalf half = blockState.getValue(HALF);
             BlockPos blockToDestroy = switch (half) {
@@ -80,21 +97,34 @@ public class LuckyNekoBlock extends Block {
 
             level.destroyBlock(blockToDestroy, false);
         }
-
-        super.playerWillDestroy(level, blockPos, blockState, player);
+        return super.playerWillDestroy(level, blockPos, blockState, player);
     }
 
 
     @Override
-    public void setPlacedBy(Level p_49847_, BlockPos p_49848_, BlockState p_49849_, @Nullable LivingEntity p_49850_, ItemStack p_49851_) {
-        p_49847_.setBlock(p_49848_.above(), this.defaultBlockState().setValue(FACING, p_49849_.getValue(FACING)).setValue(HALF, DoubleBlockHalf.UPPER), 3);
+    public void setPlacedBy(
+            Level level,
+            BlockPos blockPos,
+            BlockState blockState,
+            @Nullable LivingEntity livingEntity,
+            @NotNull ItemStack itemStack
+    ) {
+        level.setBlock(
+                blockPos.above(),
+                this.defaultBlockState()
+                        .setValue(FACING, blockState.getValue(FACING))
+                        .setValue(HALF, DoubleBlockHalf.UPPER),
+                3
+        );
     }
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         if (context.getLevel().getBlockState(context.getClickedPos().above()).canBeReplaced(context)) {
-            return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(HALF, DoubleBlockHalf.LOWER);
+            return this.defaultBlockState()
+                    .setValue(FACING, context.getHorizontalDirection().getOpposite())
+                    .setValue(HALF, DoubleBlockHalf.LOWER);
         } else {
             return null;
         }

@@ -17,7 +17,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class JapChairBlock extends Block {
     public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
-
     private static final VoxelShape SHAPE_NORTH = Shapes.or(
             Block.box(2, 8, 2, 4, 19, 4),
             Block.box(5, 17, 2.5, 7, 18, 3.5),
@@ -39,7 +38,6 @@ public class JapChairBlock extends Block {
             Block.box(2, 0, 12, 4, 7, 14),
             Block.box(2, 0, 2, 4, 7, 4)
     );
-
     private static final VoxelShape SHAPE_EAST = Shapes.or(
             Block.box(2, 8, 12, 4, 19, 14),
             Block.box(2.5, 17, 9, 3.5, 18, 11),
@@ -61,7 +59,6 @@ public class JapChairBlock extends Block {
             Block.box(12, 0, 12, 14, 7, 14),
             Block.box(2, 0, 12, 4, 7, 14)
     );
-
     private static final VoxelShape SHAPE_WEST = Shapes.or(
             Block.box(12, 8, 2, 14, 19, 4),
             Block.box(12.5, 17, 5, 13.5, 18, 7),
@@ -83,7 +80,6 @@ public class JapChairBlock extends Block {
             Block.box(2, 0, 2, 4, 7, 4),
             Block.box(12, 0, 2, 14, 7, 4)
     );
-
     private static final VoxelShape SHAPE_SOUTH = Shapes.or(
             Block.box(12, 8, 12, 14, 19, 14),
             Block.box(9, 17, 12.5, 11, 18, 13.5),

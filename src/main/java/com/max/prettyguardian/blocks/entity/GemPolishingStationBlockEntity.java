@@ -4,6 +4,7 @@ import com.max.prettyguardian.client.gui.sreens.inventory.GemPolishingStationMen
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Containers;
@@ -98,22 +99,22 @@ public class GemPolishingStationBlockEntity extends BlockEntity implements MenuP
 
     @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+    public AbstractContainerMenu createMenu(int id, @NotNull Inventory inventory, @NotNull Player player) {
         return new GemPolishingStationMenu(id, inventory, this, this.data);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag pTag) {
+    protected void saveAdditional(CompoundTag pTag, HolderLookup.@NotNull Provider provider) {
         pTag.put("inventory", itemHandler.serializeNBT());
         pTag.putInt("gem_polishing_station.progress", progress);
 
-        super.saveAdditional(pTag);
+        super.saveAdditional(pTag, provider);
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
-        itemHandler.deserializeNBT(tag.getCompound("inventory"));
+    public void loadAdditional(@NotNull CompoundTag pTag, HolderLookup.@NotNull Provider provider) {
+        super.loadAdditional(pTag, provider);
+        itemHandler.deserializeNBT(pTag.getCompound("inventory"));
     }
 
     public void tick(Level level, BlockPos pPos, BlockState pState, GemPolishingStationBlockEntity pBlockEntity) {

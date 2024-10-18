@@ -1,12 +1,8 @@
 package com.max.prettyguardian.worldgen.entity.projectile;
 
-
-import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.effect.ModEffects;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,22 +17,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Random;
 
 public class CuteArrowEntity extends AbstractArrow {
-
-    private final Level level;
     private boolean hited = false;
     public CuteArrowEntity(EntityType<CuteArrowEntity> entityType, Level world) {
         super(entityType, world);
-        this.level = world;
-    }
-
-    public CuteArrowEntity(EntityType<CuteArrowEntity> entityType, double x, double y, double z, Level world) {
-        super(entityType, x, y, z, world, new ItemStack(PrettyGuardianItem.HEART_ARROW.get()));
-        this.level = world;
     }
 
     public CuteArrowEntity(EntityType<CuteArrowEntity> entityType, LivingEntity shooter, Level world) {
         super(entityType, shooter, world, new ItemStack(PrettyGuardianItem.HEART_ARROW.get()));
-        this.level = world;
     }
     @Override
     protected @NotNull ItemStack getPickupItem() {
@@ -44,7 +31,7 @@ public class CuteArrowEntity extends AbstractArrow {
     }
 
     @Override
-    protected ItemStack getDefaultPickupItem() {
+    protected @NotNull ItemStack getDefaultPickupItem() {
         return new ItemStack(PrettyGuardianItem.HEART_ARROW.get());
     }
 
@@ -59,11 +46,10 @@ public class CuteArrowEntity extends AbstractArrow {
         if (entityHitResult.getEntity() instanceof LivingEntity livingEntity) {
             livingEntity.addEffect(new MobEffectInstance(ModEffects.LOVE.getHolder().get(), 100, 1));
         }
-        // this, x, y, z, explosionStrength, setsFires, breakMode
     }
 
     @Override
-    protected void onHitBlock(BlockHitResult entityHitResult) {
+    protected void onHitBlock(@NotNull BlockHitResult entityHitResult) {
         this.hited = true;
         super.onHitBlock(entityHitResult);
     }

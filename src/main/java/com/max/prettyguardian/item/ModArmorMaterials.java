@@ -1,83 +1,53 @@
 package com.max.prettyguardian.item;
 
-import com.max.prettyguardian.PrettyGuardian;
-import net.minecraft.sounds.SoundEvent;
+import net.minecraft.Util;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 
+import java.util.EnumMap;
+import java.util.List;
 import java.util.function.Supplier;
 
-public enum ModArmorMaterials implements ArmorMaterial {
-    PINK_SAPPHIRE("pink_sapphire", 26, new int[]{4, 9, 6, 4}, 25,
-            SoundEvents.ARMOR_EQUIP_GOLD, 1.0F, 0.0F,
-            () -> Ingredient.of(PrettyGuardianItem.PINK_SAPPHIRE.get())),
-    RUBY("ruby", 26, new int[]{5, 10, 7, 5}, 25,
-            SoundEvents.ARMOR_EQUIP_GOLD, 1.0F, 0.0F,
-            () -> Ingredient.of(PrettyGuardianItem.RUBY.get()));
+public class ModArmorMaterials {
+    public static final Holder<ArmorMaterial> PINK_SAPPHIRE;
+    public static final Holder<ArmorMaterial> RUBY;
 
-    private final String name;
-    private final int durabilityMultiplier;
-    private final int[] protectionAmount;
-    private final int enchantmentValue;
-    private final SoundEvent equipSound;
-    private final float toughness;
-    private final float knockbackResistance;
-    private final Supplier<Ingredient> repairIngredient;
+    private static Holder<ArmorMaterial> register(String name, EnumMap<ArmorItem.Type, Integer> integer, int p_331490_, Supplier<Ingredient> ingredientSupplier, List<ArmorMaterial.Layer> layers) {
+        EnumMap<ArmorItem.Type, Integer> enumMap = new EnumMap<>(ArmorItem.Type.class);
+        ArmorItem.Type[] values = ArmorItem.Type.values();
 
+        for (ArmorItem.Type type : values) {
+            enumMap.put(type, integer.get(type));
+        }
 
-    private static final int[] BASE_DURABILITY = {11, 16, 16, 13};
-
-    ModArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmount, int enchantmentValue, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
-        this.name = name;
-        this.durabilityMultiplier = durabilityMultiplier;
-        this.protectionAmount = protectionAmount;
-        this.enchantmentValue = enchantmentValue;
-        this.equipSound = equipSound;
-        this.toughness = toughness;
-        this.knockbackResistance = knockbackResistance;
-        this.repairIngredient = repairIngredient;
+        return Registry.registerForHolder(BuiltInRegistries.ARMOR_MATERIAL, new ResourceLocation(name), new ArmorMaterial(enumMap, p_331490_, SoundEvents.ARMOR_EQUIP_GOLD, ingredientSupplier, layers, (float) 0.0, (float) 0.0));
     }
 
+    static {
+        PINK_SAPPHIRE = register("pink_sapphire", Util.make(new EnumMap<>(ArmorItem.Type.class), (enumMap) -> {
+            enumMap.put(ArmorItem.Type.BOOTS, 4);
+            enumMap.put(ArmorItem.Type.LEGGINGS, 9);
+            enumMap.put(ArmorItem.Type.CHESTPLATE, 6);
+            enumMap.put(ArmorItem.Type.HELMET, 4);
+            enumMap.put(ArmorItem.Type.BODY, 15);
+        }), 15, () -> {
+            return Ingredient.of(PrettyGuardianItem.PINK_SAPPHIRE.get());
+        }, List.of(new ArmorMaterial.Layer(new ResourceLocation("pink_sapphire"), "", true), new ArmorMaterial.Layer(new ResourceLocation("pink_sapphire"), "_overlay", false)));
 
-    @Override
-    public int getDurabilityForType(ArmorItem.Type armorType) {
-        return BASE_DURABILITY[armorType.ordinal()] * this.durabilityMultiplier;
-    }
-
-    @Override
-    public int getDefenseForType(ArmorItem.Type armorType) {
-        return this.protectionAmount[armorType.ordinal()];
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return this.enchantmentValue;
-    }
-
-    @Override
-    public SoundEvent getEquipSound() {
-        return this.equipSound;
-    }
-
-    @Override
-    public Ingredient getRepairIngredient() {
-        return this.repairIngredient.get();
-    }
-
-    @Override
-    public String getName() {
-        return PrettyGuardian.MOD_ID + ":" + this.name;
-    }
-
-    @Override
-    public float getToughness() {
-        return this.toughness;
-    }
-
-    @Override
-    public float getKnockbackResistance() {
-        return this.knockbackResistance;
+        RUBY = register("ruby", Util.make(new EnumMap<>(ArmorItem.Type.class), (enumMap) -> {
+            enumMap.put(ArmorItem.Type.BOOTS, 5);
+            enumMap.put(ArmorItem.Type.LEGGINGS, 10);
+            enumMap.put(ArmorItem.Type.CHESTPLATE, 7);
+            enumMap.put(ArmorItem.Type.HELMET, 5);
+            enumMap.put(ArmorItem.Type.BODY, 17);
+        }), 17, () -> {
+            return Ingredient.of(PrettyGuardianItem.RUBY.get());
+        }, List.of(new ArmorMaterial.Layer(new ResourceLocation("ruby"), "", true), new ArmorMaterial.Layer(new ResourceLocation("ruby"), "_overlay", false)));
     }
 }

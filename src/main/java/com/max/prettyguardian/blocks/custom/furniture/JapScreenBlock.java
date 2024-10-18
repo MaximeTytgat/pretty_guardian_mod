@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class JapScreenBlock extends Block {
@@ -34,8 +35,13 @@ public class JapScreenBlock extends Block {
     }
 
     @Override
-    public VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
-        return p_60555_.getValue(FACING) == Direction.EAST || p_60555_.getValue(FACING) == Direction.WEST ? SHAPE_EAST : SHAPE;
+    public @NotNull VoxelShape getShape(
+            BlockState blockState,
+            @NotNull BlockGetter blockGetter,
+            @NotNull BlockPos blockPos,
+            @NotNull CollisionContext collisionContext
+    ) {
+        return blockState.getValue(FACING) == Direction.EAST || blockState.getValue(FACING) == Direction.WEST ? SHAPE_EAST : SHAPE;
     }
 
     @Nullable
@@ -51,52 +57,72 @@ public class JapScreenBlock extends Block {
                 && level.getBlockState(pos1).canBeReplaced(context)
                 && level.getBlockState(pos1.above()).canBeReplaced(context)
         ) {
-
-            return this.defaultBlockState().setValue(FACING, direction).setValue(HALF, DoubleBlockHalf.LOWER).setValue(PART, ParaventPart.LEFT);
+            return this.defaultBlockState()
+                    .setValue(FACING, direction)
+                    .setValue(HALF, DoubleBlockHalf.LOWER)
+                    .setValue(PART, ParaventPart.LEFT);
         }
 
         return null;
     }
 
     @Override
-    public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, @Nullable LivingEntity livingEntity, ItemStack itemStack) {
+    public void setPlacedBy(
+            @NotNull Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull BlockState blockState,
+            @Nullable LivingEntity livingEntity,
+            @NotNull ItemStack itemStack
+    ) {
         super.setPlacedBy(level, blockPos, blockState, livingEntity, itemStack);
         if (!level.isClientSide) {
-            level.setBlock(blockPos.above(), blockState.setValue(HALF, DoubleBlockHalf.UPPER).setValue(PART, ParaventPart.LEFT), 3);
+            level.setBlock(
+                    blockPos.above(),
+                    blockState
+                            .setValue(HALF, DoubleBlockHalf.UPPER)
+                            .setValue(PART, ParaventPart.LEFT),
+                    3
+            );
             BlockPos blockPos1 = blockPos.relative(blockState.getValue(FACING).getClockWise());
-            level.setBlock(blockPos1, blockState.setValue(HALF, DoubleBlockHalf.LOWER).setValue(PART, ParaventPart.RIGHT), 3);
-            level.setBlock(blockPos1.above(), blockState.setValue(HALF, DoubleBlockHalf.UPPER).setValue(PART, ParaventPart.RIGHT), 3);
+            level.setBlock(
+                    blockPos1,
+                    blockState
+                            .setValue(HALF, DoubleBlockHalf.LOWER)
+                            .setValue(PART, ParaventPart.RIGHT),
+                    3
+            );
+            level.setBlock(
+                    blockPos1.above(),
+                    blockState
+                            .setValue(HALF, DoubleBlockHalf.UPPER)
+                            .setValue(PART, ParaventPart.RIGHT),
+                    3
+            );
         }
     }
 
     @Override
-    public BlockState updateShape(BlockState currentState, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+    public @NotNull BlockState updateShape(
+            @NotNull BlockState currentState,
+            @NotNull Direction facing,
+            BlockState facingState,
+            @NotNull LevelAccessor level,
+            @NotNull BlockPos currentPos,
+            @NotNull BlockPos facingPos
+    ) {
         Block facingBlock = facingState.getBlock();
 
-        if (currentState.getValue(HALF) == DoubleBlockHalf.LOWER && currentState.getValue(PART) == ParaventPart.LEFT) {
-            if (facing == Direction.UP && facingBlock != this) {
-                return Blocks.AIR.defaultBlockState();
-            } else if (facing == currentState.getValue(FACING).getClockWise() && facingBlock != this) {
-                return Blocks.AIR.defaultBlockState();
-            }
-        } else if (currentState.getValue(HALF) == DoubleBlockHalf.UPPER && currentState.getValue(PART) == ParaventPart.LEFT) {
-            if (facing == Direction.DOWN && facingBlock != this) {
-                return Blocks.AIR.defaultBlockState();
-            } else if (facing == currentState.getValue(FACING).getClockWise() && facingBlock != this) {
-                return Blocks.AIR.defaultBlockState();
-            }
-        } else if (currentState.getValue(HALF) == DoubleBlockHalf.LOWER && currentState.getValue(PART) == ParaventPart.RIGHT) {
-            if (facing == Direction.UP && facingBlock != this) {
-                return Blocks.AIR.defaultBlockState();
-            } else if (facing == currentState.getValue(FACING).getCounterClockWise() && facingBlock != this) {
-                return Blocks.AIR.defaultBlockState();
-            }
-        } else if (currentState.getValue(HALF) == DoubleBlockHalf.UPPER && currentState.getValue(PART) == ParaventPart.RIGHT) {
-            if (facing == Direction.DOWN && facingBlock != this) {
-                return Blocks.AIR.defaultBlockState();
-            } else if (facing == currentState.getValue(FACING).getCounterClockWise() && facingBlock != this) {
-                return Blocks.AIR.defaultBlockState();
-            }
+        if (facingBlock == this) super.updateShape(currentState, facing, facingState, level, currentPos, facingPos);
+
+        DoubleBlockHalf half = currentState.getValue(HALF);
+        ParaventPart part = currentState.getValue(PART);
+        Direction direction = currentState.getValue(FACING);
+        Direction facingDirection = part == ParaventPart.LEFT ? direction.getClockWise() : direction.getCounterClockWise();
+        if (
+                (half == DoubleBlockHalf.LOWER && (facing == Direction.UP || facing == facingDirection))
+                || (half == DoubleBlockHalf.UPPER && (facing == Direction.DOWN || facing == facingDirection))
+        ) {
+            return Blocks.AIR.defaultBlockState();
         }
 
         return super.updateShape(currentState, facing, facingState, level, currentPos, facingPos);
@@ -108,8 +134,12 @@ public class JapScreenBlock extends Block {
     }
 
     @Override
-    public BlockState playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
-        // prevent creative drops
+    public @NotNull BlockState playerWillDestroy(
+            @NotNull Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull BlockState blockState,
+            Player player
+    ) {
         if (player.isCreative()) {
             DoubleBlockHalf half = blockState.getValue(HALF);
             BlockPos blockToDestroy = switch (half) {
@@ -139,11 +169,12 @@ public class JapScreenBlock extends Block {
             this.name = name;
         }
 
+        @Override
         public String toString() {
             return this.name;
         }
 
-        public String getSerializedName() {
+        public @NotNull String getSerializedName() {
             return this.name;
         }
     }

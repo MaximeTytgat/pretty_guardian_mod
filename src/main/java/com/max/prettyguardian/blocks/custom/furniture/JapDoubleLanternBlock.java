@@ -28,23 +28,19 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
 public class JapDoubleLanternBlock extends LanternBlock {
-
     private static final VoxelShape AABB = Shapes.or(
             Block.box(3, 9, 3, 13, 11, 13),
             Block.box(1, 8, 1, 15, 9, 15),
             Block.box(0, 0, 0, 16, 8, 16)
     );
-
     private static final VoxelShape LOWER_AABB = Shapes.or(
             Block.box(0, 13, 0, 16, 16, 16),
             Block.box(1, 12, 1, 15, 13, 15),
             Block.box(3, 10, 3, 13, 12, 13)
     );
-
     public static final EnumProperty<DoubleBlockHalf> HALF = EnumProperty.create("half", DoubleBlockHalf.class);
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-
 
     public JapDoubleLanternBlock(Properties properties) {
         super(properties);

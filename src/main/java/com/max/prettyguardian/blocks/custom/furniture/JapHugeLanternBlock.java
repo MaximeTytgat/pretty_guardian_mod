@@ -3,7 +3,6 @@ package com.max.prettyguardian.blocks.custom.furniture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -39,7 +38,6 @@ public class JapHugeLanternBlock extends LanternBlock {
             Block.box(1, 8, 1, 15, 9, 15),
             Block.box(0, 0, 0, 16, 8, 16)
     );
-
     private static final VoxelShape MIDDLE_AABB = Shapes.or(
             Block.box(0, 13, 0, 16, 16, 16),
             Block.box(1, 12, 1, 15, 13, 15),
@@ -50,13 +48,11 @@ public class JapHugeLanternBlock extends LanternBlock {
             Block.box(5, 1, 5, 11, 2, 11),
             Block.box(4, 0, 4, 12, 1, 12)
     );
-
     private static final VoxelShape LOWER_AABB = Shapes.or(
             Block.box(3, 10, 3, 13, 16, 13),
             Block.box(4, 9, 4, 12, 10, 12),
             Block.box(5, 8, 5, 11, 9, 11)
     );
-
     public static final EnumProperty<TripleBlockHalf> HALF = EnumProperty.create("half", TripleBlockHalf.class);
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
@@ -128,7 +124,10 @@ public class JapHugeLanternBlock extends LanternBlock {
                 BlockPos belowPos = clickedPos.getClickedPos().below();
                 BlockPos belowPos2 = belowPos.below();
 
-                if (clickedPos.getLevel().getBlockState(belowPos).canBeReplaced(clickedPos) && clickedPos.getLevel().getBlockState(belowPos2).canBeReplaced(clickedPos)) {
+                if (
+                        clickedPos.getLevel().getBlockState(belowPos).canBeReplaced(clickedPos) &&
+                        clickedPos.getLevel().getBlockState(belowPos2).canBeReplaced(clickedPos)
+                ) {
                     BlockState blockstate = this.defaultBlockState().setValue(HANGING, Boolean.TRUE);
 
                     if (clickedPos.getLevel().hasNeighborSignal(clickedPos.getClickedPos())) {
@@ -147,7 +146,7 @@ public class JapHugeLanternBlock extends LanternBlock {
 
     @Override
     public @NotNull BlockState updateShape(
-            BlockState currentState,
+            @NotNull BlockState currentState,
             @NotNull Direction facing,
             BlockState facingState,
             @NotNull LevelAccessor level,
@@ -155,12 +154,15 @@ public class JapHugeLanternBlock extends LanternBlock {
             @NotNull BlockPos facingPos
     ) {
         Block facingBlock = facingState.getBlock();
-        boolean facingIsNotThis = facingBlock != this;
 
+        boolean isFacingBlock = facingBlock == this;
+        if (isFacingBlock) return super.updateShape(currentState, facing, facingState, level, currentPos, facingPos);
+
+        TripleBlockHalf half = currentState.getValue(HALF);
         if (
-                (currentState.getValue(HALF) == TripleBlockHalf.LOWER && facing == Direction.UP && facingIsNotThis) ||
-                (currentState.getValue(HALF) == TripleBlockHalf.MIDDLE && (facing == Direction.UP || facing == Direction.DOWN) && facingIsNotThis) ||
-                (currentState.getValue(HALF) == TripleBlockHalf.UPPER && facing == Direction.DOWN && facingIsNotThis)
+                (half == TripleBlockHalf.LOWER && facing == Direction.UP) ||
+                (half == TripleBlockHalf.MIDDLE && (facing == Direction.UP || facing == Direction.DOWN)) ||
+                (half == TripleBlockHalf.UPPER && facing == Direction.DOWN)
         ){
             return Blocks.AIR.defaultBlockState();
         }

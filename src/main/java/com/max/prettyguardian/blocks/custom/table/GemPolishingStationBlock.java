@@ -2,9 +2,8 @@ package com.max.prettyguardian.blocks.custom.table;
 
 import com.max.prettyguardian.blocks.entity.GemPolishingStationBlockEntity;
 import com.max.prettyguardian.blocks.entity.ModBlockEntities;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -19,10 +18,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.network.NetworkHooks;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class GemPolishingStationBlock extends BaseEntityBlock {
+    public static final MapCodec<GemPolishingStationBlock> CODEC = simpleCodec(GemPolishingStationBlock::new);
+
 
     private static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 12, 16);
 
@@ -31,17 +32,22 @@ public class GemPolishingStationBlock extends BaseEntityBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+    protected @NotNull MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
+    }
+
+    @Override
+    public @NotNull VoxelShape getShape(@NotNull BlockState blockState, @NotNull BlockGetter blockGetter, @NotNull BlockPos blockPos, @NotNull CollisionContext collisionContext) {
         return SHAPE;
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState p_49232_) {
+    public @NotNull RenderShape getRenderShape(@NotNull BlockState blockState) {
         return RenderShape.MODEL;
     }
 
     @Override
-    public void onRemove(BlockState blockState, Level level, BlockPos blockPos, BlockState blockState1, boolean p_60519_) {
+    public void onRemove(BlockState blockState, @NotNull Level level, @NotNull BlockPos blockPos, BlockState blockState1, boolean p_60519_) {
         if (blockState.getBlock() != blockState1.getBlock()) {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
             if (blockEntity instanceof GemPolishingStationBlockEntity) {
@@ -53,28 +59,28 @@ public class GemPolishingStationBlock extends BaseEntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        if (!level.isClientSide()) {
+    protected @NotNull InteractionResult useWithoutItem(@NotNull BlockState blockState, Level level, @NotNull BlockPos blockPos, @NotNull Player player, @NotNull BlockHitResult blockHitResult) {
+        if (level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        } else {
             BlockEntity blockEntity = level.getBlockEntity(blockPos);
-            if (blockEntity instanceof GemPolishingStationBlockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer) player), (GemPolishingStationBlockEntity) blockEntity, blockPos);
-            } else {
-                throw new IllegalStateException("Our container provider is missing!");
+            if (blockEntity instanceof GemPolishingStationBlockEntity gemPolishingStationBlockEntity) {
+                player.openMenu(gemPolishingStationBlockEntity);
             }
-        }
 
-        return InteractionResult.sidedSuccess(level.isClientSide());
+            return InteractionResult.CONSUME;
+        }
     }
 
     @Nullable
     @Override
-    public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+    public BlockEntity newBlockEntity(@NotNull BlockPos blockPos, @NotNull BlockState blockState) {
         return new GemPolishingStationBlockEntity(blockPos, blockState);
     }
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState blockState, BlockEntityType<T> tBlockEntityType) {
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, @NotNull BlockState blockState, @NotNull BlockEntityType<T> tBlockEntityType) {
         if (level.isClientSide()) {
             return null;
         }

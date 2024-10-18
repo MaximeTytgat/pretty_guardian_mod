@@ -1,7 +1,6 @@
 package com.max.prettyguardian.blocks.custom.furniture;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -18,50 +17,67 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
 public class JapLampBlock extends LanternBlock {
-
     private static final VoxelShape AABB = Block.box(4, 0, 4, 12, 15, 12);
-
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
 
-
     public JapLampBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(HANGING, Boolean.valueOf(false)).setValue(POWERED, Boolean.valueOf(false)).setValue(LIT, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
+        this.registerDefaultState(
+                this.stateDefinition.any()
+                        .setValue(HANGING, Boolean.FALSE)
+                        .setValue(POWERED, Boolean.FALSE)
+                        .setValue(LIT, Boolean.FALSE)
+                        .setValue(WATERLOGGED, Boolean.FALSE)
+        );
     }
 
     @Override
-    public VoxelShape getShape(BlockState p_153474_, BlockGetter p_153475_, BlockPos p_153476_, CollisionContext p_153477_) {
+    public @NotNull VoxelShape getShape(
+            @NotNull BlockState blockState,
+            @NotNull BlockGetter blockGetter,
+            @NotNull BlockPos blockPos,
+            @NotNull CollisionContext collisionContext
+    ) {
         return AABB;
     }
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext p_57533_) {
+    public BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
         BlockState blockstate = this.defaultBlockState();
-        FluidState fluidstate = p_57533_.getLevel().getFluidState(p_57533_.getClickedPos());
+        FluidState fluidstate = blockPlaceContext.getLevel().getFluidState(blockPlaceContext.getClickedPos());
 
-        if (p_57533_.getLevel().hasNeighborSignal(p_57533_.getClickedPos())) {
-            blockstate = blockstate.setValue(LIT, Boolean.valueOf(true)).setValue(POWERED, Boolean.valueOf(true));
+        if (blockPlaceContext.getLevel().hasNeighborSignal(blockPlaceContext.getClickedPos())) {
+            blockstate = blockstate.setValue(LIT, Boolean.TRUE).setValue(POWERED, Boolean.TRUE);
         }
 
-        return blockstate.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER)).setValue(HANGING, Boolean.valueOf(false));
+        return blockstate.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER).setValue(HANGING, Boolean.FALSE);
     }
 
-    public void neighborChanged(BlockState blockState, Level level, BlockPos blockPos, Block block, BlockPos blockPos1, boolean b) {
+    @Override
+    public void neighborChanged(
+            @NotNull BlockState blockState,
+            Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull Block block,
+            @NotNull BlockPos blockPos1,
+            boolean b
+    ) {
         if (!level.isClientSide) {
             boolean flag = level.hasNeighborSignal(blockPos);
-            if (flag != blockState.getValue(POWERED)) {
-                if (blockState.getValue(LIT) != flag) {
-                    blockState = blockState.setValue(LIT, Boolean.valueOf(flag));
+            if (flag != Boolean.TRUE.equals(blockState.getValue(POWERED))) {
+                if (Boolean.TRUE.equals(blockState.getValue(LIT)) != flag) {
+                    blockState = blockState.setValue(LIT, flag);
                 }
 
-                level.setBlock(blockPos, blockState.setValue(POWERED, Boolean.valueOf(flag)), 2);
-                if (blockState.getValue(WATERLOGGED)) {
+                level.setBlock(blockPos, blockState.setValue(POWERED, flag), 2);
+                if (Boolean.TRUE.equals(blockState.getValue(WATERLOGGED))) {
                     level.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
                 }
             }
@@ -70,16 +86,23 @@ public class JapLampBlock extends LanternBlock {
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_153490_) {
-        p_153490_.add(LIT, POWERED, HANGING, WATERLOGGED);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> blockBlockStateBuilder) {
+        blockBlockStateBuilder.add(LIT, POWERED, HANGING, WATERLOGGED);
     }
 
-    public InteractionResult use(BlockState p_57540_, Level p_57541_, BlockPos p_57542_, Player p_57543_, InteractionHand p_57544_, BlockHitResult p_57545_) {
-        p_57540_ = p_57540_.cycle(LIT);
-        p_57541_.setBlock(p_57542_, p_57540_, 2);
-        if (p_57540_.getValue(WATERLOGGED)) {
-            p_57541_.scheduleTick(p_57542_, Fluids.WATER, Fluids.WATER.getTickDelay(p_57541_));
+    @Override
+    protected @NotNull InteractionResult useWithoutItem(
+            @NotNull BlockState blockState,
+            Level level,
+            @NotNull BlockPos blockPos,
+            @NotNull Player player,
+            @NotNull BlockHitResult blockHitResult
+    ) {
+        blockState = blockState.cycle(LIT);
+        level.setBlock(blockPos, blockState, 2);
+        if (Boolean.TRUE.equals(blockState.getValue(WATERLOGGED))) {
+            level.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-        return InteractionResult.sidedSuccess(p_57541_.isClientSide);
+        return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);
     }
 }

@@ -1,12 +1,12 @@
 package com.max.prettyguardian.blocks.entity;
 
-import com.max.prettyguardian.PrettyGuardian;
 import com.max.prettyguardian.blocks.PrettyGuardianBlock;
 import com.max.prettyguardian.blocks.custom.table.MoonAltarBlock;
 import com.max.prettyguardian.client.gui.sreens.inventory.MoonAltarMenu;
 import com.max.prettyguardian.item.PrettyGuardianItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -96,11 +96,11 @@ public class MoonAltarBlockEntity extends RandomizableContainerBlockEntity imple
         return new MoonAltarMenu(id, inventory, this);
     }
 
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    public void loadAdditional(@NotNull CompoundTag tag, HolderLookup.@NotNull Provider provider) {
+        super.loadAdditional(tag, provider);
         this.items = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         if (!this.tryLoadLootTable(tag)) {
-            ContainerHelper.loadAllItems(tag, this.items);
+            ContainerHelper.loadAllItems(tag, this.items, provider);
         }
 
     }
@@ -125,12 +125,12 @@ public class MoonAltarBlockEntity extends RandomizableContainerBlockEntity imple
         this.setChanged();
     }
 
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         if (!this.trySaveLootTable(tag)) {
-            ContainerHelper.saveAllItems(tag, this.items);
+            ContainerHelper.saveAllItems(tag, this.items, provider);
         }
 
+        super.saveAdditional(tag, provider);
     }
 
 
@@ -185,11 +185,6 @@ public class MoonAltarBlockEntity extends RandomizableContainerBlockEntity imple
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
-    }
-
-    @Override
-    public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
     }
 
     @Override

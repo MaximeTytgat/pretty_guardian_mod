@@ -26,7 +26,6 @@ import org.jetbrains.annotations.Nullable;
 public class JapBonzaiBlock extends Block {
     public static final EnumProperty<Direction> FACING = DirectionalBlock.FACING;
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
-
     public static final VoxelShape SHAPE_NORTH_LOWER = Shapes.or(Block.box(1, 0, 1, 15, 10, 15), Block.box(6, 10, 6, 10, 16, 10), Block.box(7, 14, 1, 9, 16, 6), Block.box(7, 15, 10, 9, 16, 15));
     public static final VoxelShape SHAPE_EAST_LOWER = Shapes.or(Block.box(1, 0, 1, 15, 10, 15), Block.box(6, 10, 6, 10, 16, 10), Block.box(10, 14, 7, 15, 16, 9), Block.box(1, 15, 7, 6, 16, 9));
     public static final VoxelShape SHAPE_SOUTH_LOWER = Shapes.or(Block.box(1, 0, 1, 15, 10, 15), Block.box(6, 10, 6, 10, 16, 10), Block.box(7, 14, 10, 9, 16, 15), Block.box(7, 15, 1, 9, 16, 6));

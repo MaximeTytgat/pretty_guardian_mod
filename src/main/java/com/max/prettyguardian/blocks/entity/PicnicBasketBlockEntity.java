@@ -4,6 +4,7 @@ import com.max.prettyguardian.blocks.custom.PicnicBasketBlock;
 import com.max.prettyguardian.client.gui.sreens.inventory.PicnicBasketMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -89,24 +90,24 @@ public class  PicnicBasketBlockEntity extends RandomizableContainerBlockEntity i
     }
 
     @Override
-    public void load(CompoundTag compoundTag) {
-        super.load(compoundTag);
-        this.loadFromTag(compoundTag);
+    protected void loadAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
+        super.loadAdditional(compoundTag, provider);
+        this.loadFromTag(compoundTag, provider);
     }
 
     @Override
-    protected void saveAdditional(CompoundTag compoundTag) {
+    protected void saveAdditional(CompoundTag compoundTag, HolderLookup.Provider provider) {
         if (!this.trySaveLootTable(compoundTag)) {
-            ContainerHelper.saveAllItems(compoundTag, this.itemStacks, false);
+            ContainerHelper.saveAllItems(compoundTag, this.itemStacks, false, provider);
         }
 
-        super.saveAdditional(compoundTag);
+        super.saveAdditional(compoundTag, provider);
     }
 
-    public void loadFromTag(CompoundTag p_59694_) {
+    public void loadFromTag(CompoundTag p_59694_, HolderLookup.Provider provider) {
         this.itemStacks = NonNullList.withSize(this.getContainerSize(), ItemStack.EMPTY);
         if (!this.tryLoadLootTable(p_59694_) && p_59694_.contains("Items", 9)) {
-            ContainerHelper.loadAllItems(p_59694_, this.itemStacks);
+            ContainerHelper.loadAllItems(p_59694_, this.itemStacks, provider);
         }
     }
 
